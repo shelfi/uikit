@@ -28,17 +28,18 @@ module.exports = function(app) {
 	app.controller('TooltipCtrl', require('./elements/tooltip/tooltip-controller'));
 	app.controller('CartCtrl', require('./modules/cart/cart-controller'));
 	app.controller('MinicartCtrl', require('./modules/minicart/minicart-controller'));
-	app.controller('ProductListCtrl', require('./modules/productList/productList-controller'));
 	app.controller('ProductItemCtrl', require('./modules/productItem/productItem-controller'));
+	app.controller('ProductListCtrl', require('./modules/productList/productList-controller'));
 	// Directives
 	app.directive('sfBreadcrumb', require('./collections/breadcrumb/breadcrumb-directive'));
 	app.directive('sfHeader', require('./collections/header/header-directive'));
 	app.directive('sfNavbar', require('./collections/navbar/navbar-directive'));
+	app.directive('sfCart', require('./modules/cart/cart-directive'));
 	app.directive('sfMinicart', require('./modules/minicart/minicart-directive'));
 	app.directive('sfProductDetail', require('./modules/productDetail/productDetail-directive'));
+	app.directive('sfProductItem', require('./modules/productItem/productItem-directive'));
 	app.directive('sfProductList', require('./modules/productList/productList-directive'));
 	app.directive('sfSearch', require('./modules/search/search-directive'));
-	app.directive('sfProductItem', require('./modules/productItem/productItem-directive'));
 	// Runs
 	app.run(require('./templates-run'));
 };

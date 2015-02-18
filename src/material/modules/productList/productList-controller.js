@@ -1,6 +1,7 @@
 (function(){
 'use strict';
-module.exports = ['$scope', function($scope){
+module.exports = [function(){
+	//under production circumstances get data from factory or service
 	this.products = [
 		{title: 'product01', image: 'holder.js/250x250', shortDesc: 'This is products.. a nice short description about it i here', price: '15'},
 		{title: 'product02', image: 'holder.js/250x250', shortDesc: 'This is nice product. Another short description is here.', price: '20'},

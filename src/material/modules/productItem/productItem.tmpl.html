@@ -6,7 +6,7 @@
 			<span class="sf-product-item__price">{{ctrl.item.price}}<em>(+KDV)</em></span>
 		</div>
 		<div class="sf-product-item__cta">
-			<md-button ng-show="ctrl.showAddButton" class="md-raised md-primary">Sepete Ekle</md-button>
+			<md-button ng-show="ctrl.showAddButton" class="md-raised md-primary" ng-click="cartCtrl.addToCart(ctrl.item)">Sepete Ekle</md-button>
 		</div	
 	<div ng-transclude></div>
 </div>

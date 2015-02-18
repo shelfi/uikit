@@ -10,7 +10,6 @@ module.exports = function ($mdTheming){
 			this.showAddButton = (this.showAddButton === 'true');
 			this.showImage = (this.showImage === 'true');
 			this.showDescription = (this.showDescription === 'true');
-			console.log(this.showDescription);
 		},
 		controllerAs: 'ctrl',
 		bindToController: true,

@@ -2,12 +2,13 @@
 
 productlist acts as a container and configuration for product item.
 
-1. productListDirective has `itemperpage` and `itemperlayout` attributes.
+- productListDirective has `itemperpage` and `itemperlayout` attributes.
 
 `itemperpage="10"` 
 `itemlayout="grid"` or `itemlayout="list"` or `itemlayout="wall"` 
 
-2. Subdirectives can define content listing behaviour, such as :
+
+- Subdirectives can define content listing behaviour, such as :
 
 `<sf-productlist-sort></sf-productlist-sort>`
 `<sf-productlist-filter></sf-productlist-filter>`

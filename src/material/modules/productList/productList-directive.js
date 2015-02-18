@@ -12,6 +12,7 @@ module.exports = function ($mdTheming){
 			layout: '@',
 			itemperpage: '@',
 			products: '=',
+			itemflex: '='
 		}
 	};
 };
