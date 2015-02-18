@@ -1,0 +1,1 @@
+Graphic radio buttons need to be labeled with the aria-label attribute.

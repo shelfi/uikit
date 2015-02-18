@@ -1,0 +1,11 @@
+<div class="container__item" id="slider-basic">
+	<div ng-controller="SliderCtrl">
+		<md-slider min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider"></md-slider>
+        <input type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+    </div>
+</div>
+<div class="container__item" id="slider-themed">
+	<div ng-controller="SliderCtrl">
+		<md-slider md-discrete ng-model="rating1" step="1" min="1" max="5" aria-label="rating"></md-slider>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container__item" id="bottom-sheet-trigger">
+	<div ng-controller="BottomsheetCtrl">
+		<md-button class="md-primary" ng-click="showBottomSheetGrid($event)">
+	  	Show BottomSheet Grid
+		</md-button>
+		<md-button class="md-primary" ng-click="showBottomSheetList($event)">
+	  	Show BottomSheet List
+		</md-button>
+		<div>{{alert}}</div>
+	</div>
+</div>
+<div class="container__item" id="bottom-sheet-grid">
+	<div ng-controller="BottomsheetCtrl">
+		<script type="text/ng-template" id="bottomsheetgrid.html">
+		<md-bottom-sheet class="md-grid">
+		<md-list>
+		    <md-item ng-repeat="item in items">
+		      <md-button class="md-grid-item-content" aria-label="{{item.name}}" ng-click="listItemClick($index)">
+		        <div class="md-icon-container">
+		          <md-inline-grid-icon icon="{{item.icon}}"></md-inline-grid-icon>
+		        </div>
+		        <p class="md-grid-text"> {{ item.name }} </p>
+		      </md-button>
+		    </md-item>
+		  </md-list>
+		</md-bottom-sheet>
+		</script>
+	</div>
+</div>
+<div class="container__item" id="bottom-sheet-list">
+	<div ng-controller="BottomsheetCtrl">
+		<script type="text/ng-template" id="bottomsheetlist.html">
+		<md-bottom-sheet class="md-list md-has-header">
+		  <md-subheader>This is bottomsheet has header</md-subheader>
+		  <md-list>
+		      <md-item ng-repeat="item in items">
+		        <md-button class="md-grid-item-content" aria-label="{{item.name}}" ng-click="listItemClick($index)">
+		          <div class="md-icon-container">
+		            <md-inline-grid-icon icon="{{item.icon}}"></md-inline-grid-icon>
+		          </div>
+		          <p class="md-grid-text"> {{ item.name }} </p>
+		        </md-button>
+		      </md-item>
+		    </md-list>
+		</md-bottom-sheet>
+		</script>
+	</div>
+</div>
+<div class="container__item" id="bottom-sheet-template">
+<script type="text/ng-template" id="blabla.html">
+  Content of the template.
+</script>
+</div>

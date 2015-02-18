@@ -1,0 +1,7 @@
+<sf-product-list itemperpage="25" layout="grid" products="ctrl.products">
+	<sf-product-filter></sf-product-filter>
+	<sf-product-sort></sf-product-sort>
+	<sf-product-item item="item" show-price="true" show-add-button="true" show-description="true" ng-repeat="item in ctrl.products" flex="25">
+	</sf-product-item>
+	<sf-product-pagination></sf-product-pagination>
+</sf-product-list>

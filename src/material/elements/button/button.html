@@ -1,0 +1,34 @@
+<div class="container__item" id="button-default">
+	<div ng-controller="ButtonCtrl">
+		<md-button>{{title}}</md-button>
+		<md-button class="md-primary">Primary Button</md-button>
+		<md-button md-no-ink class="md-primary">Primary (md-noink)</md-button>
+		<md-button ng-href="{{googleUrl}}" target="_blank">Go to Google</md-button>
+	</div>
+</div>
+<div ng-controller="ButtonCtrl" class="container__item" id="button-raised">
+	  <md-button class="md-raised">Button</md-button>
+      <md-button class="md-raised md-primary">Primary</md-button>
+      <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+      <md-button class="md-raised md-warn">Warn</md-button>
+</div>
+<div ng-controller="ButtonCtrl" class="container__item" id="button-fab">
+	<md-button class="md-fab" aria-label="Eat cake">
+    	<md-icon md-svg-icon="uikit/images/icons/cake.svg" class="s24" alt="Cake"></md-icon>
+	</md-button>
+	<md-button class="md-fab md-primary" aria-label="Use Android">
+		<md-icon md-svg-icon="uikit/images/icons/cake.svg" class="s24" alt="Cake"></md-icon>
+	</md-button>
+	<md-button class="md-fab" ng-disabled="true" aria-label="Comment">
+		<md-icon md-svg-icon="uikit/images/icons/cake.svg" class="s24" alt="Cake"></md-icon>
+	</md-button>
+	<md-button class="md-fab md-primary md-hue-2" aria-label="Profile">
+		<md-icon md-svg-icon="uikit/images/icons/cake.svg" class="s24" alt="Cake"></md-icon>
+	</md-button>
+</div>
+<div ng-controller="ButtonCtrl" class="container__item" id="button-themed">
+		<md-button class="md-primary md-hue-1">Primary Hue 1</md-button>
+	    <md-button class="md-warn md-raised md-hue-2">Warn Hue 2</md-button>
+	    <md-button class="md-accent">Accent</md-button>
+	    <md-button class="md-accent md-raised md-hue-1">Accent Hue 1</md-button>
+</div>

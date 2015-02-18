@@ -1,0 +1,29 @@
+<div class="container__item" id="progress-default">
+	<md-progress-circular class="md-hue-1" md-mode="indeterminate"></md-progress-circular>
+	<md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+	<md-progress-circular class="md-accent md-hue-1" md-mode="indeterminate"></md-progress-circular>
+	<md-progress-circular class="md-warn md-hue-3" md-mode="indeterminate"></md-progress-circular>
+	<md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
+</div>
+<div class="container__item" id="progress-with-value">
+	<div ng-controller="ProgressCtrl">
+		<md-progress-circular md-mode="determinate" value="{{determinateValue}}"></md-progress-circular>
+	</div>
+</div>
+
+<div class="container__item" id="progress-linear">
+	<div ng-controller="ProgressCtrl">
+		<md-progress-linear md-mode="indeterminate"></md-progress-linear>
+	</div>
+</div>
+<div class="container__item" id="progress-linear-with-value">
+	<div ng-controller="ProgressCtrl">
+		<md-progress-linear class="md-warn" md-mode="buffer" value="{{determinateValue}}" md-buffer-value="{{determinateValue2}}"></md-progress-linear>
+	</div>
+</div>
+
+<div class="container__item" id="progress-linear">
+	<div ng-controller="ProgressCtrl">
+		<md-progress-linear class="md-accent" md-mode="{{mode}}" value="{{determinateValue}}"></md-progress-linear>
+	</div>
+</div>

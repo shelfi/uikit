@@ -1,0 +1,81 @@
+<nav class="f-menu" role="navigation">
+	<div class="f-controls">
+		<div class="f-icon" data-f-toggle-control="details" title="toggle details">
+			<svg>
+				<use xlink:href="#f-icon-details" />
+			</svg>
+		</div>
+		<div class="f-icon" data-f-toggle-control="notes" title="toggle notes">
+			<svg>
+				<use xlink:href="#f-icon-notes" />
+			</svg>
+		</div>
+		<div class="f-icon" data-f-toggle-control="code" title="toggle code">
+			<svg>
+				<use xlink:href="#f-icon-code" />
+			</svg>
+		</div>
+	</div>
+	<ul>
+		<li>
+			<a href="index.html" class="f-menu__heading">Overview</a>
+		</li>
+		<li>
+			<a href="elements.html" class="f-menu__heading">Elements</a>
+			<ul>
+				{%for element, item in elements%}
+					<li>
+						<a href="elements.html#<$ item.id $>"><$ item.name $></a>
+					</li>
+				{%endfor%}
+			</ul>
+		</li>
+		<li>
+			<a href="collections.html" class="f-menu__heading">Collections</a>
+			<ul>
+				{%for collection, item in collections%}
+					<li>
+						<a href="collections.html#<$ item.id $>"><$ item.name $></a>
+					</li>
+				{%endfor%}
+			</ul>
+		</li>
+		<li>
+			<a href="modules.html" class="f-menu__heading">Modules</a>
+			<ul>
+				{%for module, item in modules%}
+					<li>
+						<a href="modules.html#<$ item.id $>"><$ item.name $></a>
+					</li>
+				{%endfor%}
+			</ul>
+		</li>
+		<li>
+			<a href="templates.html" class="f-menu__heading">Templates</a>
+			<ul>
+				{%for template, item in templates%}
+					<li>
+						<a href="template-<$ item.id $>.html"><$ item.name $></a>
+					</li>
+				{%endfor%}
+			</ul>
+		</li>
+		<li>
+			<a href="documentation.html" class="f-menu__heading">Documentation</a>
+			<ul>
+				{%for document, item in documentation%}
+					<li>
+						<a href="documentation.html#<$ item.id $>"><$ item.name $></a>
+					</li>
+				{%endfor%}
+			</ul>
+		</li>
+	</ul>
+	<div class="f-theme-selector">
+	<div class="label">Theme:</div>
+	<select name="" id="" ng-model="dynamicTheme"  ng-init="dynamicTheme = default">
+		<option value="default" selected>Default</option>
+		<option value="altTheme">Alt Theme</option>
+	</select>
+	</div>
+</nav>

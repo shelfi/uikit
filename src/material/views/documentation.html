@@ -1,0 +1,27 @@
+{% include "intro.html" %}
+{% include "menu.html" %}
+
+<div class="f-container">
+	<div class="f-main">
+
+		<div class="f-menu-bar">
+			<div class="f-menu-toggle">
+				<svg>
+					<use xlink:href="#f-icon-menu" />
+				</svg>
+			</div>
+		</div>
+
+		<h1>Documentation</h1>
+
+		{%for doc, item in documentation%}
+			<div class="f-item-group">
+				<h2 id="<$ item.id $>"><a href="#<$ item.id $>"><$ item.name $></a></h2>
+				<$ item.notes $>
+			</div>
+		{%endfor%}
+
+	</div>
+</div>
+
+{% include "outro.html" %}

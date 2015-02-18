@@ -1,0 +1,78 @@
+{% include "intro.html" %}
+{% include "menu.html" %}
+<div md-theme="{{ dynamicTheme }}" md-theme-watch>
+<div class="f-container">
+	<div class="f-main">
+		<div class="f-menu-bar">
+			<div class="f-menu-toggle">
+				<svg>
+					<use xlink:href="#f-icon-menu" />
+				</svg>
+			</div>
+		</div>
+		<h1 data-f-toggle="details">Modules</h1>
+		{% for module, item in modules %}
+
+			<div class="f-item-group" id="<$ item.id $>">
+
+				<div class="f-item-heading-group" data-f-toggle="details">
+					<a href="#<$ item.id $>" class="f-item-heading"><$ item.name $></a>
+					<div class="f-item-toggles">
+						{%if item.notes%}<span class="f-toggle f-icon" data-f-toggle-control="notes" title="toggle notes">
+							<svg>
+								<use xlink:href="#f-icon-notes" />
+							</svg>
+						</span>{%endif%}
+						<span class="f-toggle f-icon" data-f-toggle-control="code" title="toggle code">
+							<svg>
+								<use xlink:href="#f-icon-code" />
+							</svg>
+						</span>
+					</div>
+				</div>
+				
+				{%if item.notes%}<div class="f-item-notes" data-f-toggle="notes">
+					<$ item.notes $>
+				</div>{%endif%}
+
+				<div class="f-item-preview">
+					{% if item.section %}
+					{% for item in item.section %}
+					<h5 class="f-section-title" data-f-toggle="details"><$ item.title $></h5>
+					<section class="f-section-row"><$ item.content $>
+					<div class="f-item-code f-item-hidden" data-f-toggle="code">
+						<pre><code class="language-markup"><$ item.content | escape $></code></pre>
+					</div>
+					</section>	
+					{% endfor %}
+					{% else %}
+					<section class="f-section-row"><$ item.content $></section>
+					<div class="f-item-code f-item-hidden" data-f-toggle="code">
+						<pre><code class="language-markup"><$ item.content | escape $></code></pre>
+					</div>
+					{% endif %}
+				</div>
+
+				<!-- //old content 
+				<div class="f-item-code f-item-hidden" data-f-toggle="code">
+					<pre><code class="language-markup"><$ item.content | escape $></code></pre>
+				</div>-->
+
+				{%if item.styles%}
+				<h5 class="f-section-title" data-f-toggle="code">Styles</h5>
+				<div class="f-item-code f-item-hidden" data-f-toggle="code">
+					<pre><code class="language-css"><$ item.styles | escape $></code></pre>
+				</div>{%endif%}
+
+
+				{%if item.scripts%}
+				<h5 class="f-section-title" data-f-toggle="code">Scripts</h5>
+				<div class="f-item-code f-item-hidden" data-f-toggle="code">
+					<pre><code class="language-javascript"><$ item.scripts | escape $></code></pre>
+				</div>{%endif%}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+</div><!-- /md-theme -->
+{% include "outro.html" %}

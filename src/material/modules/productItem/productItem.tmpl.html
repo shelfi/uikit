@@ -1,0 +1,12 @@
+<div class="sf-product-item">
+	<div class="sf-product-item__image"><a href="{{ctrl.item.link}}"><img data-src="{{ctrl.item.image}}"></a></div>
+	<div class="sf-product-item__info">
+			<h3 class="sf-product-item__title">{{ctrl.item.title}}</h3>
+			<p class="sf-product-item__description" ng-show="ctrl.showDescription">{{ctrl.item.shortDesc}}</p>
+			<span class="sf-product-item__price">{{ctrl.item.price}}<em>(+KDV)</em></span>
+		</div>
+		<div class="sf-product-item__cta">
+			<md-button ng-show="ctrl.showAddButton" class="md-raised md-primary">Sepete Ekle</md-button>
+		</div	
+	<div ng-transclude></div>
+</div>

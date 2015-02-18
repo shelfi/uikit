@@ -1,0 +1,45 @@
+<div class="container__item" id="switch-primary">
+	<div ng-controller="SwitchCtrl">
+	<md-switch ng-model="data.cb1" aria-label="Switch 1" class="md-primary">
+	    Switch 1: {{ data.cb1 }}
+	 </md-switch>
+	 </div>
+</div>
+<div class="container__item" id="switch-disabled">
+	<div ng-controller="SwitchCtrl">
+	  <md-switch ng-disabled="true" aria-label="Disabled switch" ng-model="disabledModel">
+    	Switch (Disabled)
+  	</md-switch>
+	 </div>
+</div>
+<div class="container__item" id="switch-disabled-active">
+	<div ng-controller="SwitchCtrl">
+		<md-switch ng-disabled="true" aria-label="Disabled active switch" ng-model="data.cb4">
+		    Switch (Disabled, Active)
+		  </md-switch>
+	 </div>
+</div>
+
+<div class="container__item" id="switch-with-warning">
+	<div ng-controller="SwitchCtrl">
+<md-switch ng-model="data.cb2" aria-label="Switch 2" ng-true-value="'yup'" ng-false-value="'nope'" class="md-warn">
+    Switch 2 (md-warn): {{ data.cb2 }}
+  </md-switch>
+  </div>
+</div>
+
+<div class="container__item" id="switch-with-no-ink">
+	<div ng-controller="SwitchCtrl">
+	<md-switch class="md-primary" md-no-ink aria-label="Switch No Ink">
+    Switch (md-primary): No Ink
+  </md-switch>
+  </div>
+</div>
+
+<div class="container__item" id="switch-with-no-message">
+	<div ng-controller="SwitchCtrl">
+	<md-switch ng-model="data.cb5" aria-label="Switch 5" ng-change="onChange(data.cb5)">
+    Switch 5 message: {{ message }}
+  </md-switch>
+  </div>
+</div>

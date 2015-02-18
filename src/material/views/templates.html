@@ -1,0 +1,52 @@
+{% include "intro.html" %}
+{% include "menu.html" %}
+
+<div class="f-container">
+	<div class="f-main">
+
+		<div class="f-menu-bar">
+			<div class="f-menu-toggle">
+				<svg>
+					<use xlink:href="#f-icon-menu" />
+				</svg>
+			</div>
+		</div>
+
+		<h1 data-f-toggle="details">Templates</h1>
+
+		{% for template, item in templates %}
+
+			<div class="f-item-group" id="<$ id $>">
+
+				<div class="f-item-heading-group" data-f-toggle="details">
+					<a href="#<$ item.id $>" class="f-item-heading"><$ item.name $></a>
+					<div class="f-item-toggles">
+						{%if item.notes%}<span class="f-toggle f-icon" data-f-toggle-control="notes" title="toggle notes">
+							<svg>
+								<use xlink:href="#f-icon-notes" />
+							</svg>
+						</span>{% endif %}
+						<span class="f-toggle f-icon" data-f-toggle-control="code" title="toggle code">
+							<svg>
+								<use xlink:href="#f-icon-code" />
+							</svg>
+						</span>
+					</div>
+				</div>
+
+				{%if item.notes%}<div class="f-item-notes" data-f-toggle="notes">
+					<$ item.notes $>
+				</div>{% endif %}
+
+				<div class="f-item-code" data-f-toggle="code">
+					<pre><code class="language-markup"><$ item.content | escape $></code></pre>
+				</div>
+
+			</div>
+
+		{% endfor %}
+
+	</div>
+</div>
+
+{% include "outro.html" %}

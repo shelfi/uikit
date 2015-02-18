@@ -1,0 +1,34 @@
+<div class="container__item" id="divider-full-bleed">
+	<div ng-controller="DividerCtrl">
+	<md-item ng-repeat="item in messages">
+		<md-item-content>
+			<div class="md-tile-left">
+				<img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+			</div>
+			<div class="md-tile-content">
+				<p>
+				  {{item.note}}
+				</p>
+			</div>
+			</md-item-content>
+		<md-divider ng-if="!$last"></md-divider>
+	</md-item>
+	</div>	
+</div>
+<div class="container__item" id="divider-inset">
+	<div ng-controller="DividerCtrl">
+	<md-item ng-repeat="item in messages">
+		<md-item-content>
+			<div class="md-tile-left">
+				<img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+			</div>
+			<div class="md-tile-content">
+				<p>
+				  {{item.note}}
+				</p>
+			</div>
+			</md-item-content>
+		<md-divider md-inset ng-if="!$last"></md-divider>
+	</md-item>
+	</div>
+</div>

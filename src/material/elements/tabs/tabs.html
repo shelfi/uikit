@@ -1,0 +1,11 @@
+<div class="container__item" id="tabs-basic">
+	<div ng-controller="TabsCtrl">
+		<md-tabs md-selected="selectedIndex">
+		   <md-tab ng-repeat="tab in tabs" ng-disabled="tab.disabled" label="{{tab.title}}">
+				<div class="demo-tab tab{{$index%1}}" layout="column" layout-fill layout-align="space-around center">
+					<div ng-bind="tab.content"></div>
+				</div>
+			</md-tab>
+		 </md-tabs>
+	</div>
+</div>
