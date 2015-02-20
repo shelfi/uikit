@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-module.exports = function (){
+module.exports = function ($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,

@@ -36,6 +36,7 @@ module.exports = function(app) {
 	app.directive('sfNavbar', require('./collections/navbar/navbar-directive'));
 	app.directive('sfCart', require('./modules/cart/cart-directive'));
 	app.directive('sfMinicart', require('./modules/minicart/minicart-directive'));
+	app.directive('sfOrderSummary', require('./modules/orderSummary/orderSummary-directive'));
 	app.directive('sfProductDetail', require('./modules/productDetail/productDetail-directive'));
 	app.directive('sfProductFilter', require('./modules/productFilter/productFilter-directive'));
 	app.directive('sfProductItem', require('./modules/productItem/productItem-directive'));
