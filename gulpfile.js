@@ -54,7 +54,7 @@ gulp.task('injector:sass', function () {
     .pipe(inject(gulp.src([
         config.sourceDir + '/assets/styles/**/*.scss',
         config.sourceDir + '/elements/**/*.scss',
-        config.sourceDir + '/collections/**/*.scss',
+        config.sourceDir + '/snippets/**/*.scss',
         config.sourceDir + '/modules/**/*.scss',
         '!' + config.sourceDir + '/assets/styles/uikit.scss',
         '!' + config.sourceDir + '/assets/styles/vendor.scss' 
@@ -276,13 +276,13 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.css', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.scss', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.scss', ['webpack', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/collections/**/*.scss', ['webpack', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/snippets/**/*.scss', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/modules/**/*.scss', ['webpack', browserSync.reload]);
 	gulp.watch('src/fabricator/scripts/**/*.js', ['scripts:fabricator', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/*.js', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/scripts/**/*.js', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.js', ['webpack', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/collections/**/*.js', ['webpack', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/snippets/**/*.js', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/modules/**/*.js', ['webpack', browserSync.reload]);
 	gulp.watch(config.general.src.images, ['images', browserSync.reload]);
 });

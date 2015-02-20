@@ -23,7 +23,7 @@ exports.general = {
 			views: this.sourceDir + '/views/*.html',
 			materials: [
 				'elements',
-				'collections',
+				'snippets',
 				'templates',
 				'documentation',
 				'modules'

@@ -31,21 +31,21 @@
 			</ul>
 		</li>
 		<li>
-			<a href="collections.html" class="f-menu__heading">Collections</a>
-			<ul>
-				{%for collection, item in collections%}
-					<li>
-						<a href="collections.html#<$ item.id $>"><$ item.name $></a>
-					</li>
-				{%endfor%}
-			</ul>
-		</li>
-		<li>
 			<a href="modules.html" class="f-menu__heading">Modules</a>
 			<ul>
 				{%for module, item in modules%}
 					<li>
 						<a href="modules.html#<$ item.id $>"><$ item.name $></a>
+					</li>
+				{%endfor%}
+			</ul>
+		</li>
+		<li>
+			<a href="snippets.html" class="f-menu__heading">Snippets</a>
+			<ul>
+				{%for snippets, item in snippets%}
+					<li>
+						<a href="snippets.html#<$ item.id $>"><$ item.name $></a>
 					</li>
 				{%endfor%}
 			</ul>

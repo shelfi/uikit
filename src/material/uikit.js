@@ -7,5 +7,6 @@ var m = angular.module('uikit', ['ngMaterial', 'ngMessages'])
 			.primaryPalette('purple') // specify primary color, all other color intentions will be inherited from default
 			.accentPalette('orange')
 	    });
+	//.constant('$MD_THEME_CSS', theme);
 require('./bootstrap.js')(m);
 require('./assets/styles/uikit.scss');

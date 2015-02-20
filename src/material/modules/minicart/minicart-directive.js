@@ -15,7 +15,6 @@ module.exports = function ($mdTheming){
 
 	function postLink (scope, element, attr){
 		$mdTheming(element);
-		scope.greetings = attr.greetings;
 	}
 
 	function getTemplate (){
