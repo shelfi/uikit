@@ -1,0 +1,26 @@
+<div class="order-summary-container">	
+	<div class="panel panel-contrast">
+		<div class="panel-heading">
+			Sipariş Özeti
+		</div><!-- /panel-heading -->
+		<div class="panel-body">
+			<div class="order-summary">
+				<strong>Urun Adet</strong>
+				<span class="order-quantity">{{ $root.order.products.length }}</span>
+				<strong>KDV Dahil Toplam Tutar</strong>
+				<span class="order-total-price">{{ $root.order.total | currency }}<!--<em>TL</em>--></span>
+			</div><!-- /order-sumary -->
+			<div class="order-extra">
+				<sf-checkbox value="0" id="order-extra-note" text="Siparis Notum Var" checked="false"></sf-checkbox>
+				<sf-checkbox value="0" id="order-extra-gift" text="Hediye Paketi Olsun" checked="false"></sf-checkbox>
+			</div><!-- /order-extra -->
+			<div class="order-cta">
+				<button type="button" class="btn btn-primary btn-xs" ng-click="cartCtrl.addPromotionCode()">Promosyon kodu Ekle <span class="fui-plus pull-right"></span></button>
+				<button type="button" class="btn btn-primary btn-xs">Ek Urun Ekle <span class="fui-plus pull-right"></span></button>
+			</div><!-- /order-cta -->
+		</div><!-- /panel-body -->
+		<div class="panel-footer pbl">
+			<div class="step-action" ng-transclude></div>
+		</div><!-- panel-footer -->
+	</div>
+</div>

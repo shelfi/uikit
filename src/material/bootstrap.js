@@ -37,8 +37,10 @@ module.exports = function(app) {
 	app.directive('sfCart', require('./modules/cart/cart-directive'));
 	app.directive('sfMinicart', require('./modules/minicart/minicart-directive'));
 	app.directive('sfProductDetail', require('./modules/productDetail/productDetail-directive'));
+	app.directive('sfProductFilter', require('./modules/productFilter/productFilter-directive'));
 	app.directive('sfProductItem', require('./modules/productItem/productItem-directive'));
 	app.directive('sfProductList', require('./modules/productList/productList-directive'));
+	app.directive('sfProductSorter', require('./modules/productSorter/productSorter-directive'));
 	app.directive('sfSearch', require('./modules/search/search-directive'));
 	// Runs
 	app.run(require('./templates-run'));
