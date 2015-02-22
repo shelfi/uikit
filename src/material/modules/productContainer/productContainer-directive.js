@@ -4,12 +4,8 @@ module.exports = function ($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,
-		templateUrl: 'modules/productItem/productItem.tmpl.html',
+		templateUrl: 'modules/productContainer/productContainer.tmpl.html',
 		controller: function ($scope){
-			this.showPrice = (this.showPrice === 'true');
-			this.showAddButton = (this.showAddButton === 'true');
-			this.showImage = (this.showImage === 'true');
-			this.showDescription = (this.showDescription === 'true');
 		},
 		controllerAs: 'ctrl',
 		bindToController: true,
@@ -17,7 +13,7 @@ module.exports = function ($mdTheming){
 		//http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html#improvements-in-14
 		link: link,
 		scope: {
-			item: '=item',
+			item: '=ngModel',
 			showAddButton: '@',
 			showPrice: '@',
 			showImage: '@',

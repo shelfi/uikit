@@ -1,7 +1,12 @@
-<sf-product-list itemperpage="25" layout="grid" products="ctrl.products">
+<sf-product-list itemperpage="25" layout="grid" ng-model="ctrl.products">
 	<sf-product-filter type="input" ng-model="ctrl.products"></sf-product-filter>
 	<sf-product-sorter ng-model="ctrl.products" sortitems="ctrl.product.options"></sf-product-sorter>
-	<sf-product-item item="item" show-price="true" show-add-button="true" show-description="true" ng-repeat="item in ctrl.products" flex="25">
-	</sf-product-item>
+	<sf-product-container ng-repeat="item in ctrl.products" flex="25" flex-md="50" flex-sm="100">
+	<sf-product-image ng-model="item"></sf-product-image>
+		<h3 class="sf-product__title">{{item.title}}</h3>
+		<span class="sf-product__price">{{item.price}}<em> TL (+KDV)</em></span>
+		<p class="sf-product__description">{{item.shortDesc}}</p>
+		<sf-product-action ng-model="item"></sf-product-action>
+	</sf-product-container>
 	<sf-product-pagination></sf-product-pagination>
 </sf-product-list>

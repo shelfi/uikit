@@ -11,7 +11,7 @@ module.exports = function ($mdTheming){
 		scope: {
 			layout: '@',
 			itemperpage: '@',
-			products: '=',
+			products: '=ngModel',
 			itemflex: '='
 		}
 	};

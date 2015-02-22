@@ -1,0 +1,9 @@
+<div ng-controller="ProductContainerCtrl as ctrl">
+	<sf-product-container sf-mode="primary" layout="column" layout-align="center center">
+		<sf-product-image ng-model="ctrl.products[0]"></sf-product-image>
+		<h3 class="sf-product__title">{{ctrl.products[0].title}}</h3>
+		<span class="sf-product__price">{{ctrl.products[0].price}}<em> TL (+KDV)</em></span>
+		<p class="sf-product__description">{{ctrl.products[0].shortDesc}}</p>
+		<sf-product-action></sf-product-action>
+	</sf-product-container>
+</div>
