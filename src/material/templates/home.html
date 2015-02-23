@@ -1,7 +1,11 @@
 <body layout="row">
-<div class="wrapper" layout="grid" layout-fill role="main" layout-padding>
-	<div flex>header</div>
-	<div flex>content</div>
-	<div flex>footer</div>
-</div>	
+<md-sidenav class="md-sidenav-left" md-is-locked-open="$media('gt-md')">
+<md-toolbar><span class="md-toolbar-tools">Logo</span></md-toolbar>
+<md-content></md-content>
+</md-sidenav>
+<div class="main" role="main" layout="column" layout-fill >
+	<md-toolbar><h6 class="md-toolbar-tools">Home</h6></md-toolbar>
+	<div flex layout-padding>content</div>
+	<div flex layout-padding>footer</div>
+</div>
 </body>
