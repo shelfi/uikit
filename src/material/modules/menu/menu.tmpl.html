@@ -1,0 +1,23 @@
+<ul class="sf-menu">
+    <li ng-repeat="item in ctrl.menu" class="parent-list-item">
+        <md-button class="md-button-toggle" ng-click="toggle()">
+        {{item.title}}
+        <span aria-hidden="true" class="md-toggle-icon" ng-class="{'toggled' : isOpen()}"></span>
+		<span class="visually-hidden">Toggle {{isOpen()? 'expanded' : 'collapsed'}}</span>
+		</md-button>
+    </li>
+</ul>
+
+
+<md-button class="md-button-toggle"
+  ng-click="toggle()"
+  flex layout="row"
+  aria-expanded="{{isOpen()}}">
+  {{section.name}}
+  <span aria-hidden="true" class="md-toggle-icon"
+  ng-class="{'toggled' : isOpen()}"></span>
+  <span class="visually-hidden">
+    Toggle {{isOpen()? 'expanded' : 'collapsed'}}
+  </span>
+</md-button>
+

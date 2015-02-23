@@ -36,7 +36,7 @@ module.exports = {
 			//{ test: /\.css$/, loader: "style!css"},
 			//{ test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded&error=true&includePaths[]=./bower_components"},
 			{ test: /\.css$/, loader: "css"},
-			{ test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded&error=true&includePaths[]=./bower_components"},
+			{ test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded&error=true&includePaths[]=./bower_components, ./src/material/assets"},
 			//{test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
 			{ test: /\.jpg$/, loader: "url?limit=100000" },
 			{ test: /\.ico$/, loader: "url?limit=100000" },

@@ -2,6 +2,7 @@
 
 module.exports = function(app) {
 	// Controllers
+	app.controller('TemplatesCtrl', require('./templates/templates-controller'));
 	app.controller('AutocompleteCtrl', require('./elements/autocomplete/autocomplete-controller'));
 	app.controller('BottomsheetCtrl', require('./elements/bottomsheet/bottomsheet-controller'));
 	app.controller('ButtonCtrl', require('./elements/button/button-controller'));
@@ -16,6 +17,7 @@ module.exports = function(app) {
 	app.controller('ListCtrl', require('./elements/list/list-controller'));
 	app.controller('ProgressCtrl', require('./elements/progress/progress-controller'));
 	app.controller('RadioCtrl', require('./elements/radio/radio-controller'));
+	app.controller('SelectCtrl', require('./elements/select/select-controller'));
 	app.controller('SidenavCtrl', require('./elements/sidenav/sidenav-controller'));
 	app.controller('SliderCtrl', require('./elements/slider/slider-controller'));
 	app.controller('SwitchCtrl', require('./elements/switch/switch-controller'));
@@ -23,8 +25,10 @@ module.exports = function(app) {
 	app.controller('TabsCtrl', require('./elements/tabs/tabs-controller'));
 	app.controller('ToastCtrl', require('./elements/toast/toast-controller'));
 	app.controller('TooltipCtrl', require('./elements/tooltip/tooltip-controller'));
+	app.controller('CarouselCtrl', require('./modules/carousel/carousel-controller'));
 	app.controller('CartCtrl', require('./modules/cart/cart-controller'));
-	app.controller('MinicartCtrl', require('./modules/minicart/minicart-controller'));
+	app.controller('MenuCtrl', require('./modules/menu/menu-controller'));
+	app.controller('MiniCartCtrl', require('./modules/miniCart/miniCart-controller'));
 	app.controller('NavbarCtrl', require('./modules/navbar/navbar-controller'));
 	app.controller('ProductContainerCtrl', require('./modules/productContainer/productContainer-controller'));
 	app.controller('ProductListCtrl', require('./modules/productList/productList-controller'));
@@ -34,7 +38,8 @@ module.exports = function(app) {
 	app.directive('sfCarousel', require('./modules/carousel/carousel-directive'));
 	app.directive('sfCart', require('./modules/cart/cart-directive'));
 	app.directive('sfFilter', require('./modules/filter/filter-directive'));
-	app.directive('sfMinicart', require('./modules/minicart/minicart-directive'));
+	app.directive('sfMenu', require('./modules/menu/menu-directive'));
+	app.directive('sfMiniCart', require('./modules/miniCart/miniCart-directive'));
 	app.directive('sfNavbar', require('./modules/navbar/navbar-directive'));
 	app.directive('sfOrderSummary', require('./modules/orderSummary/orderSummary-directive'));
 	app.directive('sfPagination', require('./modules/pagination/pagination-directive'));

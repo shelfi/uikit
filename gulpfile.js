@@ -56,6 +56,7 @@ gulp.task('injector:sass', function () {
         config.sourceDir + '/elements/**/*.scss',
         config.sourceDir + '/snippets/**/*.scss',
         config.sourceDir + '/modules/**/*.scss',
+        config.sourceDir + '/templates/**/*.scss',
         '!' + config.sourceDir + '/assets/styles/uikit.scss',
         '!' + config.sourceDir + '/assets/styles/vendor.scss' 
       ], {read: false}), {
@@ -132,7 +133,9 @@ gulp.task('scripts', ['scripts:fabricator']);
 // images
 gulp.task('images', ['favicon'], function () {
 	return gulp.src(config.general.src.images)
-		.pipe(imagemin())
+		/*.pipe(imagemin({
+			svgoPlugins: [{removeViewBox: false}, {removeEmptyAttrs: false}]
+		}))*/
 		.pipe(gulp.dest(config.general.dest.uikit + '/images'));
 });
 
@@ -271,19 +274,21 @@ gulp.task('webpack', ['jshint', 'ngautobootstrap'], function (cb) {
 // watch
 gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch([config.sourceDir + '/**/**/*.{html,md}', '!' + config.sourceDir + '/**/**/*.tmpl.html'], ['assemble', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/**/**/*.tmpl.html', ['ngtemplatecache', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/**/**/*.tmpl.html', ['ngtemplatecache', 'webpack', browserSync.reload]);
 	gulp.watch('src/fabricator/styles/**/*.scss', ['styles:fabricator']);
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.css', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.scss', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.scss', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/snippets/**/*.scss', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/modules/**/*.scss', ['webpack', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/templates/**/*.scss', ['webpack', browserSync.reload]);
 	gulp.watch('src/fabricator/scripts/**/*.js', ['scripts:fabricator', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/*.js', ['webpack', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/uikit.js'], ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/scripts/**/*.js', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.js', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/snippets/**/*.js', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/modules/**/*.js', ['webpack', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/templates/**/*.js', ['webpack', browserSync.reload]);
 	gulp.watch(config.general.src.images, ['images', browserSync.reload]);
 });
 
