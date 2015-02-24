@@ -249,7 +249,7 @@ gulp.task('ngautobootstrap', function() {
 });
 
 gulp.task('ngtemplatecache', function () {
-    gulp.src(config.sourceDir + '/**/**/*.tmpl.html')
+    gulp.src([config.sourceDir + '/**/**/*.tmpl.html'])
         .pipe(ngtemplateCache({
         	filename: 'templates-run.js',
 			moduleSystem: 'browserify',
@@ -273,8 +273,9 @@ gulp.task('webpack', ['jshint', 'ngautobootstrap'], function (cb) {
 
 // watch
 gulp.task('watch', ['browser-sync'], function () {
-	gulp.watch([config.sourceDir + '/**/**/*.{html,md}', '!' + config.sourceDir + '/**/**/*.tmpl.html'], ['assemble', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/**/**/*.tmpl.html', ['ngtemplatecache', 'webpack', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/**/**/*.{html,md}', '!' + config.sourceDir + '/**/**/*.tmpl.html', '!' + config.sourceDir + '/templates/partials/*.html'], ['assemble', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/**/**/*.tmpl.html'], ['ngtemplatecache', 'webpack', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/templates/partials/*.html'], ['assemble', 'webpack', browserSync.reload]);
 	gulp.watch('src/fabricator/styles/**/*.scss', ['styles:fabricator']);
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.css', ['webpack', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.scss', ['webpack', browserSync.reload]);

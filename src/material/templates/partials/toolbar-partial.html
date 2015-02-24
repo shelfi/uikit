@@ -1,0 +1,14 @@
+<md-toolbar layout-align="center">
+<div class="md-toolbar-tools" layout="row">
+	<div flex="5" hide-gt-md>
+		<md-button ng-click="ctrl.toggleMainSidebar()" aria-label="Toggle Menu"><md-icon md-svg-icon="navigation:ic_menu_24px" alt="Help"></md-icon></md-button>
+	</div>
+	<div flex layout="row" layout-align="end end">
+		<div><md-button aria-label="Mini Cart" ng-click="ctrl.toggleMiniCart()"><md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Exit"></md-icon></md-button></div>
+		<div><md-button ng-click="ctrl.toggleUserPanel()"><md-icon md-svg-icon="action:ic_account_box_24px" alt="Exit" aria-label="UserPanel"></md-icon></md-button></div>
+		<div>
+			<md-button ng-click="ctrl.toggleMorePanel()"><md-icon md-svg-icon="navigation:ic_more_vert_24px" alt="Exit" aria-label="UserPanel"></md-icon></md-button>
+		</div>
+	</div>
+</div>
+</md-toolbar>

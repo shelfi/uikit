@@ -1,0 +1,22 @@
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="user-panel">
+    <md-toolbar class="md-theme-light">
+        <h2 class="md-toolbar-tools">User Panel
+		<md-button ng-click="ctrl.closeUserPanel()"><md-icon md-svg-icon="navigation:ic_close_24px" alt="Exit"></md-icon></md-button>
+        </h2>
+    </md-toolbar>
+    <md-content class="md-padding">
+    <sf-user-info ng-model="ctrl.user"></sf-user-info>
+	    <md-list>
+	      <md-item ng-repeat="item in ctrl.user.menu">
+	        <md-item-content>
+	          <div class="md-tile-left">
+	          	<md-button>
+	              <md-icon md-svg-icon="{{item.icon}}" alt="Exit"></md-icon>
+	              {{item.title}}
+	              </md-button>
+	          </div>
+	        </md-item-content>
+	      </md-item>
+	    </md-list>
+    </md-content>
+</md-sidenav>

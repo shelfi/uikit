@@ -9,8 +9,8 @@ var m = angular.module('uikit', ['ngMaterial', 'ngMessages'])
 		$mdIconProvider
 			.iconSet('action', './uikit/images/icons/svg-sprite-action.svg', 24)
 			.iconSet('navigation', './uikit/images/icons/svg-sprite-navigation.svg', 24)
-	    })
-
+			.iconSet('communication', './uikit/images/icons/svg-sprite-communication.svg', 24)
+	    });
 	//.constant('$MD_THEME_CSS', theme);
 require('./bootstrap.js')(m);
 require('./assets/styles/uikit.scss');

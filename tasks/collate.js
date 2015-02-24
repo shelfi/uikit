@@ -51,11 +51,12 @@ var env = new nunjucks.Environment({
 	autoescape: false
 });
 */
-var env = nunjucks.configure('views', {
+var env = nunjucks.configure([sourceDir + 'templates/partials/'], {
 	tags: {
 	variableStart: '<$',
 	variableEnd: '$>'
-}});
+}, watch: true});
+// here watch is set to true so nunjucks can update compiled templates in memory (gulp action looks like it hangs)
 
 /**
  * Parse a directory of files
@@ -92,6 +93,17 @@ var parse = function (dir) {
 		return a.indexOf(e) === i;
 	});
 
+	//register template partials so that templates can include them
+	var registerTemplatePartials = function () {
+		//define source directory
+		var partials = fs.readdirSync(sourceDir + 'templates/partials'),
+			html;
+		for (var i = partials.length - 1; i >= 0; i--) {
+			html = fs.readFileSync(sourceDir + 'templates/partials/' + partials[i], 'utf-8');
+			env.getTemplate(partials[i], html);
+		}
+	};
+
 	// iterate over each item, parse, add to item object
 	for (var i = 0, length = items.length; i < length; i++) {
 
@@ -100,6 +112,7 @@ var parse = function (dir) {
 
 		//remove path name and dashes from item name
 		item.name = changeCase.titleCase(item.id.replace(/-/ig, ' ') && item.id.replace(/^.+\//ig, ''));
+
 		try {
 			// compile templates
 			var content = fs.readFileSync(sourceDir + dir + '/' + items[i] + '.html', 'utf8').replace(/(\s*(\r?\n|\r))+$/, '');
@@ -150,6 +163,7 @@ var parse = function (dir) {
 			item.notes = markdown(notes);
 		} catch (e) {}
 		data[dir][item.id.replace(/-/g, '')] = item;
+		registerTemplatePartials();
 	}
 };
 

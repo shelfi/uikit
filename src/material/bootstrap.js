@@ -32,6 +32,8 @@ module.exports = function(app) {
 	app.controller('NavbarCtrl', require('./modules/navbar/navbar-controller'));
 	app.controller('ProductContainerCtrl', require('./modules/productContainer/productContainer-controller'));
 	app.controller('ProductListCtrl', require('./modules/productList/productList-controller'));
+	app.controller('SearchCtrl', require('./modules/search/search-controller'));
+	app.controller('UserInfoCtrl', require('./modules/userInfo/userInfo-controller'));
 	app.controller('BreadcrumbCtrl', require('./snippets/breadcrumb/breadcrumb-controller'));
 	app.controller('HeaderCtrl', require('./snippets/header/header-controller'));
 	// Directives
@@ -52,6 +54,7 @@ module.exports = function(app) {
 	app.directive('sfProductPrice', require('./modules/productPrice/productPrice-directive'));
 	app.directive('sfSearch', require('./modules/search/search-directive'));
 	app.directive('sfSort', require('./modules/sort/sort-directive'));
+	app.directive('sfUserInfo', require('./modules/userInfo/userInfo-directive'));
 	app.directive('sfBreadcrumb', require('./snippets/breadcrumb/breadcrumb-directive'));
 	app.directive('sfHeader', require('./snippets/header/header-directive'));
 	// Runs

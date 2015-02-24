@@ -4,13 +4,13 @@ module.exports = function ($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,
-		templateUrl: 'modules/search/search.tmpl.html',
+		templateUrl: 'modules/userInfo/userInfo.tmpl.html',
 		link: postLink,
 		controller: function (){},
 		controllerAs: 'ctrl',
 		bindToController: true,
 		scope: {
-			search: '=ngModel'
+			user: '=ngModel'
 		}
 	};
 
