@@ -1,1 +1,5 @@
-<body layout="row" ng-controller="TemplatesCtrl as ctrl">
+<body ng-controller="TemplatesCtrl as ctrl" layout="column">
+<div class="sf-banner" ng-if="ctrl.banner">
+	<img data-src="holder.js/100%x60/text:this is banner space" alt="Banner">	
+</div>
+<div class="sf-wrapper" layout="row">

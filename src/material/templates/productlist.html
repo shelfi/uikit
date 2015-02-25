@@ -1,2 +1,26 @@
 {% include "header-partial.html" %}
-{% include "sidenav-partial.html" %}
+<md-sidenav class="md-sidenav-left sf-main-sidenav site-sidenav md-sidenav-left" md-is-locked-open="$media('gt-md')" md-component-id="filter-sidebar">
+<sf-product-filter type="input" ng-model="ctrl.products"></sf-product-filter>
+<sf-product-filter type="checkbox" ng-model="ctrl.products.size"></sf-product-filter>
+</md-sidenav>
+
+<div class="main" role="main" layout="column" layout-fill>
+{% include "toolbar-partial.html" %}
+<md-content>
+
+<sf-product-list itemperpage="25" layout="list" ng-model="ctrl.products">
+	
+	<sf-product-sorter ng-model="ctrl.products" sortitems="ctrl.product.options"></sf-product-sorter>
+	<sf-product-container ng-repeat="item in ctrl.products" flex="25" flex-md="50" flex-sm="100">
+	<sf-product-image ng-model="item" sf-size="list"></sf-product-image>
+		<h3 class="sf-product__title">{{item.title}}</h3>
+		<span class="sf-product__price">{{item.price}}<em> TL (+KDV)</em></span>
+		<p class="sf-product__description">{{item.shortDesc}}</p>
+		<sf-product-action ng-model="item"></sf-product-action>
+	</sf-product-container>
+	<sf-product-pagination></sf-product-pagination>
+</sf-product-list>
+
+</md-content>
+</div><!-- /main -->
+{% include "footer-partial.html" %}

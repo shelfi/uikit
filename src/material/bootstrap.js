@@ -3,6 +3,17 @@
 module.exports = function(app) {
 	// Controllers
 	app.controller('TemplatesCtrl', require('./templates/templates-controller'));
+	app.controller('CarouselCtrl', require('./modules/carousel/carousel-controller'));
+	app.controller('CartCtrl', require('./modules/cart/cart-controller'));
+	app.controller('MenuCtrl', require('./modules/menu/menu-controller'));
+	app.controller('MiniCartCtrl', require('./modules/miniCart/miniCart-controller'));
+	app.controller('NavbarCtrl', require('./modules/navbar/navbar-controller'));
+	app.controller('ProductContainerCtrl', require('./modules/productContainer/productContainer-controller'));
+	app.controller('ProductListCtrl', require('./modules/productList/productList-controller'));
+	app.controller('SearchCtrl', require('./modules/search/search-controller'));
+	app.controller('UserInfoCtrl', require('./modules/userInfo/userInfo-controller'));
+	app.controller('BreadcrumbCtrl', require('./snippets/breadcrumb/breadcrumb-controller'));
+	app.controller('HeaderCtrl', require('./snippets/header/header-controller'));
 	app.controller('AutocompleteCtrl', require('./elements/autocomplete/autocomplete-controller'));
 	app.controller('BottomsheetCtrl', require('./elements/bottomsheet/bottomsheet-controller'));
 	app.controller('ButtonCtrl', require('./elements/button/button-controller'));
@@ -25,17 +36,6 @@ module.exports = function(app) {
 	app.controller('TabsCtrl', require('./elements/tabs/tabs-controller'));
 	app.controller('ToastCtrl', require('./elements/toast/toast-controller'));
 	app.controller('TooltipCtrl', require('./elements/tooltip/tooltip-controller'));
-	app.controller('CarouselCtrl', require('./modules/carousel/carousel-controller'));
-	app.controller('CartCtrl', require('./modules/cart/cart-controller'));
-	app.controller('MenuCtrl', require('./modules/menu/menu-controller'));
-	app.controller('MiniCartCtrl', require('./modules/miniCart/miniCart-controller'));
-	app.controller('NavbarCtrl', require('./modules/navbar/navbar-controller'));
-	app.controller('ProductContainerCtrl', require('./modules/productContainer/productContainer-controller'));
-	app.controller('ProductListCtrl', require('./modules/productList/productList-controller'));
-	app.controller('SearchCtrl', require('./modules/search/search-controller'));
-	app.controller('UserInfoCtrl', require('./modules/userInfo/userInfo-controller'));
-	app.controller('BreadcrumbCtrl', require('./snippets/breadcrumb/breadcrumb-controller'));
-	app.controller('HeaderCtrl', require('./snippets/header/header-controller'));
 	// Directives
 	app.directive('sfCarousel', require('./modules/carousel/carousel-directive'));
 	app.directive('sfCart', require('./modules/cart/cart-directive'));

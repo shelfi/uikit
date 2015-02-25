@@ -1,7 +1,8 @@
 (function(){
 'use strict';
 module.exports = ['$mdSidenav', '$scope', '$log', function($mdSidenav, $scope, $log){
-	this.brand = 'POv3'
+	this.brand = '3M | Printonline';
+	this.banner = false;
 	this.nav = {
 		primary: [{title: "Dashboard", type: "link"}, {title: "Products", type: "toggle"}, {title: "Orders", type: "toggle"}]
 	};
@@ -16,7 +17,9 @@ module.exports = ['$mdSidenav', '$scope', '$log', function($mdSidenav, $scope, $
 			{title: 'Exit', icon: 'action:ic_exit_to_app_24px'}
 		]
 	};
-
+	this.search = {
+		placeholder : 'Search by Name, Item#, Order#'
+	}
 	this.lang = [
 		{title: 'ENG', value: 'ENG'},{title: 'TR', value: 'TR'},
 	];
