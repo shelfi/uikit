@@ -14,7 +14,8 @@ module.exports = ['$mdSidenav', '$scope', '$log', function($mdSidenav, $scope, $
 			{title: 'My Account', icon: 'action:ic_account_circle_24px'},
 			{title: 'Settings', icon: 'action:ic_settings_24px'},
 			{title: 'Saved Carts', icon: 'action:ic_shopping_cart_24px'},
-			{title: 'Exit', icon: 'action:ic_exit_to_app_24px'}
+			{title: 'Quotes', icon: 'action:ic_shopping_cart_24px'},
+			{title: 'Returns', icon: 'action:ic_shopping_cart_24px'}
 		]
 	};
 	this.search = {
@@ -56,9 +57,8 @@ module.exports = ['$mdSidenav', '$scope', '$log', function($mdSidenav, $scope, $
 
 	this.order = [
 		{image: 'holder.js/60x60', title: 'Super T-shirt', price: 15, quantity: 1}, 
-		{image: 'holder.js/60x60', title: 'Awesome Pants', price: 30,  quantity: 1}
+		{image: 'holder.js/60x60', title: 'Awesome Pants', price: 30,  quantity: 1},
 	];
-
 
 	this.features = [
 		{title:'Product Category01', image:'holder.js/100%x200'},
