@@ -1,33 +1,28 @@
 <div class="container__item" id="input-default">
-	<div ng-controller="InputCtrl">
 		<md-input-container>
 		  <label>Title</label>
-		  <input ng-model="user.title">
+		  <input ng-model="ctrl.formuser.title">
 		</md-input-container>
-	</div>
 </div>
 <div class="container__item" id="input-flex">
-	<div ng-controller="InputCtrl">
 		<md-input-container flex>
 		  <label>Adress</label>
-		  <input ng-model="user.address">
+		  <input ng-model="ctrl.formuser.address">
 		</md-input-container>
-	</div>
 </div>
 <div class="container__item" id="input-with-layout">
-	<div ng-controller="InputCtrl">
 		<div layout layout-sm="column">
 		    <md-input-container flex>
 		      <label>City</label>
-		      <input ng-model="user.city">
+		      <input ng-model="ctrl.formuser.city">
 		    </md-input-container>
 		    <md-input-container flex>
 		      <label>State</label>
-		      <input ng-model="user.state">
+		      <input ng-model="ctrl.formuser.state">
 		    </md-input-container>
 		    <md-input-container flex>
 		      <label>Postal Code</label>
-		      <input ng-model="user.postalCode">
+		      <input ng-model="ctrl.formuser.postalCode">
 		    </md-input-container>
 		 </div>
 	</div>
@@ -36,17 +31,17 @@
 <md-input-container>
 	<label>Client Name</label>
 	<input required name="clientName" ng-model="project.clientName">
-	<div ng-messages="projectForm.clientName.$error">
+	<div ng-messages="ctrl.formproject.clientName.$error">
 	  <div ng-message="required">This is required.</div>
 	</div>
 </md-input-container>
 
 <div class="container__item" id="input-with-error">
-	<form name="projectForm">
+	<form name="projectBudget">
 	<md-input-container>
 	<label>Hourly Rate (USD)</label>
-	<input required type="number" step="any" name="rate" ng-model="project.rate" min="800" max="4999" required>
-	<div ng-messages="projectForm.rate.$error">
+	<input required type="number" step="any" name="rate" ng-model="ctrl.formproject.rate" min="800" max="4999" required>
+	<div ng-messages="projectBudget.rate.$error">
 	<div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
 	<div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
 	<div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>

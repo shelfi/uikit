@@ -1,0 +1,10 @@
+.sf-breadcrumb{margin-left: 0;}
+.sf-breadcrumb__item{display: inline; margin-right: 10px;
+	&:after{
+		content:'\3E';
+		margin-left: 0.3em;
+	};
+	&.last:after, li:first-child:after {
+	    content: none;
+	}
+}

@@ -1,18 +1,18 @@
 <div class="container__item" id="checkbox-default">
-  <div ng-controller="CheckboxCtrl">
-  <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-    Checkbox 1: {{ data.cb1 }}
+  <div ng-controller="ElementsCtrl as ctrl">
+  <md-checkbox ng-model="checkboxdata.cb1" aria-label="Checkbox 1">
+    Checkbox 1: {{ checkboxdata.cb1 }}
   </md-checkbox>
-  <md-checkbox ng-model="data.cb2" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'" class="md-primary">
-    Checkbox 2 (md-warn): {{ data.cb2 }}
+  <md-checkbox ng-model="checkboxdata.cb2" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'" class="md-primary">
+    Checkbox 2 (md-warn): {{ checkboxdata.cb2 }}
   </md-checkbox>
-  <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3">
+  <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="checkboxdata.cb3">
     Checkbox: Disabled
   </md-checkbox>
-  <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+  <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="checkboxdata.cb4" ng-init="checkboxdata.cb4=true">
     Checkbox: Disabled, Checked
   </md-checkbox>
-  <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="data.cb5" class="md-primary">
+  <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="checkboxdata.cb5" class="md-primary">
     Checkbox (md-primary): No Ink
   </md-checkbox>
   </div>

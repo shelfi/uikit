@@ -1,13 +1,20 @@
 (function(){
 'use strict';
-module.exports = function (){
+angular.module('uikit.productInfo', [])
+  .directive('sfProductInfo', sfProductInfoDirective);
+
+
+function sfProductInfoDirective($mdTheming, $parse){
 	return {
 		restrict: 'E',
 		transclude: true,
 		template: getTemplate,
 		link: postLink,
+		controller: function(){},
+		controllerAs: 'ctrl',
+		bindToController: true,
 		scope: {
-			scopeitem: '=scopeitem'
+			item: '=ngModel'
 		}
 	};
 
@@ -16,7 +23,7 @@ module.exports = function (){
 	}
 
 	function getTemplate (){
-		return '<div></div>';
+		return '<div>this is productinfo</div>';
 	}
 };
 })();

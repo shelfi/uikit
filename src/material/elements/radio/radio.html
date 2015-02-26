@@ -1,21 +1,8 @@
 <div class="container__item" id="radio-basic">
-<div ng-controller="RadioCtrl">
 	<p>Selected Value: <span class="radioValue">{{ data.group1 }}</span> </p>
     <md-radio-group ng-model="data.group1">
       <md-radio-button value="Apple">Apple</md-radio-button>
       <md-radio-button value="Banana"> Banana </md-radio-button>
       <md-radio-button value="Mango">Mango</md-radio-button>
     </md-radio-group>
-</div>
-</div>
-<div class="container__item" id="radio-with-repeater">
-<div ng-controller="RadioCtrl">
-<p>Selected Value: <span class="radioValue">{{ data.group2 }}</span></p>
-<md-radio-group ng-model="data.group2">
-<md-radio-button ng-repeat="d in radioData"
-                 ng-value="d.value"
-                 ng-disabled=" d.isDisabled ">
-    {{ d.label }}
-</md-radio-button>
-</div>
 </div>

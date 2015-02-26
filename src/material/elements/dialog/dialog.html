@@ -1,19 +1,16 @@
 <div class="container__item" id="dialog-trigger">
-	<div ng-controller="DialogCtrl">
-		<md-button class="md-primary" ng-click="showAlert($event)">
+		<md-button class="md-primary" ng-click="ctrl.showAlert($event)">
 		      Alert Dialog
 		 </md-button>
-		 <md-button class="md-primary" ng-click="showConfirm($event)">
+		 <md-button class="md-primary" ng-click="ctrl.showConfirm($event)">
 		  	  Confirm Dialog
 		  </md-button>
-		  <md-button class="md-primary" ng-click="showAdvanced($event)">
+		  <md-button class="md-primary" ng-click="ctrl.showAdvanced($event)">
 		        Custom Dialog
 		   </md-button>
 		   <div>{{alert}}</div>
-	</div>
 </div>
 <div class="container__item" id="dialog">
-	<div ng-controller="DialogCtrl">
 		<script type="text/ng-template" id="dialog.tmpl.html">
 			<md-dialog aria-label="Mango (Fruit)">
 			  <md-content>
@@ -43,5 +40,4 @@
 			  </div>
 			</md-dialog>
 		</script>
-	</div>
 </div>

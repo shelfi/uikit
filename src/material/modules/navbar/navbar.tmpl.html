@@ -2,6 +2,6 @@
 <md-button ng-click="$NavbarCtrl.isCollapsed = !$NavbarCtrl.isCollapsed" class="navbar-toggle" aria-label="Menu" show-sm hide>
 </md-button>
 <ul>
-	<li ng-repeat="item in $NavbarCtrl.navitems"><a href="{{item.link}}">{{item.title}}</a></li>
+	<li ng-repeat="item in ctrl.item"><a href="{{item.link}}">{{item.title}}</a></li>
 </ul>
 </nav>

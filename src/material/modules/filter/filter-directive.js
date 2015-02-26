@@ -1,13 +1,17 @@
 (function(){
 'use strict';
-module.exports = function ($mdTheming){
+angular.module('uikit.filter', [])
+  .directive('sfFilter', sfFilterDirective);
+
+
+function sfFilterDirective($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,
 		template: getTemplate,
 		link: postLink,
 		scope: {
-			scopeitem: '=scopeitem'
+			item: '=ngModel'
 		}
 	};
 
@@ -16,7 +20,7 @@ module.exports = function ($mdTheming){
 	}
 
 	function getTemplate (){
-		return '<div></div>';
+		return '<div>this is filter</div>';
 	}
 };
 })();

@@ -76,7 +76,10 @@ var parse = function (dir) {
 		return e = !stats.isDirectory();
 	}).filter(function (e, i, a){
 		return e.indexOf('.tmpl.') === -1;
-	}).filter(junk.not);
+	}).filter(function (e, i, a){
+		return e.indexOf('-controller.') === -1;
+	})
+	.filter(junk.not);
 
 	// create an array of file names
 	var fileNames = raw.map(function (e, i) {

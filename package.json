@@ -73,5 +73,10 @@
     "webpack": "^1.5.3",
     "wiredep": "^2.2.2",
     "wrench": "^1.5.8"
+  },
+  "dependencies": {
+    "gulp-angular-module": "0.0.2",
+    "gulp-insert": "^0.4.0",
+    "gulp-ng-annotate": "^0.5.2"
   }
 }

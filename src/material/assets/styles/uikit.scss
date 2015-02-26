@@ -1,22 +1,8 @@
 // injector
 
-@import '../../elements/button/button.scss';
-
-@import '../../elements/checkbox/checkbox.scss';
-
-@import '../../elements/divider/divider.scss';
-
-@import '../../elements/grid/grid.scss';
-
-@import '../../elements/input/input.scss';
-
-@import '../../elements/progress/progress.scss';
-
-@import '../../elements/switch/switch.scss';
-
-@import '../../snippets/breadcrumb/breadcrumb.scss';
-
 @import '../../snippets/header/header.scss';
+
+@import '../../modules/breadcrumb/breadcrumb.scss';
 
 @import '../../modules/cart/cart.scss';
 
@@ -31,7 +17,5 @@
 @import '../../modules/productList/productList.scss';
 
 @import '../../modules/userInfo/userInfo.scss';
-
-@import '../../templates/templates.scss';
 
 // endinjector

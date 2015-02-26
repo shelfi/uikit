@@ -1,12 +1,11 @@
-<div ng-controller="SidenavCtrl" layout="column" layout-fill>
-  <md-content class="md-padding" style="height: 500px;">
+<md-content class="md-padding" style="height: 500px;">
 <section layout="row" flex>
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')">
       <md-toolbar class="md-theme-indigo">
         <h1 class="md-toolbar-tools">Sidenav Left</h1>
       </md-toolbar>
       <md-content class="md-padding">
-        <md-button ng-click="closeLeft()" class="md-primary" hide-gt-md>
+        <md-button ng-click="ctrl.closeLeft()" class="md-primary" hide-gt-md>
           Close Sidenav Left
         </md-button>
         <p hide-md show-gt-md>
@@ -21,13 +20,13 @@
         The left sidenav will 'lock open' on a medium (>=960px wide) device.
         </p>
         <div>
-          <md-button ng-click="toggleLeft()"
+          <md-button ng-click="ctrl.toggleLeft()"
             class="md-primary" hide-gt-md>
             Toggle left
           </md-button>
         </div>
         <div>
-          <md-button ng-click="toggleRight()"
+          <md-button ng-click="ctrl.toggleRight()"
             class="md-primary">
             Toggle right
           </md-button>
@@ -39,11 +38,10 @@
         <h1 class="md-toolbar-tools">Sidenav Right</h1>
       </md-toolbar>
       <md-content class="md-padding">
-        <md-button ng-click="closeRight()" class="md-primary">
+        <md-button ng-click="ctrl.closeRight()" class="md-primary">
           Close Sidenav Right
         </md-button>
       </md-content>
     </md-sidenav>
   </section>
 </md-content>
-  </div>

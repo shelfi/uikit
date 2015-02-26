@@ -1,15 +1,19 @@
 (function(){
 'use strict';
-module.exports = ['$mdSidenav', '$scope', '$log', function($mdSidenav, $scope, $log){
+angular.module('uikit').controller('TemplatesCtrl', TemplatesController);
+
+function TemplatesController($mdSidenav, $scope, $log){
+
 	this.brand = '3M | Printonline';
 	this.banner = false;
 	this.nav = {
-		primary: [{title: "Dashboard", type: "link"}, {title: "Products", type: "toggle"}, {title: "Orders", type: "toggle"}]
+		primary: [{title: "Dashboard", type: "link", link: "/"}, {title: "Products", type: "toggle", link: "/"}, {title: "Orders", type: "toggle", link: "/"}]
 	};
 	this.user = {
 		name: 'Ahmet Okan',
 		image: 'holder.js/250x125',
 		email: 'ahmet@gmail.com',
+		phone: '(0216) 555-22-22',
 		menu: [
 			{title: 'My Account', icon: 'action:ic_account_circle_24px'},
 			{title: 'Settings', icon: 'action:ic_settings_24px'},
@@ -18,6 +22,14 @@ module.exports = ['$mdSidenav', '$scope', '$log', function($mdSidenav, $scope, $
 			{title: 'Returns', icon: 'action:ic_shopping_cart_24px'}
 		]
 	};
+	this.products = [
+		{title: 'product01', image: 'holder.js/250x250', shortDesc: 'This is products.. a nice short description about it i here', price: '15'},
+		{title: 'product02', image: 'holder.js/250x250', shortDesc: 'This is nice product. Another short description is here.', price: '20'},
+		{title: 'product03', image: 'holder.js/250x250', shortDesc: 'Some great product.. this description describes it.', price: '30'},
+		{title: 'product04', image: 'holder.js/250x250', shortDesc: 'Some another great product.. this description describes it.', price: '15'},
+		{title: 'product05', image: 'holder.js/250x250', shortDesc: 'Some awesome product.. this description describes it.', price: '20'},
+		{title: 'product06', image: 'holder.js/250x250', shortDesc: 'Some awesome product.. this description describes it.', price: '20'}
+	];
 	this.search = {
 		placeholder : 'Search by Name, Item#, Order#'
 	}
@@ -67,5 +79,5 @@ module.exports = ['$mdSidenav', '$scope', '$log', function($mdSidenav, $scope, $
 		{title:'Product Category04', image:'holder.js/100%x200'}
 	]
 
-}];
+};
 })();
