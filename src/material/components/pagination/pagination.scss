@@ -1,0 +1,10 @@
+.sf-pagination{
+	ul{margin: 0; padding: 0;
+		& > li {
+		list-style: none;
+		padding: 5px 10px;
+		border:1px solid #dedede;
+		&:hover{background-color: darken(#dedede, 10%); cursor: pointer;}
+		}
+	} 
+}

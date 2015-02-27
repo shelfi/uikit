@@ -14,7 +14,7 @@ exports.general = {
 					'./src/fabricator/scripts/prism.js',
 					'./src/fabricator/scripts/fabricator.js'
 				],
-				uikit: [this.tmpDir + '/uikit.js', this.sourceDir + '/uikit-core.js' , this.sourceDir + '/modules/**/*.js', this.sourceDir + '/snippets/**/*.js', this.sourceDir + '/partials.js']
+				uikit: [this.tmpDir + '/uikit.js', this.sourceDir + '/uikit-core.js' , this.sourceDir + '/components/**/*.js', this.sourceDir + '/snippets/**/*.js', this.sourceDir + '/partials.js']
 			},
 			styles: {
 				fabricator: './src/fabricator/styles/fabricator.scss',
@@ -29,7 +29,7 @@ exports.general = {
 				'snippets',
 				'templates',
 				'documentation',
-				'modules'
+				'components'
 			]
 		},
 		dest: {
@@ -46,8 +46,8 @@ exports.general = {
 		    ' * v' + this.VERSION + '\n' +
 		    ' */\n',
 		  jsBaseFiles: [
-		    this.sourceDir + 'modules/**/*.js',
-		    '!' + this.sourceDir + 'modules/**/*.spec.js',
+		    this.sourceDir + 'components/**/*.js',
+		    '!' + this.sourceDir + 'components/**/*.spec.js',
 		  ],
 		  jsFiles: [
 		    'src/**/*.js'
@@ -62,7 +62,7 @@ exports.general = {
 		  scssStandaloneFiles: [
 		    this.sourceDir + 'assets/styles/uikit.scss',
 		  ],
-		  paths: this.sourceDir + 'modules/**',
+		  paths: this.sourceDir + 'components/**',
 		  outputDir: 'dist/'
 		}
 };

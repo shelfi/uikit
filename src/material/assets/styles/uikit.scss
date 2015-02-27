@@ -1,19 +1,21 @@
 // injector
 
-@import '../../modules/breadcrumb/breadcrumb.scss';
+@import '../../components/breadcrumb/breadcrumb.scss';
 
-@import '../../modules/cart/cart.scss';
+@import '../../components/cart/cart.scss';
 
-@import '../../modules/menu/menu.scss';
+@import '../../components/menu/menu.scss';
 
-@import '../../modules/miniCart/miniCart.scss';
+@import '../../components/miniCart/miniCart.scss';
 
-@import '../../modules/navbar/navbar.scss';
+@import '../../components/navbar/navbar.scss';
 
-@import '../../modules/productContainer/productContainer.scss';
+@import '../../components/pagination/pagination.scss';
 
-@import '../../modules/productList/productList.scss';
+@import '../../components/productItem/productItem.scss';
 
-@import '../../modules/userInfo/userInfo.scss';
+@import '../../components/productList/productList.scss';
+
+@import '../../components/userInfo/userInfo.scss';
 
 // endinjector

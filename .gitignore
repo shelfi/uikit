@@ -3,3 +3,4 @@ bower_components
 dist
 .sass-cache
 .tmp
+partials.js
