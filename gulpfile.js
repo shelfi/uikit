@@ -274,9 +274,9 @@ gulp.task('browser-sync', function () {
 });
 
 
-
+//angular template cache
 gulp.task('ngtemplatecache', function () {
-    gulp.src([config.sourceDir + '/**/**/*.tmpl.html'])
+    return gulp.src([config.sourceDir + '/**/**/*.tmpl.html'])
         .pipe(ngtemplateCache({
           module: 'uikit',
         	filename: 'partials.js',
