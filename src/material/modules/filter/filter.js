@@ -18,12 +18,12 @@ function sfFilterDirective($mdTheming){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
 
 	function getTemplate (){
 		return '<div>this is filter</div>';
 	}
-};
+}
 })();

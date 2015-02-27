@@ -1,10 +1,10 @@
 (function(){
 'use strict';
-angular.module('uikit.productInfo', ['uikit.core'])
+angular.module('uikit.modules.productInfo', [])
   .directive('sfProductInfo', sfProductInfoDirective);
 
 
-function sfProductInfoDirective($mdTheming, $parse){
+function sfProductInfoDirective($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -18,12 +18,12 @@ function sfProductInfoDirective($mdTheming, $parse){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
 
 	function getTemplate (){
 		return '<div>this is productinfo</div>';
 	}
-};
+}
 })();

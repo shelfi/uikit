@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.productOptions', ['uikit.core'])
+angular.module('uikit.modules.productOptions', [])
   .directive('sfProductOptions', sfProductOptionsDirective);
 
 
@@ -18,8 +18,8 @@ function sfProductOptionsDirective($mdTheming){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
-};
+}
 })();

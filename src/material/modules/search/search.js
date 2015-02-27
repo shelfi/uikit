@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.search', ['uikit.core'])
+angular.module('uikit.search', [])
   .directive('sfSearch', sfSearchDirective);
 
 
@@ -18,9 +18,9 @@ function sfSearchDirective($mdTheming){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
 
-};
+}
 })();

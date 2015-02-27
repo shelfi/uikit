@@ -1,16 +1,16 @@
 (function(){
 'use strict';
-angular.module('uikit.productImage', ['uikit.core'])
+angular.module('uikit.modules.productImage', [])
   .directive('sfProductImage', sfProductImageDirective);
 
 
-function sfProductImageDirective($mdTheming, $parse){
+function sfProductImageDirective(){
 	return {
 		restrict: 'E',
 		transclude: true,
 		templateUrl: 'modules/productImage/productImage.tmpl.html',
-		link: function(scope, element, attr){
-			var zoomVal = $parse(attr['sfMode']);
+		link: function(scope, element){
+			//var zoomVal = $parse(attr['sfMode']);
 			var newSize = {
 				width: 200,
 				height: 200
@@ -20,7 +20,7 @@ function sfProductImageDirective($mdTheming, $parse){
 					element.css({
 						width: newSize.width + 'px',
 						height: newSize.height + 'px'
-					})
+					});
 				});
 			} else {
 				element.on('mouseover', function(){
@@ -37,5 +37,5 @@ function sfProductImageDirective($mdTheming, $parse){
 			sfMode: '@'
 		}
 	};
-};
+}
 })();

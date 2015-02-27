@@ -20,4 +20,7 @@ function SfCoreConfigure($mdThemingProvider, $mdIconProvider) {
     .iconSet('communication', './uikit/images/icons/svg-sprite-communication.svg', 24)
 }
 
+angular.module('uikit.modules', ['uikit.core']);
+angular.module('uikit.snippets', ['uikit.core']);
+
 })();

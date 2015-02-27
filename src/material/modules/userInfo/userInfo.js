@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.userinfo', ['uikit.core'])
+angular.module('uikit.userinfo', [])
   .directive('sfUserInfo', sfUserInfoDirective);
 
 
@@ -18,9 +18,9 @@ function sfUserInfoDirective($mdTheming){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
 
-};
+}
 })();

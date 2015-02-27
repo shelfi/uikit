@@ -1,10 +1,10 @@
 (function(){
 'use strict';
-angular.module('uikit.cart', ['uikit.core'])
+angular.module('uikit.modules.cart', [])
   .directive('sfCart', sfCartDirective);
 
 
-function sfCartDirective(){
+function sfCartDirective($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -18,11 +18,12 @@ function sfCartDirective(){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
+		$mdTheming(element);
 	}
 
 	function getTemplate (){
 		return '<p>this is cart</p>';
 	}
-};
+}
 })();

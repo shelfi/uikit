@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.productContainer', ['uikit.core'])
+angular.module('uikit.modules.productContainer', [])
   .directive('sfProductContainer', sfProductContainerDirective);
 
 
@@ -9,7 +9,7 @@ function sfProductContainerDirective($mdTheming){
 		restrict: 'E',
 		transclude: true,
 		templateUrl: 'modules/productContainer/productContainer.tmpl.html',
-		controller: function ($scope){
+		controller: function (){
 		},
 		controllerAs: 'ctrl',
 		bindToController: true,
@@ -24,8 +24,8 @@ function sfProductContainerDirective($mdTheming){
 			showDescription: '@'
 		}
 	};	
-	function link (scope, element, attr, controller){
+	function link (scope, element){
 		$mdTheming(element);
 	}
-};
+}
 })();

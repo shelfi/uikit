@@ -1,7 +1,8 @@
+<div class="sf-sidenav__user">
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="user-panel">
     <md-toolbar class="md-theme-light">
         <h2 class="md-toolbar-tools">User Panel
-		<md-button ng-click="ctrl.closeUserPanel()"><md-icon md-svg-icon="navigation:ic_close_24px" alt="Exit"></md-icon></md-button>
+		<md-button ng-click="ctrl.closeUserPanel()" alt="Close" aria-label="Close"><md-icon md-svg-icon="navigation:ic_close_24px"></md-icon></md-button>
         </h2>
     </md-toolbar>
     <md-content class="md-padding">
@@ -11,7 +12,7 @@
 	        <md-item-content>
 	          <div class="md-tile-left">
 	          	<md-button>
-	              <md-icon md-svg-icon="{{item.icon}}" alt="Exit"></md-icon>
+	              <md-icon md-svg-icon="{{item.icon}}" alt="Exit" aria-label="{{item.title}}"></md-icon>
 	              {{item.title}}
 	              </md-button>
 	          </div>
@@ -19,5 +20,5 @@
 	      </md-item>
 	    </md-list>
     </md-content>
-    <md-button class="md-raised md-primary" ng-click="ctrl.toggleMiniCart()">togglecart</md-button>
 </md-sidenav>
+</div><!-- /sf-sidenav-user -->

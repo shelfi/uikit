@@ -1,26 +1,14 @@
 (function(){
 'use strict';
-angular.module('uikit.header', [])
+angular.module('uikit.snippets.topbar', [])
   .directive('sfTopbar', sfTopbarDirective);
 
-function sfTopbarDirective($mdTheming){
+function sfTopbarDirective(){
 	return {
 		restrict: 'E',
 		transclude: true,
-		templateUrl: 'snippets/topbar/topbar.tmpl.html',
-		link: postLink,
-		controller: function (){},
-		controllerAs: 'ctrl',
-		bindToController: true,
-		scope: {
-			item: '=ngModel'
-		}
+		templateUrl: 'snippets/topbar/topbar.tmpl.html'
 	};
-
-	function postLink (scope, element, attr){
-		$mdTheming(element);
-	}
 }
-
 
 })();

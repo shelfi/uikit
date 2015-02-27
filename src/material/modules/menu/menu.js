@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.menu', ['uikit.core'])
+angular.module('uikit.modules.menu', [])
   .directive('sfMenu', sfMenuDirective);
 
 
@@ -18,8 +18,8 @@ function sfMenuDirective($mdTheming){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
-};
+}
 })();

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.miniCart', ['uikit.core'])
+angular.module('uikit.modules.miniCart', [])
   .directive('sfMiniCart', sfMiniCartDirective);
 
 
@@ -28,8 +28,8 @@ function sfMiniCartDirective($mdTheming){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
-};
+}
 })();

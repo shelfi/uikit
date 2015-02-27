@@ -4,11 +4,10 @@ angular.module('uikit').controller('TemplatesCtrl', TemplatesController);
 
 function TemplatesController($mdSidenav, $scope, $log){
 
-	
+	this.brand = '3M | Printonline';
 	this.banner = false;
 	this.nav = {
-		primary: [{title: "Dashboard", type: "link", link: "/"}, {title: "Products", type: "toggle", link: "/"}, {title: "Orders", type: "toggle", link: "/"}],
-		brand : '3M | Printonline'
+		primary: [{title: "Dashboard", type: "link", link: "/"}, {title: "Products", type: "toggle", link: "/"}, {title: "Orders", type: "toggle", link: "/"}]
 	};
 	this.user = {
 		name: 'Ahmet Okan',
@@ -19,8 +18,8 @@ function TemplatesController($mdSidenav, $scope, $log){
 			{title: 'My Account', icon: 'action:ic_account_circle_24px'},
 			{title: 'Settings', icon: 'action:ic_settings_24px'},
 			{title: 'Saved Carts', icon: 'action:ic_shopping_cart_24px'},
-			{title: 'Quotes', icon: 'action:ic_shopping_cart_24px'},
-			{title: 'Returns', icon: 'action:ic_shopping_cart_24px'}
+			{title: 'Quotes', icon: 'action:ic_assignment_24px'},
+			{title: 'Returns', icon: 'action:ic_redeem_24px'}
 		]
 	};
 	this.products = [
@@ -33,7 +32,7 @@ function TemplatesController($mdSidenav, $scope, $log){
 	];
 	this.search = {
 		placeholder : 'Search by Name, Item#, Order#'
-	}
+	};
 	this.lang = [
 		{title: 'ENG', value: 'ENG'},{title: 'TR', value: 'TR'},
 	];
@@ -78,7 +77,7 @@ function TemplatesController($mdSidenav, $scope, $log){
 		{title:'Product Category02', image:'holder.js/100%x200'},
 		{title:'Product Category03', image:'holder.js/100%x200'},
 		{title:'Product Category04', image:'holder.js/100%x200'}
-	]
+	];
 
-};
+}
 })();

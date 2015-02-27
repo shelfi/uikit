@@ -18,7 +18,7 @@ var config = require('../config');
 var data;
 var sourceDir = config.sourceDir + '/';
 
-var env = nunjucks.configure([sourceDir + 'views/partials/', sourceDir + 'templates/partials/'], {tags: {
+var env = nunjucks.configure(sourceDir + 'views/partials/', {tags: {
 	variableStart: '<$',
 	variableEnd: '$>'
 }, watch: false});
@@ -28,15 +28,10 @@ var env = nunjucks.configure([sourceDir + 'views/partials/', sourceDir + 'templa
 var registerPartials = function () {
 	//define source directory
 	var partials = fs.readdirSync(sourceDir + 'views/partials'),
-	partials2 = fs.readdirSync(sourceDir + 'templates/partials'),
 		html;
 	for (var i = partials.length - 1; i >= 0; i--) {
 		html = fs.readFileSync(sourceDir + 'views/partials/' + partials[i], 'utf-8');
 		env.getTemplate(partials[i], html);
-	}
-	for (var i = partials2.length - 1; i >= 0; i--) {
-		html = fs.readFileSync(sourceDir + 'templates/partials/' + partials2[i], 'utf-8');
-		env.getTemplate(partials2[i], html);
 	}
 };
 

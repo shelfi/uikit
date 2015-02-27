@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.productAction', ['uikit.core'])
+angular.module('uikit.modules.productAction', [])
   .directive('sfProductAction', sfProductActionDirective);
 
 
@@ -18,12 +18,12 @@ function sfProductActionDirective($mdTheming){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
 
 	function getTemplate (){
 		return '<div>this is product action</div>';
 	}
-};
+}
 })();

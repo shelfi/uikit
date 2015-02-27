@@ -102,7 +102,7 @@ function ElementsController ($log, $q, $timeout, $mdBottomSheet, $mdDialog, $sco
   /* --- BUTTONS --- */
   this.button = {
     title: 'click here'
-  }
+  };
 
 
 
@@ -318,7 +318,7 @@ this.closeRight = function() {
                       .then(function(){
                         $log.debug("close RIGHT is done");
                       });
-}
+};
 
 
 

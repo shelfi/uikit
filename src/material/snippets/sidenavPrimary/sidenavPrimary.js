@@ -1,25 +1,15 @@
 (function(){
 'use strict';
-angular.module('uikit.sidenav', [])
-  .directive('sidenavPrimary', sidenavPrimaryDirective);
+angular.module('uikit.snippets.sidenavPrimary', [])
+  .directive('sfSidenavPrimary', sfSidenavPrimaryDirective);
 
-function sidenavPrimaryDirective($mdTheming){
+function sfSidenavPrimaryDirective(){
 	return {
 		restrict: 'E',
 		transclude: true,
 		templateUrl: 'snippets/sidenavPrimary/sidenavPrimary.tmpl.html',
-		link: postLink,
-		controller: function (){},
-		controllerAs: 'ctrl',
-		bindToController: true,
-		scope: {
-			item: '=ngModel'
-		}
+		replace: true
 	};
-
-	function postLink (scope, element, attr){
-		$mdTheming(element);
-	}
 }
 
 })();

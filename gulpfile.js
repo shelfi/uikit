@@ -69,7 +69,7 @@ gulp.task('wiredep', function () {
 
 
 //inject sass files to uikit.scss preprocessor
-gulp.task('injector:sass',['styles'], function () {
+gulp.task('injector:sass', function () {
   return gulp.src(config.sourceDir + '/assets/styles/uikit.scss')
     .pipe(inject(gulp.src([
         config.sourceDir + '/assets/styles/**/*.scss',
@@ -90,7 +90,7 @@ gulp.task('injector:sass',['styles'], function () {
 });
 
 //inject css
-gulp.task('injector:css', function () {
+gulp.task('injector:css', ['styles'], function () {
   return gulp.src(config.sourceDir + '/views/partials/intro.html')
     .pipe(inject(gulp.src([
         config.general.dest.uikit + '/styles/**/*.css'
@@ -117,7 +117,7 @@ gulp.task('injector:js', ['scripts'], function () {
 });
 
 
-gulp.task('injector', ['injector:sass', 'injector:css', 'injector:js', 'wiredep']);
+gulp.task('injector', ['wiredep', 'injector:sass', 'injector:css', 'injector:js']);
 
 
 // styles
@@ -127,10 +127,10 @@ gulp.task('styles:fabricator', function () {
 			errLogToConsole: true
 		}))
 		.pipe(prefix('last 1 version'))
-		.pipe(gulpif(!config.general.dev, csso()))
+		.pipe(gulpif(!env, csso()))
 		.pipe(rename('f.css'))
 		.pipe(gulp.dest(config.general.dest.fabricator + '/styles'))
-		.pipe(gulpif(config.general.dev, reload({stream:true})));
+		.pipe(gulpif(env, reload({stream:true})));
 });
 
 gulp.task('styles:uikit',function () {
@@ -142,9 +142,9 @@ gulp.task('styles:uikit',function () {
 		  this.emit('end');
 		})
 		.pipe(prefix('last 1 version'))
-		.pipe(gulpif(!config.general.dev, csso()))
+		.pipe(gulpif(!env, csso()))
 		.pipe(gulp.dest(config.general.dest.uikit + '/styles'))
-		.pipe(gulpif(config.general.dev, reload({stream:true})));
+		.pipe(gulpif(env, reload({stream:true})));
 });
 
 gulp.task('styles', ['styles:fabricator', 'styles:uikit']);
@@ -154,7 +154,7 @@ gulp.task('styles', ['styles:fabricator', 'styles:uikit']);
 gulp.task('scripts:fabricator', function () {
 	return gulp.src(config.general.src.scripts.fabricator)
 		.pipe(concat('f.js'))
-		.pipe(gulpif(!config.general.dev, uglify()))
+		.pipe(gulpif(!env, uglify()))
 		.pipe(gulp.dest(config.general.dest.fabricator + '/scripts'));
 });
 
@@ -172,8 +172,8 @@ gulp.task('angularmodules', function(){
 gulp.task('scripts:uikit', ['jshint', 'angularmodules', 'ngtemplatecache'], function (cb) {
 	return gulp.src(config.general.src.scripts.uikit)
 		.pipe(concat('uikit.js'))
-		.pipe(gulpif(!config.general.dev, ngAnnotate()))
-		//.pipe(gulpif(!config.general.dev, uglify()))
+		.pipe(gulpif(!env, ngAnnotate()))
+		.pipe(gulpif(!env, uglify()))
 		.pipe(gulp.dest(config.general.dest.uikit + '/scripts'));
 });
 
@@ -195,13 +195,13 @@ gulp.task('favicon', function () {
 		.pipe(gulp.dest(config.general.dest.root));
 });
 
-//components
+//copy bower components to dist directory
 gulp.task('components', function () {
 	return gulp.src(config.general.src.components)
 		.pipe(gulp.dest(config.general.dest.root + '/bower_components'));
 });
 
-//controllers
+//copy template controllers to dist directory
 gulp.task('controllers', function () {
   return gulp.src(config.general.src.controllers)
     .pipe(gulp.dest(config.general.dest.uikit + '/scripts'));
@@ -283,7 +283,7 @@ gulp.task('build-all-modules', function() {
       var stream;
       if (IS_RELEASE_BUILD && BUILD_MODE.useBower) {
         stream = mergeStream(buildModule(moduleId, true), buildModule(moduleId, false));
-      } else {
+      } else {i
         stream = buildModule(moduleId, false);
       }
 
@@ -422,7 +422,7 @@ gulp.task('default', ['clean'], function () {
 
 	// run build
 	runSequence(tasks, function () {
-		if (config.general.dev) {
+		if (env) {
 			gulp.start('watch');
 		}
 	});

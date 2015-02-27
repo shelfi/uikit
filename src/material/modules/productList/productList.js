@@ -1,10 +1,10 @@
 (function(){
 'use strict';
-angular.module('uikit.productList', ['uikit.core'])
+angular.module('uikit.modules.productList', [])
   .directive('sfProductList', sfProductListDirective);
 
 
-function sfProductListDirective($mdTheming){
+function sfProductListDirective(){
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -19,5 +19,5 @@ function sfProductListDirective($mdTheming){
 			itemflex: '='
 		}
 	};
-};
+}
 })();

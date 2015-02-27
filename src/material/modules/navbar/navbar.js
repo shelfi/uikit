@@ -1,10 +1,10 @@
 (function(){
 'use strict';
-angular.module('uikit.navbar', ['uikit.core'])
+angular.module('uikit.modules.navbar', [])
   .directive('sfNavbar', sfNavbarDirective);
 
 
-function sfNavbarDirective($mdTheming){
+function sfNavbarDirective(){
 		return {
 			restrict: 'E',
 			transclude: true,
@@ -15,5 +15,5 @@ function sfNavbarDirective($mdTheming){
 				items: '=ngModel'
 			}
 		};
-	};
+	}
 })();

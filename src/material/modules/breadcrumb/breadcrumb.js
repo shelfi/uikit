@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.breadcrumb', ['uikit.core'])
+angular.module('uikit.modules.breadcrumb', [])
   .directive('sfBreadcrumb', sfBreadcrumbDirective);
 
 
@@ -15,6 +15,6 @@ function sfBreadcrumbDirective(){
 		scope:{
 			navitems: '=ngModel'
 		}
-	}
+	};
 }
 })();

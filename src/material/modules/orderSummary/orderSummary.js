@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.orderSummary', ['uikit.core'])
+angular.module('uikit.modules.orderSummary', [])
   .directive('sfOrderSummary', sfOrderSummaryDirective);
 
 
@@ -18,12 +18,12 @@ function sfOrderSummaryDirective($mdTheming){
 		}
 	};
 
-	function postLink (scope, element, attr){
+	function postLink (scope, element){
 		$mdTheming(element);
 	}
 
 	function getTemplate (){
 		return '<div>this is order summary</div>';
 	}
-};
+}
 })();

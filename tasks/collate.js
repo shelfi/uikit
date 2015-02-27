@@ -51,7 +51,7 @@ var env = new nunjucks.Environment({
 	autoescape: false
 });
 */
-var env = nunjucks.configure([sourceDir + 'templates/partials/'], {
+var env = nunjucks.configure(sourceDir + 'views', {
 	tags: {
 	variableStart: '<$',
 	variableEnd: '$>'
@@ -97,6 +97,8 @@ var parse = function (dir) {
 	});
 
 	//register template partials so that templates can include them
+	//update: not needed since angular directives are used as partial templating
+	/*
 	var registerTemplatePartials = function () {
 		//define source directory
 		var partials = fs.readdirSync(sourceDir + 'templates/partials'),
@@ -106,7 +108,7 @@ var parse = function (dir) {
 			env.getTemplate(partials[i], html);
 		}
 	};
-
+	*/
 	// iterate over each item, parse, add to item object
 	for (var i = 0, length = items.length; i < length; i++) {
 
@@ -166,7 +168,7 @@ var parse = function (dir) {
 			item.notes = markdown(notes);
 		} catch (e) {}
 		data[dir][item.id.replace(/-/g, '')] = item;
-		registerTemplatePartials();
+		//registerTemplatePartials();
 	}
 };
 
