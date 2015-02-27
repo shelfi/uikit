@@ -11,7 +11,6 @@ var del = require('del');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var gulpif = require('gulp-if');
-var insert = require('gulp-insert');
 var imagemin = require('gulp-imagemin');
 var prefix = require('gulp-autoprefixer');
 var Q = require('q');
@@ -259,103 +258,6 @@ gulp.task('assemble', ['collate'], function () {
 
 
 
-
-/** *****************************************
- *
- * Project-wide Build Tasks
- *
- ** ***************************************** */
-
-gulp.task('build', ['build-resources', 'build-scss', 'build-js']);
-
-gulp.task('build-resources', function() {
-  return gulp.src(['material-font/*'])
-    .pipe(gulp.dest(path.join(config.outputDir, 'material-font')));
-});
-
-gulp.task('build-all-modules', function() {
-  return series(gulp.src(['src/components/*', 'src/core/'])
-    .pipe(through2.obj(function(folder, enc, next) {
-      var moduleId = folder.path.indexOf('components') > -1 ?
-        'material.components.' + path.basename(folder.path) :
-        'material.' + path.basename(folder.path);
-
-      var stream;
-      if (IS_RELEASE_BUILD && BUILD_MODE.useBower) {
-        stream = mergeStream(buildModule(moduleId, true), buildModule(moduleId, false));
-      } else {i
-        stream = buildModule(moduleId, false);
-      }
-
-      stream.on('end', function() {
-        next();
-      });
-    })),
-  themeBuildStream().pipe(
-      gulp.dest(path.join(BUILD_MODE.outputDir, 'core'))
-  ));
-});
-
-function buildModule(module, isRelease) {
-  if ( module.indexOf(".") < 0) {
-    module = "material.components." + module;
-  }
-
-  var name = module.split('.').pop();
-  gutil.log('Building ' + module + (isRelease && ' minified' || '') + ' ...');
-
-  utils.copyDemoAssets(name, 'src/components/', 'dist/demos/');
-
-  return utils.filesForModule(module)
-    .pipe(filterNonCodeFiles())
-    .pipe(gulpif('*.scss', buildModuleStyles(name)))
-    .pipe(gulpif('*.js', buildModuleJs(name)))
-    .pipe(BUILD_MODE.transform())
-    .pipe(insert.prepend(config.banner))
-    .pipe(gulpif(isRelease, buildMin()))
-    .pipe(gulp.dest(BUILD_MODE.outputDir + name));
-
-
-  function buildMin() {
-    return lazypipe()
-      .pipe(gulpif, /.css$/, minifyCss(), uglify({ preserveComments: 'some' }))
-      .pipe(rename, function(path) {
-        path.extname = path.extname
-          .replace(/.js$/, '.min.js')
-          .replace(/.css$/, '.min.css');
-      })
-      .pipe(utils.buildModuleBower, name, VERSION)
-      ();
-  }
-
-function buildModuleJs(name) {
-  return lazypipe()
-    .pipe(plumber)
-    .pipe(ngAnnotate)
-    .pipe(concat, name + '.js')
-    ();
-}
-
-function buildModuleStyles(name) {
-  var files = [];
-  config.themeBaseFiles.forEach(function(fileGlob) {
-    files = files.concat(glob(fileGlob, { cwd: __dirname }));
-  });
-  var baseStyles = files.map(function(fileName) {
-    return fs.readFileSync(fileName, 'utf8').toString();
-  }).join('\n');
-
-  return lazypipe()
-    .pipe(insert.prepend, baseStyles)
-    .pipe(gulpif, /theme.scss/,
-      rename(name + '-default-theme.scss'), concat(name + '.scss')
-    )
-    .pipe(sass)
-    .pipe(autoprefix)
-    (); // invoke the returning fn to create our pipe
-}
-
-}
 
 
 // server
