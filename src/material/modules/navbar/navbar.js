@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.navbar', [])
+angular.module('uikit.navbar', ['uikit.core'])
   .directive('sfNavbar', sfNavbarDirective);
 
 

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.sort', [])
+angular.module('uikit.sort', ['uikit.core'])
   .directive('sfSort', sfSortDirective);
 
 

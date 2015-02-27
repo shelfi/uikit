@@ -14,7 +14,7 @@ exports.general = {
 					'./src/fabricator/scripts/prism.js',
 					'./src/fabricator/scripts/fabricator.js'
 				],
-				uikit: [this.tmpDir + '/uikit.js', this.sourceDir + '/uikit-core.js' , this.sourceDir + '/modules/**/*.js', this.sourceDir + '/partials.js']
+				uikit: [this.tmpDir + '/uikit.js', this.sourceDir + '/uikit-core.js' , this.sourceDir + '/modules/**/*.js', this.sourceDir + '/snippets/**/*.js', this.sourceDir + '/partials.js']
 			},
 			styles: {
 				fabricator: './src/fabricator/styles/fabricator.scss',

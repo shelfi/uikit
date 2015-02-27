@@ -160,7 +160,7 @@ gulp.task('scripts:fabricator', function () {
 
 
 gulp.task('angularmodules', function(){
-    return gulp.src('./src/material/modules/**/*.js')
+    return gulp.src(['./src/material/modules/**/*.js', './src/material/snippets/**/*.js'])
         .pipe(angularModule({
 			//moduleDefinitionFileName: 'uikit.js',
 			masterVendorModules: ['uikit.core', 'ngMaterial','ngMessages'],

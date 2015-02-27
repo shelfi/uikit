@@ -1,6 +1,9 @@
 (function(){
 'use strict';
-module.exports = function ($mdTheming){
+angular.module('uikit.header', [])
+  .directive('sfTopbar', sfTopbarDirective);
+
+function sfTopbarDirective($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -8,12 +11,16 @@ module.exports = function ($mdTheming){
 		link: postLink,
 		controller: function (){},
 		controllerAs: 'ctrl',
-		bindToController: true
+		bindToController: true,
+		scope: {
+			item: '=ngModel'
+		}
 	};
 
 	function postLink (scope, element, attr){
 		$mdTheming(element);
 	}
+}
 
-};
+
 })();

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.productImage', [])
+angular.module('uikit.productImage', ['uikit.core'])
   .directive('sfProductImage', sfProductImageDirective);
 
 

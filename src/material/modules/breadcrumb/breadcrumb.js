@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.breadcrumb', [])
+angular.module('uikit.breadcrumb', ['uikit.core'])
   .directive('sfBreadcrumb', sfBreadcrumbDirective);
 
 

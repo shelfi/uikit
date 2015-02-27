@@ -1,5 +1,7 @@
-{% include "header-partial.html" %}
-{% include "sidenav-partial.html" %}
+<body ng-controller="TemplatesCtrl as ctrl" layout="column">
+<sf-topbar ng-model="ctrl.user"></sf-topbar>
+<div class="sf-wrapper" layout="row">
+<sidenav-primary ng-model="ctrl.nav"></sidenav-primary>
 <div class="main" role="main" layout="column" layout-fill>
 {% include "toolbar-partial.html" %}
 <md-content>

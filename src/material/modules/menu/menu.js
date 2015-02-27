@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.menu', [])
+angular.module('uikit.menu', ['uikit.core'])
   .directive('sfMenu', sfMenuDirective);
 
 

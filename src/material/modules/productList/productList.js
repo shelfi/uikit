@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.productList', [])
+angular.module('uikit.productList', ['uikit.core'])
   .directive('sfProductList', sfProductListDirective);
 
 

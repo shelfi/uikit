@@ -4,10 +4,11 @@ angular.module('uikit').controller('TemplatesCtrl', TemplatesController);
 
 function TemplatesController($mdSidenav, $scope, $log){
 
-	this.brand = '3M | Printonline';
+	
 	this.banner = false;
 	this.nav = {
-		primary: [{title: "Dashboard", type: "link", link: "/"}, {title: "Products", type: "toggle", link: "/"}, {title: "Orders", type: "toggle", link: "/"}]
+		primary: [{title: "Dashboard", type: "link", link: "/"}, {title: "Products", type: "toggle", link: "/"}, {title: "Orders", type: "toggle", link: "/"}],
+		brand : '3M | Printonline'
 	};
 	this.user = {
 		name: 'Ahmet Okan',

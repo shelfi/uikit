@@ -1,26 +1,25 @@
 (function(){
 'use strict';
-angular.module('uikit.search', ['uikit.core'])
-  .directive('sfSearch', sfSearchDirective);
+angular.module('uikit.sidenav', [])
+  .directive('sidenavPrimary', sidenavPrimaryDirective);
 
-
-function sfSearchDirective($mdTheming){
+function sidenavPrimaryDirective($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,
-		templateUrl: 'modules/search/search.tmpl.html',
+		templateUrl: 'snippets/sidenavPrimary/sidenavPrimary.tmpl.html',
 		link: postLink,
 		controller: function (){},
 		controllerAs: 'ctrl',
 		bindToController: true,
 		scope: {
-			search: '=ngModel'
+			item: '=ngModel'
 		}
 	};
 
 	function postLink (scope, element, attr){
 		$mdTheming(element);
 	}
+}
 
-};
 })();

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.productContainer', [])
+angular.module('uikit.productContainer', ['uikit.core'])
   .directive('sfProductContainer', sfProductContainerDirective);
 
 

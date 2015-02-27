@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.orderSummary', [])
+angular.module('uikit.orderSummary', ['uikit.core'])
   .directive('sfOrderSummary', sfOrderSummaryDirective);
 
 

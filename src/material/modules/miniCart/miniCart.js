@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.miniCart', [])
+angular.module('uikit.miniCart', ['uikit.core'])
   .directive('sfMiniCart', sfMiniCartDirective);
 
 

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.pagination', [])
+angular.module('uikit.pagination', ['uikit.core'])
   .directive('sfPagination', sfPaginationDirective);
 
 
