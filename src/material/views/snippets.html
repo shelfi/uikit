@@ -14,7 +14,7 @@
 
 		<h1 data-f-toggle="details">Snippets</h1>
 		
-		{% for collection, item in snippets %}
+		{% for snippet, item in snippets %}
 
 			<div class="f-item-group" id="<$ item.id $>">
 
@@ -56,6 +56,19 @@
 					</div>
 					{% endif %}
 				</div>
+
+				{%if item.styles%}
+				<h5 class="f-section-title" data-f-toggle="code">Styles</h5>
+				<div class="f-item-code f-item-hidden" data-f-toggle="code">
+					<pre><code class="language-css"><$ item.styles | escape $></code></pre>
+				</div>{%endif%}
+
+
+				{%if item.scripts%}
+				<h5 class="f-section-title" data-f-toggle="code">Scripts</h5>
+				<div class="f-item-code f-item-hidden" data-f-toggle="code">
+					<pre><code class="language-javascript"><$ item.scripts | escape $></code></pre>
+				</div>{%endif%}
 
 			</div>
 

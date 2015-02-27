@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.search', [])
+angular.module('uikit.modules.search', [])
   .directive('sfSearch', sfSearchDirective);
 
 

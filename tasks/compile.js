@@ -21,7 +21,7 @@ var sourceDir = config.sourceDir + '/';
 var env = nunjucks.configure(sourceDir + 'views/partials/', {tags: {
 	variableStart: '<$',
 	variableEnd: '$>'
-}, watch: false});
+}, watch: true});
 /**
  * Register partials with Nunjucks
  */

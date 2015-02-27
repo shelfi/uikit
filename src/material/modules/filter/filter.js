@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.filter', [])
+angular.module('uikit.modules.filter', [])
   .directive('sfFilter', sfFilterDirective);
 
 

@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-angular.module('uikit.userinfo', [])
+angular.module('uikit.modules.userinfo', [])
   .directive('sfUserInfo', sfUserInfoDirective);
 
 

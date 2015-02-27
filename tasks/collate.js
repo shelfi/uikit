@@ -55,7 +55,7 @@ var env = nunjucks.configure(sourceDir + 'views', {
 	tags: {
 	variableStart: '<$',
 	variableEnd: '$>'
-}, watch: false});
+}, watch: true});
 // here watch is set to true so nunjucks can update compiled templates in memory (gulp action looks like it hangs)
 
 /**
