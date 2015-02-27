@@ -6,7 +6,23 @@
  */
 angular
   .module('uikit.core', ['ngMaterial'])
-  .config( SfCoreConfigure );
+  .config( SfCoreConfigure )
+  .directive('sfTemplate', function ($compile) {
+    return {
+      restrict: 'A',
+      scope: {
+        template: '=sfTemplate',
+        item: '=ngModel'
+      },
+      link: function (scope, element, attrs) {
+        if (scope.template) {
+          element.html(scope.template);
+          $compile(element.contents())(scope);
+          return;
+        }
+      }
+    };
+  });
 
 function SfCoreConfigure($mdThemingProvider, $mdIconProvider) {
 

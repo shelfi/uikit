@@ -1,48 +1,44 @@
+<div class="sf-minicart" layout="column">
 
-<md-content>
+  <!--
+  <div class="sf-minicart__cart-selector">
+    <md-select ng-model="ctrl.savedcart" placeholder="default cart">
+      <md-option ng-value="opt.title" ng-repeat="opt in ctrl.savedcarts">{{ opt.title }}</md-option>
+    </md-select>
+  </div>
+  -->
 
-<table class="table table-striped cart">
-	<thead>
-		<tr>
-			<th>Urun</th>
-			<th>Adet</th>
-			<th>Birim Fiyat</th>
-			<th>Ara Toplam</th>
-			<th ng-if="config.showRemoveButton"></th>
-		</tr>
-	</thead>
-	<tfoot>
-		<tr ng-if="$root.order.vat">
-			<td colspan="3"><span class="pull-right">KDV:</span></td>
-			<td>{{ $root.order.vat | currency }}</td>
-		</tr>
-		<tr ng-repeat="extra in $root.order.extras" ng-class="extra.type">
-			<td colspan="3"><i></i> {{ extra.description }}</td>
-			<td><span ng-if="extra.discount">-</span> {{ extra.amount | currency }}</td>
-		</tr>
-		<tr ng-if="$root.order.total" class="total">
-			<td colspan="3"><span class="pull-right">Toplam:</span></td>
-			<td><strong>{{ $root.order.total | currency }}</strong></td>
-		</tr>
-	</tfoot>
-	<tbody>
-		<tr ng-repeat="product in $root.order.products">
-			<td>
-				<ul class="product-info list-inline">
-					<li><a href="#/products/{{product.slug | multi:'language'}}"><img ng-init="image=(product.images | image:'list')" ng-src="{{image.path}}" width="{{image.w}}" height="{{image.h}}" alt="{{product.images.description | multi:'language'}}" title="{{product.images.description | multi:'language'}}" /></a></li>
-					<li>
-						<product-title-secondary item="product"></product-title-secondary> 
-						<span class="option">Beyaz</span>
-						<span class="option">Medium</span>
-					</li>
-				</ul>
-			</td>
-			<td ng-if="config.editable"><input type="text" class="form-control input-sm" required="required" pattern="" title="" ng-model="product.qty" ng-change="orderService.product.onAmountChange(product)"></td>
-			<td ng-if="!config.editable">{{ product.qty }}</td>
-			<td>{{ product.price | multi:"currency" }}</td>
-			<td>{{ product.amount | currency }}</td>
-			<td ng-if="config.showRemoveButton"><button type="button" class="btn btn-default btn-sm" ng-click="orderService.product.remove(product)">&times;</button></td>
-		</tr>
-	</tbody>
-</table>
-</md-content>
+  <div class="sf-minicart__detail">
+    <md-list>
+
+      <md-item class="bold" ng-show="ctrl.showHeader === 'true'">
+        <md-item-content layout="row">
+          <div ng-repeat="column in ctrl.columns" flex="{{column.width}}">{{column.name}}</div>
+        </md-item-content>
+      </md-item>
+
+      <md-item ng-repeat="item in ctrl.order">
+        <md-item-content layout="row">
+          <div ng-repeat="column in ctrl.columns" flex="{{column.width}}" sf-template="column.template" ng-model="item">{{item[column.name]}}</div>
+        </md-item-content>
+      </md-item>
+
+      <md-item-content layout="column" layout-align="center end" ng-show="ctrl.showTotals === 'true'">
+        <div flex>Total: 20TL</div>
+      </md-item-content>
+
+    </md-list>
+
+    <hr>
+    <div>{{ ctrl }}</div>
+    
+    <!--<md-button class="md-raised md-primary">GO TO CART</md-button>-->
+
+  </div>
+
+
+</div>
+
+
+
+
