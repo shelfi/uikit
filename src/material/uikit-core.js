@@ -10,15 +10,32 @@ angular
   .directive('sfTemplate', function ($compile) {
     return {
       restrict: 'A',
-      scope: {
-        template: '=sfTemplate',
-        item: '=ngModel'
-      },
+      //scope: {
+      //  template: '=sfTemplate',
+      //  item: '=ngModel'
+      //},
       link: function (scope, element, attrs) {
-        if (scope.template) {
-          element.html(scope.template);
+
+        //if (scope.template) {
+        //  element.html(scope.template);
+        //  $compile(element.contents())(scope);
+        //}
+
+        //console.log(attrs.sfTemplate, attrs.ngModel);
+
+        //console.log(attrs.ngModel, scope.$parent[attrs.ngModel]);
+        //console.log(attrs.sfTemplate, scope[attrs.sfTemplate]);
+        //console.log(attrs.sfTemplate, scope);
+        //console.log(attrs.sfTemplate, scope.$eval(attrs.sfTemplate));
+        //var t = scope.$parent.$eval(attrs.sfTemplate);
+
+        var t = scope.$eval(attrs.sfTemplate);
+        if (t) {
+          //console.log(t, scope.$parent);
+          element.html(t);
+          console.log(element.contents());
+          //$compile(element.contents())(scope.$parent);
           $compile(element.contents())(scope);
-          return;
         }
       }
     };

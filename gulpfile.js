@@ -318,7 +318,7 @@ gulp.task('default', ['clean'], function () {
 		'injector',
 		'images',
 		'assemble',
-    'controllers',
+    	'controllers',
 		'bower'
 	];
 
