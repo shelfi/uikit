@@ -1,5 +1,1 @@
-<div class="sf-productList-container">
-	<md-content>
-		<div ng-transclude ng-attr-layout="{{ctrl.layout === 'grid' ? 'row' : 'column'}}" layout-wrap><div>
-	</md-content>
-</div>
+<sf-product-item ng-repeat="item in ctrl.items" ng-model="item" flex="{{ 100 / ctrl.rowItems | number:0 }}"></sf-product-item>

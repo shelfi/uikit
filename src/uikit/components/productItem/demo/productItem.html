@@ -1,1 +1,4 @@
-<sf-product-item ng-model="ctrl.products[0]"></sf-product-item>
+<div ng-controller="productItemCtrl as productItem">
+	<sf-product-item ng-model="productItem.product" add-to-cart="productItem.addToCart(product)" click="productItem.click(product)"></sf-product-item>
+	<!--<sf-product-item ng-model="productItem.product" show-add-to-cart-button="true" click="productItem.click(product)" add-to-cart="productItem.addToCart(product)"></sf-product-item>-->
+</div>
