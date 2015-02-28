@@ -42,7 +42,7 @@ var registerPartials = function () {
 
 var assembleFabricator = function (file, enc, cb) {
 	// augment data object
-	env.addGlobal('fabricator', true);
+	env.addGlobal('demo', true);
 	// template pages
 	var source = file.contents.toString(),
 		template = env.renderString(source, data),
@@ -60,8 +60,8 @@ var assembleFabricator = function (file, enc, cb) {
  */
 var assembleTemplates = function (file, enc, cb) {
 	// augment data object
-	//data.fabricator = false;
-	env.addGlobal('fabricator', false);
+	//data.demo = false;
+	env.addGlobal('demo', false);
 
 	// use the filename as the key value lookup in the data.json object
 	var key = path.basename(file.path, '.html').replace(/-/g, '');

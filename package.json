@@ -2,7 +2,7 @@
   "name": "uikit",
   "version": "0.7.0",
   "description": "Uikit is a tool for creating modular website toolkits",
-  "homepage": "http://resource.github.io/fabricator/",
+  "homepage": "http://github.com/shelfi/uikit",
   "main": "README.md",
   "scripts": {
     "gulp": "gulp",

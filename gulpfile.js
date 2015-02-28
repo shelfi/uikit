@@ -72,13 +72,12 @@ gulp.task('injector:sass', function () {
   return gulp.src(config.sourceDir + '/assets/styles/uikit.scss')
     .pipe(inject(gulp.src([
         config.sourceDir + '/assets/styles/**/*.scss',
-        config.sourceDir + '/snippets/**/*.scss',
         config.sourceDir + '/components/**/*.scss',
         '!' + config.sourceDir + '/assets/styles/uikit.scss',
         '!' + config.sourceDir + '/assets/styles/vendor.scss' 
       ], {read: false}), {
       transform: function(filePath) {
-        filePath = filePath.replace('src/material/', '../../');
+        filePath = filePath.replace('src/uikit/', '../../');
         return '@import \'' + filePath + '\';';
       },
       starttag: '// injector',
@@ -120,15 +119,15 @@ gulp.task('injector', ['wiredep', 'injector:sass', 'injector:css', 'injector:js'
 
 
 // styles
-gulp.task('styles:fabricator', function () {
-	return gulp.src(config.general.src.styles.fabricator)
+gulp.task('styles:demo', function () {
+	return gulp.src(config.general.src.styles.demo)
 		.pipe(sass({
 			errLogToConsole: true
 		}))
 		.pipe(prefix('last 1 version'))
 		.pipe(gulpif(!env, csso()))
-		.pipe(rename('f.css'))
-		.pipe(gulp.dest(config.general.dest.fabricator + '/styles'))
+		.pipe(rename('demo.css'))
+		.pipe(gulp.dest(config.general.dest.demo + '/styles'))
 		.pipe(gulpif(env, reload({stream:true})));
 });
 
@@ -146,20 +145,20 @@ gulp.task('styles:uikit',function () {
 		.pipe(gulpif(env, reload({stream:true})));
 });
 
-gulp.task('styles', ['styles:fabricator', 'styles:uikit']);
+gulp.task('styles', ['styles:demo', 'styles:uikit']);
 
 
 // scripts
-gulp.task('scripts:fabricator', function () {
-	return gulp.src(config.general.src.scripts.fabricator)
-		.pipe(concat('f.js'))
+gulp.task('scripts:demo', function () {
+	return gulp.src(config.general.src.scripts.demo)
+		.pipe(concat('demo.js'))
 		.pipe(gulpif(!env, uglify()))
-		.pipe(gulp.dest(config.general.dest.fabricator + '/scripts'));
+		.pipe(gulp.dest(config.general.dest.demo + '/scripts'));
 });
 
 
 gulp.task('angularmodules', function(){
-    return gulp.src(['./src/material/components/**/*.js', './src/material/snippets/**/*.js'])
+    return gulp.src(['./src/uikit/components/**/*.js'])
         .pipe(angularModule({
 			//moduleDefinitionFileName: 'uikit.js',
 			masterVendorModules: ['uikit.core', 'ngMaterial','ngMessages'],
@@ -176,7 +175,7 @@ gulp.task('scripts:uikit', ['jshint', 'angularmodules', 'ngtemplatecache'], func
 		.pipe(gulp.dest(config.general.dest.uikit + '/scripts'));
 });
 
-gulp.task('scripts', ['scripts:fabricator', 'scripts:uikit']);
+gulp.task('scripts', ['scripts:demo', 'scripts:uikit']);
 
 
 
@@ -217,7 +216,7 @@ gulp.task('collate', function () {
 
 	var opts = {
 		materials: config.general.src.materials,
-		dest: config.general.dest.fabricator + '/data/data.json'
+		dest: config.general.dest.demo + '/data/data.json'
 	};
 
 	// run the collate task; resolve deferred when complete
@@ -228,9 +227,9 @@ gulp.task('collate', function () {
 });
 
 // assembly
-gulp.task('assemble:fabricator', function () {
+gulp.task('assemble:demo', function () {
 	var opts = {
-		data: config.general.dest.fabricator + '/data/data.json',
+		data: config.general.dest.demo + '/data/data.json',
 		template: false
 	};
 
@@ -241,7 +240,7 @@ gulp.task('assemble:fabricator', function () {
 
 gulp.task('assemble:templates', function () {
 	var opts = {
-		data: config.general.dest.fabricator + '/data/data.json',
+		data: config.general.dest.demo + '/data/data.json',
 		template: true
 	};
 	return gulp.src(config.sourceDir + '/templates/*.html')
@@ -253,7 +252,7 @@ gulp.task('assemble:templates', function () {
 });
 
 gulp.task('assemble', ['collate'], function () {
-	gulp.start('assemble:fabricator', 'assemble:templates');
+	gulp.start('assemble:demo', 'assemble:templates');
 });
 
 
@@ -284,7 +283,7 @@ gulp.task('ngtemplatecache', function () {
           //templateHeader: '["$templateCache", function ($templateCache) {\n',
           //templateFooter: '\n}];'
         }))
-        .pipe(gulp.dest(config.sourceDir));
+        .pipe(gulp.dest(config.tmpDir));
 });
 
 
@@ -294,17 +293,15 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch([config.sourceDir + '/**/**/*.{html,md}', '!' + config.sourceDir + '/**/**/*.tmpl.html', '!' + config.sourceDir + '/templates/partials/*.html'], ['assemble', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/**/**/*.tmpl.html'], ['ngtemplatecache', 'scripts:uikit', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/templates/partials/*.html'], ['assemble', browserSync.reload]);
-	gulp.watch('src/fabricator/styles/**/*.scss', ['styles:fabricator']);
+	gulp.watch('src/demo/styles/**/*.scss', ['styles:demo']);
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.scss', ['styles', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.scss', ['styles:uikit', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/snippets/**/*.scss', ['styles:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/**/*.scss', ['styles:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/templates/**/*.scss', ['uikit:uikit', browserSync.reload]);
-	gulp.watch('src/fabricator/scripts/**/*.js', ['scripts:fabricator', browserSync.reload]);
+	gulp.watch('src/demo/scripts/**/*.js', ['scripts:demo', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/uikit-core.js'], ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/scripts/**/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.js', ['scripts:uikit', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/snippets/**/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/**/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/templates/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', browserSync.reload]);
 	gulp.watch(config.general.src.images, ['images', browserSync.reload]);

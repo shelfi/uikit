@@ -2,7 +2,7 @@ var gutil = require('gulp-util');
 
 // uikit source
 exports.tmpDir = './.tmp';
-exports.sourceDir = './src/material';
+exports.sourceDir = './src/uikit';
 exports.VERSION = '0.1.0';
 
 // uikit configs
@@ -10,31 +10,30 @@ exports.general = {
 		dev: gutil.env.dev,
 		src: {
 			scripts: {
-				fabricator: [
-					'./src/fabricator/scripts/prism.js',
-					'./src/fabricator/scripts/fabricator.js'
+				demo: [
+					'./src/demo/scripts/prism.js',
+					'./src/demo/scripts/demo.js'
 				],
-				uikit: [this.tmpDir + '/uikit.js', this.sourceDir + '/uikit-core.js' , this.sourceDir + '/components/**/*.js', this.sourceDir + '/snippets/**/*.js', this.sourceDir + '/partials.js']
+				uikit: [this.tmpDir + '/uikit.js', this.sourceDir + '/uikit-core.js' , this.sourceDir + '/components/*/*.js', this.tmpDir + '/partials.js']
 			},
 			styles: {
-				fabricator: './src/fabricator/styles/fabricator.scss',
+				demo: './src/demo/styles/demo.scss',
 				uikit: this.sourceDir + '/assets/styles/uikit.scss'
 			},
 			images: this.sourceDir + '/assets/images/**/*',
-			controllers: [this.sourceDir + '/*/*-controller.js'],
+			controllers: [this.sourceDir + '/**/*-controller.js'],
 			components: 'bower_components/**/*',
 			views: this.sourceDir + '/views/*.html',
 			materials: [
 				'elements',
-				'snippets',
+				'components',
 				'templates',
-				'documentation',
-				'components'
+				'documentation'
 			]
 		},
 		dest: {
 			root: './dist',
-			fabricator: './dist/fabricator',
+			demo: './dist/demo',
 			uikit: './dist/uikit'
 		},
 		buildconfig: {

@@ -88,6 +88,8 @@ var parse = function (dir) {
 		return e.replace('-controller', '');
 	}).map(function (e, i){
 		return e.replace('-directive', '');
+	}).map(function (e, i){
+		return e.replace('/demo', '');
 	});
 
 
@@ -120,7 +122,7 @@ var parse = function (dir) {
 
 		try {
 			// compile templates
-			var content = fs.readFileSync(sourceDir + dir + '/' + items[i] + '.html', 'utf8').replace(/(\s*(\r?\n|\r))+$/, '');
+			var content = fs.readFileSync(sourceDir + dir + '/' + items[i].replace('/', '/demo/') + '.html', 'utf8').replace(/(\s*(\r?\n|\r))+$/, '');
 			var template = env.renderString(content);
 			item.content = beautifyHtml(template, beautifyOptions);
 			var $ = cheerio.load(item.content);
@@ -144,7 +146,7 @@ var parse = function (dir) {
 
 		try{
 			//compile controllers
-			var controllerContent = fs.readFileSync(sourceDir + dir + '/' + items[i] + '-controller.js', 'utf8').replace(/(\s*(\r?\n|\r))+$/, '');
+			var controllerContent = fs.readFileSync(sourceDir + dir + '/' + items[i].replace('/', '/demo/') + '-controller.js', 'utf8').replace(/(\s*(\r?\n|\r))+$/, '');
 			var controllers = env.renderString(controllerContent);
 			item.controllers = beautifyJs(controllers, beautifyOptions);
 		} catch (e) {}
