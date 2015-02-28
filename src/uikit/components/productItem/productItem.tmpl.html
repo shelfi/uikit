@@ -1,11 +1,19 @@
-<md-card>
-	<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image" holder></a>
-	<h2><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h2>
-	<p>{{ ctrl.item.desc }}</p>
-	<small>{{ ctrl.item.price | currency }}</small>
-	<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" ng-show="showAddToCartButton === 'true'" aria-label="Sepete Ekle">
-		<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt">
-			<md-tooltip>Sepete Ekle</md-tooltip>
-		</md-icon>
-	</md-button>
+<md-card layout-padding layout="column">
+	<div class="sf-product__image" flex="20">
+		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image" holder></a>
+	</div>
+	<div flex="60" class="sf-product__title" >
+		<h2><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h2>
+		<p>{{ ctrl.item.desc }}</p>
+	</div>
+	<div flex="10" class="sf-product__price" >
+		<span>{{ ctrl.item.price | currency }}</span>
+	</div>
+	<div flex="10" class="sf-product__action" layout layout-align="end end">
+		<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" ng-show="showAddToCartButton === 'true'" aria-label="Sepete Ekle">
+			<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt">
+				<md-tooltip>Sepete Ekle</md-tooltip>
+			</md-icon>
+		</md-button>
+	</div>
 </md-card>
