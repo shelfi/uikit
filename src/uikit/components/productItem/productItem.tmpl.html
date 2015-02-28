@@ -1,15 +1,15 @@
-<md-card layout-padding layout="column">
+<md-card layout-padding layout-align-sm="center center" layout="column">
 	<div class="sf-product__image" flex="20">
 		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image" holder></a>
 	</div>
-	<div flex="60" class="sf-product__title" >
+	<div flex="50" flex-sm="30" class="sf-product__info" >
 		<h2><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h2>
-		<p>{{ ctrl.item.desc }}</p>
+		<p hide-sm>{{ ctrl.item.desc }}</p>
 	</div>
-	<div flex="10" class="sf-product__price" >
+	<div flex="20" flex-sm="30" class="sf-product__price">
 		<span>{{ ctrl.item.price | currency }}</span>
 	</div>
-	<div flex="10" class="sf-product__action" layout layout-align="end end">
+	<div flex="10" flex-sm="20" class="sf-product__action">
 		<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" ng-show="showAddToCartButton === 'true'" aria-label="Sepete Ekle">
 			<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt">
 				<md-tooltip>Sepete Ekle</md-tooltip>
