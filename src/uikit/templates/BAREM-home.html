@@ -1,0 +1,29 @@
+<body ng-controller="TemplatesCtrl as ctrl" layout="column" md-theme="altTheme" md-theme-watch>
+<div ng-include="'templates/partials/BAREM-topbar.tmpl.html'" ng-include-replace></div>
+<div class="sf-wrapper" layout="row">
+	
+	<div ng-include="'templates/partials/BAREM-sidenav-primary.tmpl.html'" ng-include-replace></div>
+
+	<div class="main" role="main" layout="column" layout-fill>
+		<div ng-include="'templates/partials/BAREM-toolbar-primary.tmpl.html'"></div>
+			<md-content>
+				<div ng-include="'templates/partials/BAREM-spot-home.tmpl.html'" ng-include-replace></div>
+				<div layout="column" class="sf-main-content">
+					<div layout-padding layout="row" layout-wrap class="sf-main-feature">
+						<h5 flex="100">Your favourite categories</h5>
+						<div flex="50" flex-md="50" flex-sm="100"ng-repeat="item in ctrl.features" class="sf-main-feature">
+							<md-whiteframe class="md-whiteframe-z1" layout="column" layout-padding>
+								<a ng-href="template-productlist.html"><img data-src="{{item.image}}" alt="{{item.title}}" class="sf-main-feature__image"></a>
+								<p class="sf-main-feature__title">{{item.title}}</p>
+							</md-whiteframe>
+						</div>
+						<md-button class="md-primary">Continue</md-button>
+					</div><!-- /sf-main-feature -->
+					<div layout-padding layout="row" layout-wrap class="sf-main-orderhistory"></div>
+				</div><!-- /sf-main-content -->
+			</md-content>
+	</div><!-- /main -->
+	
+	<div ng-include="'templates/partials/BAREM-minicart-sidenav.tmpl.html'" ng-include-replace></div>
+	<div ng-include="'templates/partials/BAREM-usermenu-sidenav.tmpl.html'" ng-include-replace></div>
+</div><!-- /wrapper -->

@@ -88,7 +88,7 @@ gulp.task('injector:sass', function () {
 });
 
 //inject css
-gulp.task('injector:css', ['styles'], function () {
+gulp.task('injector:css', function () {
   return gulp.src(config.sourceDir + '/views/partials/intro.html')
     .pipe(inject(gulp.src([
         config.general.dest.uikit + '/styles/**/*.css'
@@ -101,7 +101,7 @@ gulp.task('injector:css', ['styles'], function () {
 });
 
 //injector js
-gulp.task('injector:js', ['scripts'], function () {
+gulp.task('injector:js', function () {
   return gulp.src(config.sourceDir + '/views/partials/outro.html')
     .pipe(inject(gulp.src([
       config.general.dest.uikit + '/scripts/**/*.js',
@@ -119,7 +119,7 @@ gulp.task('injector', ['wiredep', 'injector:sass', 'injector:css', 'injector:js'
 
 
 // styles
-gulp.task('styles:demo', function () {
+gulp.task('styles:demo', ['wiredep'], function () {
 	return gulp.src(config.general.src.styles.demo)
 		.pipe(sass({
 			errLogToConsole: true
@@ -131,7 +131,7 @@ gulp.task('styles:demo', function () {
 		.pipe(gulpif(env, reload({stream:true})));
 });
 
-gulp.task('styles:uikit',function () {
+gulp.task('styles:uikit', function () {
 
 	return gulp.src(config.general.src.styles.uikit)
 		.pipe(sass({style: 'expanded'}))
@@ -302,7 +302,8 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch([config.sourceDir + '/uikit-core.js'], ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/scripts/**/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.js', ['scripts:uikit', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/components/**/*.js', ['scripts:uikit', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/components/*/*.js', ['scripts:uikit', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/components/**/*-controller.js', ['controllers', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/templates/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', browserSync.reload]);
 	gulp.watch(config.general.src.images, ['images', browserSync.reload]);
 });
@@ -312,10 +313,12 @@ gulp.task('watch', ['browser-sync'], function () {
 gulp.task('default', ['clean'], function () {
 	// define build tasks
 	var tasks = [
-		'injector',
 		'images',
+		'styles',
+		'scripts',
+		'controllers',
+		'injector',
 		'assemble',
-    	'controllers',
 		'bower'
 	];
 

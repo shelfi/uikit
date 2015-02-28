@@ -3,8 +3,7 @@
 angular.module('uikit').controller('TemplatesCtrl', TemplatesController);
 
 function TemplatesController($mdSidenav, $scope, $log){
-
-	this.brand = '3M | Printonline';
+	this.brand = 'Barem';
 	this.banner = false;
 	this.nav = {
 		primary: [{title: "Dashboard", type: "link", link: "/"}, {title: "Products", type: "toggle", link: "/"}, {title: "Orders", type: "toggle", link: "/"}]
