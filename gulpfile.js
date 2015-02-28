@@ -88,7 +88,7 @@ gulp.task('injector:sass', function () {
 });
 
 //inject css
-gulp.task('injector:css', function () {
+gulp.task('injector:css', ['styles:demo'], function () {
   return gulp.src(config.sourceDir + '/views/partials/intro.html')
     .pipe(inject(gulp.src([
         config.general.dest.uikit + '/styles/**/*.css'
@@ -101,7 +101,7 @@ gulp.task('injector:css', function () {
 });
 
 //injector js
-gulp.task('injector:js', function () {
+gulp.task('injector:js', ['scripts'], function () {
   return gulp.src(config.sourceDir + '/views/partials/outro.html')
     .pipe(inject(gulp.src([
       config.general.dest.uikit + '/scripts/**/*.js',
@@ -194,7 +194,7 @@ gulp.task('favicon', function () {
 });
 
 //copy bower components to dist directory
-gulp.task('bower', function () {
+gulp.task('bowercopy', function () {
 	return gulp.src(config.general.src.components)
 		.pipe(gulp.dest(config.general.dest.root + '/bower_components'));
 });
@@ -317,9 +317,9 @@ gulp.task('default', ['clean'], function () {
 		'styles',
 		'scripts',
 		'controllers',
-		'injector',
 		'assemble',
-		'bower'
+		'bowercopy',
+		'injector'
 	];
 
 	// run build

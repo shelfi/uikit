@@ -1,5 +1,5 @@
 <md-card>
-	<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img ng-src="{{ ctrl.item.image }}" class="md-card-image"></a>
+	<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image" holder></a>
 	<h2><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h2>
 	<p>{{ ctrl.item.desc }}</p>
 	<small>{{ ctrl.item.price | currency }}</small>
