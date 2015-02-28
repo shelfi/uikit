@@ -38,8 +38,21 @@ angular
           $compile(element.contents())(scope);
         }
       }
+    }
+
+  })
+
+
+
+.directive('ngIncludeReplace', function () {
+    return {
+        require: 'ngInclude',
+        restrict: 'A',
+        link: function (scope, el, attrs) {
+            el.replaceWith(el.children());
+        }
     };
-  });
+});
 
 function SfCoreConfigure($mdThemingProvider, $mdIconProvider) {
 

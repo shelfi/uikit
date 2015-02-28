@@ -1,7 +1,9 @@
 <body ng-controller="TemplatesCtrl as ctrl" layout="column" md-theme="altTheme" md-theme-watch>
 <sf-topbar></sf-topbar>
 <div class="sf-wrapper" layout="row">
-	<sf-sidenav-primary></sf-sidenav-primary>
+	
+	<div ng-include="'templates/partials/sidebarPrimary.tmpl.html'" ng-include-replace></div>
+
 	<div class="main" role="main" layout="column" layout-fill>
 		<sf-toolbar-primary></sf-toolbar-primary>
 			<md-content>
