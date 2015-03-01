@@ -243,11 +243,11 @@ gulp.task('assemble:templates', function () {
 		data: config.general.dest.demo + '/data/data.json',
 		template: true
 	};
-	return gulp.src(config.sourceDir + '/templates/*.html')
+	return gulp.src(config.sourceDir + '/templates/**/*.html')
 		.pipe(compile(opts))
-		.pipe(rename({
-			prefix: 'template-'
-		}))
+		//.pipe(rename({
+		//	suffix: 'template'
+		//}))
 		.pipe(gulp.dest(config.general.dest.root));
 });
 

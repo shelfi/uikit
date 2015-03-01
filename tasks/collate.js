@@ -51,7 +51,7 @@ var env = new nunjucks.Environment({
 	autoescape: false
 });
 */
-var env = nunjucks.configure(sourceDir + 'views', {
+var env = nunjucks.configure(sourceDir + '/templates/sfshop', {
 	tags: {
 	variableStart: '<$',
 	variableEnd: '$>'
@@ -69,7 +69,6 @@ var parse = function (dir) {
 	if (!data[dir]) {
 		data[dir] = {};
 	}
-
 	// get directory/subdirectory contents with recursive method and filter result
 	var raw = wrench.readdirSyncRecursive(sourceDir + dir).filter(function (e, i, a){
 		var stats = fs.lstatSync(sourceDir + dir + '/' + e);
@@ -78,8 +77,7 @@ var parse = function (dir) {
 		return e.indexOf('.tmpl.') === -1;
 	}).filter(function (e, i, a){
 		return e.indexOf('-controller.') === -1;
-	})
-	.filter(junk.not);
+	}).filter(junk.not);
 
 	// create an array of file names
 	var fileNames = raw.map(function (e, i) {
@@ -98,15 +96,16 @@ var parse = function (dir) {
 		return a.indexOf(e) === i;
 	});
 
+
 	//register template partials so that templates can include them
 	//update: not needed since angular directives are used as partial templating
 	/*
 	var registerTemplatePartials = function () {
 		//define source directory
-		var partials = fs.readdirSync(sourceDir + 'templates/partials'),
+		var partials = fs.readdirSync(sourceDir + 'templates/'),
 			html;
 		for (var i = partials.length - 1; i >= 0; i--) {
-			html = fs.readFileSync(sourceDir + 'templates/partials/' + partials[i], 'utf-8');
+			html = fs.readFileSync(sourceDir + 'templates/' + partials[i], 'utf-8');
 			env.getTemplate(partials[i], html);
 		}
 	};
@@ -125,6 +124,7 @@ var parse = function (dir) {
 			var content = fs.readFileSync(sourceDir + dir + '/' + items[i].replace('/', '/demo/') + '.html', 'utf8').replace(/(\s*(\r?\n|\r))+$/, '');
 			var template = env.renderString(content);
 			item.content = beautifyHtml(template, beautifyOptions);
+			item.id = item.id.replace(/\/[^\/]+$/, '');
 			var $ = cheerio.load(item.content);
 			if ($('.container__item').html() !== null){
 				item.section = $('.container__item').map(function(i, el) {
@@ -139,7 +139,6 @@ var parse = function (dir) {
 		try{
 			//compile styles
 			var sassContent = fs.readFileSync(sourceDir + dir + '/' + items[i] + '.scss', 'utf8').replace(/(\s*(\r?\n|\r))+$/, '');
-			//var styles = Handlebars.compile(sassContent);
 			var styles = env.renderString(sassContent);
 			item.styles = beautifyCss(styles, beautifyOptions);
 		} catch (e) {}
@@ -165,12 +164,22 @@ var parse = function (dir) {
 			item.scripts = beautifyJs(scripts, beautifyOptions);
 		} catch (e) {}
 
+		try{
+			//compile scripts
+			var templateContent = fs.readFileSync(sourceDir + 'templates/' + items[i] + '.html', 'utf8').replace(/(\s*(\r?\n|\r))+$/, '');
+			var templateItems = env.renderString(templateContent);
+			item.content = beautifyHtml(templateItems, beautifyOptions);
+			//item.id = item.id.replace(/\/[^\/]+$/, '');
+		} catch (e) {}
+
+
 		try {
 			var notes = fs.readFileSync(sourceDir + dir + '/' + items[i] + '.md', 'utf8');
 			item.notes = markdown(notes);
 		} catch (e) {}
 		data[dir][item.id.replace(/-/g, '')] = item;
 		//registerTemplatePartials();
+
 	}
 };
 

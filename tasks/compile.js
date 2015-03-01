@@ -62,9 +62,18 @@ var assembleTemplates = function (file, enc, cb) {
 	// augment data object
 	//data.demo = false;
 	env.addGlobal('demo', false);
-
 	// use the filename as the key value lookup in the data.json object
-	var key = path.basename(file.path, '.html').replace(/-/g, '');
+	//path.basename(file.path, '.html').replace(/-/g, '')
+	var filePaths = file.path.substring(file.path.indexOf('templates') + 10).replace('.html', '').replace(/-/g, '');
+	var filterItems = [];
+	filterItems.push(filePaths);
+	var filterItems = filterItems.filter(function(e, i, a){
+		return e.indexOf('partials') === -1;
+	}).filter(function(n){ return n != undefined }).join();
+	
+	//console.log(filePaths);
+	
+	var key = ['BAREM/BAREMhome'];
 
 	// define comment blocks to wrap the template code
 	var comments = {
@@ -86,6 +95,7 @@ var assembleTemplates = function (file, enc, cb) {
 	// save as file buffer
 	file.contents = new Buffer(html);
 	this.push(file);
+
 	cb();
 
 };
