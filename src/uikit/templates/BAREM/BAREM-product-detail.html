@@ -5,6 +5,7 @@
 	<div class="main" role="main" layout="column" layout-fill>
 		<div ng-include="'templates/BAREM/partials/BAREM-toolbar-secondary.tmpl.html'"></div>
 			<md-content>
+			<sf-navbar ng-model="ctrl.nav.secondary"></sf-navbar>
 				<sf-breadcrumb ng-model="ctrl.nav"></sf-breadcrumb>
 				<div layout="row" class="sf-product-detail" itemscope itemtype="http://schema.org/Product">
 					<div layout-padding layout="column" class="row" flex="33">

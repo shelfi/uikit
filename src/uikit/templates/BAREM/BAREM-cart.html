@@ -4,6 +4,7 @@
 	<div class="main" role="main" layout="column" layout-fill>
 		<div ng-include="'templates/BAREM/partials/BAREM-toolbar-primary.tmpl.html'"></div>
 			<md-content>
+			<sf-navbar ng-model="ctrl.nav.secondary"></sf-navbar>
 				<div layout="column" class="sf-cart-container" layout-padding>
 					<div ng-controller="cartCtrl as cart">
 						<sf-cart ng-model="cart.order" columns="cart.columns" show-header="true" show-delete-button="true" show-standby-button="true" show-totals="true"></sf-cart>

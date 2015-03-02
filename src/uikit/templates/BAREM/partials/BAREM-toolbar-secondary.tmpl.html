@@ -1,10 +1,10 @@
 <md-toolbar layout-align="center">
 <div class="md-toolbar-tools">
-	<div flex="20" hide-gt-md>
+	<div flex="10" hide-gt-md>
 		<md-button ng-click="ctrl.toggleMainSidebar()" aria-label="Toggle Menu"><md-icon md-svg-icon="navigation:ic_menu_24px" alt="Help"></md-icon></md-button>
 	</div>
-	<div flex="20">
-		<span class="md-toolbar-tools"><img data-src="holder.js/100%x40/text:{{ctrl.brand}}" alt="Logo" /></span>
+	<div flex="15" show-gt-md hide>
+		<img data-src="holder.js/100%x40/text:{{ctrl.brand}}" alt="Logo" />
 	</div>
 	<div flex><sf-search ng-model="this.ctrl.search"></sf-search></div>
 	<div flex="15" layout="row" layout-align="end center">
