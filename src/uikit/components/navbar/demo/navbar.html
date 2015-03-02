@@ -1,1 +1,4 @@
-<sf-navbar ng-model="ctrl.items"></sf-navbar>
+<div ng-controller="NavbarCtrl as ctrl" layout="column">
+	<sf-navbar ng-model="ctrl.nav.primary"></sf-navbar>
+	<sf-navbar ng-model="ctrl.nav.secondary"></sf-navbar>
+</div>

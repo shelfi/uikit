@@ -11,8 +11,9 @@ function sfNavbarDirective(){
 			templateUrl: 'components/navbar/navbar.tmpl.html',
 			controller: function(){},
 			controllerAs: 'ctrl',
+			bindToController: true,
 			scope: {
-				items: '=ngModel'
+				item: '=ngModel'
 			}
 		};
 	}

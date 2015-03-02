@@ -1,4 +1,9 @@
-<ul>
-	<li ng-repeat="item in ctrl.item"><a href="{{item.link}}">{{item.title}}</a></li>
-</ul>
+<nav class="sf-navbar" role="navigation">
+	<ul layout layout-align="space-around" layout-fill>
+		<li ng-repeat="item in ctrl.item" flex><a href="{{item.link}}" class="sf-navbar_link">{{item.title}}</a>
+		<ul class="sf-navbar__submenu">
+			<li ng-repeat="subitem in item.submenu"><a href="{{subitem.link}}">{{subitem.title}}</a></li>
+		</ul>
+		</li>
+	</ul>
 </nav>
