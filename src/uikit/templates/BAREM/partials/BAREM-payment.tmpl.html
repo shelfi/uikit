@@ -1,4 +1,31 @@
-<div layout="column" class="sf-table">
+<h3>1) Ödeme Tutarı ve Metodu girin</h3>
+<div layout="row" layout-align="space-between" layout-padding>	
+	<div layout="column" flex="60">
+		<div>
+			<md-input-container>
+			<label for="amount">Tutar</label>
+			<input type="text" name="amount" id="amount">
+			</md-input-container>
+		</div>
+		<ul class="inline">
+			<li><md-button class="md-primary"><md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt"></md-icon> Normal</md-button></li>
+				<li><md-button class="md-primary"><md-icon md-svg-icon="action:ic_3d_rotation_24px" alt="Icon Alt"></md-icon> 3d Secure</md-button></li>
+				<li><md-button class="md-primary"><md-icon md-svg-icon="action:ic_loyalty_24px" alt="Icon Alt"></md-icon> Puan</md-button></li>
+		</ul>
+	</div>
+	<div>
+		<h5>Kredi Kartı Kampanyalarımız</h5>
+		<ul class="sf-payment__info">
+			<li><span>Halkbank</span>2 taksit 0 komisyon</li>
+			<li><span>BankAsya</span>3 taksit 0 komisyon</li>
+			<li><span>Maximum</span>3 taksit 0 komisyon</li>
+			<li><span>Vakifbank</span>2 taksit icin +3, 3 taksit icin +6 ek taksit</li>
+		</ul>
+	</div>
+</div>
+
+<div layout="column" class="sf-table" layout-padding>
+	<h3>2) Banka ve Taksit Seçin</h3>
 	<div layout="row" class="sf-table__header">
 		<div flex="20">Banka</div>
 		<div flex="20"><strong>Taksit Türü</strong></div>
@@ -8,7 +35,7 @@
 	</div>
 	<div layout="row">
 		<div flex="20">
-			<img data-src="holder.js/100%x320/text:Maximum" alt="Maximum Bank" hide-sm>
+			<img data-src="holder.js/100%x320/text:Maximum" alt="Maximum Bank">
 			<small>Maximum Bank</small>
 		</div>
 		<div layout="column" flex="80">
@@ -18,51 +45,59 @@
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(1);">
 					<div flex="25">3</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(2);">
 					<div flex="25">6</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(3);">
 					<div flex="25">9</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 			</div>
 			<div layout="column" flex layout-fill>
-				<span>Ticari Kart Oranlari</span>
+				<span class="title">Ticari Kart Oranlari</span class="title">
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(1);">
 					<div flex="25">Tek Cekim</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(1);">
 					<div flex="25">3</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(2);">
 					<div flex="25">3</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(2);">
 					<div flex="25">3</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 			</div>
 		</div>
@@ -80,51 +115,59 @@
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.ctrl.makePayment(1);">
 					<div flex="25">3</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(2);">
 					<div flex="25">6</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(3);">
 					<div flex="25">9</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 			</div>
 			<div layout="column" flex layout-fill>
-				<span>Ticari Kart Oranlari</span>
+				<span class="title">Ticari Kart Oranlari</span class="title">
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(1);">
 					<div flex="25">Tek Cekim</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(1);">
 					<div flex="25">3</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(2);">
 					<div flex="25">3</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 				<div layout="row" class="sf-table__row " ng-click="ctrl.makePayment(2);">
 					<div flex="25">3</div>
 					<div flex="25">%2</div>
 					<div flex="25">1650,00 TL</div>
 					<div flex="25">165,00 TL</div>
+					<div class="sf-pay-action">Seç ve ödeme yap</div>
 				</div>
 			</div>
 		</div>
@@ -134,38 +177,56 @@
 
 
 
+
 <script type="text/ng-template" id="payment.tmpl.html">
     <md-dialog aria-label="Odeme">
         <md-content>
-            <md-subheader class="md-sticky-no-effect">Kredi Kartı</md-subheader>
-            <md-input-container>
+            <md-subheader class="md-sticky-no-effect">Kredi Kartı Formu</md-subheader>
+            
             <ul class="sf-payment__info">
-            	<li>Banka: Vakifbank</li>
-            	<li>Odeme Tutar: 1.391,36</li>
-            	<li>Komiston Tutar: 36,68</li>
-            	<li>Çekilecek Toplam Tutar: 36,68</li>
-            	<li>Taksit Adet: 2</li>
-            	<li>Aylık Taksit Tutar: 713,22</li>
+            	<li><span>Banka</span>: Vakifbank</li>
+            	<li><span>Odeme Tutar</span>: 1.391,36</li>
+            	<li><span>Komisyon Tutar</span>: 36,68</li>
+            	<li><span>Çekilecek Toplam Tutar</span>: 36,68</li>
+            	<li><span>Taksit Adet</span>: 2</li>
+            	<li><span>Aylık Taksit Tutar</span>: 713,22</li>
             </ul>
 
-            <div layout="row">
-            <div flex="25">
+            <div layout="column">
+            <md-input-container flex="100">
+                  	<label>Kart Sahibinin Adı Soyadı</label>
+                  	<input ng-model="creditcart.name">
+			</md-input-container>
+            <md-input-container flex="100">
                   	<label>Kart Numarasi</label>
-                  	<input ng-model="user.creditcard">
-                  </div>
+                  	<input ng-model="creditcart.creditcard">
+			</md-input-container>
+
+			  <div layout="row">
+			  <md-input-container flex="80">
+			        	<label>Son kullanma tarihi</label>
+			        	<input ng-model="creditcart.expiration" type="date">
+			        	</md-input-container>
+			<md-input-container flex="20">
+			      	<label>CCV</label>
+			      	<input ng-model="creditcart.ccv">
+			 </md-input-container>
+			 </div>
+
+
+
             </div>
-            </md-input-container>
         </md-content>
         <div class="md-actions" layout="row">
             <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" hide show-md>
                 More on Wikipedia
             </md-button>
-            <span flex></span>
-            <md-button ng-click="answer('not useful')">
-                Not Useful
+            <span class="title" flex></span class="title">
+            <md-button ng-click="answer('Iptal')">
+                Iptal
             </md-button>
-            <md-button ng-click="answer('useful')" class="md-primary">
-                Useful
+            <md-button ng-click="answer('Odeme Yap')" class="md-primary md-raised">
+                Ödeme Yap
             </md-button>
         </div>
     </md-dialog>

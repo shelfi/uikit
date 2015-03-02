@@ -1,14 +1,26 @@
 .sf-table{margin:30px 0;
-	& span{background-color: #808080; color: #c0c0c0; padding:10px; font-size: .8em; font-weight: bold;}
+	& span.title{background-color: #808080; color: #c0c0c0; padding:10px; font-size: .8em; font-weight: bold;}
 }
-.sf-table__section{margin-top: 60px;}
-.sf-table__header{margin-bottom:8px; background-color: #a0a0a0; padding:8px; color:}
-.sf-table__row{cursor: pointer; padding:4px 0; height: 30px;
+.sf-table__section{margin-top: 60px; max-height: 320px;}
+.sf-table__header{margin-bottom:8px; background-color: #a0a0a0; padding:8px; font-size: .8em;}
+.sf-table__row{cursor: pointer; padding:4px 0; height: 30px; position: relative; font-size: .8em;
 	& > div{padding:0 8px;}
-	&:hover{ background-color: #d3d3d3;}
+	&:hover{ background-color: #d3d3d3;
+		& .sf-pay-action{display: block;}
+	}
 }
 
 .sf-payment__info{
 	padding:0;
 	& li{list-style: none;}
+}
+.sf-pay-action{position: absolute; right:4px; bottom:4px; background-color: #dedede; display: none;}
+
+.sf-payment__info{
+	& ul, &{padding-left: 0; background-color: #efefef; padding:10px; font-size: .9em;
+		& li{list-style: none; margin-bottom: 8px; border-bottom: 1px solid #dedede;
+			&:last-child{border-bottom: 0;}
+		}
+		& span{background-color: #efefef; padding:4px; width: 40%; display: inline-block; font-weight: bold;}
+	}
 }
