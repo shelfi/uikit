@@ -1,1 +1,53 @@
-productdetail.html
+<body ng-controller="BaremCtrl as ctrl" layout="column" md-theme="altTheme" md-theme-watch>
+<div ng-include="'templates/BAREM/partials/BAREM-topbar.tmpl.html'" ng-include-replace></div>
+<div class="sf-wrapper" layout="row">
+
+	<div class="main" role="main" layout="column" layout-fill>
+		<div ng-include="'templates/BAREM/partials/BAREM-toolbar-secondary.tmpl.html'"></div>
+			<md-content>
+				<sf-breadcrumb ng-model="ctrl.nav"></sf-breadcrumb>
+				<div layout="row" class="sf-product-detail" itemscope itemtype="http://schema.org/Product">
+					<div layout-padding layout="column" class="row" flex="33">
+						<div class="sf-product__image">
+							<img data-src="holder.js/100%x500" alt="">
+						</div>
+						<div class="sf_product__tags">
+							<span class="sf-tag">Samsung</span>
+							<span class="sf-tag">Monitor</span>
+						</div>
+					</div><!-- /sf-main-feature -->
+
+					<div layout-padding layout="column" class="row" flex="66" layout-align="space-around">
+						<div class="sf-product__info">
+							<h1>{{ctrl.products[0].name}}</h1>
+							<p itemprop="description">{{ctrl.products[0].desc}}</p>
+						</div>
+						<div class="sf-product__options">
+							<h4>Ürün Opsiyonları</h4>
+							<sf-product-options></sf-product-options>
+						</div>
+						<div class="sf-product__details">
+							<md-tabs md-selected="ctrl.selectedIndex">
+							   <md-tab ng-repeat="tab in ctrl.tabs" ng-disabled="tab.disabled" label="{{tab.title}}">
+									<div class="demo-tab tab{{$index%1}}" layout="column" layout-fill layout-align="space-around center">
+										<div ng-bind="tab.content" layout-padding></div>
+									</div>
+								</md-tab>
+							 </md-tabs>
+						</div>
+						<div class="sf-product__price" itemprop="offers">
+							<span>{{ctrl.products[0].price}} <small itemprop="priceCurrency">TL</small> </span>
+							<link itemprop="availability" href="http://schema.org/InStock">
+							<meta itemprop="priceCurrency" content="{{$root.global.currency.current}}">
+						</div>
+
+						<md-button class="md-raised md-primary">ADD TO CART</md-button>
+					</div><!-- /sf-main-feature -->
+				</div><!-- /sf-main-content -->
+				<div ng-include="'templates/BAREM/partials/BAREM-footer.tmpl.html'"></div>
+			</md-content>
+	</div><!-- /main -->
+	
+	<div ng-include="'templates/BAREM/partials/BAREM-minicart-sidenav.tmpl.html'"></div>
+	<div ng-include="'templates/BAREM/partials/BAREM-usermenu-sidenav.tmpl.html'"></div>
+</div><!-- /wrapper -->

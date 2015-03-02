@@ -1,1 +1,5 @@
-productFilter.tmpl.html
+<div ng-repeat="item in ctrl.filter">
+<md-checkbox ng-model="item.cb" aria-label="Checkbox 1">
+    <div ng-transclude></div>
+</md-checkbox>
+</div>

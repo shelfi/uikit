@@ -4,26 +4,11 @@ angular.module('uikit.components.filter', [])
   .directive('sfFilter', sfFilterDirective);
 
 
-function sfFilterDirective($mdTheming){
+function sfFilterDirective(){
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: getTemplate,
-		link: postLink,
-		controller: function(){},
-		controllerAs: 'ctrl',
-		bindToController: true,
-		scope: {
-			item: '=ngModel'
-		}
+		templateUrl: 'components/filter/filter.tmpl.html'
 	};
-
-	function postLink (scope, element){
-		$mdTheming(element);
-	}
-
-	function getTemplate (){
-		return '<div>this is filter</div>';
-	}
 }
 })();

@@ -243,7 +243,7 @@ gulp.task('assemble:templates', function () {
 		data: config.general.dest.demo + '/data/data.json',
 		template: true
 	};
-	return gulp.src(config.sourceDir + '/templates/**/*.html')
+	return gulp.src([config.sourceDir + '/templates/**/*.html', '!' + config.sourceDir + '/templates/*/partials/*.html', '!' + config.sourceDir + '/templates/*/styles/*.scss', '!' + config.sourceDir + '/templates/*/scripts/*.js'])
 		.pipe(compile(opts))
 		//.pipe(rename({
 		//	suffix: 'template'
@@ -263,10 +263,15 @@ gulp.task('assemble', ['collate'], function () {
 gulp.task('browser-sync', function () {
 	browserSync({
 		server: {
-			baseDir: config.general.dest.root
+			baseDir: config.general.dest.root,
+			routes: {
+			        "/BAREM": "dist",
+			        "/PO": "dist",
+			        "/SFSHOP": "dist",
+			}
 		},
 		notify: false,
-		logPrefix: 'FABRICATOR',
+		logPrefix: 'UIKIT',
 		port: 9000,
 		open:false
 	});
@@ -290,21 +295,20 @@ gulp.task('ngtemplatecache', function () {
 
 // watch
 gulp.task('watch', ['browser-sync'], function () {
-	gulp.watch([config.sourceDir + '/**/**/*.{html,md}', '!' + config.sourceDir + '/**/**/*.tmpl.html', '!' + config.sourceDir + '/templates/partials/*.html'], ['assemble', browserSync.reload]);
-	gulp.watch([config.sourceDir + '/**/**/*.tmpl.html'], ['ngtemplatecache', 'scripts:uikit', browserSync.reload]);
-	gulp.watch([config.sourceDir + '/templates/partials/*.html'], ['assemble', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/**/**/*.{html,md}', '!' + config.sourceDir + '/**/**/*.tmpl.html'], ['assemble', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/**/**/*.tmpl.html', config.sourceDir + '/templates/*/partials/*.tmpl.html'], ['ngtemplatecache', 'scripts:uikit', browserSync.reload]);
 	gulp.watch('src/demo/styles/**/*.scss', ['styles:demo']);
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.scss', ['styles', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.scss', ['styles:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/**/*.scss', ['styles:uikit', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/templates/**/*.scss', ['uikit:uikit', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/templates/**/styles/*.scss', ['styles:uikit', browserSync.reload]);
 	gulp.watch('src/demo/scripts/**/*.js', ['scripts:demo', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/uikit-core.js'], ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/scripts/**/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/*/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/**/*-controller.js', ['controllers', browserSync.reload]);
-	gulp.watch([config.sourceDir + '/templates/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/templates/**/scripts/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', browserSync.reload]);
 	gulp.watch(config.general.src.images, ['images', browserSync.reload]);
 });
 

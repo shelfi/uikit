@@ -1,0 +1,9 @@
+<md-sidenav class="md-sidenav-left sf-main-sidenav site-sidenav md-sidenav-left" md-is-locked-open="$media('gt-md')" md-component-id="main-sidenav">
+<md-toolbar class="sf-primary"><span class="md-toolbar-tools"><img data-src="holder.js/100%x40/text:{{ctrl.brand}}" alt="Logo" /></span></md-toolbar>
+	<md-content>
+		<div ng-repeat="item in ctrl.filter">
+			<h5>{{item[0].title}}</h5>
+			<sf-filter ng-model="item[1]">{{item[1].name}}</sf-filter>
+		</div>
+	</md-content>
+</md-sidenav>

@@ -85,4 +85,13 @@
   transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
 }
+
+.sf-menu__tree{margin-left: 30px; 
+     & li { margin-bottom: 10px; font-size: .9em;padding-right: 10px;
+        & a{text-decoration: none; color:#a0a0a0; display: block;
+          &:hover{color:#000000}
+        }
+        & md-icon{height: 18px; width: 18px; float: right;}
+     }
+}
 /* End Docs Menu */

@@ -55,6 +55,17 @@ var assembleFabricator = function (file, enc, cb) {
 	cb();
 };
 
+
+Array.prototype.clean = function(deleteValue) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {         
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+};
+
 /**
  * Assemble templates
  */
@@ -65,15 +76,8 @@ var assembleTemplates = function (file, enc, cb) {
 	// use the filename as the key value lookup in the data.json object
 	//path.basename(file.path, '.html').replace(/-/g, '')
 	var filePaths = file.path.substring(file.path.indexOf('templates') + 10).replace('.html', '').replace(/-/g, '');
-	var filterItems = [];
-	filterItems.push(filePaths);
-	var filterItems = filterItems.filter(function(e, i, a){
-		return e.indexOf('partials') === -1;
-	}).filter(function(n){ return n != undefined }).join();
-	
-	//console.log(filePaths);
-	
-	var key = ['BAREM/BAREMhome'];
+
+	var key = [filePaths];
 
 	// define comment blocks to wrap the template code
 	var comments = {

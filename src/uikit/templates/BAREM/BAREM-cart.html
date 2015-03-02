@@ -1,14 +1,15 @@
 <body ng-controller="BaremCtrl as ctrl" layout="column" md-theme="altTheme" md-theme-watch>
 <div ng-include="'templates/BAREM/partials/BAREM-topbar.tmpl.html'" ng-include-replace></div>
 <div class="sf-wrapper" layout="row">
-	<div ng-include="'templates/BAREM/partials/BAREM-sidenav-secondary.tmpl.html'" ng-include-replace></div>
-
 	<div class="main" role="main" layout="column" layout-fill>
 		<div ng-include="'templates/BAREM/partials/BAREM-toolbar-primary.tmpl.html'"></div>
 			<md-content>
-				<div layout="column" class="sf-main-content">
-					checkout shipment
-				</div><!-- /sf-main-content -->
+				<div layout="column" class="sf-cart-container" layout-padding>
+					<div ng-controller="cartCtrl as cart">
+						<sf-cart ng-model="cart.order" columns="cart.columns" show-header="true" show-delete-button="true" show-standby-button="true" show-totals="true"></sf-cart>
+					</div>
+					<md-button class="md-raised md-primary">CONTINUE CHECKOUT</md-button>
+				</div><!-- /sf-main -->
 				<div ng-include="'templates/BAREM/partials/BAREM-footer.tmpl.html'"></div>
 			</md-content>
 	</div><!-- /main -->
