@@ -2,7 +2,7 @@
 'use strict';
 angular.module('uikit').controller('BaremCtrl', BaremController);
 
-function BaremController($mdSidenav, $scope, $log){
+function BaremController($mdSidenav, $scope, $log, $mdDialog){
 	this.brand = 'BAREM B2B';
 	this.banner = false;
 	this.nav = {
@@ -114,6 +114,12 @@ function BaremController($mdSidenav, $scope, $log){
 	      this.tabs = tabs;
 	      this.selectedIndex = 2;
 
+	this.makePayment = function(ev) {
+        $mdDialog.show({
+        	templateUrl: 'payment.tmpl.html',
+        	targetEvent: ev
+        })
+    };
 
 }
 })();
