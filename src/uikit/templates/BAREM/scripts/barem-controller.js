@@ -50,6 +50,10 @@ function BaremController($mdSidenav, $scope, $log){
 	this.search = {
 		placeholder : 'Search by Name, Item#, Order#'
 	};
+	this.pages = [
+				{page: 1},
+				{page: 2},
+			];
 	this.lang = [
 		{title: 'ENG', value: 'ENG'},{title: 'TR', value: 'TR'},
 	];

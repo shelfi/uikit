@@ -1,11 +1,12 @@
-<div class="sf-productlist-control" layout="row" layout-align="center center">
-	<div flex="10">
+<div class="sf-productlist-control" layout="row" layout-align="center center" layout-wrap>
+	<div flex="10" flex-sm="50">
 		<md-button class="md-primary" aria-label="view list"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
 		<md-button class="md-primary" aria-label="view detailed list"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
 		<md-button class="md-primary" aria-label="view grid"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
 	</div>
-	<div flex><label for="sort">Sırala:</label>
+	<div flex flex-sm="50">
 		<select name="sort" id="sort">
+			<option value="">Sırala</option>
 			<option value="">Urun Kodu</option>
 			<option value="">Stok</option>
 			<option value="">Marka</option>
@@ -13,9 +14,17 @@
 			<option value="">Fiyat Artan</option>
 			<option value="">Puan</option>
 		</select>
+		<select name="itemperpage" id="itemperpage">
+			<option value="">12 Urun</option>
+			<option value="">24 Urun</option>
+			<option value="">48 Urun</option>
+		</select>
 	</div>
-	<div flex layout layout-align="end center">
+	<div flex flex-sm="50">
+	</div>
+	<div flex layout layout-align="end center" flex-sm="50">
 		<md-button class="md-primary" ng-show="listHasCheckbox">Karsilastir<md-icon md-svg-icon="action:ic_swap_vert_24px" alt="Icon Alt"></md-icon></md-button>
 		<md-button class="md-primary" ng-show="listHasCheckbox">Sepete EKle<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt"></md-icon></md-button>
 	</div>
+	<sf-pagination ng-model="ctrl.pages" layout layout-align="center end" layout-align-sm="end start" flex flex-sm="100"></sf-pagination>
 </div>

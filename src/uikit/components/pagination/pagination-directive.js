@@ -8,22 +8,13 @@ function sfPaginationDirective($mdTheming){
 	return {
 		restrict: 'E',
 		transclude: true,
-		template: getTemplate,
+		templateUrl: 'components/pagination/pagination.tmpl.html',
 		controller: function(){},
 		controllerAs: 'ctrl',
 		bindToController: true,
-		link: postLink,
 		scope: {
-			item: '=ngModel'
+			pages: '=ngModel'
 		}
 	};
-
-	function postLink (scope, element){
-		$mdTheming(element);
-	}
-
-	function getTemplate (){
-		return '<div>this is pagination</div>';
-	}
 }
 })();
