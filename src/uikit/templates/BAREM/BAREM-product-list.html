@@ -2,7 +2,6 @@
 <div ng-include="'templates/BAREM/partials/BAREM-topbar.tmpl.html'" ng-include-replace></div>
 <div class="sf-wrapper" layout="row">
 	<div ng-include="'templates/BAREM/partials/BAREM-sidenav-filter.tmpl.html'" ng-include-replace></div>
-
 	<div class="main" role="main" layout="column" layout-fill>
 		<div ng-include="'templates/BAREM/partials/BAREM-toolbar-primary.tmpl.html'"></div>
 			<md-content>
@@ -11,6 +10,7 @@
 					<div layout-padding layout="row" layout-wrap class="row">
 						<h5 flex="100">SAMSUNG</h5>
 						<div ng-controller="productListCtrl as productList">
+							<div ng-include="'templates/BAREM/partials/BAREM-productlist-control.tmpl.html'"></div>	
 							<sf-product-list ng-model="ctrl.products" layout="row" layout-wrap row-items="4"></sf-product-list>
 						</div>
 					</div><!-- /sf-main-feature -->
