@@ -7,22 +7,41 @@
 		</md-button>
     </li>
     <ul class="sf-menu__tree">
-      <li><a href="#">AKSESUAR<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">AĞ(NET)ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">BASKI ÇÖZÜMLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">BİLGİSAYAR BİLEŞENLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">CANON ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">DİZÜSTÜ ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">EV ELEKTRONİĞİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">EVRAK İMHA MAKİNELERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">FOTOĞRAF MAKİNELERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">GSM ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">GÜVENLİK ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">KABLO/ADAPTÖR<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">LED AYDINLATMA ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">TABLET PC<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">TÜKETİM ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
-      <li><a href="#">YAZILIM ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
+      <li>
+        <a href="#">AKSESUAR<md-icon md-svg-icon="navigation:ic_expand_more_24px" alt="Icon Alt"></md-icon></a>
+        <ul class="sf-menu__subtree">
+          <li>
+              <a href="/link">Notebook</a>
+              <a href="#" ng-click="ctrl.expanditem != ctrl.expanditem"><md-icon md-svg-icon="navigation:ic_expand_more_24px" alt="Icon Alt"></md-icon></a>
+              <ul>
+                <li><a href="/link">Notebook ve Diger Aks</a><a href="#" ng-click="ctrl.expanditem != ctrl.expanditem"><md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
+                <li><a href="/link">Notbook Çanta</a><a href="/link"><md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
+              </ul>
+          </li>
+          <li>
+              <a href="#">Submenu Title</a>
+              <ul>
+                <li><a href="/link">Notebook ve Diger Aks</a><a href="/link"><md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
+                <li><a href="/link">Notebook ve Diger Aks</a><a href="/link"><md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a></li>
+              </ul>
+          </li>
+          </ul>
+      </li>
+      <li><a href="#">AĞ(NET)ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">BASKI ÇÖZÜMLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">BİLGİSAYAR BİLEŞENLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">CANON ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">DİZÜSTÜ ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">EV ELEKTRONİĞİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">EVRAK İMHA MAKİNELERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">FOTOĞRAF MAKİNELERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">GSM ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">GÜVENLİK ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">KABLO/ADAPTÖR<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">LED AYDINLATMA ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">TABLET PC<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">TÜKETİM ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
+      <li><a href="#">YAZILIM ÜRÜNLERİ<md-icon md-svg-icon="navigation:ic_expand_less_24px" alt="Icon Alt"></md-icon></a></li>
     </ul>
 </ul>
 

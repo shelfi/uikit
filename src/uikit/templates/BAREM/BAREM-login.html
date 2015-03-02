@@ -1,0 +1,55 @@
+<body ng-controller="BaremCtrl as ctrl" layout="column" md-theme="altTheme" md-theme-watch>
+<div layout-align="center center" class="sf-login">
+	<md-content class="md-whiteframe-z1">
+		<img data-src="holder.js/100%x60/text:BAREM B2B" alt="Barem">
+		<div layout-padding>
+			<md-input-container>
+				<label for="username">Kullanıcı Adı</label>
+				<input type="text">
+			</md-input-container>
+			<md-input-container>
+				<label for="username">Şifre</label>
+				<input type="text">
+			</md-input-container>
+			<div layout="column">
+				<md-button class="md-raised md-primary" flex="100">Tamam</md-button>
+				<md-checkbox> Beni Hatırla</md-checkbox>
+			</div>
+		</div>
+		<md-button class="md-primary">Sifremi unuttum</md-button>
+	</md-content>
+	<ul class="inline">
+		<li>
+			<md-button class="md-primary" flex="100">Bayii Bilgi Formu</md-button>
+		</li>
+		<li>
+			<md-button class="md-primary" flex="100">Baremnet Sözleşmesi</md-button>
+		</li>
+		<li>
+			<md-button class="md-primary" flex="100">İletişim</md-button>
+		</li>
+	</ul>
+</div>
+
+
+<script type="text/ng-template" id="resetpassword.tmpl.html">
+    <md-dialog aria-label="Odeme">
+    <md-content>
+    <md-input-container>
+    	<label for="resetemail">E-posta adresi</label>
+    	<input type="text" name="resetemail">
+    </md-input-container>
+    <md-button class="md-raised md-primary">Sıfırla</md-button>
+    </md-content>
+
+    <div class="md-actions" layout="row">
+        <md-button ng-click="answer('Iptal')">
+            Iptal
+        </md-button>
+        <md-button ng-click="answer('Sifirla')" class="md-primary md-raised">
+            Ödeme Yap
+        </md-button>
+    </div>
+</script>
+
+</body>
