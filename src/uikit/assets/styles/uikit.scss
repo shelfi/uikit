@@ -1,5 +1,21 @@
 // injector
 
+@import '../../assets/styles/collections/footer.scss';
+
+@import '../../assets/styles/collections/home.scss';
+
+@import '../../assets/styles/collections/promo.scss';
+
+@import '../../assets/styles/collections/topbar.scss';
+
+@import '../../assets/styles/core/_base.scss';
+
+@import '../../assets/styles/core/_global.scss';
+
+@import '../../assets/styles/core/_layout.scss';
+
+@import '../../assets/styles/core/_variables.scss';
+
 @import '../../components/breadcrumb/breadcrumb.scss';
 
 @import '../../components/cart/cart.scss';
@@ -17,3 +33,7 @@
 @import '../../components/userInfo/userInfo.scss';
 
 // endinjector
+
+
+
+.hide { display: none !important; }

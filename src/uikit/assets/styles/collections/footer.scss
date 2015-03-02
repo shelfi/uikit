@@ -1,0 +1,10 @@
+.sf-footer{margin-top: 160px; overflow: hidden; border-top: 4px solid #efefef; padding-top: 60px;}
+.sf-footer__menu{margin-left: 5px; padding-left: 0;}
+.sf-footer__col{
+	& li{list-style: none; margin-left: 5px;}
+	& li a{text-decoration: none; color:#c0c0c0;
+		&:hover{color:#0a0a0a;}
+	}
+	span{display: block; width: 100%;}
+}
+.sf-footer__menu-title{margin-left: 10px;}
