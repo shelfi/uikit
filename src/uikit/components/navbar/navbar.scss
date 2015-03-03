@@ -1,10 +1,10 @@
-.sf-navbar{background-color: #ededed; margin:4px 0;
+.sf-navbar{background-color: #ededed; margin:4px 0; margin-bottom: 60px;
 	ul{padding: 0px 0px;
 		 & li{text-align: center; list-style: none; position: relative;
 		 	&:hover{background-color:#ccc; 
 				.sf-navbar__submenu{left:0;}				
 		 		}
-				& a{text-decoration: none; display: block; height: 100%;padding:18px;
+				& a{text-decoration: none; display: block; height: 100%;padding:12px;
 				}
 			}
 	}

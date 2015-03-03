@@ -1,31 +1,27 @@
-<body ng-controller="BaremCtrl as ctrl" layout="column" md-theme="altTheme" md-theme-watch>
-<div ng-include="'templates/BAREM/partials/BAREM-topbar.tmpl.html'" ng-include-replace></div>
+<body ng-controller="PrintonlineCtrl as ctrl" layout="column">
+<div ng-include="'templates/PO/partials/PO-topbar.tmpl.html'" ng-include-replace></div>
 <div class="sf-wrapper" layout="row">
 
 	<div class="main" role="main" layout="column" layout-fill>
-		<div ng-include="'templates/BAREM/partials/BAREM-toolbar-secondary.tmpl.html'"></div>
+		<div ng-include="'templates/PO/partials/PO-toolbar-secondary.tmpl.html'"></div>
 			<md-content>
 			<sf-navbar ng-model="ctrl.nav.secondary"></sf-navbar>
 				<sf-breadcrumb ng-model="ctrl.nav"></sf-breadcrumb>
-				<div layout="row" class="sf-product-detail" itemscope itemtype="http://schema.org/Product">
-					<div layout-padding layout="column" class="row" flex="33">
+				<div layout="row" layout-sm="column" class="sf-product-detail" itemscope itemtype="http://schema.org/Product" layout-padding>
+					<div layout-padding layout="column" class="row" flex="33" flex-sm="100">
 						<div class="sf-product__image">
 							<img data-src="holder.js/100%x500" alt="">
+							<md-button class="md-fab md-primary">
+							<md-icon md-svg-icon="action:ic_visibility_24px" alt="Icon Alt"></md-icon>
+							<md-tooltip md-direction="left">Provayı Görüntüle</md-tooltip>
+							</md-button>
 						</div>
-						<div class="sf_product__tags">
-							<span class="sf-tag">Samsung</span>
-							<span class="sf-tag">Monitor</span>
-						</div>
-					</div><!-- /sf-main-feature -->
-
-					<div layout-padding layout="column" class="row" flex="66" layout-align="space-around">
-						<div class="sf-product__info">
-							<h1>{{ctrl.products[0].name}}</h1>
-							<p itemprop="description">{{ctrl.products[0].desc}}</p>
-						</div>
-						<div class="sf-product__options">
-							<h4>Ürün Opsiyonları</h4>
-							<sf-product-options></sf-product-options>
+						<div class="sf-product__image-gallery">
+							<div layout="row" layout-align="start end">
+								<img data-src="holder.js/80x80" alt="">
+								<img data-src="holder.js/80x80" alt="">
+								<img data-src="holder.js/80x80" alt="">
+							</div>
 						</div>
 						<div class="sf-product__details">
 							<md-tabs md-selected="ctrl.selectedIndex">
@@ -36,19 +32,114 @@
 								</md-tab>
 							 </md-tabs>
 						</div>
+					</div><!-- /sf-main-feature -->
+
+					<div layout-padding layout="column" class="row" flex="66" flex-sm="100" layout-align="space-around">
+						<div class="sf-product__info">
+							<h1>{{ctrl.products[0].name}}</h1>
+						</div>
+						<div class="sf-product__options">
+							<h4 ng-click="ctrl.productdetail.info1  = !ctrl.productdetail.info1">1) Bilgileri kayıtlı veri listenizden yükleyin
+							<md-icon md-svg-icon="navigation:ic_expand_more_24px" alt="Icon Alt" ng-show="ctrl.productdetail.info1"></md-icon>
+								<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt" ng-show="!ctrl.productdetail.info1"></md-icon>
+							</h4>
+							<div layout="row" ng-show="ctrl.productdetail.info1">
+								<select name="" id="" flex="80">
+									<option value="">Istanbul Sube IK Departman Eleman Listesi</option>
+									<option value="">Ankara Sube Eleman Listesi</option>
+								</select>
+								<md-button class="md-raised md-primary" flex="20">Yükle</md-button>
+							</div>
+						</div>
+						<div class="sf-product__options">
+							<h4 ng-click="ctrl.productdetail.info2  = !ctrl.productdetail.info2">2) Bilgileri el ile girin
+							<md-icon md-svg-icon="navigation:ic_expand_more_24px" alt="Icon Alt" ng-show="ctrl.productdetail.info2"></md-icon>
+								<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt" ng-show="!ctrl.productdetail.info2"></md-icon>
+								</h4>
+							<div layout="row" ng-show="ctrl.productdetail.info2">
+								<div flex="100" layout="column">
+									<md-content>
+									<md-input-container flex>
+									<label for="name">Ad:</label>
+									<input type="text" name="name">
+									</md-input-container>
+									<md-input-container flex>
+									<label for="name">Soyad:</label>
+									<input type="text" name="name">
+									</md-input-container>
+									<md-input-container flex>
+									<label for="name">Unvan:</label>
+									<input type="text" name="name">
+									</md-input-container>
+									<md-input-container flex>
+									<label for="name">Telefon:</label>
+									<input type="text" name="name">
+									</md-input-container>
+									<md-button class="md-raised md-primary" flex="100">Yükle</md-button>
+								</md-content>
+								</div>
+							</div>
+						</div>
+						<div class="sf-product__options">
+							<h4 ng-click="ctrl.productdetail.info3  = !ctrl.productdetail.info3">
+								3) Dinamik bilgileri bir dosyadan yükleyin 
+								<md-icon md-svg-icon="navigation:ic_expand_more_24px" alt="Icon Alt" ng-show="ctrl.productdetail.info3"></md-icon>
+								<md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt" ng-show="!ctrl.productdetail.info3"></md-icon>
+								</h4>
+							<div layout="column" ng-show="ctrl.productdetail.info3">
+								<p>
+									<small>Ürün bilgilerni toplu olarak excel dosyasından yüklemek için tıklayın </small>
+								</p>
+								<md-button class="md-raised md-primary">Veri dosyası yüklemek için tıklayın <md-icon md-svg-icon="action:ic_description_24px" alt="Icon Alt"></md-icon></md-button>
+							</div>
+						</div>
 						<div class="sf-product__price" itemprop="offers">
-							<span>{{ctrl.products[0].price}} <small itemprop="priceCurrency">TL</small> </span>
+							<ul>
+								<li>
+									<md-input-container>
+									<label for="promotion">Promosyon Kodu</label>
+									<input type="promotion" name="promotion">
+									</md-input-container>
+									<md-tooltip md-direction="left">Promosyon kodu ile ilgili tooltip</md-tooltip>
+								</li>
+								<li>
+
+									<md-input-container>
+									<label for="promotion">PO Numarasi</label>
+									<input type="promotion" name="promotion">
+									</md-input-container>
+									<md-tooltip md-direction="left">Gerekli purchase Order numarasi</md-tooltip>
+								</li>
+								<li>
+									<md-input-container>
+									<label for="promotion">Baskı Adedı</label>
+									<input type="promotion" name="promotion">
+									</md-input-container>
+									<md-tooltip md-direction="left">Basılmasını ıstedıgınız adet</md-tooltip>
+								</li>
+								<li>
+								<md-input-container flex>
+								        <label>Üretim Notu</label>
+								        <textarea ng-model="order.note" columns="1" md-maxlength="150"></textarea>
+								      </md-input-container>
+								      <md-tooltip md-direction="left">Varsa üretim ile ilgili notunuzu yazın</md-tooltip>
+								</li>
+							</ul>
+							<span><strong>Toplam fiyat: {{ctrl.products[0].price}}</strong> <small itemprop="priceCurrency">TL</small> </span>
 							<link itemprop="availability" href="http://schema.org/InStock">
 							<meta itemprop="priceCurrency" content="{{$root.global.currency.current}}">
 						</div>
-
-						<md-button class="md-raised md-primary">ADD TO CART</md-button>
+						<div class="sf-product__action" layout="column">
+							<md-checkbox>Provayı onaylıyorum</md-checkbox>
+							<md-button class="md-raised md-primary" flex="100" ng-href="PO-cart.html">SEPETE EKLE <md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt"></md-icon></md-button>
+						</div>
 					</div><!-- /sf-main-feature -->
 				</div><!-- /sf-main-content -->
-				<div ng-include="'templates/BAREM/partials/BAREM-footer.tmpl.html'"></div>
+				<div ng-include="'templates/PO/partials/PO-footer.tmpl.html'"></div>
 			</md-content>
 	</div><!-- /main -->
 	
-	<div ng-include="'templates/BAREM/partials/BAREM-minicart-sidenav.tmpl.html'"></div>
-	<div ng-include="'templates/BAREM/partials/BAREM-usermenu-sidenav.tmpl.html'"></div>
+	<div ng-include="'templates/PO/partials/PO-minicart-sidenav.tmpl.html'"></div>
+	<div ng-include="'templates/PO/partials/PO-usermenu-sidenav.tmpl.html'"></div>
 </div><!-- /wrapper -->
+

@@ -1,19 +1,36 @@
-<body ng-controller="BaremCtrl as ctrl" layout="column" md-theme="altTheme" md-theme-watch>
-<div ng-include="'templates/BAREM/partials/BAREM-topbar.tmpl.html'" ng-include-replace></div>
+<body ng-controller="PrintonlineCtrl as ctrl" layout="column">
+<div ng-include="'templates/PO/partials/PO-topbar.tmpl.html'" ng-include-replace></div>
 <div class="sf-wrapper" layout="row">
-	<div ng-include="'templates/BAREM/partials/BAREM-sidenav-secondary.tmpl.html'" ng-include-replace></div>
-
 	<div class="main" role="main" layout="column" layout-fill>
-		<div ng-include="'templates/BAREM/partials/BAREM-toolbar-primary.tmpl.html'"></div>
+		<div ng-include="'templates/PO/partials/PO-toolbar-primary.tmpl.html'"></div>
 			<md-content>
 			<sf-navbar ng-model="ctrl.nav.secondary"></sf-navbar>
-				<div layout="column" class="sf-main-content">
-					checkout shipment
-				</div><!-- /sf-main-content -->
-				<div ng-include="'templates/BAREM/partials/BAREM-footer.tmpl.html'"></div>
+				<div layout="column" class="sf-cart-container">
+					<div layout-padding layout-sm="column" layout="row">
+						<div flex="55">
+							<h4>Adres Bilgileri</h4>
+							<md-radio-group ng-model="data.group1">
+							      <md-radio-button value="Apple">Siparisimi tek adrese gonderecegim</md-radio-button>
+							      <md-radio-button value="Banana">Siparisimi birden fazla adrese gonderecegim</md-radio-button>
+							    </md-radio-group>
+							    <div>
+							    	<h4>Teslimat Adres</h4>
+							    </div>
+
+							    <div>
+							    	<h4>Fatura Adres</h4>
+							    </div>
+						</div>
+						<div ng-controller="cartCtrl as cart"  flex="45">
+							<sf-cart ng-model="cart.order" columns="cart.columns" show-header="true" show-delete-button="true" show-standby-button="true" show-totals="true"></sf-cart>
+						</div>
+					</div>
+					<md-button class="md-raised md-primary" ng-href="PO-checkout-payment.html">SIPARISI TAMAMLA</md-button>
+				</div><!-- /sf-main -->
+				<div ng-include="'templates/PO/partials/PO-footer.tmpl.html'"></div>
 			</md-content>
 	</div><!-- /main -->
 	
-	<div ng-include="'templates/BAREM/partials/BAREM-minicart-sidenav.tmpl.html'"></div>
-	<div ng-include="'templates/BAREM/partials/BAREM-usermenu-sidenav.tmpl.html'"></div>
+	<div ng-include="'templates/PO/partials/PO-minicart-sidenav.tmpl.html'"></div>
+	<div ng-include="'templates/PO/partials/PO-usermenu-sidenav.tmpl.html'"></div>
 </div><!-- /wrapper -->

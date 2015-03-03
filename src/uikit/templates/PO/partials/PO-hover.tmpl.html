@@ -1,0 +1,60 @@
+<md-dialog aria-label="Product Name">
+<md-content class="sf-product__hover">
+<md-subheader class="md-sticky-no-effect">A6 Standart Kartvizit</md-subheader>
+		<div layout="row" layout-sm="column" class="sf-product-detail" itemscope itemtype="http://schema.org/Product" layout-padding>
+			<div layout-padding layout="column" flex="40">
+				<div class="sf-product__image">
+					<h6>{{ctrl.products[0].name}}</h6>
+					<img src="http://placehold.it/280x280" alt="image">
+					<md-button class="md-fab md-primary">
+					<md-icon md-svg-icon="action:ic_visibility_24px" alt="Icon Alt"></md-icon>
+					<md-tooltip md-direction="left">Provayı Görüntüle</md-tooltip>
+					</md-button>
+				</div>
+				<div layout="row">
+					<md-input-container flex>
+					<label for="po">PO No:</label>
+					<input type="text" name="po">
+					</md-input-container flex>
+					<md-input-container>
+					<label for="po">Baskı Adet:</label>
+					<input type="text" name="po">
+					</md-input-container>
+				</div>
+			</div><!-- /sf-main-feature -->
+			<div layout-padding layout="column" flex="60">
+				<div class="sf-product__details">
+					<h5>Özellikler</h5>
+					<ul>
+						<li><strong>Tür</strong>: Poster</li>
+						<li><strong>Ölçüler</strong>: Poster</li>
+						<li><strong>Tanım:</strong> Standart A6 Kartvızıt</li>
+						<li><strong>Teslim Süresi:</strong> 3 Gün</li>
+					</ul>
+					<h5>Fiyatlandırma</h5>
+					<ul>
+						<li><strong>1-50:</strong> 0,50TL / Adet</li>
+						<li><strong>50-250:</strong> 0,40TL / Adet</li>
+						<li><strong>250-550:</strong> 0,30TL / Adet</li>
+						<li><strong>500-1000:</strong> 0,20TL / Adet</li>
+					</ul>
+					<div>
+						<small>Not:Bu ürünü acil olarak sipariş verebilirsiniz. Acil olarak verilen siparişler ek ücrete tabidir. Aşağıdaki kutuyu işaretlemeniz durumunda siparişiniz aynı gün içerisinde gönderilir.</small>
+						<md-checkbox>Bu ürün acil </md-checkbox>
+						<md-tooltip md-direction="left">Aynı gün içerisinde almak için tıkla</md-tooltip>
+					</div>
+				</div>
+			</div><!-- /info -->
+		</div><!-- /sf-detail -->
+		<div layout="row" layout-sm="column" layout-md="column">
+			<div class="sf-product__price" itemprop="offers" flex="33" flex-sm="100">
+				<span><strong>Toplam fiyat: 25</strong> <small itemprop="priceCurrency">TL</small> </span>
+				<link itemprop="availability" href="http://schema.org/InStock">
+				<meta itemprop="priceCurrency" content="{{$root.global.currency.current}}">
+			</div>
+			<div class="sf-product__action" flex="66" flex-sm="100">
+				<md-button class="md-raised md-primary">SEPETE EKLE <md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt"></md-icon></md-button>
+			</div>
+		</div>
+	</md-content>
+</md-dialog>

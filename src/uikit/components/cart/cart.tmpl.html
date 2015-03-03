@@ -13,13 +13,13 @@
 
       <md-item class="bold" ng-show="ctrl.showHeader === 'true'">
         <md-item-content layout="row">
-          <div ng-repeat="column in ctrl.columns" flex="{{column.width}}">{{column.name}}</div>
+          <div ng-repeat="column in ctrl.columns" flex="{{column.width}}" flex-sm="30">{{column.name}}</div>
         </md-item-content>
       </md-item>
 
       <md-item ng-repeat="item in ctrl.items">
         <md-item-content layout="row">
-          <div ng-repeat="column in ctrl.columns" flex="{{column.width}}" sf-template="column.template" ng-model="item">{{item[column.name]}}</div>
+          <div ng-repeat="column in ctrl.columns" flex="{{column.width}}" flex-sm="30" sf-template="column.template" ng-model="item">{{item[column.name]}}</div>
         </md-item-content>
       </md-item>
 
@@ -32,11 +32,16 @@
 
 
     <hr>
+    <!--
     <md-select ng-model="item.quantity" placeholder="Select quantity">
       <md-option ng-repeat="opt in [100, 200, 500, 1000, 5000]" ng-value="opt">{{ opt }}</md-option>
       </md-select>
+    -->
     <!--<md-button class="md-raised md-primary">GO TO CART</md-button>-->
-
+  <div layout="column" layout-align="start start">
+    <md-button class="md-primary">SEPETI KAYDET <md-icon md-svg-icon="action:ic_bookmark_24px" alt="Icon Alt"></md-icon></md-button>
+    <md-button class="md-primary">SEPETI TEKLIF OLARAK GONDER <md-icon md-svg-icon="action:ic_open_in_new_24px" alt="Icon Alt"></md-icon></md-button>
+  </div>
   </div>
 
 

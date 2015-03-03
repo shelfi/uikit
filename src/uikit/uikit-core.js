@@ -60,6 +60,9 @@ function SfCoreConfigure($mdThemingProvider, $mdIconProvider) {
   $mdThemingProvider.theme('altTheme')
     .primaryPalette('purple') // specify primary color, all other color intentions will be inherited from default
     .accentPalette('orange');
+  $mdThemingProvider.theme('docs-dark', 'default')
+    .primaryPalette('orange')
+    .dark();
   $mdIconProvider
     .iconSet('action', './uikit/images/icons/svg-sprite-action.svg', 24)
     .iconSet('navigation', './uikit/images/icons/svg-sprite-navigation.svg', 24)
