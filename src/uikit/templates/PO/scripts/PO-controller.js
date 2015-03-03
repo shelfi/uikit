@@ -1,50 +1,19 @@
 (function(){
 'use strict';
-angular.module('uikit').controller('BaremCtrl', BaremController);
+angular.module('uikit').controller('PrintonlineCtrl', PrintonlineController);
 
-function BaremController($mdSidenav, $scope, $log, $mdDialog){
-	this.brand = 'BAREM B2B';
+function PrintonlineController($mdSidenav, $scope, $log, $mdDialog){
+	this.brand = 'PRINTONLINE | 3M';
 	this.banner = false;
 	this.nav = {
 		primary: [{title: "TÜM KATEGORİLER", type: "link", link: "/"}],
 		secondary: [
-		{title: 'BAREM', link: '#', submenu: [{title: 'BAREMsub1', link: 'blabla'},{title: 'BAREMsub2', link: 'blabla'},{title: 'BAREMsub3', link: 'ana '}]},
-		{title: 'HESABIM', link: '#', submenu: [{title: 'HESABIMsub1', link: 'blabla'},{title: 'HESABIMsub2', link: 'blabal'},{title: 'HESABIMsub3', link: 'balba'}]},
-		{title: 'KAMPANYALAR', link: '#', submenu: [{title: 'KAMPANYALARsub1', link: 'blabla'},{title: 'KAMPANYALARsub2', link: 'blabal'},{title: 'KAMPANYALARsub3', link: 'nalnalan'}]},
-		{title: 'DESTEK', link: '#', submenu: [{title: 'DESTEKsub1', link: 'blabla'},{title: 'DESTEKsub2', link: 'blabal'},{title: 'DESTEKsub3', link: 'nalnalan'}]}
+		{title: 'GİRİŞ', link: '#', submenu: [{title: 'POsub1', link: 'blabla'},{title: 'POsub2', link: 'blabla'},{title: 'POsub3', link: 'ana '}]},
+		{title: 'ÜRÜNLER', link: '#', submenu: [{title: 'HESABIMsub1', link: 'blabla'},{title: 'HESABIMsub2', link: 'blabal'},{title: 'HESABIMsub3', link: 'balba'}]},
+		{title: 'HESABIM', link: '#', submenu: [{title: 'KAMPANYALARsub1', link: 'blabla'},{title: 'KAMPANYALARsub2', link: 'blabal'},{title: 'KAMPANYALARsub3', link: 'nalnalan'}]},
+		{title: 'SİPARİŞ GEÇMİŞİM', link: '#', submenu: [{title: 'DESTEKsub1', link: 'blabla'},{title: 'DESTEKsub2', link: 'blabal'},{title: 'DESTEKsub3', link: 'nalnalan'}]}
 		]
 	};
-	this.menu = {
-			root: [
-			{title: 'AKSESUAR', link: '#', 
-			submenu: [{title: 'Notebook', link: '/notebook', 
-					subsubmenu: [
-						{title: 'Notebook ve Diger Aks', link: '/genel'},
-						{title: 'Notebook Çanta', link: '/ankara'},
-						{title: 'Notebook Pil', link: '/adana '}
-					]},
-					{title: 'Ipad', link: '/etiket', 
-						subsubmenu: [
-							{title: 'Ipad Kılıf', link: '/ipadkilif'},
-							{title: 'Ipad Another', link: '/ipadanother'}
-					]}
-				]},
-				{title: 'AĞ(NET)ÜRÜNLERİ', link: '/link'},
-				{title: 'BASKI ÇÖZÜMLERİ', link: '/link'},
-				{title: 'BİLGİSAYAR BİLEŞENLERİ', link: '/link'},
-				{title: 'CANON ÜRÜNLERİ', link: '/link'},
-				{title: 'EV ELEKTRONİĞİ', link: '/link'},
-				{title: 'EVRAK İMHA MAKİNELERİ', link: '/link'},
-				{title: 'FOTOĞRAF MAKİNELERİ', link: '/link'},
-				{title: 'GSM ÜRÜNLERİ', link: '/link'},
-				{title: 'KABLO/ADAPTÖR', link: '/link'},
-				{title: 'GÜVENLİK ÜRÜNLERİ', link: '/link'},
-				{title: 'TABLET PC', link: '/link'},
-				{title: 'TÜKETİM ÜRÜNLERİ', link: '/link'},
-				{title: 'YAZILIM ÜRÜNLERİ', link: '/link'}
-			]
-		};
-
 	this.user = {
 		name: 'Ahmet Okan',
 		image: 'holder.js/250x125',

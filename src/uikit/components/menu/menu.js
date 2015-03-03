@@ -4,22 +4,17 @@ angular.module('uikit.components.menu', [])
   .directive('sfMenu', sfMenuDirective);
 
 
-function sfMenuDirective($mdTheming){
+function sfMenuDirective(){
 	return {
 		restrict: 'E',
 		transclude: true,
 		templateUrl: 'components/menu/menu.tmpl.html',
-		link: postLink,
 		controller: function(){},
 		controllerAs: 'ctrl',
 		bindToController: true,
 		scope: {
-			menu: '=ngModel',
+			item: '=ngModel',
 		}
 	};
-
-	function postLink (scope, element){
-		$mdTheming(element);
-	}
 }
 })();

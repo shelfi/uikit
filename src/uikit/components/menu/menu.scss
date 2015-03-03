@@ -9,6 +9,9 @@
 }
 .sf-menu > li {
   border-top: 1px solid rgba(0, 0, 0, 0.12);
+  & > button {padding-right: 0;
+    & > a > md-icon{display: block; float: right; color: #333333; display: inline;}
+  }
 }
 .sf-menu .md-button {
   border-radius: 0;
