@@ -12,7 +12,8 @@
 				scope: {
 					items: '=ngModel',
 					layout: '@',
-					rowItems: '@'
+					rowItems: '@',
+					selectable: '@'
 				},
 				bindToController: true,
 				controller: function () {

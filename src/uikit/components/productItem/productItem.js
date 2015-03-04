@@ -7,10 +7,12 @@
 		.directive('sfProductItem', function ($mdTheming) {
 			return {
 				restrict: 'E',
+				require: "^?sfProductList",
 				templateUrl: 'components/productItem/productItem.tmpl.html',
 				//link: link,
 				scope: {
 					item: '=ngModel',
+					selectable: '@',
 					//showAddToCartButton: '@',
 					//showPrice: '@',
 					//showImage: '@',
@@ -24,7 +26,11 @@
 					//this.showAddToCartButton = this.showAddToCartButton || 'false';
 				},
 				controllerAs: 'ctrl',
-				link: function (scope, element, attrs) {
+				link: function (scope, element, attrs, ctrl) {
+					//console.log('ctrlllll=', ctrl);
+					if (ctrl) {
+						scope.selectable = scope.selectable || ctrl.selectable;
+					}
 					scope.showAddToCartButton = attrs.addToCart ? 'true' : 'false';
 				}
 			};
