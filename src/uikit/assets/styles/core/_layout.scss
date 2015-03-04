@@ -1,0 +1,11 @@
+.sf-layout{display: flex; flex-direction:column; height: 100%;}
+.sf-wrapper{
+	flex: 1 0 auto; /* 2 */
+	  width: 100%;
+	&:after{
+	
+	}
+}
+.sf-content{}
+//.sf-sidenav{height: 100%;}
+.sf-footer{flex:none;}

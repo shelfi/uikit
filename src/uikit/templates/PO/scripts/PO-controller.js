@@ -44,10 +44,10 @@ function PrintonlineController($mdSidenav, $scope, $log, $mdDialog, $mdBottomShe
 		]
 	};
 	this.products = [
-		{name: 'Kartvizit 12,5cm x 18cm', image: 'holder.js/100%x150', desc: '1. sınıf standart kartvizit', price: '15'},
-		{name: 'Standart Zarf', image: 'holder.js/100%x150', desc: '1. sınıf standart zarf', price: '20'},
-		{name: 'Ürün tanıtım broşür', image: 'holder.js/100%x150', desc: 'A6 boyutunda ürün tanıtım broşürü', price: '30'},
-		{name: 'Flyer', image: 'holder.js/100%x150', desc: 'İki taraflı A6 boyutunda flyer', price: '15'}
+		{name: 'Kartvizit 12,5cm x 18cm', image: 'holder.js/100%x250', desc: '1. sınıf standart kartvizit', price: '15'},
+		{name: 'Standart Zarf', image: 'holder.js/100%x250', desc: '1. sınıf standart zarf', price: '20'},
+		{name: 'Ürün tanıtım broşür', image: 'holder.js/100%x250', desc: 'A6 boyutunda ürün tanıtım broşürü', price: '30'},
+		{name: 'Flyer', image: 'holder.js/100%x250', desc: 'İki taraflı A6 boyutunda flyer', price: '15'}
 	];
 
 	this.order = [

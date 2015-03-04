@@ -1,13 +1,12 @@
-<body ng-controller="PrintonlineCtrl as ctrl" layout="column" class="sf-home">
+<body ng-controller="PrintonlineCtrl as ctrl" layout="column" class="sf-layout">
 <div ng-include="'templates/PO/partials/PO-topbar.tmpl.html'"></div>
 <div class="sf-wrapper" layout="row">
-	<div ng-include="'templates/PO/partials/PO-sidenav-primary.tmpl.html'" ng-include-replace></div>
+	<div ng-include="'templates/PO/partials/PO-sidenav-primary.tmpl.html'" ng-include-replace class="sf-sidenav"></div>
 	
-	<div class="main" role="main" layout="column" layout-fill>
+	<div class="main" role="main" layout="column" flex>
 		<div ng-include="'templates/PO/partials/PO-toolbar-primary.tmpl.html'"></div>
-			<md-content>
+			<div class="sf-content">
 				<sf-navbar ng-model="ctrl.nav.secondary"></sf-navbar>
-				<div ng-include="'templates/PO/partials/PO-spot-home.tmpl.html'" ng-include-replace></div>
 				<div layout="column" class="sf-main-content">
 					<div ng-controller="productListCtrl as productList">
 						<sf-product-list ng-model="ctrl.products" layout="row" layout-wrap row-items="4"></sf-product-list>
@@ -16,26 +15,10 @@
 						<sf-product-list ng-model="ctrl.products" layout="row" layout-wrap row-items="4"></sf-product-list>
 					</div>
 				</div><!-- /sf-main-content -->
-				<div ng-include="'templates/PO/partials/PO-footer.tmpl.html'"></div>
-			</md-content>
+			</div>
 	</div><!-- /main -->
-	
-
-		<script type="text/ng-template" id="bottomsheetgrid.html">
-		<md-bottom-sheet class="md-grid">
-		<md-list>
-		    <md-item ng-repeat="item in ctrl.bottomsheetitems">
-		      <md-button class="md-grid-item-content" aria-label="{{item.name}}" ng-click="listItemClick($index)">
-		        <div class="md-icon-container">
-		          <md-inline-grid-icon icon="{{item.icon}}"></md-inline-grid-icon>
-		        </div>
-		        <p class="md-grid-text"> {{ item.name }} </p>
-		      </md-button>
-		    </md-item>
-		  </md-list>
-		</md-bottom-sheet>
-		</script>
 	
 	<div ng-include="'templates/PO/partials/PO-minicart-sidenav.tmpl.html'"></div>
 	<div ng-include="'templates/PO/partials/PO-usermenu-sidenav.tmpl.html'"></div>
 </div><!-- /wrapper -->
+<div ng-include="'templates/PO/partials/PO-footer.tmpl.html'" ng-include-replace></div>

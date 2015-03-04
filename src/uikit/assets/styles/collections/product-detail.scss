@@ -11,6 +11,10 @@
 	md-checkbox{margin-left: 0; padding-left: 0;}
 	h1{margin-top: 0;}
 	h4{margin:0; padding:0;}
+
+	.sf-product__price{
+		span{font-size: 1.5em;}
+	}
 }
 
 .sf-product__image{
@@ -20,10 +24,6 @@
 .sf-product__image-gallery{
 	margin-bottom: 30px;
 	img{margin-right: 5px; margin-top: 5px;}
-}
-
-.sf-product__price{
-	span{font-size: 1.5em;}
 }
 
 .sf-product__details ul{padding-left: 0; margin-left: 0;

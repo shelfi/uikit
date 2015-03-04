@@ -10,10 +10,10 @@
 				<div layout="column" class="sf-main-content">
 					<div ng-include="'templates/PO/partials/PO-productlist-control.tmpl.html'"></div>	
 					<div ng-controller="productListCtrl as productList">
-						<sf-product-list ng-model="ctrl.products" layout="row" layout-wrap row-items="4" ng-click="ctrl.showHoverProduct()"></sf-product-list>
+						<sf-product-list ng-model="ctrl.products" layout="row" layout-wrap row-items="1" ng-click="ctrl.showHoverProduct()"></sf-product-list>
 					</div>
 					<div ng-controller="productListCtrl as productList">
-						<sf-product-list ng-model="ctrl.products" layout="row" layout-wrap row-items="4" ng-click="ctrl.showHoverProduct()"></sf-product-list>
+						<sf-product-list ng-model="ctrl.products" layout="row" layout-wrap row-items="1" ng-click="ctrl.showHoverProduct()"></sf-product-list>
 					</div>
 					<div layout-padding>
 						<md-button class="md-raised md-primary" ng-href="/PO/PO-cart.html">Seçilen ürünleri sepete ekle</md-button>
