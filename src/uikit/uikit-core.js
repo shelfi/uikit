@@ -64,9 +64,13 @@ function SfCoreConfigure($mdThemingProvider, $mdIconProvider) {
     .primaryPalette('orange')
     .dark();
   $mdIconProvider
-    .iconSet('action', './uikit/images/icons/svg-sprite-action.svg', 24)
-    .iconSet('navigation', './uikit/images/icons/svg-sprite-navigation.svg', 24)
-    .iconSet('communication', './uikit/images/icons/svg-sprite-communication.svg', 24)
+    .iconSet('action', '/uikit/images/icons/svg-sprite-action.svg', 24)
+    .iconSet('navigation', '/uikit/images/icons/svg-sprite-navigation.svg', 24)
+    .iconSet('communication', '/uikit/images/icons/svg-sprite-communication.svg', 24)
+
+    //.iconSet('action', '/bower_components/shelfi-uikit/images/icons/svg-sprite-action.svg', 24)
+    //.iconSet('navigation', '/bower_components/shelfi-uikit/images/icons/svg-sprite-navigation.svg', 24)
+    //.iconSet('communication', '/bower_components/shelfi-uikit/images/icons/svg-sprite-communication.svg', 24)
 }
 
 angular.module('uikit.components', ['uikit.core']);
