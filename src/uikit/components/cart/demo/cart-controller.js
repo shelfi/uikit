@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-
+	/*
 	angular.module('uikit.components.cart')
 		
 		.controller('cartCtrl', function () {
@@ -20,5 +20,6 @@
 				{ name: 'quantity', width: '15', template: '<md-select ng-model="item.quantity" placeholder="Select quantity"><md-option ng-repeat="opt in [100, 200, 500, 1000, 5000]" ng-value="opt">{{ opt }}</md-option></md-select>' }
 			];
 		});
+	*/
 
 })();
