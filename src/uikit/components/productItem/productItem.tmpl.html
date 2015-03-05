@@ -1,28 +1,30 @@
 <div class="sf-product" layout-align-sm="center center" layout="row">
-	<div class="sf-product__image">
+	<div class="sf-product__image" ng-if="ctrl.showImage === 'true'">
 		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image" holder></a>
 	</div>
 	<div class="sf-product__info">
-		<h3><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h3>
-		<p hide-sm hide>{{ ctrl.item.desc }}</p>
+		<h3 ng-if="ctrl.showName === 'true'"><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h3>
+		<p ng-if="ctrl.showDescription === 'true'" hide-sm hide>{{ ctrl.item.desc }}</p>
 	</div>
-	<div  class="sf-product__price">
+	<div  class="sf-product__price" ng-if="ctrl.showPrice === 'true'">
 		<span>{{ ctrl.item.price | currency }}</span>
 	</div>
-	<div class="sf-product__action" ng-if="showAddToCartButton === 'true'">
-		<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" ng-show="showAddToCartButton === 'true'" aria-label="Sepete Ekle">
+	<!--TODO: quantity sf-product__action icerisine alinabilir mi? AddtoCart butonu olmayacaksa quantity textbox'inin gozukmesi anlamsizlasiyor!-->
+	<div class="sf-product__action" ng-if="ctrl.showAddToCartButton === 'true'">
+		<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" aria-label="Sepete Ekle">
 			<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt">
 				<md-tooltip>Sepete Ekle</md-tooltip>
 			</md-icon>
 		</md-button>
 	</div>
-	<div class="sf-product__quantity" ng-if="showQuantity === 'true'">
+	<!--TODO: Adet girisi urun bazinda farklilasabilir. Ornegin bir urunde texbox ile girilebilirken, bir digerinde dropdown'dan on tanimli adetlerden secilmek zorunda olabilir -->
+	<div class="sf-product__quantity" ng-if="ctrl.showQuantity === 'true'">
 		<md-input-container>
 			<label for="">Adet</label>
 			<input type="text">
 		</md-input-container>
 	</div>
-	<div class="sf-product__compare" ng-if="selectable === 'true'">
+	<div class="sf-product__compare" ng-if="ctrl.selectable === 'true'">
 		<md-checkbox></md-checkbox>
 	</div>
 </div>

@@ -33,7 +33,7 @@ angular
         if (t) {
           //console.log(t, scope.$parent);
           element.html(t);
-          console.log(element.contents());
+          //console.log(element.contents());
           //$compile(element.contents())(scope.$parent);
           $compile(element.contents())(scope);
         }
