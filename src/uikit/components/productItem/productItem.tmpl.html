@@ -2,6 +2,14 @@
 	<div class="sf-product__image" ng-if="ctrl.showImage === 'true'">
 		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image"></a>
 	</div>
+	<div class="sf-product__badge">
+		<div class="sf-product__badge__item" ng-repeat="item in ctrl.item.promotion">
+			<md-icon md-svg-icon="{{item.icon}}" alt="{{item.description}}"></md-icon>
+			<md-tooltip md-direction="top" md-delay="200">
+			  {{item.description}}
+			</md-tooltip>
+		</div>
+	</div>
 	<div class="sf-product__info">
 		<h3 ng-if="ctrl.showName === 'true'"><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h3>
 		<p ng-if="ctrl.showDescription === 'true'">{{ ctrl.item.desc }}</p>
@@ -9,14 +17,14 @@
 	<div  class="sf-product__price" ng-if="ctrl.showPrice === 'true'">
 		<span>{{ ctrl.item.price | currency }}</span>
 	</div>
-	<!--TODO: quantity sf-product__action icerisine alinabilir mi? AddtoCart butonu olmayacaksa quantity textbox'inin gozukmesi anlamsizlasiyor!-->
 	<div class="sf-product__action" ng-if="ctrl.showAddToCartButton === 'true'">
 		<div class="sf-product__quantity" ng-if="ctrl.showQuantity === 'true'">
-			<!--TODO: Adet girisi urun bazinda farklilasabilir. Ornegin bir urunde texbox ile girilebilirken, bir digerinde dropdown'dan on tanimli adetlerden secilmek zorunda olabilir -->
-			<md-input-container>
-				<label for="">Adet</label>
-				<input type="text">
-			</md-input-container>
+			<div>
+				<md-input-container>
+					<label for="">Adet</label>
+					<input type="text">
+				</md-input-container>
+			</div>
 		</div>
 		<div class="sf-product__cta">
 			<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" aria-label="Sepete Ekle">

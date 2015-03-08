@@ -16,6 +16,7 @@
 					showDescription: '@',
 					showPrice: '@',
 					showQuantity: '@',
+					showPromotion: '@',
 					selectable: '@',
 					click: '&',
 					addToCart: '&'
