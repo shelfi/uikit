@@ -29,6 +29,7 @@
 				controllerAs: 'ctrl',
 				link: function (scope, element, attrs, ctrl) {
 					scope.ctrl.showAddToCartButton = attrs.addToCart ? 'true' : 'false';
+					scope.ctrl.predefineQuantity = false;
 					//if (ctrl) {
 					//	scope.selectable = scope.selectable || ctrl.selectable;
 					//}

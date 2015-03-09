@@ -1,0 +1,36 @@
+//Default styles
+
+html {
+ box-sizing: border-box;
+}
+*, *:before, *:after {
+ box-sizing: inherit;
+}
+
+body {
+  // display: flex;
+  // min-height: 100vh;
+  // flex-direction: column;
+}
+
+main {
+  // flex: 1 0 auto;
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
+a {
+  outline: none !important;
+  &.text-muted {
+    &:hover, &:focus {
+      //color: $text-muted;
+    }
+  }
+}
+
+
+ul {
+  list-style-type: none;
+}

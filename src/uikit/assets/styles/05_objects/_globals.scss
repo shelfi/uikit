@@ -1,0 +1,267 @@
+//Hidden class
+.hide { display: none !important; }
+
+
+//Default styles
+
+html {
+ box-sizing: border-box;
+}
+*, *:before, *:after {
+ box-sizing: inherit;
+}
+
+body {
+  // display: flex;
+  // min-height: 100vh;
+  // flex-direction: column;
+}
+
+main {
+  // flex: 1 0 auto;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
+
+  // Gets rid of tap active state
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+// Positioning
+.valign-wrapper {
+ 
+
+  .valign {
+    display: block;
+  }
+}
+
+
+ul {
+  padding: 0;
+  li {
+    list-style-type: none;
+  }
+}
+
+
+
+// classic clearfix
+.clearfix {
+  clear: both;
+}
+
+
+
+
+// Dividers
+
+.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: color("grey", "lighten-2");
+}
+
+
+//  Blockquote
+
+blockquote {
+  margin: 20px 0;
+  padding-left: 1.5rem;
+  border-left: 5px solid color("red", "lighten-3");
+}
+
+// Icon Styles
+
+i {
+  line-height: inherit;
+
+  &.left {
+    float: left;
+    margin-right: 15px;
+  }
+  &.right {
+    float: right;
+    margin-left: 15px;
+  }
+  &.tiny {
+    font-size: 1rem;
+  }
+  &.small {
+    font-size: 2rem;
+  }
+  &.medium {
+    font-size: 4rem;
+  }
+  &.large {
+    font-size: 6rem;
+  }
+}
+
+// Images
+img.responsive-img,
+video.responsive-video {
+  max-width: 100%;
+  height: auto;
+}
+
+
+// Pagination
+
+.pagination {
+
+  li {
+    font-size: 1.2rem;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    border-radius: 2px;
+    text-align: center;
+
+    a { color: #444; }
+
+    &.active a { color: #fff; }
+
+    &.active { background-color: $primary-color; }
+
+    &.disabled a { color: #999; }
+
+    i {
+      font-size: 2rem;
+      line-height: 1.8rem;
+    }
+  }
+}
+
+
+// Parallax
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+
+  img {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 100%;
+    // background-size: cover;
+    background-position: center;
+  }
+}
+
+// Pushpin
+.pin-top, .pin-bottom {
+  position: relative;
+}
+.pinned {
+  position: fixed !important;
+}
+
+/*********************
+  Transition Classes
+**********************/
+
+ul.staggered-list li {
+	opacity: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transform-origin: 0 50%;
+}
+
+
+// Footer
+footer.page-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: $footer-bg-color;
+
+  .footer-copyright {
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+    color: rgba(255,255,255,.8);
+    background-color: rgba(51,51,51,.08);;
+    @extend .light;
+  }
+}
+
+
+
+// Badges
+span.badge {
+  min-width: 3rem;
+  padding: 0 6px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: inherit;
+  color: color('grey', 'darken-1');
+  float: right;
+  box-sizing: border-box;
+
+  &.new {
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: $badge-bg-color;
+    border-radius:2px;
+  }
+  &.new:after {
+    content: " new";
+  }
+}
+
+// Responsive Videos
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+
+    iframe, object, embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+}
+
+
+
+.light { font-weight: 300; }
+
+.flow-text{
+  font-weight: 300;
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : 360 + ($i * $interval-size)) {
+      font-size: 1.2rem * (1 + (.02 * $i));
+    }
+    @media only screen and (min-width : 0 + ($i * $interval-size)) {
+      line-height: .8rem * (1 + (.13 * $i));
+    }
+    $i: $i + 1;
+  }
+}

@@ -1,30 +1,42 @@
 // injector
 
-@import '../../assets/styles/collections/footer.scss';
+@import '../../assets/styles/01_settings/_colors.scss';
 
-@import '../../assets/styles/collections/home.scss';
+@import '../../assets/styles/01_settings/_variables.scss';
 
-@import '../../assets/styles/collections/login.scss';
+@import '../../assets/styles/02_tools/_mixins.scss';
 
-@import '../../assets/styles/collections/payment.scss';
+@import '../../assets/styles/03_generic/_reset.scss';
 
-@import '../../assets/styles/collections/product-detail.scss';
+@import '../../assets/styles/04_base/_table.scss';
 
-@import '../../assets/styles/collections/product-list.scss';
+@import '../../assets/styles/04_base/_typography.scss';
 
-@import '../../assets/styles/collections/promo.scss';
+@import '../../assets/styles/05_objects/_globals.scss';
 
-@import '../../assets/styles/collections/spot.scss';
+@import '../../assets/styles/05_objects/_layout.scss';
 
-@import '../../assets/styles/collections/topbar.scss';
+@import '../../assets/styles/05_objects/_spaces.scss';
 
-@import '../../assets/styles/core/_base.scss';
+@import '../../assets/styles/05_objects/_utility.scss';
 
-@import '../../assets/styles/core/_global.scss';
+@import '../../assets/styles/06_sections/footer.scss';
 
-@import '../../assets/styles/core/_layout.scss';
+@import '../../assets/styles/06_sections/home.scss';
 
-@import '../../assets/styles/core/_variables.scss';
+@import '../../assets/styles/06_sections/login.scss';
+
+@import '../../assets/styles/06_sections/payment.scss';
+
+@import '../../assets/styles/06_sections/product-detail.scss';
+
+@import '../../assets/styles/06_sections/product-list.scss';
+
+@import '../../assets/styles/06_sections/promo.scss';
+
+@import '../../assets/styles/06_sections/spot.scss';
+
+@import '../../assets/styles/06_sections/topbar.scss';
 
 @import '../../components/breadcrumb/breadcrumb.scss';
 

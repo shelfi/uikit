@@ -36,6 +36,7 @@
 				</div>{%endif%}
 
 				<div class="f-item-preview">
+					<md-content>
 					{% if item.section %}
 					{% for item in item.section %}
 					<h5 class="f-section-title" data-f-toggle="details"><$ item.title $></h5>
@@ -51,6 +52,7 @@
 						<pre><code class="language-markup"><$ item.content | escape $></code></pre>
 					</div>
 					{% endif %}
+					</md-content>
 				</div>
 
 				<!-- //old content 
