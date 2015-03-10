@@ -1,30 +1,44 @@
-<div class="sf-product" layout-align-sm="center center" layout="row">
+<!-- modifier declaration ile structure degisiyor (grid, list, biglist), modifier parentdan veya item kendisinden alabilir -->
+<div class="sf-product sf-product--grid">
 	<div class="sf-product__image" ng-if="ctrl.showImage === 'true'">
-		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image" holder></a>
+		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image"></a>
+	</div>
+	<div class="sf-product__badge">
+		<div class="sf-product__badge__item" ng-repeat="item in ctrl.item.promotion">
+			<md-icon md-svg-icon="{{item.icon}}" alt="{{item.description}}"></md-icon>
+			<md-tooltip md-direction="top" md-delay="200">
+			  {{item.description}}
+			</md-tooltip>
+		</div>
 	</div>
 	<div class="sf-product__info">
 		<h3 ng-if="ctrl.showName === 'true'"><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h3>
-		<p ng-if="ctrl.showDescription === 'true'" hide-sm hide>{{ ctrl.item.desc }}</p>
+		<p ng-if="ctrl.showDescription === 'true'">{{ ctrl.item.desc }}</p>
 	</div>
 	<div  class="sf-product__price" ng-if="ctrl.showPrice === 'true'">
 		<span>{{ ctrl.item.price | currency }}</span>
 	</div>
-	<!--TODO: quantity sf-product__action icerisine alinabilir mi? AddtoCart butonu olmayacaksa quantity textbox'inin gozukmesi anlamsizlasiyor!-->
 	<div class="sf-product__action" ng-if="ctrl.showAddToCartButton === 'true'">
-		<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" aria-label="Sepete Ekle">
-			<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt">
-				<md-tooltip>Sepete Ekle</md-tooltip>
-			</md-icon>
-		</md-button>
-	</div>
-	<!--TODO: Adet girisi urun bazinda farklilasabilir. Ornegin bir urunde texbox ile girilebilirken, bir digerinde dropdown'dan on tanimli adetlerden secilmek zorunda olabilir -->
-	<div class="sf-product__quantity" ng-if="ctrl.showQuantity === 'true'">
-		<md-input-container>
-			<label for="">Adet</label>
-			<input type="text">
-		</md-input-container>
-	</div>
-	<div class="sf-product__compare" ng-if="ctrl.selectable === 'true'">
-		<md-checkbox></md-checkbox>
+		<div class="sf-product__quantity" ng-if="ctrl.showQuantity === 'true'">
+			<!-- text input veya select olarak adet girilebilir (select item predefine ozelligi controllerdan define oluyor.)-->
+			<md-input-container ng-if="!ctrl.predefineQuantity">
+				<label for="">Adet</label>
+				<input type="text">
+			</md-input-container>
+			<md-select ng-model="quantity" placeholder="Adet" ng-if="ctrl.predefineQuantity">
+				<md-option value="1" ng-selected="selected">1</md-option>
+				<md-option value="2">2</md-option>
+			</md-select>
+		</div>
+		<div class="sf-product__cta">
+			<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" aria-label="Sepete Ekle">
+				<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt">
+					<md-tooltip>Sepete Ekle</md-tooltip>
+				</md-icon>
+			</md-button>
+		</div>
+		<div class="sf-product__compare" ng-if="ctrl.selectable === 'true'">
+			<md-checkbox></md-checkbox>
+		</div>
 	</div>
 </div>

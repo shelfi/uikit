@@ -10,15 +10,18 @@
 		.config(function ($mdThemingProvider, $mdIconProvider) {
 			//$mdThemingProvider.alwaysWatchTheme(true);
 			$mdThemingProvider.theme('altTheme')
-			.primaryPalette('purple') // specify primary color, all other color intentions will be inherited from default
-			.accentPalette('orange');
+				.primaryPalette('purple') // specify primary color, all other color intentions will be inherited from default
+				.accentPalette('orange');
+
 			$mdThemingProvider.theme('docs-dark', 'default')
-			.primaryPalette('orange')
-			.dark();
+				.primaryPalette('orange')
+				.dark();
+
 			$mdIconProvider
-			.iconSet('action', '/uikit/images/icons/svg-sprite-action.svg', 24)
-			.iconSet('navigation', '/uikit/images/icons/svg-sprite-navigation.svg', 24)
-			.iconSet('communication', '/uikit/images/icons/svg-sprite-communication.svg', 24)
+				.iconSet('action', '/uikit/images/icons/svg-sprite-action.svg', 24)
+				.iconSet('navigation', '/uikit/images/icons/svg-sprite-navigation.svg', 24)
+				.iconSet('communication', '/uikit/images/icons/svg-sprite-communication.svg', 24)
+				.iconSet('maps', '/uikit/images/icons/svg-sprite-maps.svg', 24);
 
 			//.iconSet('action', '/bower_components/shelfi-uikit/images/icons/svg-sprite-action.svg', 24)
 			//.iconSet('navigation', '/bower_components/shelfi-uikit/images/icons/svg-sprite-navigation.svg', 24)
@@ -57,7 +60,6 @@
 				}
 			};
 		})
-
 		.directive('ngIncludeReplace', function () {
 			return {
 				require: 'ngInclude',
@@ -67,8 +69,6 @@
 				}
 			};
 		});
-
-
 
 	angular.module('uikit.components', ['uikit.core']);
 	angular.module('uikit.snippets', ['uikit.core']);

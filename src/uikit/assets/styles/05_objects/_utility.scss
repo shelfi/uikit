@@ -1,0 +1,70 @@
+/*******************
+  Utility Classes
+*******************/
+
+// Text Align
+.left-align {
+  text-align: left;
+}
+.right-align {
+  text-align: right
+}
+.center, .center-align {
+  text-align: center;
+}
+
+.left {
+  float: left !important;
+}
+.right {
+  float: right !important;
+}
+
+// No Text Select
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// Circle
+.circle {
+  border-radius:50%;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//hide
+.hide{display: none;}
+.hidden{display: none;}
+
+
+//inline lists
+ul.inline{margin-left: 0; padding-left: 0;
+	& li{list-style: none; display: inline-block;}
+}
+
+
+
+//angular cloak utility classes
+[ng\:cloak], 
+[ng-cloak], 
+[data-ng-cloak], 
+[x-ng-cloak], 
+.ng-cloak, 
+.x-ng-cloak {
+  display: none !important;
+}
