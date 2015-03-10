@@ -11,6 +11,7 @@
 				templateUrl: 'components/productItem/productItem.tmpl.html',
 				scope: {
 					item: '=ngModel',
+					itemLayout: '@',
 					showImage: '@',
 					showName: '@',
 					showDescription: '@',
@@ -29,10 +30,18 @@
 				controllerAs: 'ctrl',
 				link: function (scope, element, attrs, ctrl) {
 					scope.ctrl.showAddToCartButton = attrs.addToCart ? 'true' : 'false';
-					scope.ctrl.predefineQuantity = false;
-					//if (ctrl) {
-					//	scope.selectable = scope.selectable || ctrl.selectable;
-					//}
+					scope.ctrl.predefineQuantity = true;
+
+					if (ctrl) {
+						scope.ctrl.itemLayout = scope.ctrl.itemLayout || ctrl.itemLayout || 'grid';
+						scope.ctrl.showImage = scope.ctrl.showImage || ctrl.showImage;
+						scope.ctrl.showName = scope.ctrl.showName || ctrl.showName;
+						scope.ctrl.showDescription = scope.ctrl.showDescription || ctrl.showDescription;
+						scope.ctrl.showPrice = scope.ctrl.showPrice || ctrl.showPrice;
+						scope.ctrl.showQuantity = scope.ctrl.showQuantity || ctrl.showQuantity;
+						scope.ctrl.showPromotion = scope.ctrl.showPromotion || ctrl.showPromotion;
+						scope.ctrl.selectable = scope.ctrl.selectable || ctrl.selectable;
+					}
 				}
 			};
 

@@ -1,14 +1,11 @@
-<!-- modifier declaration ile structure degisiyor (grid, list, biglist), modifier parentdan veya item kendisinden alabilir -->
-<div class="sf-product sf-product--grid">
+<div class="sf-product" ng-class="{ 'sf-product--grid': ctrl.itemLayout === 'grid', 'sf-product--list': ctrl.itemLayout === 'list', 'sf-product--detailedlist': ctrl.itemLayout === 'detailedlist' }">
 	<div class="sf-product__image" ng-if="ctrl.showImage === 'true'">
 		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image"></a>
 	</div>
-	<div class="sf-product__badge">
+	<div class="sf-product__badge" ng-if="ctrl.showPromotion === 'true'">
 		<div class="sf-product__badge__item" ng-repeat="item in ctrl.item.promotion">
 			<md-icon md-svg-icon="{{item.icon}}" alt="{{item.description}}"></md-icon>
-			<md-tooltip md-direction="top" md-delay="200">
-			  {{item.description}}
-			</md-tooltip>
+			<md-tooltip md-direction="top" md-delay="200">{{ item.description }}</md-tooltip>
 		</div>
 	</div>
 	<div class="sf-product__info">

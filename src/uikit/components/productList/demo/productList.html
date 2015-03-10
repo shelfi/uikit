@@ -1,9 +1,3 @@
 <div ng-controller="productListCtrl as productList">
-	<sf-product-list ng-model="productList.products" layout="row" layout-wrap row-items="2" sf-filter="true" sf-sorter="true" sf-pagination="true"></sf-product-list>
-	<!--
-	 layout="grid"
-	itemperpage="25"
-	<sf-product-item ng-repeat="item in productList.products" flex="25" flex-md="50" flex-sm="100" ng-model="item"></sf-product-item>
-	<span ng-repeat="item in ctrl.items">{{ item.name }}</span>
-	-->
+	<sf-product-list ng-model="productList.products" row-items="2"></sf-product-list>
 </div>

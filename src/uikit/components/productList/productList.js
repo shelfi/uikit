@@ -7,19 +7,41 @@
 		.directive('sfProductList', function () {
 			return {
 				restrict: 'E',
-				//transclude: true,
 				templateUrl: 'components/productList/productList.tmpl.html',
 				scope: {
 					items: '=ngModel',
 					layout: '@',
 					rowItems: '@',
+					
+
+
+					//pagination = true
+					//sorter = true
+					//filter = true
+
+
+
+					// Comes from productItem
+					itemLayout: '@',
+					showImage: '@',
+					showName: '@',
+					showDescription: '@',
+					showPrice: '@',
+					showQuantity: '@',
+					showPromotion: '@',
 					selectable: '@'
 				},
 				bindToController: true,
 				controller: function () {
-					//asd
+					this.changeItemLayout = function (layout) {
+						this.itemLayout = layout;
+					};
 				},
-				controllerAs: 'ctrl'
+				controllerAs: 'ctrl',
+				link: function (scope, element, attrs) {
+					scope.ctrl.itemLayout = scope.ctrl.itemLayout || 'grid';
+					scope.ctrl.showItemLayout = !attrs.itemLayout;
+				}
 			};
 		});
 
