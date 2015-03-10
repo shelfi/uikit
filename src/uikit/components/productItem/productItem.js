@@ -33,7 +33,7 @@
 					scope.ctrl.predefineQuantity = true;
 
 					if (ctrl) {
-						scope.ctrl.itemLayout = scope.ctrl.itemLayout || ctrl.itemLayout || 'grid';
+						scope.ctrl.itemLayout = scope.ctrl.itemLayout || ctrl.itemLayout;
 						scope.ctrl.showImage = scope.ctrl.showImage || ctrl.showImage;
 						scope.ctrl.showName = scope.ctrl.showName || ctrl.showName;
 						scope.ctrl.showDescription = scope.ctrl.showDescription || ctrl.showDescription;
@@ -42,6 +42,8 @@
 						scope.ctrl.showPromotion = scope.ctrl.showPromotion || ctrl.showPromotion;
 						scope.ctrl.selectable = scope.ctrl.selectable || ctrl.selectable;
 					}
+
+					scope.ctrl.itemLayout = scope.ctrl.itemLayout || 'grid';
 				}
 			};
 
