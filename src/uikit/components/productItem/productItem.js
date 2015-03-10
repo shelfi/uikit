@@ -30,10 +30,10 @@
 				controllerAs: 'ctrl',
 				link: function (scope, element, attrs, ctrl) {
 					scope.ctrl.showAddToCartButton = attrs.addToCart ? 'true' : 'false';
-					scope.ctrl.predefineQuantity = true;
+					scope.ctrl.predefineQuantity = false;
+					scope.ctrl.itemLayout = 'list';
 
 					if (ctrl) {
-						scope.ctrl.itemLayout = scope.ctrl.itemLayout || ctrl.itemLayout || 'grid';
 						scope.ctrl.showImage = scope.ctrl.showImage || ctrl.showImage;
 						scope.ctrl.showName = scope.ctrl.showName || ctrl.showName;
 						scope.ctrl.showDescription = scope.ctrl.showDescription || ctrl.showDescription;

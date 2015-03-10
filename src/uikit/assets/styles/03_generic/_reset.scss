@@ -22,6 +22,7 @@ main {
 }
 
 a {
+  &:hover{cursor:pointer;}
   outline: none !important;
   &.text-muted {
     &:hover, &:focus {

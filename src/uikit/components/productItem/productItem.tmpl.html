@@ -10,7 +10,7 @@
 	</div>
 	<div class="sf-product__info">
 		<h3 ng-if="ctrl.showName === 'true'"><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h3>
-		<p ng-if="ctrl.showDescription === 'true'">{{ ctrl.item.desc }}</p>
+		<p ng-if="ctrl.showDescription === 'true'" class="sf-product__description">{{ ctrl.item.desc }}</p>
 	</div>
 	<div  class="sf-product__price" ng-if="ctrl.showPrice === 'true'">
 		<span>{{ ctrl.item.price | currency }}</span>
