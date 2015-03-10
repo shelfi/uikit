@@ -42,6 +42,8 @@
 						scope.ctrl.showPromotion = scope.ctrl.showPromotion || ctrl.showPromotion;
 						scope.ctrl.selectable = scope.ctrl.selectable || ctrl.selectable;
 					}
+
+					scope.ctrl.itemLayout = scope.ctrl.itemLayout || 'grid';
 				}
 			};
 
