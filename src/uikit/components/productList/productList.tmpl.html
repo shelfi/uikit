@@ -10,7 +10,6 @@
 		</div>
 
 
-		<!--
 		<div flex flex-sm="50">
 			<select name="sort" id="sort">
 				<option value="">Sırala</option>
@@ -28,12 +27,24 @@
 			</select>
 		</div>
 		<div flex flex-sm="50"></div>
+		
+
+
+
 		<div flex layout layout-align="end center" flex-sm="50">
-			<md-button class="md-primary" ng-show="listHasCheckbox">Karsilastir<md-icon md-svg-icon="action:ic_swap_vert_24px" alt="Icon Alt"></md-icon></md-button>
-			<md-button class="md-primary">Sepete EKle<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt"></md-icon></md-button>
+			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)">{{ action }}</md-button>
+			<!--
+			<md-button class="md-primary" ng-click="ctrl.compare()">Karsilastir<md-icon md-svg-icon="action:ic_swap_vert_24px" alt="Icon Alt"></md-icon></md-button>
+			<md-button class="md-primary" ng-click="ctrl.addToCart()">Sepete EKle<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt"></md-icon></md-button>
+			-->
 		</div>
+		
+
+
 		<sf-pagination ng-model="ctrl.pages" layout layout-align="end end" flex flex-sm="100"></sf-pagination>
-		-->
+
+
+
 	</div>
 	<div layout="row" layout-wrap>
 		<sf-product-item ng-repeat="item in ctrl.items" ng-model="item" flex="{{ 100 / ctrl.rowItems | number:0 }}" flex-sm="100" flex-md="100" item-layout="{{ ctrl.itemLayout }}" show-image="true" show-name="true" show-description="true" show-price="true" show-quantity="true" selectable="true" add-to-cart="productItem.addToCart(product)" click="productItem.click(product)"></sf-product-item>

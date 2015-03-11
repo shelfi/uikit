@@ -3,7 +3,7 @@
 	'use strict';
 
 	angular.module('uikit.components.productList', [])
-		
+
 		.directive('sfProductList', function () {
 			return {
 				restrict: 'E',
@@ -14,7 +14,7 @@
 					rowItems: '@',
 					
 
-
+					actionButtons: '=',
 					//pagination = true
 					//sorter = true
 					//filter = true
@@ -33,6 +33,11 @@
 				},
 				bindToController: true,
 				controller: function () {
+					this.actionCallback = function (cb) {
+						cb(this.items.filter(function (item) {
+							return item.selected;
+						}));
+					};
 					this.changeItemLayout = function (layout) {
 						if (this.itemLayout === 'grid' && layout !== 'grid') {
 							this.rowItems_ = this.rowItems;
