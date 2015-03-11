@@ -34,6 +34,13 @@
 				bindToController: true,
 				controller: function () {
 					this.changeItemLayout = function (layout) {
+						if (this.itemLayout === 'grid' && layout !== 'grid') {
+							this.rowItems_ = this.rowItems;
+							this.rowItems = 1;
+						}
+						else if (layout === 'grid') {
+							this.rowItems = this.rowItems_ || 1;
+						}
 						this.itemLayout = layout;
 					};
 				},
