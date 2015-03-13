@@ -1,12 +1,18 @@
 (function(){
 
-'use strict';
+	'use strict';
+
 	angular.module('uikit.components.pagination')
-		.controller('PaginationCtrl', function () {
-			this.pages = [
-				{page: 1},
-				{page: 2},
-			];
+		
+		.controller('paginationCtrl', function () {
+
+			this.totalItems = 100;
+			this.itemsPerPage = 10;
+			this.currentPage = 2;
+
+			this.pageChanged = function () {
+				console.log('pageChanged');
+			};
 		});
 
 })();
