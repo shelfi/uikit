@@ -1,3 +1,4 @@
-<div ng-controller="PaginationCtrl as ctrl">
-	<sf-pagination ng-model="ctrl.pages"></sf-pagination>
+<div ng-controller="paginationCtrl as pagination">
+	<span><small>Current page:</small>{{ pagination.currentPage }}</span>
+	<pagination total-items="pagination.totalItems" items-per-page="pagination.itemsPerPage" ng-model="pagination.currentPage" ng-change="pagination.pageChanged()"></pagination>
 </div>
