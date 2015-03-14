@@ -1,44 +1,33 @@
+//add breakpoints
+@mixin breakpoint($name) {
+  @if $name == "small" {
+    @media (max-width: $layout-breakpoint-sm) {
+      @content;
+    }
+  }
+  @else if $name == "medium" {
+    @media (max-width: $layout-breakpoint-md) {
+      @content;
+    }
+  }
+  @else if $name == "large" {
+    @media (min-width: $layout-breakpoint-lg) {
+      @content;
+    }
+  }
+}
+
+
+//mixin for same width-height objects
+@mixin size($width, $height: $width) {
+      width: $width;
+      height: $height;
+}
+
+
+//add box shadow
 @mixin box-shadow-2($args1, $args2) {
     -webkit-box-shadow: $args1, $args2;
     -moz-box-shadow: $args1, $args2;
     box-shadow: $args1, $args2;
-}
-
-
-// Transitions
-
-@mixin transition($args:200ms) {
-    -webkit-transition: $args;
-    -moz-transition: $args;
-    -o-transition: $args;
-    -ms-transition: $args;
-    transition: $args;
-}
-@mixin transition-delay($delay:0) {
-    -webkit-transition-delay: $delay;
-    -moz-transition-delay: $delay;
-    -o-transition-delay: $delay;
-    -ms-transition-delay: $delay;
-    transition-delay: $delay;
-}
-@mixin transition-duration($duration:200ms) {
-    -webkit-transition-duration: $duration;
-    -moz-transition-duration: $duration;
-    -o-transition-duration: $duration;
-    -ms-transition-duration: $duration;
-    transition-duration: $duration;
-}
-@mixin transition-property($property:all) {
-    -webkit-transition-property: $property;
-    -moz-transition-property: $property;
-    -o-transition-property: $property;
-    -ms-transition-property: $property;
-    transition-property: $property;
-}
-@mixin transition-timing-function($function:ease) {
-    -webkit-transition-timing-function: $function;
-    -moz-transition-timing-function: $function;
-    -o-transition-timing-function: $function;
-    -ms-transition-timing-function: $function;
-    transition-timing-function: $function;
 }
