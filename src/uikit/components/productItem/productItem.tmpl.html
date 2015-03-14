@@ -18,14 +18,11 @@
 	<div class="sf-product__action" ng-if="ctrl.showAddToCartButton === 'true'">
 		<div class="sf-product__quantity" ng-if="ctrl.showQuantity === 'true'">
 			<!-- text input veya select olarak adet girilebilir (select item predefine ozelligi controllerdan define oluyor.)-->
-			<md-input-container ng-if="!ctrl.predefineQuantity" class="sf-product__quantity-text">
-				<label for="">Adet</label>
-				<input type="text">
+			<md-input-container class="sf-product__quantity-number">
+				<label for="quantity">Adet</label>
+				<input type="number" name="quantity" min="1" max="1000" ng-if="!ctrl.predefineQuantity">
+				<input type="number" step="{{ctrl.quantity.step}}" ng-model="ctrl.quantity.value" min="{{ctrl.quantity.min}}" max="{{ctrl.quantity.max}}" ng-if="ctrl.predefineQuantity">
 			</md-input-container>
-			<md-select ng-model="quantity" placeholder="Adet" ng-if="ctrl.predefineQuantity" class="sf-product__quantity-select">
-				<md-option value="1" ng-selected="selected">1</md-option>
-				<md-option value="2">2</md-option>
-			</md-select>
 		</div>
 		<div class="sf-product__cta">
 			<md-button class="md-fab md-primary md-raised sf-product__cta-btn" ng-click="ctrl.addToCart({ product: ctrl.item })" aria-label="Sepete Ekle">
