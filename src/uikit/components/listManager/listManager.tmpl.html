@@ -1,0 +1,30 @@
+<div class="sf-list-manager" layout="row">
+	<div class="sf-list-manager__layout">
+		<md-button class="md-primary sf-list-manager__layout-btn" aria-label="view list"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary sf-list-manager__layout-btn" aria-label="view detailed list"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary sf-list-manager__layout-btn" aria-label="view grid"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
+	</div>
+	<div class="sf-list-manager__sort">
+		<select name="sort" id="sort">
+			<option value="">Sırala</option>
+			<option value="">Urun Kodu</option>
+			<option value="">Stok</option>
+			<option value="">Marka</option>
+			<option value="">Fiyat Azalan</option>
+			<option value="">Fiyat Artan</option>
+			<option value="">Puan</option>
+		</select>
+		<select name="itemperpage" id="itemperpage">
+			<option value="">12 Urun</option>
+			<option value="">24 Urun</option>
+			<option value="">48 Urun</option>
+		</select>
+	</div>
+	<div class="sf-list-manager__products">
+		<md-button class="md-primary" ng-show="listHasCheckbox">Karsilastir<md-icon md-svg-icon="action:ic_swap_vert_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary">Sepete EKle<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt"></md-icon></md-button>
+	</div>
+	<div class="sf-list-manager__pagination">
+		<sf-pagination ng-model="ctrl.pages" layout layout-align="end end" flex flex-sm="100"></sf-pagination>
+	</div>
+</div>

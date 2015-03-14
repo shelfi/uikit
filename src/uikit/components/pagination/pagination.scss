@@ -1,11 +1,12 @@
-.sf-pagination{
-	label{ display: inline;}
-	ul{margin: 0; padding: 0;
-		& > li {
-		list-style: none;
-		padding: 5px 10px;
-		border:1px solid #dedede;
-		&:hover{background-color: darken(#dedede, 10%); cursor: pointer;}
-		}
-	} 
+/* --- SF-PRODUCT-ITEM --- */
+
+//sf-pagination variables
+
+.sf-pagination{}
+.sf-pagination_list{}
+.sf-pagination_item{
+	list-style: none; padding:0;
+	a{padding:5px 10px;}
+	border:1px solid #{$sf-border-color};
+	&:hover{background-color: darken(#dedede, 10%); cursor: pointer;}
 }

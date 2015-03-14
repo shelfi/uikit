@@ -33,10 +33,10 @@
 					scope.ctrl.itemLayout = 'list';
 					scope.ctrl.predefineQuantity = false;
 					scope.ctrl.quantity = {
+						value: 1,
 						step: 100,
 						min:100,
-						max: 5000,
-						value: 100
+						max: 5000
 					}
 
 					if (ctrl) {

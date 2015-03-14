@@ -2,13 +2,13 @@
 
 	'use strict';
 
-	angular.module('uikit.components.productListControl', [])
+	angular.module('uikit.components.listManager', [])
 		
-		.directive('sfProductListControl', function () {
+		.directive('sfListManager', function () {
 			return {
 				restrict: 'E',
 				//transclude: true,
-				templateUrl: 'components/productListControl/productListControl.tmpl.html',
+				templateUrl: 'components/listManager/listManager.tmpl.html',
 				scope: {
 					items: '=ngModel'
 				},

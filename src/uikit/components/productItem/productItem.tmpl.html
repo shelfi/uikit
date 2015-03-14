@@ -20,7 +20,7 @@
 			<!-- text input veya select olarak adet girilebilir (select item predefine ozelligi controllerdan define oluyor.)-->
 			<md-input-container class="sf-product__quantity-number">
 				<label for="quantity">Adet</label>
-				<input type="number" name="quantity" min="1" max="1000" ng-if="!ctrl.predefineQuantity">
+				<input type="number" name="quantity" ng-model="ctrl.quantity.value" min="1" max="1000" ng-if="!ctrl.predefineQuantity">
 				<input type="number" step="{{ctrl.quantity.step}}" ng-model="ctrl.quantity.value" min="{{ctrl.quantity.min}}" max="{{ctrl.quantity.max}}" ng-if="ctrl.predefineQuantity">
 			</md-input-container>
 		</div>
