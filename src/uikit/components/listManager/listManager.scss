@@ -1,4 +1,9 @@
 .sf-list-manager{flex-direction: row; justify-content: space-between;}
-.sf-list-manager__layout{max-width: 33%; flex: 0 0 33%;}
-.sf-list-manager__products{max-width: 33%; flex: 0 0 33%;}
-.sf-list-manager__pagination{max-width: 33%; flex: 0 0 33%;}
+.sf-list-manager__layout{max-width: 20%; flex: 0 0 20%;}
+.sf-list-manager__products{max-width: 60%; flex: 0 0 60%; flex-direction: row; display: flex;}
+.sf-list-manager__pagination{max-width: 20%; flex: 0 0 20%;}
+
+
+.sf-list-manager__products-sort{}
+.sf-list-manager__products-itemperpage{}
+.sf-list-manager__products-compare{}

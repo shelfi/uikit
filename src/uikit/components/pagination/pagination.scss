@@ -1,12 +1,47 @@
-/* --- SF-PRODUCT-ITEM --- */
+/* --- SF-PAGINATION --- */
 
-//sf-pagination variables
+//variables
+$sf-pagination__list-bg: $paper;
+$sf-pagination__item-colorBg--active: $primary-color;
+$sf-pagination__item-colorTxt--active: $paper;
+$sf-pagination__item-colorTxt--disabled: lighten($link-color, 30%);
 
-.sf-pagination{}
-.sf-pagination_list{}
-.sf-pagination_item{
-	list-style: none; padding:0;
-	a{padding:5px 10px;}
-	border:1px solid #{$sf-border-color};
-	&:hover{background-color: darken(#dedede, 10%); cursor: pointer;}
+
+.sf-pagination{display: flex; background: $sf-pagination__list-bg;}
+.sf-pagination__list{margin:0 auto;}
+
+//common element properties that will be extended by all of the elements(we are using % so the styles will be only extended) 
+%sf-pagination__item{
+  list-style: none; padding:0;
+  a{padding:0 10px; display: block; line-height: 2;
+	&:hover{background-color: $sf-pagination__item-colorBg--active; cursor: pointer; color:$sf-pagination__item-colorTxt--active;}
+  }
+}
+
+//sub elements
+.sf-pagination__item-first,
+.sf-pagination__item-previous, 
+.sf-pagination__item-number, 
+.sf-pagination__item-next,
+.sf-pagination__item-current,
+.sf-pagination__item-last{@extend %sf-pagination__item;}
+
+//current page element
+.sf-pagination__item-current{line-height: 2; padding: 0 10px;}
+
+//next-previous items
+.sf-pagination__item-previous,
+.sf-pagination__item-next{
+	a{padding:0 5px};
+}
+
+
+//modifiers
+.sf-pagination__item--active{background-color: $sf-pagination__item-colorBg--active;
+  a{color:$sf-pagination__item-colorTxt--active; cursor:default;}
+}
+.sf-pagination__item--disabled{
+	a{color: $sf-pagination__item-colorTxt--disabled;
+		&:hover{background:none; color:$sf-pagination__item-colorTxt--disabled;  cursor: default;}
+	}
 }

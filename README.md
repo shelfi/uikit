@@ -29,6 +29,18 @@ Icons borrowed from [SteadySets](http://dribbble.com/shots/929153-Steady-set-of-
 
 Code syntax highlighting by [Prism](http://prismjs.com/).
 
+
+##Some Tools and resources:
+SVG Icons
+[official google material icons](https://google.github.io/material-design-icons)
+[extra icons for material](http://materialdesignicons.com)
+
+Also a great premium icon set - Icomoon premium
+[icomoon](https://icomoon.io/#preview-ultimate)
+
+Create Icon Stack
+[svg-stacker](https://www.npmjs.com/package/svg-stacker)
+[gulp-svg-sprite](https://github.com/jkphl/gulp-svg-sprite)
 ## License
 
 [Copyright (c) 2015 Gurus Tech](https://github.com/gurus)

@@ -1,9 +1,20 @@
 <div class="sf-pagination">
-	<ul class="sf-pagination_list" layout="row">
-		<li ng-if="boundaryLinks" ng-class="{disabled: noPrevious()}"><a href ng-click="selectPage(1)">{{getText('first')}}</a></li>
-		<li ng-if="directionLinks" ng-class="{disabled: noPrevious()}" class="sf-pagination_item"><a href ng-click="selectPage(page - 1)">{{getText('previous')}}</a></li>
-		<li ng-repeat="page in pages track by $index" ng-class="{active: page.active}" class="sf-pagination_item"><a href ng-click="selectPage(page.number)">{{page.text}}</a></li>
-		<li ng-if="directionLinks" ng-class="{disabled: noNext()}" class="sf-pagination_item"><a href ng-click="selectPage(page + 1)">{{getText('next')}}</a></li>
-		<li ng-if="boundaryLinks" ng-class="{disabled: noNext()}" class="sf-pagination_item"><a href ng-click="selectPage(totalPages)">{{getText('last')}}</a></li>
+	<ul class="sf-pagination__list" layout="row">
+		<li ng-if="boundaryLinks" ng-class="{'sf-pagination__item--disabled': noPrevious()}" class="sf-pagination__item-first">
+			<a href ng-click="selectPage(1)"><md-icon md-svg-icon="extra:chevron-double-left" alt="Icon Alt"></md-icon></a>
+		</li>
+		<li ng-if="directionLinks" ng-class="{'sf-pagination__item--disabled': noPrevious()}" class="sf-pagination__item-previous">
+			<a href ng-click="selectPage(page - 1)"><md-icon md-svg-icon="navigation:ic_chevron_left_24px" alt="Icon Alt"></md-icon></a>
+		</li>
+		<li ng-repeat="page in pages track by $index" ng-class="{'sf-pagination__item--active': page.active}" class="sf-pagination__item-number" hide-sm>
+			<a href ng-click="selectPage(page.number)">{{page.text}}</a>
+		</li>
+		<li class="sf-pagination__item-current" show-sm hide>Sayfa {{page}} / {{totalPages}}</li>
+		<li ng-if="directionLinks" ng-class="{'sf-pagination__item--disabled': noNext()}" class="sf-pagination__item-next">
+			<a href ng-click="selectPage(page + 1)"><md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a>
+		</li>
+		<li ng-if="boundaryLinks" ng-class="{'sf-pagination__item--disabled': noNext()}" class="sf-pagination__item-last">
+			<a href ng-click="selectPage(totalPages)"><md-icon md-svg-icon="extra:chevron-double-right" alt="Icon Alt"></md-icon></a>
+		</li>
 	</ul>
 </div>
