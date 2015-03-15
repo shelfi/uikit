@@ -1,3 +1,4 @@
 <div ng-controller="productListCtrl as productList">
-	<sf-product-list ng-model="productList.products" row-items="4" action-buttons="productList.actionButtons"></sf-product-list>
+	<sf-list-manager ng-model="productList.config"></sf-list-manager>
+	<sf-product-list ng-model="productList.products" row-items="{{productList.config.rowItems}}" action-buttons="productList.actionButtons" item-layout="{{productList.config.itemLayout}}"></sf-product-list>
 </div>

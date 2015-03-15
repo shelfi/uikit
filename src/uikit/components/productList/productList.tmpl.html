@@ -1,7 +1,5 @@
 <div>
-	<!--<sf-product-list-control></sf-product-list-control>-->
-
-	<div class="sf-list-control" layout="row" layout-align="center center" layout-wrap>
+	<!--<div class="sf-list-control" layout="row" layout-align="center center" layout-wrap hide>
 		
 		<div flex="500" flex-sm="50" ng-if="ctrl.showItemLayout">
 			<md-button class="md-primary" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list" ng-click="ctrl.changeItemLayout('list')"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
@@ -33,10 +31,6 @@
 
 		<div flex layout layout-align="end center" flex-sm="50">
 			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)">{{ action }}</md-button>
-			<!--
-			<md-button class="md-primary" ng-click="ctrl.compare()">Karsilastir<md-icon md-svg-icon="action:ic_swap_vert_24px" alt="Icon Alt"></md-icon></md-button>
-			<md-button class="md-primary" ng-click="ctrl.addToCart()">Sepete EKle<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt"></md-icon></md-button>
-			-->
 		</div>
 		
 
@@ -45,9 +39,11 @@
 
 
 
-	</div>
+	</div>-->
+
+
+
 	<div layout="row" layout-wrap>
 		<sf-product-item ng-repeat="item in ctrl.items" ng-model="item" flex="{{ 100 / ctrl.rowItems | number:0 }}" flex-sm="100" flex-md="100" item-layout="{{ ctrl.itemLayout }}" show-image="true" show-name="true" show-description="true" show-price="true" show-quantity="true" selectable="true" add-to-cart="productItem.addToCart(product)" click="productItem.click(product)"></sf-product-item>
 	</div>
-	<!--<sf-product-list-control></sf-product-list-control>-->
 </div>

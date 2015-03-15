@@ -10,11 +10,25 @@
 				//transclude: true,
 				templateUrl: 'components/listManager/listManager.tmpl.html',
 				scope: {
-					items: '=ngModel'
+					list: '=ngModel'
 				},
 				bindToController: true,
 				controller: function () {
-					//asd
+					this.changeItemLayout = function (layout) {
+						if (this.list.itemLayout === 'grid' && layout !== 'grid') {
+							this.list.rowItems_ = this.list.rowItems;
+							this.list.rowItems = 1;
+						}
+						else if (layout === 'grid') {
+							this.list.rowItems = this.list.rowItems_ || 1;
+						}
+						this.list.itemLayout = layout;
+					};
+					this.actionCallback = function (cb) {
+						cb(this.list.filter(function (item) {
+							return item.selected;
+						}));
+					};
 				},
 				controllerAs: 'ctrl'
 			};
