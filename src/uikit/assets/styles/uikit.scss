@@ -12,14 +12,6 @@
 
 @import '../../assets/styles/04_base/_typography.scss';
 
-@import '../../assets/styles/05_objects/_globals.scss';
-
-@import '../../assets/styles/05_objects/_layout.scss';
-
-@import '../../assets/styles/05_objects/_spaces.scss';
-
-@import '../../assets/styles/05_objects/_utility.scss';
-
 @import '../../assets/styles/06_sections/footer.scss';
 
 @import '../../assets/styles/06_sections/home.scss';
@@ -37,6 +29,14 @@
 @import '../../assets/styles/06_sections/spot.scss';
 
 @import '../../assets/styles/06_sections/topbar.scss';
+
+@import '../../assets/styles/05_objects/_globals.scss';
+
+@import '../../assets/styles/05_objects/_layout.scss';
+
+@import '../../assets/styles/05_objects/_spaces.scss';
+
+@import '../../assets/styles/05_objects/_utility.scss';
 
 @import '../../components/breadcrumb/breadcrumb.scss';
 

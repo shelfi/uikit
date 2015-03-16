@@ -61,8 +61,8 @@ $sf-product__cta-btn-size: 42px;
 
 //LIST MODE layout
 .sf-product--list{align-items: center; flex-direction: row; justify-content: space-between; padding:4px;
-  .sf-product__image{max-width: 20%; flex: 0 0 20%; overflow: hidden; max-height: 80px;}	
-  .sf-product__info{max-width: 50%; flex: 0 0 50%; padding-left: 15px; order:1;}
+  .sf-product__image{max-width: 15%; flex: 0 0 15%; overflow: hidden; max-height: 80px;}	
+  .sf-product__info{max-width: 55%; flex: 0 0 55%; padding-left: 15px; order:1;}
   .sf-product__action{max-width: 30%; flex: 0 0 30%; display: flex; justify-content:flex-end; align-items: center; order:3;}
   .sf-product__description{display: none;}
 
