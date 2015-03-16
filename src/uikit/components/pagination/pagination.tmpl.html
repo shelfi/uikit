@@ -9,12 +9,20 @@
 		<li ng-repeat="page in pages track by $index" ng-class="{'sf-pagination__item--active': page.active}" class="sf-pagination__item-number" hide-sm>
 			<a href ng-click="selectPage(page.number)">{{page.text}}</a>
 		</li>
-		<li class="sf-pagination__item-current" show-sm hide>Sayfa {{page}} / {{totalPages}}</li>
+		<li class="sf-pagination__item-current" show-sm hide>{{page}} / {{totalPages}}</li>
 		<li ng-if="directionLinks" ng-class="{'sf-pagination__item--disabled': noNext()}" class="sf-pagination__item-next">
 			<a href ng-click="selectPage(page + 1)"><md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a>
 		</li>
 		<li ng-if="boundaryLinks" ng-class="{'sf-pagination__item--disabled': noNext()}" class="sf-pagination__item-last">
 			<a href ng-click="selectPage(totalPages)"><md-icon md-svg-icon="extra:chevron-double-right" alt="Icon Alt"></md-icon></a>
+		</li>
+		<li class="sf-pagination__item-dropup">
+			<a href ng-click="showItemsPerPage = !showItemsPerPage" ng-class="{'sf-pagination__itemperpage--active':showItemsPerPage}"><md-icon md-svg-icon="navigation:ic_arrow_drop_up_24px" alt="Icon Alt"></md-icon></a>
+			<ul class="sf-pagination__itemperpage" ng-show="showItemsPerPage">
+	        	<li class="sf-pagination__itemperpage-item"><a ng-click="changeItemPerPage(12); showItemsPerPage = false">12 Urun</a></li>
+	        	<li class="sf-pagination__itemperpage-item"><a ng-click="changeItemPerPage(24);  showItemsPerPage = false">24 Urun</a></li>
+	        	<li class="sf-pagination__itemperpage-item"><a ng-click="changeItemPerPage(48);  showItemsPerPage = false">48 Urun</a></li>
+	      </ul>
 		</li>
 	</ul>
 </div>

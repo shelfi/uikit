@@ -7,7 +7,7 @@ $sf-pagination__item-colorTxt--active: $paper;
 $sf-pagination__item-colorTxt--disabled: lighten($link-color, 30%);
 
 
-.sf-pagination{display: flex; background: $sf-pagination__list-bg;}
+.sf-pagination{display: flex; background: $sf-pagination__list-bg; margin-top: 80px;}
 .sf-pagination__list{margin:0 auto;}
 
 //common element properties that will be extended by all of the elements(we are using % so the styles will be only extended) 
@@ -24,6 +24,7 @@ $sf-pagination__item-colorTxt--disabled: lighten($link-color, 30%);
 .sf-pagination__item-number, 
 .sf-pagination__item-next,
 .sf-pagination__item-current,
+.sf-pagination__item-dropup,
 .sf-pagination__item-last{@extend %sf-pagination__item;}
 
 //current page element
@@ -33,6 +34,16 @@ $sf-pagination__item-colorTxt--disabled: lighten($link-color, 30%);
 .sf-pagination__item-previous,
 .sf-pagination__item-next{
 	a{padding:0 5px};
+}
+.sf-pagination__item-dropup{
+	a{}
+}
+.sf-pagination__itemperpage{position: absolute; bottom:45px; background: $sf-pagination__list-bg;}
+.sf-pagination__itemperpage--active{background: $sf-pagination__item-colorBg--active; color: $sf-pagination__item-colorTxt--active}
+.sf-pagination__itemperpage-item{
+	& a{padding: 5px; display: block; font-size: .9em; line-height: 2; padding: 0 10px;
+		&:hover{background: $sf-pagination__item-colorBg--active; color: $sf-pagination__item-colorTxt--active};
+	}
 }
 
 

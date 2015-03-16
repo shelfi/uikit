@@ -6,7 +6,7 @@
 		
 		.controller('paginationCtrl', function () {
 
-			this.totalItems = 100;
+			this.totalItems = 160;
 			this.itemsPerPage = 10;
 			this.currentPage = 2;
 

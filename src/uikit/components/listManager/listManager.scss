@@ -1,9 +1,16 @@
-.sf-list-manager{flex-direction: row; justify-content: space-between;}
-.sf-list-manager__layout{max-width: 20%; flex: 0 0 20%;}
-.sf-list-manager__products{max-width: 60%; flex: 0 0 60%; flex-direction: row; display: flex;}
-.sf-list-manager__pagination{max-width: 20%; flex: 0 0 20%;}
+.sf-list-manager{flex-direction: row; justify-content: space-between; flex-wrap:wrap;}
+.sf-list-manager__layout{max-width: 20%; flex: 0 0 20%;
+	@include breakpoint('small'){max-width: 100%; flex: 0 0 100%;}
+}
+.sf-list-manager__products{max-width: 50%; flex: 0 0 50%; flex-direction: row; display: flex; justify-content: space-between; align-items: center;
+	@include breakpoint('small'){max-width: 100%; flex: 0 0 100%;}
+}
 
 
-.sf-list-manager__products-sort{}
-.sf-list-manager__products-itemperpage{}
+.sf-list-manager__products-sort,
+.sf-list-manager__products-itemperpage,
 .sf-list-manager__products-compare{}
+
+.sf-list-manager__products-sort{flex: 0 0 20%;}
+.sf-list-manager__products-itemperpage{flex: 0 0 30%;}
+.sf-list-manager__products-compare{flex: 0 0 50%;}

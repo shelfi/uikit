@@ -53,6 +53,10 @@
 	  $scope.noNext = function() {
 	    return $scope.page === $scope.totalPages;
 	  };
+	  $scope.changeItemPerPage = function(newVal){
+        self.itemsPerPage = parseInt(newVal, 10);
+        $scope.totalPages = self.calculateTotalPages();
+	  };
 
 	  $scope.$watch('totalItems', function() {
 	    $scope.totalPages = self.calculateTotalPages();

@@ -30,7 +30,10 @@
 								addToCart: function (selectedItems) {
 									console.log('addToCart', selectedItems);
 								}
-				}				
+				},
+				totalItems: 40,
+				itemsPerPage: 10,
+				currentPage: 2			
 			};
 
 
