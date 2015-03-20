@@ -2,12 +2,3 @@
 
 //sf-productlist
 .sf-productList-container .sf-product-item{margin-bottom: 3em;}
-
-//sf-list-control
-.sf-list-control{flex-direction: row; justify-content: space-between; flex-wrap:wrap;}
-
-.sf-list-control__layout{max-width: 33%; flex: 0 0 33%;
-	@include breakpoint('small'){max-width: 100%; flex: 0 0 100%;}
-}
-.sf-list-control__sort{flex: 0 0 33%;}
-.sf-list-control__action{flex: 0 0 33%; text-align: right;}

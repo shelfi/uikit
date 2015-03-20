@@ -21,7 +21,7 @@
 			</md-select>
 		</div>
 		<div class="sf-list-manager__action">
-			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)" aria-label="{{ action }}" class="sf-list-manager__action-btn">
+			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" ng-click="ctrl.actionCallback(cb)" aria-label="{{ action }}" class="md-primary sf-list-manager__action-btn" ng-disabled="selectedItems">
 			<md-icon md-svg-icon="{{ action }}"></md-icon>
 			<md-tooltip>{{ action }}</md-tooltip>
 			</md-button>
@@ -29,21 +29,11 @@
 	</div>
 
 
-
-
-
-
-
-
-
-
 	<div class="sf-product-list" layout="row" layout-wrap>
 		<sf-product-item 
 			ng-repeat="item in listCtrl.items" 
 			ng-model="item" 
-			flex="{{ 100 / ctrl.rowItems | number:0 }}" 
-			flex-sm="100" 
-			flex-md="100" 
+			flex="{{ 100 / ctrl.rowItems | number:0 }}"
 			item-layout="{{ ctrl.itemLayout }}" 
 			show-image="true" 
 			show-name="true" 
@@ -61,7 +51,6 @@
 		ng-model="listCtrl.currentPage"
 		total-items="listCtrl.totalItems"
 		items-per-page="listCtrl.itemsPerPage" 
-
 		max-size="ctrl.maxSize" 
 		num-pages="ctrl.numPages" 
 		rotate="ctrl.rotate" 
@@ -70,12 +59,7 @@
 		next-text="ctrl.nextText" 
 		boundary-links="ctrl.boundaryLinks" 
 		first-text="ctrl.firstText" 
-		last-text="ctrl.lastText" 
-		
-		layout
-		layout-align="end end"
-		flex
-		flex-sm="100"
+		last-text="ctrl.lastText"
 		>
 	</pagination>
 	<!--
