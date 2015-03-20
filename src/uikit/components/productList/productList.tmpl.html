@@ -24,7 +24,10 @@
 		</div>
 		<div flex flex-sm="50"></div>
 		<div flex layout layout-align="end center" flex-sm="50">
-			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)">{{ action }}</md-button>
+			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)" aria-label="{{ action }}">
+			<md-icon md-svg-icon="{{ action }}"></md-icon>
+			<md-tooltip>{{ action }}</md-tooltip>
+			</md-button>
 		</div>
 		
 
