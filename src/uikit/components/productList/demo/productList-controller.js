@@ -20,7 +20,6 @@
 				{ name: 'product 7', image: 'holder.js/100%x300', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
 			];
 
-
 			this.actionButtons = {
 				compare: function (selectedItems) {
 					console.log('compare', selectedItems);
