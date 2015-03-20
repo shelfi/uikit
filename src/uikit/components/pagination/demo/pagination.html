@@ -1,4 +1,3 @@
 <div ng-controller="paginationCtrl as pagination">
-	<span><small>Current page:</small>{{ pagination.currentPage }}</span>
-	<pagination total-items="pagination.totalItems" items-per-page="pagination.itemsPerPage" ng-model="pagination.currentPage" ng-change="pagination.pageChanged()"></pagination>
+	<pagination total-items="pagination.totalItems" boundary-links="true" items-per-page="pagination.itemsPerPage" items-per-page-options="pagination.itemsPerPageOptions" ng-model="pagination.currentPage" ng-change="pagination.pageChanged()" max-size="10"></pagination>
 </div>

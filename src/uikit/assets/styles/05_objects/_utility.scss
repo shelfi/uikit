@@ -48,15 +48,13 @@
 }
 
 //hide
-.hide{display: none;}
 .hidden{display: none;}
-
+.hide { display: none !important; }
 
 //inline lists
 ul.inline{margin-left: 0; padding-left: 0;
 	& li{list-style: none; display: inline-block;}
 }
-
 
 
 //angular cloak utility classes

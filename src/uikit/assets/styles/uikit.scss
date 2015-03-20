@@ -42,6 +42,8 @@
 
 @import '../../components/cart/cart.scss';
 
+@import '../../components/listManager/listManager.scss';
+
 @import '../../components/menu/menu.scss';
 
 @import '../../components/navbar/navbar.scss';
@@ -52,12 +54,11 @@
 
 @import '../../components/productList/productList.scss';
 
-@import '../../components/productListControl/productListControl.scss';
-
 @import '../../components/userInfo/userInfo.scss';
 
 // endinjector
 
 
-
-.hide { display: none !important; }
+//Guideslines
+//http://sass-guidelin.es/http://www.sitepoint.com/css-sass-styleguide/
+//http://www.sitepoint.com/css-sass-styleguide/

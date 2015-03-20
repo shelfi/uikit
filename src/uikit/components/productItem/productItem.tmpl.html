@@ -3,39 +3,36 @@
 		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image"></a>
 	</div>
 	<div class="sf-product__badge" ng-if="ctrl.showPromotion === 'true'">
-		<div class="sf-product__badge__item" ng-repeat="item in ctrl.item.promotion">
+		<div class="sf-product__badge-item" ng-repeat="item in ctrl.item.promotion">
 			<md-icon md-svg-icon="{{item.icon}}" alt="{{item.description}}"></md-icon>
 			<md-tooltip md-direction="top" md-delay="200">{{ item.description }}</md-tooltip>
 		</div>
 	</div>
 	<div class="sf-product__info">
-		<h3 ng-if="ctrl.showName === 'true'"><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h3>
+		<h3 ng-if="ctrl.showName === 'true'" class="sf-product__title"><a ng-href ng-click="ctrl.click({ product: ctrl.item })">{{ ctrl.item.name }}</a></h3>
 		<p ng-if="ctrl.showDescription === 'true'" class="sf-product__description">{{ ctrl.item.desc }}</p>
-	</div>
-	<div  class="sf-product__price" ng-if="ctrl.showPrice === 'true'">
-		<span>{{ ctrl.item.price | currency }}</span>
+		<div  class="sf-product__price" ng-if="ctrl.showPrice === 'true'">
+			<span>{{ ctrl.item.price | currency }}</span>
+		</div>
 	</div>
 	<div class="sf-product__action" ng-if="ctrl.showAddToCartButton === 'true'">
 		<div class="sf-product__quantity" ng-if="ctrl.showQuantity === 'true'">
 			<!-- text input veya select olarak adet girilebilir (select item predefine ozelligi controllerdan define oluyor.)-->
-			<md-input-container ng-if="!ctrl.predefineQuantity">
-				<label for="">Adet</label>
-				<input type="text">
+			<md-input-container class="sf-product__quantity-number">
+				<label for="quantity">Adet</label>
+				<input type="number" name="quantity" ng-model="ctrl.quantity.value" min="1" max="1000" ng-if="!ctrl.predefineQuantity">
+				<input type="number" step="{{ctrl.quantity.step}}" ng-model="ctrl.quantity.value" min="{{ctrl.quantity.min}}" max="{{ctrl.quantity.max}}" ng-if="ctrl.predefineQuantity">
 			</md-input-container>
-			<md-select ng-model="quantity" placeholder="Adet" ng-if="ctrl.predefineQuantity">
-				<md-option value="1" ng-selected="selected">1</md-option>
-				<md-option value="2">2</md-option>
-			</md-select>
 		</div>
 		<div class="sf-product__cta">
-			<md-button class="md-fab md-primary md-raised" ng-click="ctrl.addToCart({ product: ctrl.item })" aria-label="Sepete Ekle">
+			<md-button class="md-fab md-primary md-raised sf-product__cta-btn" ng-click="ctrl.addToCart({ product: ctrl.item })" aria-label="Sepete Ekle">
 				<md-icon md-svg-icon="action:ic_shopping_cart_24px" alt="Icon Alt">
 					<md-tooltip>Sepete Ekle</md-tooltip>
 				</md-icon>
 			</md-button>
 		</div>
 		<div class="sf-product__compare" ng-if="ctrl.selectable === 'true'">
-			<md-checkbox ng-model="ctrl.item.selected"></md-checkbox>
+			<md-checkbox ng-model="ctrl.item.selected" class="sf-product__compare-checkbox"></md-checkbox>
 		</div>
 	</div>
 </div>

@@ -22,7 +22,9 @@
 				.iconSet('action', '/uikit/images/icons/svg-sprite-action.svg', 24)
 				.iconSet('navigation', '/uikit/images/icons/svg-sprite-navigation.svg', 24)
 				.iconSet('communication', '/uikit/images/icons/svg-sprite-communication.svg', 24)
-				.iconSet('maps', '/uikit/images/icons/svg-sprite-maps.svg', 24);
+				.iconSet('maps', '/uikit/images/icons/svg-sprite-maps.svg', 24)
+				.iconSet('av', '/uikit/images/icons/svg-sprite-av.svg', 24)
+				.iconSet('extra', '/uikit/images/icons/extra.svg');
 
 			//.iconSet('action', '/bower_components/shelfi-uikit/images/icons/svg-sprite-action.svg', 24)
 			//.iconSet('navigation', '/bower_components/shelfi-uikit/images/icons/svg-sprite-navigation.svg', 24)
@@ -72,9 +74,6 @@
 		})
 		.controller('listController', function () {
 
-			this.setConfig = function (config) {
-				this.config = angular.extend({}, defaultListConfig, config);
-			};
 
 			this.doRequest = function () {
 				
@@ -310,7 +309,7 @@
 
 			this.paginate = function() {
 				//console.log('paginate');
-				if(this.config.cliensidePagination) {
+				if (this.config.cliensidePagination) {
 					var items = this.itemsSorted;
 					items = $filter('offset')(items, (this.currentPage - 1) * this.itemsPerPage);
 					items = $filter('limitTo')(items, this.itemsPerPage);
@@ -335,6 +334,11 @@
 				action.fn(selectedItems);
 			};
 			
+
+
+			//this.setConfig = function (config) {
+			//	this.config = angular.extend({}, defaultListConfig, config);
+			//};
 			this.config = {};
 			this.columns = [];
 			this.items = [];

@@ -1,15 +1,26 @@
 <div class="sf-pagination">
-	<!--
-	<label for="pagination">Sayfa:</label>
-	<ul layout="row">
-		<li ng-repeat="item in ctrl.pages">{{item.page}}</li>
-	</ul>
-	-->
-	<ul class="pagination" layout="row">
-		<li ng-if="boundaryLinks" ng-class="{disabled: noPrevious()}"><a href ng-click="selectPage(1)">{{getText('first')}}</a></li>
-		<li ng-if="directionLinks" ng-class="{disabled: noPrevious()}"><a href ng-click="selectPage(page - 1)">{{getText('previous')}}</a></li>
-		<li ng-repeat="page in pages track by $index" ng-class="{active: page.active}"><a href ng-click="selectPage(page.number)">{{page.text}}</a></li>
-		<li ng-if="directionLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(page + 1)">{{getText('next')}}</a></li>
-		<li ng-if="boundaryLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(totalPages)">{{getText('last')}}</a></li>
+	<ul class="sf-pagination__list" layout="row">
+		<li ng-if="boundaryLinks" ng-class="{'sf-pagination__item--disabled': noPrevious()}" class="sf-pagination__item-first">
+			<a href ng-click="selectPage(1)"><md-icon md-svg-icon="extra:chevron-double-left" alt="Icon Alt"></md-icon></a>
+		</li>
+		<li ng-if="directionLinks" ng-class="{'sf-pagination__item--disabled': noPrevious()}" class="sf-pagination__item-previous">
+			<a href ng-click="selectPage(page - 1)"><md-icon md-svg-icon="navigation:ic_chevron_left_24px" alt="Icon Alt"></md-icon></a>
+		</li>
+		<li ng-repeat="page in pages track by $index" ng-class="{'sf-pagination__item--active': page.active}" class="sf-pagination__item-number" hide-sm>
+			<a href ng-click="selectPage(page.number)">{{page.text}}</a>
+		</li>
+		<li class="sf-pagination__item-current" show-sm hide>{{page}} / {{totalPages}}</li>
+		<li ng-if="directionLinks" ng-class="{'sf-pagination__item--disabled': noNext()}" class="sf-pagination__item-next">
+			<a href ng-click="selectPage(page + 1)"><md-icon md-svg-icon="navigation:ic_chevron_right_24px" alt="Icon Alt"></md-icon></a>
+		</li>
+		<li ng-if="boundaryLinks" ng-class="{'sf-pagination__item--disabled': noNext()}" class="sf-pagination__item-last">
+			<a href ng-click="selectPage(totalPages)"><md-icon md-svg-icon="extra:chevron-double-right" alt="Icon Alt"></md-icon></a>
+		</li>
+		<li class="sf-pagination__item-dropup" ng-if="itemsPerPageOptions">
+			<a href ng-click="toggleDropup()" ng-class="{'sf-pagination__itemperpage--active':showItemsPerPage}"><md-icon md-svg-icon="navigation:ic_arrow_drop_up_24px" alt="Icon Alt"></md-icon></a>
+			<ul class="sf-pagination__itemperpage" ng-show="showItemsPerPage">
+	        	<li ng-repeat="ipp in itemsPerPageOptions" class="sf-pagination__itemperpage-item"><a ng-click="changeItemPerPage(ipp);">{{ipp}}</a></li>
+	      </ul>
+		</li>
 	</ul>
 </div>

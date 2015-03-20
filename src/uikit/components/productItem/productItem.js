@@ -30,8 +30,14 @@
 				controllerAs: 'ctrl',
 				link: function (scope, element, attrs, ctrl) {
 					scope.ctrl.showAddToCartButton = attrs.addToCart ? 'true' : 'false';
-					scope.ctrl.predefineQuantity = false;
 					scope.ctrl.itemLayout = 'list';
+					scope.ctrl.predefineQuantity = false;
+					scope.ctrl.quantity = {
+						value: 1,
+						step: 100,
+						min:100,
+						max: 5000
+					}
 
 					if (ctrl) {
 						scope.ctrl.showImage = scope.ctrl.showImage || ctrl.showImage;

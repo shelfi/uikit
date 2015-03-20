@@ -1,0 +1,23 @@
+<div class="sf-list-manager" layout="row">
+	<div class="sf-list-manager__layout">
+		<md-button class="md-primary sf-list-manager__layout-btn" ng-click="ctrl.changeItemLayout('list')" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary sf-list-manager__layout-btn" aria-label="view detailed list"  ng-click="ctrl.changeItemLayout('detailedlist')" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary sf-list-manager__layout-btn" aria-label="view grid" ng-click="ctrl.changeItemLayout('grid')" ng-class="{ '--active': ctrl.itemLayout === 'grid' }"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
+	</div>
+	<div class="sf-list-manager__products">
+		<div class="sf-list-manager__products-sort">
+			<select name="sort" id="sort">
+				<option value="">Sırala</option>
+				<option value="">Urun Kodu</option>
+				<option value="">Stok</option>
+				<option value="">Marka</option>
+				<option value="">Fiyat Azalan</option>
+				<option value="">Fiyat Artan</option>
+				<option value="">Puan</option>
+			</select>
+		</div>
+		<div class="sf-list-manager__products-compare">
+			<md-button ng-repeat="(action, cb) in ctrl.list.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)">{{ action }}</md-button>
+		</div>
+	</div>
+</div>
