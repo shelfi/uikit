@@ -3,7 +3,11 @@
 	'use strict';
 
 	angular.module('uikit.components.productList')
-		
+		.config(function ($mdIconProvider) {
+			$mdIconProvider
+				.icon('Add Selected To Cart', '/uikit/images/icons/core/cart.svg')
+				.icon('Compare Selected', '/uikit/images/icons/core/compare.svg')
+		})
 		.controller('productListCtrl', function () {
 
 			this.products = [
@@ -33,11 +37,11 @@
 			];
 
 			this.actionButtons = {
-				compare: function (selectedItems) {
+				'Compare Selected': function (selectedItems) {
 					console.log('compare', selectedItems);
 				},
-				addToCart: function (selectedItems) {
-					console.log('addToCart', selectedItems);
+				'Add Selected To Cart': function (selectedItems) {
+					console.log('Add To Cart', selectedItems);
 				}
 			};
 

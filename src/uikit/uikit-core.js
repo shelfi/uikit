@@ -25,10 +25,9 @@
 				.iconSet('maps', '/uikit/images/icons/svg-sprite-maps.svg', 24)
 				.iconSet('av', '/uikit/images/icons/svg-sprite-av.svg', 24)
 				.iconSet('extra', '/uikit/images/icons/extra.svg');
-
-			//.iconSet('action', '/bower_components/shelfi-uikit/images/icons/svg-sprite-action.svg', 24)
-			//.iconSet('navigation', '/bower_components/shelfi-uikit/images/icons/svg-sprite-navigation.svg', 24)
-			//.iconSet('communication', '/bower_components/shelfi-uikit/images/icons/svg-sprite-communication.svg', 24)
+		})
+		.run(function($log){
+		  $log.debug("uikit + ngMaterial running...");
 		})
 		.directive('sfTemplate', function ($compile) {
 			return {

@@ -32,7 +32,7 @@
 			</md-button>
 		</div>
 		<div class="sf-product__compare" ng-if="ctrl.selectable === 'true'">
-			<md-checkbox ng-model="ctrl.item.selected" class="sf-product__compare-checkbox"></md-checkbox>
+			<md-checkbox ng-model="ctrl.item.selected" class="sf-product__compare-checkbox" aria-label="{{ctrl.item.name}}"></md-checkbox>
 		</div>
 	</div>
 </div>

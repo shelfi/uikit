@@ -65,6 +65,7 @@ $sf-product__cta-btn-size: 42px;
   .sf-product__info{max-width: 55%; flex: 0 0 55%; padding-left: 15px; order:1;}
   .sf-product__action{max-width: 30%; flex: 0 0 30%; display: flex; justify-content:flex-end; align-items: center; order:3;}
   .sf-product__description{display: none;}
+  .sf-product__description-detail{background: none;}
 
   //list mode action subitems layout
   .sf-product__quantity{flex: 0 0 50%;}

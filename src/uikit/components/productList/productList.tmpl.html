@@ -6,28 +6,25 @@
 	</div>
 	-->
 
-	<div class="sf-list-control" layout="row" layout-align="center center" layout-wrap>
-
-		<div flex="500" flex-sm="50" ng-if="ctrl.showItemLayout">
-			<md-button class="md-primary" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list" ng-click="ctrl.changeItemLayout('list')"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
-			<md-button class="md-primary" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }" aria-label="view detailed list" ng-click="ctrl.changeItemLayout('detailedlist')"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
-			<md-button class="md-primary" ng-class="{ '--active': ctrl.itemLayout === 'grid' }" aria-label="view grid" ng-click="ctrl.changeItemLayout('grid')"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
+	<div class="sf-list-manager" layout="row">
+		<div class="sf-list-manager__layout" ng-if="ctrl.showItemLayout">
+			<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list" ng-click="ctrl.changeItemLayout('list')"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
+			<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }" aria-label="view detailed list" ng-click="ctrl.changeItemLayout('detailedlist')"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
+			<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'grid' }" aria-label="view grid" ng-click="ctrl.changeItemLayout('grid')"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
 		</div>
-
-		<div flex flex-sm="50">
-			<md-select ng-model="ctrl.sort" placeholder="Select a state" ng-if="ctrl.sortable === 'true'">
+		<div class="sf-list-manager__sort">
+			<md-select ng-model="ctrl.sort" placeholder="Select a state" ng-if="ctrl.sortable === 'true'" class="sf-list-manager__sort-select">
 				<md-option ng-value="key" ng-repeat="(key, val) in ctrl.sortOptions">{{ val }}</md-option>
 			</md-select>
 		</div>
-		<div flex flex-sm="50"></div>
-		<div flex layout layout-align="end center" flex-sm="50">
-			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)">{{ action }}</md-button>
+		<div class="sf-list-manager__action">
+			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)" aria-label="{{ action }}" class="sf-list-manager__action-btn">
+			<md-icon md-svg-icon="{{ action }}"></md-icon>
+			<md-tooltip>{{ action }}</md-tooltip>
+			</md-button>
 		</div>
-		
-
 	</div>
 
-	
 
 
 
@@ -37,7 +34,7 @@
 
 
 
-	<div layout="row" layout-wrap>
+	<div class="sf-product-list" layout="row" layout-wrap>
 		<sf-product-item 
 			ng-repeat="item in listCtrl.items" 
 			ng-model="item" 
