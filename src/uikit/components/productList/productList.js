@@ -36,7 +36,7 @@
 
 
 
-					paginate: '@',
+					paginator: '@',
 					currentPage: '=',
 					totalItems: '@',
 					itemsPerPage: '@',

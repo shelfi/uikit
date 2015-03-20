@@ -41,6 +41,10 @@
 				}
 			};
 
+			this.cb = function () {
+				console.log('asd');
+			};
+
 		});
 
 })();
