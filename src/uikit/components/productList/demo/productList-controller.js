@@ -3,7 +3,11 @@
 	'use strict';
 
 	angular.module('uikit.components.productList')
-		
+		.config(function ($mdIconProvider) {
+			$mdIconProvider
+				.icon('Add To Cart Selected', '/uikit/images/icons/core/cart.svg')
+				.icon('Compare Selected', '/uikit/images/icons/core/compare.svg')
+		})
 		.controller('productListCtrl', function () {
 
 			this.products = [
@@ -24,12 +28,12 @@
 				itemLayout: "grid",
 				rowItems: 4,
 				actionButtons : {
-								compare: function (selectedItems) {
-									console.log('compare', selectedItems);
-								},
-								addToCart: function (selectedItems) {
-									console.log('addToCart', selectedItems);
-								}
+					'Compare Selected': function (selectedItems) {
+						console.log('compare', selectedItems);
+					},
+					'Add To Cart Selected': function (selectedItems) {
+						console.log('addToCart', selectedItems);
+					}
 				},
 				totalItems: 40,
 				itemsPerPage: 10,
@@ -41,8 +45,8 @@
 				compare: function (selectedItems) {
 					console.log('compare', selectedItems);
 				},
-				addToCart: function (selectedItems) {
-					console.log('addToCart', selectedItems);
+				'add To Cart': function (selectedItems) {
+					console.log('Add To Cart', selectedItems);
 				}
 			};
 		});

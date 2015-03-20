@@ -17,7 +17,10 @@
 			</select>
 		</div>
 		<div class="sf-list-manager__products-compare">
-			<md-button ng-repeat="(action, cb) in ctrl.list.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)">{{ action }}</md-button>
+			<md-button ng-repeat="(action, cb) in ctrl.list.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)" aria-label="{{action}}">
+			<md-icon md-svg-icon="{{action}}"></md-icon>
+			<md-tooltip>{{action}}<md-tooltip>
+			</md-button>
 		</div>
 	</div>
 </div>
