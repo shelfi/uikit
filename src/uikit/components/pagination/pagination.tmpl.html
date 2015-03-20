@@ -16,12 +16,10 @@
 		<li ng-if="boundaryLinks" ng-class="{'sf-pagination__item--disabled': noNext()}" class="sf-pagination__item-last">
 			<a href ng-click="selectPage(totalPages)"><md-icon md-svg-icon="extra:chevron-double-right" alt="Icon Alt"></md-icon></a>
 		</li>
-		<li class="sf-pagination__item-dropup">
-			<a href ng-click="showItemsPerPage = !showItemsPerPage" ng-class="{'sf-pagination__itemperpage--active':showItemsPerPage}"><md-icon md-svg-icon="navigation:ic_arrow_drop_up_24px" alt="Icon Alt"></md-icon></a>
+		<li class="sf-pagination__item-dropup" ng-if="itemsPerPageOptions">
+			<a href ng-click="toggleDropup()" ng-class="{'sf-pagination__itemperpage--active':showItemsPerPage}"><md-icon md-svg-icon="navigation:ic_arrow_drop_up_24px" alt="Icon Alt"></md-icon></a>
 			<ul class="sf-pagination__itemperpage" ng-show="showItemsPerPage">
-	        	<li class="sf-pagination__itemperpage-item"><a ng-click="changeItemPerPage(12); showItemsPerPage = false">12 Urun</a></li>
-	        	<li class="sf-pagination__itemperpage-item"><a ng-click="changeItemPerPage(24);  showItemsPerPage = false">24 Urun</a></li>
-	        	<li class="sf-pagination__itemperpage-item"><a ng-click="changeItemPerPage(48);  showItemsPerPage = false">48 Urun</a></li>
+	        	<li ng-repeat="ipp in itemsPerPageOptions" class="sf-pagination__itemperpage-item"><a ng-click="changeItemPerPage(ipp);">{{ipp}}</a></li>
 	      </ul>
 		</li>
 	</ul>

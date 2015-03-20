@@ -1,5 +1,10 @@
 <div ng-controller="productListCtrl as productList">
-	<sf-list-manager ng-model="productList.config"></sf-list-manager>
-	<sf-product-list ng-model="productList.products" row-items="{{productList.config.rowItems}}" action-buttons="productList.config.actionButtons" item-layout="{{productList.config.itemLayout}}"></sf-product-list>
-	<pagination total-items="productList.config.totalItems" boundary-links="true" items-per-page="productList.config.itemsPerPage" ng-model="productList.config.currentPage" ng-change="productList.config.pageChanged()" max-size="10"></pagination>
+	<sf-product-list 
+		ng-model="productList.products" 
+		row-items="4"
+		action-buttons="productList.actionButtons"
+		sortable="true"
+		paginate="true"
+		>
+	</sf-product-list>
 </div>

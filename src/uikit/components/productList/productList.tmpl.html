@@ -1,49 +1,119 @@
 <div>
-	<!--<div class="sf-list-control" layout="row" layout-align="center center" layout-wrap hide>
-		
+
+	<!--
+	<sf-product-list-control></sf-product-list-control>
+	<div class="sf-productlist-control" layout="row" layout-align="center center" layout-wrap>
+	</div>
+	-->
+
+	<div class="sf-list-control" layout="row" layout-align="center center" layout-wrap>
+
 		<div flex="500" flex-sm="50" ng-if="ctrl.showItemLayout">
 			<md-button class="md-primary" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list" ng-click="ctrl.changeItemLayout('list')"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
 			<md-button class="md-primary" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }" aria-label="view detailed list" ng-click="ctrl.changeItemLayout('detailedlist')"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
 			<md-button class="md-primary" ng-class="{ '--active': ctrl.itemLayout === 'grid' }" aria-label="view grid" ng-click="ctrl.changeItemLayout('grid')"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
 		</div>
 
-
 		<div flex flex-sm="50">
-			<select name="sort" id="sort">
-				<option value="">Sırala</option>
-				<option value="">Urun Kodu</option>
-				<option value="">Stok</option>
-				<option value="">Marka</option>
-				<option value="">Fiyat Azalan</option>
-				<option value="">Fiyat Artan</option>
-				<option value="">Puan</option>
-			</select>
-			<select name="itemperpage" id="itemperpage">
-				<option value="">12 Urun</option>
-				<option value="">24 Urun</option>
-				<option value="">48 Urun</option>
-			</select>
+			<md-select ng-model="ctrl.sort" placeholder="Select a state" ng-if="ctrl.sortable === 'true'">
+				<md-option ng-value="key" ng-repeat="(key, val) in ctrl.sortOptions">{{ val }}</md-option>
+			</md-select>
+			<md-select ng-model="ctrl.sort" placeholder="Select a state">
+				<md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
+			</md-select>
 		</div>
 		<div flex flex-sm="50"></div>
-		
-
-
-
 		<div flex layout layout-align="end center" flex-sm="50">
 			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)">{{ action }}</md-button>
 		</div>
 		
 
-		<pagination total-items="10" ng-model="ctrl.currentPage"></pagination>
-		<pagination ng-model="ctrl.pages" layout layout-align="end end" flex flex-sm="100"></pagination>
+	</div>
+
+	
 
 
 
-	</div>-->
+
+
+
 
 
 
 	<div layout="row" layout-wrap>
-		<sf-product-item ng-repeat="item in ctrl.items" ng-model="item" flex="{{ 100 / ctrl.rowItems | number:0 }}" flex-sm="100" flex-md="100" item-layout="{{ ctrl.itemLayout }}" show-image="true" show-name="true" show-description="true" show-price="true" show-quantity="true" selectable="true" add-to-cart="productItem.addToCart(product)" click="productItem.click(product)"></sf-product-item>
+		<sf-product-item 
+			ng-repeat="item in listCtrl.items" 
+			ng-model="item" 
+			flex="{{ 100 / ctrl.rowItems | number:0 }}" 
+			flex-sm="100" 
+			flex-md="100" 
+			item-layout="{{ ctrl.itemLayout }}" 
+			show-image="true" 
+			show-name="true" 
+			show-description="true" 
+			show-price="true" 
+			show-quantity="true" 
+			selectable="true" 
+			add-to-cart="productItem.addToCart(product)" 
+			click="productItem.click(product)"
+			>
+		</sf-product-item>
 	</div>
+
+	<pagination ng-if="ctrl.paginate === 'true'"
+		ng-model="listCtrl.currentPage"
+		total-items="listCtrl.totalItems"
+		items-per-page="listCtrl.itemsPerPage" 
+
+		max-size="ctrl.maxSize" 
+		num-pages="ctrl.numPages" 
+		rotate="ctrl.rotate" 
+		direction-links="ctrl.directionLinks" 
+		previous-text="ctrl.previousText" 
+		next-text="ctrl.nextText" 
+		boundary-links="ctrl.boundaryLinks" 
+		first-text="ctrl.firstText" 
+		last-text="ctrl.lastText" 
+		
+		layout
+		layout-align="end end"
+		flex
+		flex-sm="100"
+		>
+	</pagination>
+	<!--
+	total-items="productList.config.totalItems"
+	boundary-links="true"
+	items-per-page="productList.config.itemsPerPage"
+	ng-model="productList.config.currentPage"
+	ng-change="productList.config.pageChanged()"
+	max-size="10"
+	-->
+
+
+
+	<!--
+	<sf-list-manager ng-model="productList.config"></sf-list-manager>
+	<sf-product-list ng-model="productList.products" row-items="{{productList.config.rowItems}}" action-buttons="productList.actionButtons" item-layout="{{productList.config.itemLayout}}"></sf-product-list>
+	<pagination total-items="productList.config.totalItems" boundary-links="true" items-per-page="productList.config.itemsPerPage" ng-model="productList.config.currentPage" ng-change="productList.config.pageChanged()" max-size="10"></pagination>
+	-->
+
+	<!--
+	this.config = {
+		itemLayout: "grid",
+		rowItems: 4,
+		actionButtons : {
+						compare: function (selectedItems) {
+							console.log('compare', selectedItems);
+						},
+						addToCart: function (selectedItems) {
+							console.log('addToCart', selectedItems);
+						}
+		},
+		totalItems: 40,
+		itemsPerPage: 10,
+		currentPage: 2
+	};
+	-->
+
 </div>

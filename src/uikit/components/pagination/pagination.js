@@ -18,6 +18,13 @@
 	      self.render();
 	    };
 
+		$scope.itemsPerPageOptions = null;
+		if ($attrs.itemsPerPageOptions) {
+			$scope.$parent.$watch($parse($attrs.itemsPerPageOptions), function(value) {
+				$scope.itemsPerPageOptions = value;
+			});
+		}
+		
 	    if ($attrs.itemsPerPage) {
 	      $scope.$parent.$watch($parse($attrs.itemsPerPage), function(value) {
 	        self.itemsPerPage = parseInt(value, 10);
@@ -52,10 +59,6 @@
 	  };
 	  $scope.noNext = function() {
 	    return $scope.page === $scope.totalPages;
-	  };
-	  $scope.changeItemPerPage = function(newVal){
-        self.itemsPerPage = parseInt(newVal, 10);
-        $scope.totalPages = self.calculateTotalPages();
 	  };
 
 	  $scope.$watch('totalItems', function() {
@@ -120,6 +123,30 @@
 	          paginationCtrl.render();
 	        });
 	      }
+
+
+
+
+
+
+
+	      scope.showItemsPerPage = false;
+
+	      scope.toggleDropup = function () {
+	      	scope.showItemsPerPage = !scope.showItemsPerPage;
+	      };
+	      
+	      scope.changeItemPerPage = function(newVal){
+	        paginationCtrl.itemsPerPage = parseInt(newVal, 10);
+	        scope.showItemsPerPage = false;
+	        scope.totalPages = paginationCtrl.calculateTotalPages();
+		  };
+
+
+
+
+
+
 
 	      // Create page object used in template
 	      function makePage(number, text, isActive) {
