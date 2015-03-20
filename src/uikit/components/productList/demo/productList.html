@@ -3,8 +3,14 @@
 		ng-model="productList.products" 
 		row-items="4"
 		action-buttons="productList.actionButtons"
-		sortable="true"
-		paginate="true"
+
+
+
+		client-side="false"
+		paginator="false"
+		sortable="false"
+		cb="productList.cb()"
+		
 		>
 	</sf-product-list>
 </div>

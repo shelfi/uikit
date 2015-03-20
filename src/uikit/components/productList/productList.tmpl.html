@@ -16,9 +16,6 @@
 			<md-select ng-model="ctrl.sort" placeholder="Select a state" ng-if="ctrl.sortable === 'true'" class="sf-list-manager__sort-select">
 				<md-option ng-value="key" ng-repeat="(key, val) in ctrl.sortOptions">{{ val }}</md-option>
 			</md-select>
-			<md-select ng-model="ctrl.sort" placeholder="Select a state" class="sf-list-manager__sort-select">
-				<md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
-			</md-select>
 		</div>
 		<div class="sf-list-manager__action">
 			<md-button ng-repeat="(action, cb) in ctrl.actionButtons" ng-click="ctrl.actionCallback(cb)" aria-label="{{ action }}" class="md-primary sf-list-manager__action-btn" ng-disabled="selectedItems">
@@ -47,10 +44,11 @@
 		</sf-product-item>
 	</div>
 
-	<pagination ng-if="ctrl.paginate === 'true'"
+	<pagination ng-if="ctrl.paginator === 'true'"
 		ng-model="listCtrl.currentPage"
 		total-items="listCtrl.totalItems"
-		items-per-page="listCtrl.itemsPerPage" 
+		items-per-page="listCtrl.itemsPerPage"
+		items-per-page-options="[10, 25, 50, 100, 250, 500]" 
 		max-size="ctrl.maxSize" 
 		num-pages="ctrl.numPages" 
 		rotate="ctrl.rotate" 
