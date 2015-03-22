@@ -1,6 +1,6 @@
 <div class="sf-product" ng-class="{ 'sf-product--grid': ctrl.itemLayout === 'grid', 'sf-product--list': ctrl.itemLayout === 'list', 'sf-product--detailedlist': ctrl.itemLayout === 'detailedlist' }">
 	<div class="sf-product__image" ng-if="ctrl.showImage === 'true'">
-		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img data-src="{{ ctrl.item.image }}" class="md-card-image"></a>
+		<a ng-href ng-click="ctrl.click({ product: ctrl.item })"><img holder-js="{{ ctrl.item.image }}" class="md-card-image"></a>
 	</div>
 	<div class="sf-product__badge" ng-if="ctrl.showPromotion === 'true'">
 		<div class="sf-product__badge-item" ng-repeat="item in ctrl.item.promotion">

@@ -1,167 +1,121 @@
-(function(){
-'use strict';
-angular.module('uikit').controller('ShopCtrl', PrintonlineController);
+(function () {
 
-function PrintonlineController($mdSidenav, $scope, $log, $mdDialog, $mdBottomSheet){
-	this.brand = 'PRINTONLINE | 3M';
-	this.banner = false;
-	this.nav = {
-		primary: [{title: "Anasayfa", type: "link", link: "/"}, {title: "Ürünler", type: "link", link: "/"}, {title: "Standart Kartvizit", type: "link", link: "/"}, ],
-		secondary: [
-		{title: 'ANASAYFA', link: '/PO/PO-home.html'},
-		{title: 'ÜRÜNLER', link: '/PO/PO-product-list.html', submenu: [{title: 'Şablon Ürünler', link: '/PO/PO-product-list.html'},{title: 'Dinamik Ürünler', link: '/PO/PO-product-detail.html'}]},
-		{title: 'HESABIM', link: '#', submenu: [{title: 'Hesap Ayarları', link: 'blabla'},{title: 'Adreslerim', link: 'blabal'},{title: 'Sepetlerim', link: 'nalnalan'}, {title: 'Veri Listelerim', link: 'nalnalan'}]},
-		{title: 'SİPARİŞ GEÇMİŞİM', link: '#'}
-		]
-	};
-	this.menu = {
-			root: [
-			{title: 'Şablon Ürünler', link: '#', 
-			submenu: [{title: 'Kartvizit', link: '/kartvizit', 
-					subsubmenu: [
-						{title: 'Genel Müdürlük Kartvizit', link: '/genel'},
-						{title: 'Ankara Bölge Kartvizit', link: '/ankara'},
-						{title: 'Adana Bölge Kartvizit', link: '/adana '}
+	'use strict';
+
+	angular.module('uikit').controller('ShopCtrl', function ($controller, $timeout) {
+
+		//scope.ctrl.itemLayout = scope.ctrl.itemLayout || 'grid';
+		//scope.ctrl.showItemLayout = !attrs.itemLayout;
+		
+		this.listCtrl = $controller('listController');
+		this.listCtrl.config.cliensidePagination = true;
+		this.listCtrl.doRequest = function (currentPage) {
+			$timeout(function () {
+				var r = [
+					{ name: 'Product with a really long name that can reach over two lines', image: 'holder.js/100%x300/text:product1', price: 15, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...', promotion: [
+						{ description: 'Free Shipping', icon: 'maps:ic_local_shipping_24px' }
+					]}, 
+					{ name: 'product 2', image: 'holder.js/100%x300/text:product2', price: 30, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...22222222222222222 33333333333333333' },
+					{ name: 'product 3', image: 'holder.js/100%x300/text:product3', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...', promotion: [
+						{ description: '%15 discount', icon: 'action:ic_loyalty_24px' }
 					]},
-					{title: 'Etiket', link: '/etiket', 
-						subsubmenu: [
-							{title: 'Etiket(Kolay Sokulen)', link: '/kolayetiket'},
-							{title: 'Etiket Normal', link: 'blabla'}
-					]}
-				]}
-			]
+					{ name: 'product 4', image: 'holder.js/100%x300/text:product4', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 5', image: 'holder.js/100%x300/text:product5', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 6', image: 'holder.js/100%x300/text:product6', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 7', image: 'holder.js/100%x300/text:product7', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 8', image: 'holder.js/100%x300/text:product8', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 9', image: 'holder.js/100%x300/text:product9', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 10', image: 'holder.js/100%x300/text:product10', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 11', image: 'holder.js/100%x300/text:product11', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 12', image: 'holder.js/100%x300/text:product12', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 13', image: 'holder.js/100%x300/text:product13', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 14', image: 'holder.js/100%x300/text:product14', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 15', image: 'holder.js/100%x300/text:product15', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 16', image: 'holder.js/100%x300/text:product16', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 17', image: 'holder.js/100%x300/text:product17', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 18', image: 'holder.js/100%x300/text:product18', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' },
+					{ name: 'product 19', image: 'holder.js/100%x300/text:product19', price: 45, desc: 'The titles of Washed Out\'s breakthrough song and the first single from Paracosm share the * two most important words in Ernest Greene\'s musical language: feel it. It\'s a simple request, as well...' }
+				];
+				if (this.config.cliensidePagination) {
+					this.allItems = r;
+					this.totalItems = r.length;
+					this.filter();
+					return;
+				}
+				this.items = r;
+			}.bind(this), 500);
 		};
-	this.user = {
-		name: 'Ahmet Okan',
-		image: 'holder.js/250x125',
-		email: 'ahmet@gmail.com',
-		phone: '(0216) 555-22-22',
-		menu: [
-			{title: 'Hesabım', icon: 'action:ic_account_circle_24px'},
-			{title: 'Ayarlar', icon: 'action:ic_settings_24px'},
-			{title: 'KAyıtlı Sepetler', icon: 'action:ic_shopping_cart_24px'},
-			{title: 'Veri Listelerim', icon: 'action:ic_assignment_24px'}
-		]
-	};
-	this.products = [
-		{name: 'Kartvizit 12,5cm x 18cm', image: 'holder.js/100%x250', desc: '1. sınıf standart kartvizit', price: '15'},
-		{name: 'Standart Zarf', image: 'holder.js/100%x250', desc: '1. sınıf standart zarf', price: '20'},
-		{name: 'Ürün tanıtım broşür', image: 'holder.js/100%x250', desc: 'A6 boyutunda ürün tanıtım broşürü', price: '30'},
-		{name: 'Flyer', image: 'holder.js/100%x250', desc: 'İki taraflı A6 boyutunda flyer', price: '15'}
-	];
-
-	this.order = [
-		{image: 'holder.js/60x60', title: 'Super T-shirt', price: 15, quantity: 1 }, 
-		{image: 'holder.js/60x60', title: 'Awesome Pants', price: 30,  quantity: 1 },
-	];
-
-	this.columns = [
-		{ name: 'image', width: '30', template: '<img data-src="{{item.image}}" />' },
-		{ name: 'title', width: '25', template: '<small>{{item.title}}</small>' },
-		{ name: 'price', width: '15' },
-		//{ name: 'quantity', width: '10', template: '<md-input-container><label>Quantity</label><input ng-model="item.quantity"></md-input-container>' }
-		//{ name: 'quantity', width: '10', template: '<md-input-container><md-select ng-model="item.quantity" placeholder="Select quantity"><md-option ng-repeat="opt in [100, 250, 500, 1000, 2500]" ng-value="opt">{{ opt }}</md-option></md-select></md-input-container>'
-		{ name: 'quantity', width: '30', template: '<md-select ng-model="item.quantity" placeholder="Adet"><md-option ng-repeat="opt in [100, 200, 500, 1000, 5000]" ng-value="opt">{{ opt }}</md-option></md-select>' }
-	];
-	this.search = {
-		placeholder : 'Search by Name, Item#, Order#'
-	};
-	this.pages = [
-				{page: 1},
-				{page: 2},
-			];
-	this.lang = [
-		{title: 'ENG', value: 'ENG'},{title: 'TR', value: 'TR'},
-	];
-	this.toggleMainSidebar = function() {
-		$mdSidenav('main-sidenav').toggle()
-			.then(function() {
-				$log.debug("user panel active");
-			});
-	};
-	this.toggleUserPanel = function() {
-		$mdSidenav('user-panel').toggle()
-			.then(function() {
-				$log.debug("user panel active");
-			});
-	};
-	this.closeUserPanel = function() {
-		$mdSidenav('user-panel').close()
-			.then(function() {
-				$log.debug("close RIGHT is done");
-			});
-	};
-	this.toggleMiniCart = function() {
-		$mdSidenav('mini-cart').toggle()
-			.then(function() {
-				$log.debug("minicart active");
-			});
-	};
-	this.closeMiniCart = function() {
-		$mdSidenav('mini-cart').close()
-			.then(function() {
-				$log.debug("minicart is done");
-			});
-	};
-
-	this.order = [
-		{image: 'holder.js/60x60', title: 'Super T-shirt', price: 15, quantity: 1}, 
-		{image: 'holder.js/60x60', title: 'Awesome Pants', price: 30,  quantity: 1},
-	];
-
-	this.features = [
-		{title:'Product Category01', image:'holder.js/100%x200'},
-		{title:'Product Category02', image:'holder.js/100%x200'},
-		{title:'Product Category03', image:'holder.js/100%x200'},
-		{title:'Product Category04', image:'holder.js/100%x200'}
-	];
+		this.listCtrl.doRequest();
+		//this.listCtrl.items = this.items;
+		//scope.listCtrl = listCtrl;
+		//scope.$watch('items', function (newValue) {
+		//	if (newValue) {
+		//		scope.listCtrl.allItems = newValue;
+		//		scope.listCtrl.items = newValue;
+		//	}
+		//});
 
 
-	this.filter = {
-		brand: [{title: 'Tip'}, {name: 'Sandisk', cb:false},{name: 'Toshiba', cb:false},{name: 'Samsung', cb:false}],
-		color: [{title: 'renk'}, {name: 'Siyah', cb:false},{name: 'Mavi', cb:false},{name: 'Yeşil', cb:false}],
-		size: [{title: 'boyut'}, {name: '32GB', cb:false},{name: '64GB', cb:false},{name: '128GB', cb:false}]
-	};
+		this.sortOptions = [
+			'title',
+			'title-',
+			'price',
+			'price-'
+		];
 
-	var tabs = [
-	        { title: 'Teknik Bilgiler', content: "Tur: Poster"},
-	        { title: 'Detaylar', content: "Olculer: 245x165 cm"},
-	        { title: 'Fiyatlandırma', content: "1 - 50: 0,50 TL / Adet "}
-	      ];
-	      this.tabs = tabs;
-	      this.selectedIndex = 2;
+		this.actionButtons = {
+			'Compare Selected': function (selectedItems) {
+				console.log('compare', selectedItems);
+			},
+			'Add Selected To Cart': function (selectedItems) {
+				console.log('Add To Cart', selectedItems);
+			},
+			'Add Selected To Favorite': function (selectedItems) {
+				console.log('Add To Favorite', selectedItems);
+			}
+		};
 
-	this.makePayment = function(ev) {
-        $mdDialog.show({
-        	templateUrl: 'payment.tmpl.html',
-        	targetEvent: ev
-        })
-    };
+		this.itemLayout = 'grid';
+		this.rowItems = 4; 
+
+		this.onItemLayoutChange = function (layout) {
+			if (this.itemLayout === 'grid' && layout !== 'grid') {
+				this.rowItems_ = this.rowItems;
+				this.rowItems = 1;
+			}
+			else if (layout === 'grid') {
+				this.rowItems = this.rowItems_ || 1;
+			}
+			this.itemLayout = layout;
+		};
+
+		/*
+		scope.ctrl.itemLayout = scope.ctrl.itemLayout || 'grid';
+		scope.ctrl.showItemLayout = !attrs.itemLayout;
+		
+		var listCtrl = $controller('listController');
+		listCtrl.config.cliensidePagination = true;
+		listCtrl.allItems = scope.ctrl.items;
+		listCtrl.items = scope.ctrl.items;
+		scope.listCtrl = listCtrl;
+		scope.$watch('items', function (newValue) {
+			if (newValue) {
+				scope.listCtrl.allItems = newValue;
+				scope.listCtrl.items = newValue;
+			}
+		});
+		*/
 
 
-    this.productdetail = {
-    	info1: false,
-    	info2: false,
-    	info3: false
-    };
-
-    this.showBottomSheetGrid = function($event) {
-      this.alert = '';
-      $mdBottomSheet.show({
-        templateUrl: 'bottomsheetgrid.html',
-        controller: 'PrintonlineCtrl as ctrl',
-        targetEvent: $event
-      }).then(function(clickedItem) {
-        this.alert = clickedItem.name + ' clicked!';
-      });
-    };
 
 
-      this.showHoverProduct = function(ev) {
-      	$mdDialog.show({
-      	     templateUrl: 'templates/PO/partials/PO-hover.tmpl.html',
-      	     targetEvent: ev,
-      	   })
-      };
-}
+
+
+
+
+
+
+
+	});
+
 })();

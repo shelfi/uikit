@@ -1,6 +1,95 @@
 <body ng-controller="ShopCtrl as ctrl" layout="column">
 
-<div class="sf-wrapper" layout="row">
+<div class="sf-wrapper" >
 
-	asd
+	<input type="text" ng-model="ctrl.listCtrl.search.$" ng-change="ctrl.listCtrl.searchChanged()" />
+
+	<hr>
+
+	<sf-list-manager 
+		ng-model="ctrl.listCtrl.items"
+		show-item-layout="true"
+		item-layout="{{ ctrl.itemLayout }}"
+		on-item-layout-change="ctrl.onItemLayoutChange(layout)"
+		
+		sort="ctrl.sort"
+		sort-options="ctrl.sortOptions"
+		on-sort-change="ctrl.listCtrl.sortChanged(sort)"
+
+		action-buttons="ctrl.actionButtons"
+		>
+	</sf-list-manager>
+
+	<div class="sf-product-list" layout="row" layout-wrap>
+		<sf-product-item 
+			ng-repeat="item in ctrl.listCtrl.items" 
+			ng-model="item" 
+			flex="{{ 100 / ctrl.rowItems | number:0 }}" 
+			flex-sm="100" 
+			flex-md="100" 
+			item-layout="{{ ctrl.itemLayout }}"
+			show-image="true" 
+			show-name="true" 
+			show-description="true" 
+			show-price="true" 
+			show-quantity="true" 
+			selectable="true" 
+			add-to-cart="productItem.addToCart(product)" 
+			click="productItem.click(product)"
+			>
+		</sf-product-item>
+	</div>
+
+	<pagination
+		ng-model="ctrl.listCtrl.currentPage"
+		total-items="ctrl.listCtrl.totalItems"
+		items-per-page="ctrl.listCtrl.itemsPerPage" 
+		items-per-page-options="[5, 10, 15, 25, 50, 100, 250, 500]" 
+		on-page-changed="ctrl.listCtrl.pageChanged(page)"
+		on-items-per-page-changed="ctrl.listCtrl.itemsPerPageChanged()"
+		boundary-links="true"
+		layout
+		layout-align="end end"
+		flex
+		flex-sm="100"
+		>
+	</pagination>
+	<!--
+
+	
+
+	total-items="productList.config.totalItems"
+	boundary-links="true"
+	items-per-page="productList.config.itemsPerPage"
+	ng-model="productList.config.currentPage"
+	ng-change="productList.config.pageChanged()"
+	max-size="10"
+	-->
+
+
+
+	<!--
+	<sf-list-manager ng-model="productList.config"></sf-list-manager>
+	<sf-product-list ng-model="productList.products" row-items="{{productList.config.rowItems}}" action-buttons="productList.actionButtons" item-layout="{{productList.config.itemLayout}}"></sf-product-list>
+	<pagination total-items="productList.config.totalItems" boundary-links="true" items-per-page="productList.config.itemsPerPage" ng-model="productList.config.currentPage" ng-change="productList.config.pageChanged()" max-size="10"></pagination>
+	-->
+
+	<!--
+	this.config = {
+		itemLayout: "grid",
+		rowItems: 4,
+		actionButtons : {
+						compare: function (selectedItems) {
+							console.log('compare', selectedItems);
+						},
+						addToCart: function (selectedItems) {
+							console.log('addToCart', selectedItems);
+						}
+		},
+		totalItems: 40,
+		itemsPerPage: 10,
+		currentPage: 2
+	};
+	-->
+
 </div><!-- /wrapper -->

@@ -7,27 +7,28 @@
 		.directive('sfListManager', function () {
 			return {
 				restrict: 'E',
-				//transclude: true,
 				templateUrl: 'components/listManager/listManager.tmpl.html',
 				scope: {
-					list: '=ngModel'
+					items: '=ngModel',
+					showItemLayout: '@',
+					itemLayout: '@',
+					onItemLayoutChange: '&',
+					
+					sortOptions: '=',
+					sort: '=',
+					onSortChange: '&',
+
+					actionButtons: '='
 				},
 				bindToController: true,
 				controller: function () {
-					this.changeItemLayout = function (layout) {
-						if (this.list.itemLayout === 'grid' && layout !== 'grid') {
-							this.list.rowItems_ = this.list.rowItems;
-							this.list.rowItems = 1;
-						}
-						else if (layout === 'grid') {
-							this.list.rowItems = this.list.rowItems_ || 1;
-						}
-						this.list.itemLayout = layout;
-					};
-					this.actionCallback = function (cb) {
-						cb(this.list.filter(function (item) {
+					this.onActionClick = function (cb) {
+						cb(this.items.filter(function (item) {
 							return item.selected;
 						}));
+					};
+					this.getIcon = function (action) {
+						return action.toLowerCase().replace(/\s/g, '_');
 					};
 				},
 				controllerAs: 'ctrl'
