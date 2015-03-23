@@ -24,6 +24,10 @@ var uglify = require('gulp-uglify');
 var inject = require('gulp-inject');
 var angularFilesort = require('gulp-angular-filesort');
 var jshint = require('gulp-jshint');
+var fs = require('fs');
+var path = require('path');
+var mergeStream = require('merge-stream');
+var glob = require('glob');
 var config = require('./config');
 
 var wiredep = require('wiredep').stream;
@@ -239,6 +243,7 @@ gulp.task('assemble:demo', function () {
 });
 
 gulp.task('assemble:templates', function () {
+	
 	var opts = {
 		data: config.general.dest.demo + '/data/data.json',
 		template: true
@@ -251,8 +256,90 @@ gulp.task('assemble:templates', function () {
 		.pipe(gulp.dest(config.general.dest.root));
 });
 
+gulp.task('templatesCopy', function () {
+	return gulp.src('./src/uikit/templates/**/*')
+		.pipe(gulp.dest('./dist'));
+});
+
+gulp.task('templatesInjector', ['templatesCopy'], function () {
+	var merged = mergeStream();
+	var globs = glob.sync('*', { cwd: path.join(process.cwd(), config.sourceDir, 'templates') });
+	globs.forEach(function (g) {
+
+		//var s = gulp.src(config.sourceDir + '/templates/' + g + '/**/*.scss')
+		//gulp.src(config.sourceDir + '/assets/styles/uikit.scss')
+		//.pipe(inject(
+		//	gulp.src([
+		//		config.sourceDir + '/assets/styles/**/*.scss',
+		//		config.sourceDir + '/components/**/*.scss',
+		//		'!' + config.sourceDir + '/assets/styles/uikit.scss',
+		//		'!' + config.sourceDir + '/assets/styles/vendor.scss' 
+		//	], { read: false }), {
+		//		transform: function (filePath) {
+		//			filePath = filePath.replace('src/uikit/', '../../');
+		//			return '@import \'' + filePath + '\';';
+		//		},
+		//		starttag: '// injector',
+		//		endtag: '// endinjector',
+		//		addRootSlash: false
+		//	})
+		//)
+		//.pipe(gulp.dest( config.sourceDir + '/assets/styles/'));
+
+		var s = gulp.src(config.sourceDir + '/templates/' + g + '/index.html')
+			
+			//Bower
+			.pipe(wiredep({
+				directory: 'bower_components',
+				ignorePath: '../../../../',
+				//exclude: [/bootstrap-sass-official/, /bootstrap\.css/, /bootstrap\.css/, /foundation\.css/]
+			}))
+
+			//Css
+			.pipe(inject(
+				gulp.src([
+					config.general.dest.uikit + '/' + g +  '/**/*.css'
+				], { read: false }), {
+					ignorePath: '/dist',
+					addRootSlash: false
+				})
+			)
+
+			//Js
+			.pipe(inject(
+				gulp.src([
+					config.general.dest.root + '/' + g + '/**/*.js',
+					!config.general.dest.root + '/' + g + '/**/*.spec.js',
+					!config.general.dest.root + '/' + g + '/**/*.mock.js'
+				])
+				.pipe(angularFilesort()), {
+					ignorePath: '/dist',
+					addRootSlash: false
+				})
+			)
+
+			.pipe(gulp.dest(config.general.dest.root + '/' + g));
+
+		merged.add(s);
+	});
+	return merged;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 gulp.task('assemble', ['collate'], function () {
-	gulp.start('assemble:demo', 'assemble:templates');
+	gulp.start('assemble:demo'/*, 'assemble:templates'*/, 'templatesInjector');
 });
 
 

@@ -21,7 +21,7 @@ exports.general = {
 				uikit: [this.sourceDir + '/assets/styles/uikit.scss', this.sourceDir + '/templates/**/styles/*.scss']
 			},
 			images: this.sourceDir + '/assets/images/**/*',
-			controllers: [this.sourceDir + '/**/*-controller.js', this.sourceDir + '/templates/**/scripts/*-controller.js'],
+			controllers: [this.sourceDir + '/**/*-controller.js', '!' + this.sourceDir + '/templates/**/*-controller.js'],
 			components: 'bower_components/**/*',
 			views: this.sourceDir + '/views/*.html',
 			materials: [
