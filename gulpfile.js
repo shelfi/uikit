@@ -273,7 +273,7 @@ gulp.task('templatesInjector', ['templatesCopy'], function () {
 });
 
 //copy template controllers to dist directory
-gulp.task('controllers', function () {
+gulp.task('controllers', ['templatesInjector'], function () {
   return gulp.src(config.general.src.controllers)
     .pipe(gulp.dest(config.general.dest.uikit + '/scripts'));
 });
@@ -384,7 +384,7 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch(config.sourceDir + '/components/*/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/**/*-controller.js', ['controllers', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/templates/**/*.html'], ['templatesInjector', browserSync.reload]);
-	gulp.watch([config.sourceDir + '/templates/**/*.js', config.sourceDir + '/templates/**/scripts/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', 'templatesInjector', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/templates/**/*.js', config.sourceDir + '/templates/**/scripts/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', browserSync.reload]);
 	gulp.watch(config.general.src.images, ['images', browserSync.reload]);
 });
 
