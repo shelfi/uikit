@@ -4,9 +4,13 @@
 		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }" aria-label="view detailed list" ng-click="ctrl.onItemLayoutChange({layout: 'detailedlist'})"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
 		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'grid' }" aria-label="view grid" ng-click="ctrl.onItemLayoutChange({layout: 'grid'})"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
 	</div>
+	<div class="sf-list-manager__filter">
+		<md-input-container>
+		<label for="blabla"><md-icon md-svg-icon="action:ic_search_24px"></md-icon></label>
+			<input type="text" ng-model="ctrl.filter" ng-change="ctrl.onFilterChange()" />
+		</md-input-container>
+	</div>
 	<div class="sf-list-manager__sort" ng-if="ctrl.sortOptions">
-		
-
 		<md-select ng-model="ctrl.sort" placeholder="Select a state" class="sf-list-manager__sort-select" ng-change="ctrl.onSortChange({sort: ctrl.sort})">
 			<md-option ng-repeat="o in ctrl.sortOptions" ng-value="o">{{ o }}</md-option>
 		</md-select>
@@ -15,8 +19,6 @@
 		<span ng-repeat="o in ctrl.sortOptions" style="margin-right:5px;">
 			<a href ng-click="ctrl.onSortChange({sort: o})">{{o}}</a>
 		</span>
-		
-
 	</div>
 	<div class="sf-list-manager__action">
 		<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.onActionClick(cb)" aria-label="{{ action }}" class="sf-list-manager__action-btn">

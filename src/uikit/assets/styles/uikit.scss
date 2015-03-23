@@ -1,5 +1,11 @@
 // injector
 
+@import '../../assets/styles/01_settings/_colors.scss';
+
+@import '../../assets/styles/01_settings/_variables.scss';
+
+@import '../../assets/styles/02_tools/_mixins.scss';
+
 @import '../../assets/styles/03_generic/_reset.scss';
 
 @import '../../assets/styles/04_base/_table.scss';
@@ -13,12 +19,6 @@
 @import '../../assets/styles/05_objects/_spaces.scss';
 
 @import '../../assets/styles/05_objects/_utility.scss';
-
-@import '../../assets/styles/01_settings/_colors.scss';
-
-@import '../../assets/styles/01_settings/_variables.scss';
-
-@import '../../assets/styles/02_tools/_mixins.scss';
 
 @import '../../assets/styles/06_sections/footer.scss';
 

@@ -7,7 +7,7 @@ $sf-pagination__item-colorTxt--active: $paper;
 $sf-pagination__item-colorTxt--disabled: lighten($link-color, 30%);
 
 
-.sf-pagination{display: flex; background: $sf-pagination__list-bg; margin-top: 120px;}
+.sf-pagination{display: flex; background: $sf-pagination__list-bg; margin-top: 120px; position: relative;}
 .sf-pagination__list{margin:0 auto;}
 
 //common element properties that will be extended by all of the elements(we are using % so the styles will be only extended) 
@@ -38,7 +38,7 @@ $sf-pagination__item-colorTxt--disabled: lighten($link-color, 30%);
 .sf-pagination__item-dropup{
 	a{}
 }
-.sf-pagination__itemperpage{position: absolute; bottom:45px; background: $sf-pagination__list-bg;}
+.sf-pagination__itemperpage{position: absolute; bottom:30px; background: $sf-pagination__list-bg;}
 .sf-pagination__itemperpage--active{background: $sf-pagination__item-colorBg--active; color: $sf-pagination__item-colorTxt--active}
 .sf-pagination__itemperpage-item{
 	& a{padding: 5px; display: block; font-size: .9em; line-height: 2; padding: 0 10px;

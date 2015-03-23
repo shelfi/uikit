@@ -16,7 +16,11 @@
 					
 					sortOptions: '=',
 					sort: '=',
+
 					onSortChange: '&',
+
+					filter: '=',
+					onFilterChange: '&',
 
 					actionButtons: '='
 				},
