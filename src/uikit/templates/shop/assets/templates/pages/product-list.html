@@ -1,4 +1,3 @@
-<body ng-controller="ShopCtrl as ctrl">
 <div class="wrapper">
 	<md-toolbar md-scroll-shrink layout="row">
 	      <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
@@ -66,43 +65,6 @@
 		flex-sm="100"
 		>
 	</pagination>
-	<!--
-
-	
-
-	total-items="productList.config.totalItems"
-	boundary-links="true"
-	items-per-page="productList.config.itemsPerPage"
-	ng-model="productList.config.currentPage"
-	ng-change="productList.config.pageChanged()"
-	max-size="10"
-	-->
-
-
-
-	<!--
-	<sf-list-manager ng-model="productList.config"></sf-list-manager>
-	<sf-product-list ng-model="productList.products" row-items="{{productList.config.rowItems}}" action-buttons="productList.actionButtons" item-layout="{{productList.config.itemLayout}}"></sf-product-list>
-	<pagination total-items="productList.config.totalItems" boundary-links="true" items-per-page="productList.config.itemsPerPage" ng-model="productList.config.currentPage" ng-change="productList.config.pageChanged()" max-size="10"></pagination>
-	-->
-
-	<!--
-	this.config = {
-		itemLayout: "grid",
-		rowItems: 4,
-		actionButtons : {
-						compare: function (selectedItems) {
-							console.log('compare', selectedItems);
-						},
-						addToCart: function (selectedItems) {
-							console.log('addToCart', selectedItems);
-						}
-		},
-		totalItems: 40,
-		itemsPerPage: 10,
-		currentPage: 2
-	};
-	-->
 </md-content>
 </div><!-- /content -->
 </div><!-- /wrapper -->

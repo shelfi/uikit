@@ -32,8 +32,10 @@
     "css-loader": "^0.9.1",
     "del": "^1.1.0",
     "file-loader": "^0.8.1",
+    "glob": "^5.0.3",
     "gulp": "^3.8.10",
     "gulp-angular-filesort": "^1.0.4",
+    "gulp-angular-module": "0.0.2",
     "gulp-angular-templatecache": "^1.5.0",
     "gulp-autoprefixer": "^2.0.0",
     "gulp-concat": "^2.4.2",
@@ -42,6 +44,7 @@
     "gulp-imagemin": "^2.0.0",
     "gulp-inject": "^1.1.1",
     "gulp-jshint": "^1.9.0",
+    "gulp-ng-annotate": "^0.5.2",
     "gulp-ng-autobootstrap": "git://github.com/offminded/gulp-ng-autobootstrap",
     "gulp-plumber": "^0.6.5",
     "gulp-rename": "~1.2.0",
@@ -56,6 +59,7 @@
     "json-loader": "^0.5.1",
     "junk": "^1.0.0",
     "marked": "^0.3.2",
+    "merge-stream": "^0.1.7",
     "mkdirp": "~0.5.0",
     "mkpath": "~0.1.0",
     "nunjucks": "^1.2.0",
@@ -72,8 +76,6 @@
     "vinyl-source-stream": "^1.0.0",
     "webpack": "^1.5.3",
     "wiredep": "^2.2.2",
-    "wrench": "^1.5.8",
-    "gulp-angular-module": "0.0.2",
-    "gulp-ng-annotate": "^0.5.2"
+    "wrench": "^1.5.8"
   }
 }
