@@ -71,11 +71,46 @@
 				}
 			};
 		})
-		.controller('listController', function () {
+		.directive('holderJs', function () {
+			// https://github.com/imsky/holder/pull/26
+			return {
+				link: function (scope, element, attrs) {
+					attrs.$set('data-src', attrs.holderJs);
+					Holder.run({ images: element[0], nocss: true });
+				}
+			};
+		})
+		.filter('offset', function () {
+			return function (input, start) {
+				start = parseInt(start, 10);
+				return input.slice(start);
+			};
+		})
+		.controller('listController', function ($filter) {
+
+			var _self = this;
+
+			this.doRequest1 = function (items) {
+
+				if (this.config.cliensidePagination) {
+
+					this.items = items;
+
+					this.allItems = items;
+					this.totalItems = items.length;
+					//this.filter();
+					return;
+				}
+
+				this.items = items;
+				this.totalItems = items.length;
 
 
-			this.doRequest = function () {
-				
+
+
+
+
+				/*
 				var data = {
 					//multi: true
 					cliensidePagination: this.config.cliensidePagination,
@@ -90,11 +125,6 @@
 				//console.log('doRequest', this.config);
 				//console.log('doRequest', data);
 
-
-				
-
-
-				/*
 				Restangular.all(this.config.url).getList(data).then(function (response) {
 
 					//console.log('doRequest', response);
@@ -126,6 +156,36 @@
 				*/
 			};
 
+			this.getItems = function (filterItems, search, order, currentPage) {
+				//asd
+
+				if (this.config.cliensidePagination) {
+					this.allItems = r;
+					this.totalItems = r.length;
+					this.filter();
+					return;
+				}
+				this.items = r;
+
+				//process order --- ng-repeat="item in items | filter:search | orderBy:orderBy:reverse | offset:(currentPage-1)*itemsPerPage | limitTo:itemsPerPage"
+				//--------------------------------------------------------------------------------------
+				//1. filter:filter
+				//2. filter:search
+				//3. orderby
+				//------------------------ pagination
+				//4. offset
+				//5. limit
+
+				console.log(currentPage);
+			};
+
+
+
+
+
+
+
+
 			//filter
 			this.selectFilter = function (filter) {
 				this.selectedFilter = angular.copy(filter);
@@ -144,7 +204,7 @@
 				if (index > -1) {
 					this.selectedFilter.filterItems.splice(index, 1);
 					//console.log('removeFilterItem', this.selectedFilter);
-					if(this.selectedFilter.filterItems.length === 0) {
+					if (this.selectedFilter.filterItems.length === 0) {
 						this.selectDefaultFilter();
 						return;
 					}
@@ -181,14 +241,14 @@
 
 			this.saveFilter = function (filter) {
 				//console.log('saveFilter', filter);
-				if(filter.id) {
+				if (filter.id) {
 					//update
-					if(filter.id === '0') {
+					if (filter.id === '0') {
 						return false;
 					}
 
 					//TODO:save to DB
-					for(var i = 0; i < this.filters.length; i++) {
+					for (var i = 0; i < this.filters.length; i++) {
 
 						if(this.filters[i].id === filter.id) {
 
@@ -211,13 +271,13 @@
 
 			this.removeFilter = function (filter) {
 				//console.log('removeFilter', filter);
-				if(filter.id === '0') {
+				if (filter.id === '0') {
 					return false;
 				}
 				//TODO:save to DB
-				for(var i = 0; i < this.filters.length; i++) {
+				for (var i = 0; i < this.filters.length; i++) {
 
-					if(this.filters[i].id === filter.id) {
+					if (this.filters[i].id === filter.id) {
 						this.selectDefaultFilter();
 						this.filters.splice(i, 1);
 						return true;
@@ -234,7 +294,7 @@
 			this.filter = function () {
 
 				//console.log('filter');
-				if(this.config.cliensidePagination) {
+				if (this.config.cliensidePagination) {
 					
 					//process order --- ng-repeat="item in items | filter:search | orderBy:orderBy:reverse | offset:(currentPage-1)*itemsPerPage | limitTo:itemsPerPage"
 					//--------------------------------------------------------------------------------------
@@ -248,10 +308,10 @@
 					var items = this.allItems;
 
 					items = $filter('filter')(items, function (item) {
+						
+						for (var i = 0; i < this.selectedFilter.filterItems.length; i++) {
 
-						for(var i = 0; i < _self.selectedFilter.filterItems.length; i++) {
-
-							var filterItem = _self.selectedFilter.filterItems[i];
+							var filterItem = this.selectedFilter.filterItems[i];
 							var value = item[filterItem.column];
 
 							if(!operators.check(value, filterItem.operator, filterItem.value, filterItem.value2)) {
@@ -259,13 +319,15 @@
 							}
 						}
 						return true;
-					});
+					}.bind(this));
 
 					//search
 					items = $filter('filter')(items, this.search);
 
 					this.currentPage = 1;
 					this.itemsFiltered = items;
+					this.totalItems = items.length;
+
 					this.sort();
 					return;
 				}
@@ -274,19 +336,26 @@
 
 			//sort
 			this.sortChanged = function (column) {
-				//console.log(column);
-				if(this.orderBy === column) {
+				//console.log('sortChanged', column);
+				if (column.substr(column.length - 1) === "-") {
+					this.orderBy = column.substr(0, column.length - 1);
+					this.reverse = true;
+					this.sort();
+				}
+				else if (this.orderBy === column) {
 					this.reverse = !this.reverse;
 					this.sort();
-					return;
 				}
-				this.orderBy = column;
-				this.reverse = false;
-				this.sort();
+				else {
+					this.orderBy = column;
+					this.reverse = false;
+					this.sort();	
+				}
 			};
 
 			this.sort = function () {
-				if(this.config.cliensidePagination) {
+				//console.log('sort', this.orderBy, this.reverse);
+				if (this.config.cliensidePagination) {
 					this.itemsSorted = $filter('orderBy')(this.itemsFiltered, this.orderBy, this.reverse);
 					this.paginate();
 					return;
@@ -295,14 +364,14 @@
 			};
 
 			//pagination
-			this.itemsPerPageChanged = function() {
+			this.itemsPerPageChanged = function () {
 				//console.log('itemsPerPageChanged', this.itemsPerPage);
 				this.currentPage = 1;
 				this.paginate();
 			};
 
-			this.pageChanged = function() {
-				//console.log('pageChanged', this.currentPage);
+			this.pageChanged = function (page) {
+				//console.log('pageChanged', page, this.itemsPerPage);
 				this.paginate();
 			};
 
@@ -332,8 +401,6 @@
 				//console.log('actionSelected', action, selectedItems);
 				action.fn(selectedItems);
 			};
-			
-
 
 			//this.setConfig = function (config) {
 			//	this.config = angular.extend({}, defaultListConfig, config);
@@ -345,7 +412,7 @@
 			this.itemsSorted = [];
 			this.allItems = [];
 			this.totalItems = 0;
-			this.orderBy = this.config.pk;
+			this.orderBy = '_id';
 			this.reverse = false;
 			this.itemsPerPage = 5;
 			this.currentPage = 1;

@@ -48,6 +48,7 @@
 	    if ( $scope.page !== page && page > 0 && page <= $scope.totalPages) {
 	      ngModelCtrl.$setViewValue(page);
 	      ngModelCtrl.$render();
+	      $scope.onPageChanged({page: page});
 	    }
 	  };
 
@@ -95,7 +96,9 @@
 	      firstText: '@',
 	      previousText: '@',
 	      nextText: '@',
-	      lastText: '@'
+	      lastText: '@',
+	      onPageChanged: '&',
+	      onItemsPerPageChanged: '&'
 	    },
 	    require: ['pagination', '?ngModel'],
 	    controller: 'PaginationController',
@@ -136,10 +139,17 @@
 	      	scope.showItemsPerPage = !scope.showItemsPerPage;
 	      };
 	      
-	      scope.changeItemPerPage = function(newVal){
+	      scope.changeItemPerPage = function (newVal) {
+	      	//set parent itemPerPage model
+	      	var itemPerPageSetter = $parse(attrs.itemsPerPage).assign;
+	      	itemPerPageSetter(scope.$parent, newVal);
+
+	      	scope.showItemsPerPage = false;
 	        paginationCtrl.itemsPerPage = parseInt(newVal, 10);
-	        scope.showItemsPerPage = false;
 	        scope.totalPages = paginationCtrl.calculateTotalPages();
+	        scope.selectPage(1);
+	        paginationCtrl.render();
+	        scope.onItemsPerPageChanged();
 		  };
 
 

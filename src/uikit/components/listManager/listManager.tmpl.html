@@ -1,26 +1,27 @@
 <div class="sf-list-manager" layout="row">
-	<div class="sf-list-manager__layout">
-		<md-button class="md-primary sf-list-manager__layout-btn" ng-click="ctrl.changeItemLayout('list')" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
-		<md-button class="md-primary sf-list-manager__layout-btn" aria-label="view detailed list"  ng-click="ctrl.changeItemLayout('detailedlist')" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
-		<md-button class="md-primary sf-list-manager__layout-btn" aria-label="view grid" ng-click="ctrl.changeItemLayout('grid')" ng-class="{ '--active': ctrl.itemLayout === 'grid' }"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
+	<div class="sf-list-manager__layout" ng-if="ctrl.showItemLayout === 'true'">
+		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list" ng-click="ctrl.onItemLayoutChange({layout: 'list'})"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }" aria-label="view detailed list" ng-click="ctrl.onItemLayoutChange({layout: 'detailedlist'})"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'grid' }" aria-label="view grid" ng-click="ctrl.onItemLayoutChange({layout: 'grid'})"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
 	</div>
-	<div class="sf-list-manager__products">
-		<div class="sf-list-manager__products-sort">
-			<select name="sort" id="sort">
-				<option value="">Sırala</option>
-				<option value="">Urun Kodu</option>
-				<option value="">Stok</option>
-				<option value="">Marka</option>
-				<option value="">Fiyat Azalan</option>
-				<option value="">Fiyat Artan</option>
-				<option value="">Puan</option>
-			</select>
-		</div>
-		<div class="sf-list-manager__products-compare">
-			<md-button ng-repeat="(action, cb) in ctrl.list.actionButtons" class="md-primary" ng-click="ctrl.actionCallback(cb)" aria-label="{{action}}">
-			<md-icon md-svg-icon="{{action}}"></md-icon>
-			<md-tooltip>{{action}}<md-tooltip>
-			</md-button>
-		</div>
+	<div class="sf-list-manager__sort" ng-if="ctrl.sortOptions">
+		
+
+		<md-select ng-model="ctrl.sort" placeholder="Select a state" class="sf-list-manager__sort-select" ng-change="ctrl.onSortChange({sort: ctrl.sort})">
+			<md-option ng-repeat="o in ctrl.sortOptions" ng-value="o">{{ o }}</md-option>
+		</md-select>
+
+		<!--INFO:added for simulate to click of column header -->
+		<span ng-repeat="o in ctrl.sortOptions" style="margin-right:5px;">
+			<a href ng-click="ctrl.onSortChange({sort: o})">{{o}}</a>
+		</span>
+		
+
+	</div>
+	<div class="sf-list-manager__action">
+		<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.onActionClick(cb)" aria-label="{{ action }}" class="sf-list-manager__action-btn">
+			<md-icon md-svg-icon="{{ ctrl.getIcon(action) }}"></md-icon>
+			<md-tooltip>{{ action }}</md-tooltip>
+		</md-button>
 	</div>
 </div>

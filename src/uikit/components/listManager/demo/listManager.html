@@ -1,3 +1,11 @@
 <div ng-controller="listManagerCtrl as listManager">
-	<sf-list-manager ng-model="listManager"></sf-list-manager>
+	<sf-list-manager 
+		ng-model="listManager.items"
+		show-item-layout="true"
+		on-item-layout-change="listManager.onItemLayoutChange(item)"
+		sort="listManager.sort"
+		sort-options="listManager.sortOptions"
+		action-buttons="listManager.actionButtons"
+		>
+	</sf-list-manager>
 </div>

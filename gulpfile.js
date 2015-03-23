@@ -267,7 +267,7 @@ gulp.task('browser-sync', function () {
 			routes: {
 			        "/BAREM": "dist",
 			        "/PO": "dist",
-			        "/SFSHOP": "dist",
+			        "/SHOP": "dist",
 			}
 		},
 		notify: false,
