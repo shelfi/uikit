@@ -3,12 +3,12 @@
 	'use strict';
 
 	angular.module('shop')
-		.controller('ShopCtrl', function ($controller, $timeout) {
+		.controller('productListController', function ($controller, $timeout, $scope) {
 
 			//scope.ctrl.itemLayout = scope.ctrl.itemLayout || 'grid';
 			//scope.ctrl.showItemLayout = !attrs.itemLayout;
 			
-			this.listCtrl = $controller('listController');
+			this.listCtrl = $controller('listController', { $scope: $scope });
 			this.listCtrl.config.cliensidePagination = true;
 			this.listCtrl.doRequest = function (currentPage) {
 				$timeout(function () {

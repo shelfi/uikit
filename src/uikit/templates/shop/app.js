@@ -2,6 +2,9 @@
 
 	'use strict';
 
-	angular.module('shop', []);
+	angular.module('shop', [
+		'ui.router',
+		'uikit'
+	]);
 	
 })();

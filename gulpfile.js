@@ -203,59 +203,6 @@ gulp.task('bowercopy', function () {
 		.pipe(gulp.dest(config.general.dest.root + '/bower_components'));
 });
 
-//copy template controllers to dist directory
-gulp.task('controllers', function () {
-  return gulp.src(config.general.src.controllers)
-    .pipe(gulp.dest(config.general.dest.uikit + '/scripts'));
-});
-
-
-// collate
-gulp.task('collate', function () {
-
-	// 'collate' is a little different -
-	// it returns a promise instead of a stream
-
-	var deferred = Q.defer();
-
-	var opts = {
-		materials: config.general.src.materials,
-		dest: config.general.dest.demo + '/data/data.json'
-	};
-
-	// run the collate task; resolve deferred when complete
-	collate(opts, deferred.resolve);
-
-	return deferred.promise;
-
-});
-
-// assembly
-gulp.task('assemble:demo', function () {
-	var opts = {
-		data: config.general.dest.demo + '/data/data.json',
-		template: false
-	};
-
-	return gulp.src(config.general.src.views)
-		.pipe(compile(opts))
-		.pipe(gulp.dest(config.general.dest.root));
-});
-
-gulp.task('assemble:templates', function () {
-	
-	var opts = {
-		data: config.general.dest.demo + '/data/data.json',
-		template: true
-	};
-	return gulp.src([config.sourceDir + '/templates/**/*.html', '!' + config.sourceDir + '/templates/*/partials/*.html', '!' + config.sourceDir + '/templates/*/styles/*.scss', '!' + config.sourceDir + '/templates/*/scripts/*.js'])
-		.pipe(compile(opts))
-		//.pipe(rename({
-		//	suffix: 'template'
-		//}))
-		.pipe(gulp.dest(config.general.dest.root));
-});
-
 gulp.task('templatesCopy', function () {
 	return gulp.src('./src/uikit/templates/**/*')
 		.pipe(gulp.dest('./dist'));
@@ -325,21 +272,62 @@ gulp.task('templatesInjector', ['templatesCopy'], function () {
 	return merged;
 });
 
+//copy template controllers to dist directory
+gulp.task('controllers', ['templatesInjector'], function () {
+  return gulp.src(config.general.src.controllers)
+    .pipe(gulp.dest(config.general.dest.uikit + '/scripts'));
+});
 
 
+// collate
+gulp.task('collate', function () {
 
+	// 'collate' is a little different -
+	// it returns a promise instead of a stream
 
+	var deferred = Q.defer();
 
+	var opts = {
+		materials: config.general.src.materials,
+		dest: config.general.dest.demo + '/data/data.json'
+	};
 
+	// run the collate task; resolve deferred when complete
+	collate(opts, deferred.resolve);
 
+	return deferred.promise;
 
+});
 
+// assembly
+gulp.task('assemble:demo', function () {
+	var opts = {
+		data: config.general.dest.demo + '/data/data.json',
+		template: false
+	};
 
+	return gulp.src(config.general.src.views)
+		.pipe(compile(opts))
+		.pipe(gulp.dest(config.general.dest.root));
+});
 
+gulp.task('assemble:templates', function () {
+	
+	var opts = {
+		data: config.general.dest.demo + '/data/data.json',
+		template: true
+	};
+	return gulp.src([config.sourceDir + '/templates/**/*.html', '!' + config.sourceDir + '/templates/*/partials/*.html', '!' + config.sourceDir + '/templates/*/styles/*.scss', '!' + config.sourceDir + '/templates/*/scripts/*.js'])
+		.pipe(compile(opts))
+		//.pipe(rename({
+		//	suffix: 'template'
+		//}))
+		.pipe(gulp.dest(config.general.dest.root));
+});
 
 
 gulp.task('assemble', ['collate'], function () {
-	gulp.start('assemble:demo'/*, 'assemble:templates'*/, 'templatesInjector');
+	gulp.start('assemble:demo'/*, 'assemble:templates'*/);
 });
 
 
@@ -395,7 +383,7 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch(config.sourceDir + '/elements/**/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/*/*.js', ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/**/*-controller.js', ['controllers', browserSync.reload]);
-	gulp.watch([config.sourceDir + '/templates/**/scripts/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', browserSync.reload]);
+	gulp.watch([config.sourceDir + '/templates/**/*.js', config.sourceDir + '/templates/**/scripts/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', browserSync.reload]);
 	gulp.watch(config.general.src.images, ['images', browserSync.reload]);
 });
 
