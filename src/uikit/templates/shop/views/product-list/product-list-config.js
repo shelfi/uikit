@@ -9,14 +9,14 @@
 
 			$stateProvider.state('home', {
 				url: '/',
-				templateUrl: 'shop/assets/templates/pages/home.html',
+				templateUrl: 'shop/views/home/home.html',
 				controller: 'homeController',
 				controllerAs: 'ctrl'
 			});
 
 			$stateProvider.state('products', {
 				url: '/products',
-				templateUrl: 'shop/assets/templates/pages/product-list.html',
+				templateUrl: 'shop/views/product-list/product-list.html',
 				controller: 'productListController',
 				controllerAs: 'ctrl'
 			});
