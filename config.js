@@ -18,7 +18,7 @@ exports.general = {
 			},
 			styles: {
 				demo: './src/demo/styles/demo.scss',
-				uikit: [this.sourceDir + '/assets/styles/uikit.scss', this.sourceDir + '/templates/**/styles/*.scss'],
+				uikit: this.sourceDir + '/assets/styles/uikit.scss',
 				templates: {
 					shop: this.sourceDir + '/templates/shop/assets/styles/shop.scss'
 				}

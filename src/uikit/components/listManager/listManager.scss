@@ -1,23 +1,38 @@
 /* --- SF-LIST-MANAGER --- */
-
+//variables
+$sf-list-manager__action-list: $hover-bg;
+$menu-border-radius: 2px;
+$modal-button-color: $concrete;
 
 .sf-list-manager{flex-direction: row; justify-content: space-between; flex-wrap:wrap;}
 
 
 //layout
-.sf-list-manager__layout{max-width: 20%; flex: 0 0 20%;
-	@include breakpoint('small'){max-width: 100%; flex: 0 0 100%;}
+.sf-list-manager__layout{max-width: 15%; flex: 0 0 15%;
+	@include breakpoint('medium'){max-width: 25%; flex: 0 0 25%;}
+	@include breakpoint('small'){max-width: 40%; flex: 0 0 40%;}
 }
 
 //sort
-.sf-list-manager__sort{flex: 0 0 20%;
-	@include breakpoint('small'){max-width: 50%; flex: 0 0 50%;}
+.sf-list-manager__sort{flex: 1 0 35%; text-align: left;
+	@include breakpoint('small'){max-width: 20%; flex: 0 0 20%; text-align: left;}
+}
+
+//action
+.sf-list-manager__action{flex: 0 0 10%; text-align: right;
+	@include breakpoint('medium'){max-width: 25%; flex: 0 0 25%;}
+	@include breakpoint('small'){max-width: 25%; flex: 0 0 25%;}
 }
 
 //filter
-.sf-list-manager__filter{flex: 0 0 20%;}
-
-//action
-.sf-list-manager__action{flex: 0 0 20%; text-align: right;
-	@include breakpoint('small'){max-width: 50%; flex: 0 0 50%;}
+.sf-list-manager__filter{
+	position: absolute; bottom:0px; left:0; width: 100%; background: #fff; height: auto; min-height: 30px;
+	md-input-container{padding-bottom: 0;}
 }
+md-toolbar .sf-list-manager__filter-close.md-button{color: $modal-button-color; position: absolute; right:0; bottom: 0;}
+
+.sf-list-manager__sort-select{margin-top: 0;}
+
+
+.sf-list-manager__action-list{position: absolute; top:100%; right:0; background-color: #fff; height: auto; display: flex; flex-direction: column; border-radius: $menu-border-radius;}
+.sf-list-manager__action-list-item{display: block;}

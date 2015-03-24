@@ -1,29 +1,36 @@
 <div class="sf-list-manager" layout="row">
 	<div class="sf-list-manager__layout" ng-if="ctrl.showItemLayout === 'true'">
-		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list" ng-click="ctrl.onItemLayoutChange({layout: 'list'})"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="Icon Alt"></md-icon></md-button>
-		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }" aria-label="view detailed list" ng-click="ctrl.onItemLayoutChange({layout: 'detailedlist'})"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Icon Alt"></md-icon></md-button>
-		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'grid' }" aria-label="view grid" ng-click="ctrl.onItemLayoutChange({layout: 'grid'})"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Icon Alt"></md-icon></md-button>
-	</div>
-	<div class="sf-list-manager__filter">
-		<md-input-container>
-		<label for="blabla"><md-icon md-svg-icon="action:ic_search_24px"></md-icon></label>
-			<input type="text" ng-model="ctrl.filter" ng-change="ctrl.onFilterChange()" />
-		</md-input-container>
+		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'list' }" aria-label="view list" ng-click="ctrl.onItemLayoutChange({layout: 'list'})"><md-icon md-svg-icon="action:ic_view_headline_24px" alt="List View" title="List View"></md-icon></md-button>
+		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'detailedlist' }" aria-label="view detailed list" ng-click="ctrl.onItemLayoutChange({layout: 'detailedlist'})"><md-icon md-svg-icon="action:ic_view_list_24px" alt="Detailed List View" title="Detailed List View"></md-icon></md-button>
+		<md-button class="md-primary sf-list-manager__layout-btn" ng-class="{ '--active': ctrl.itemLayout === 'grid' }" aria-label="view grid" ng-click="ctrl.onItemLayoutChange({layout: 'grid'})"><md-icon md-svg-icon="action:ic_view_module_24px" alt="Grid View" title="Grid View"></md-icon></md-button>
 	</div>
 	<div class="sf-list-manager__sort" ng-if="ctrl.sortOptions">
-		<md-select ng-model="ctrl.sort" placeholder="Select a state" class="sf-list-manager__sort-select" ng-change="ctrl.onSortChange({sort: ctrl.sort})">
+		<md-select ng-model="ctrl.sort" placeholder="Sort" class="sf-list-manager__sort-select" ng-change="ctrl.onSortChange({sort: ctrl.sort})">
 			<md-option ng-repeat="o in ctrl.sortOptions" ng-value="o">{{ o }}</md-option>
 		</md-select>
 
 		<!--INFO:added for simulate to click of column header -->
-		<span ng-repeat="o in ctrl.sortOptions" style="margin-right:5px;">
+		<span ng-repeat="o in ctrl.sortOptions" style="margin-right:5px;" hide>
 			<a href ng-click="ctrl.onSortChange({sort: o})">{{o}}</a>
 		</span>
 	</div>
 	<div class="sf-list-manager__action">
-		<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary" ng-click="ctrl.onActionClick(cb)" aria-label="{{ action }}" class="sf-list-manager__action-btn">
+		<!-- replace sfListManagerActive behaviour with md-menu (milestone 0.10.0 - April 14th)-->
+		<!-- https://github.com/angular/material/issues/78 -->
+		<md-button class="md-primary" aria-label="click to filter" title="click to filter" ng-click="sfListFilterActive = !sfListFilterActive"><md-icon md-svg-icon="action:ic_search_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary" aria-label="click to add" title="click to add selected" ng-click="sfListManagerActive = !sfListManagerActive"><md-icon md-svg-icon="content:ic_add_24px" alt="Icon Alt"></md-icon></md-button>
+		<div class="sf-list-manager__action-list md-shadow-bottom-z-1" ng-show="sfListManagerActive">
+		<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary sf-list-manager__action-list-item" ng-click="ctrl.onActionClick(cb)" aria-label="{{ action }}" class="sf-list-manager__action-btn">
 			<md-icon md-svg-icon="{{ ctrl.getIcon(action) }}"></md-icon>
-			<md-tooltip>{{ action }}</md-tooltip>
+			<md-tooltip md-direction="left">{{ action }}</md-tooltip>
 		</md-button>
+		</div>
+	</div>
+	<div class="sf-list-manager__filter" ng-show="sfListFilterActive">
+		<md-input-container>
+		<label for="blabla"><md-icon md-svg-icon="action:ic_search_24px"></md-icon>Filter</label>
+			<input type="text" ng-model="ctrl.filter" ng-change="ctrl.onFilterChange()" />
+		</md-input-container>
+		<md-button class="sf-list-manager__filter-close" ng-click="sfListFilterActive = false" md-aria="close"><md-icon md-svg-icon="navigation:ic_close_24px" alt="Icon Alt"></md-icon></md-button>
 	</div>
 </div>

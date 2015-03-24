@@ -1,61 +1,60 @@
+<md-toolbar md-scroll-shrink class="md-accent product-list__toolbar">
+  <sf-list-manager 
+  	ng-model="ctrl.listCtrl.items"
+  	show-item-layout="true"
+  	item-layout="{{ ctrl.itemLayout }}"
+  	on-item-layout-change="ctrl.onItemLayoutChange(layout)"
+  	
+  	sort="ctrl.sort"
+  	filter="ctrl.listCtrl.search.$"
+  	sort-options="ctrl.sortOptions"
+  	on-sort-change="ctrl.listCtrl.sortChanged(sort)"
+  	on-filter-change="ctrl.listCtrl.searchChanged()"
 
-	<md-toolbar md-scroll-shrink class="md-warn">
-      <sf-list-manager 
-      	ng-model="ctrl.listCtrl.items"
-      	show-item-layout="true"
-      	item-layout="{{ ctrl.itemLayout }}"
-      	on-item-layout-change="ctrl.onItemLayoutChange(layout)"
-      	
-      	sort="ctrl.sort"
-      	filter="ctrl.listCtrl.search.$"
-      	sort-options="ctrl.sortOptions"
-      	on-sort-change="ctrl.listCtrl.sortChanged(sort)"
-      	on-filter-change="ctrl.listCtrl.searchChanged()"
-
-      	action-buttons="ctrl.actionButtons"
-      	>
-      </sf-list-manager>
-  </md-toolbar>
-	<md-content style="height:300px;" layout="row" flex>
-	  	<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
-		   <md-list>
-		     <md-item>
-			<h4>filter comes here</h4>
-		     </md-item>
-		   </md-list>
-		 </md-sidenav>
-	<div class="sf-product-list" layout="row" layout-wrap>
-		<sf-product-item 
-			ng-repeat="item in ctrl.listCtrl.items" 
-			ng-model="item" 
-			flex="{{ 100 / ctrl.rowItems | number:0 }}" 
-			flex-sm="100" 
-			flex-md="100" 
-			item-layout="{{ ctrl.itemLayout }}"
-			show-image="true" 
-			show-name="true" 
-			show-description="true" 
-			show-price="true" 
-			show-quantity="true" 
-			selectable="true" 
-			add-to-cart="ctrl.addToCart(product)" 
-			click="ctrl.click(product)"
-			>
-		</sf-product-item>
-	</div>
-
-	<pagination
-		ng-model="ctrl.listCtrl.currentPage"
-		total-items="ctrl.listCtrl.totalItems"
-		items-per-page="ctrl.listCtrl.itemsPerPage" 
-		items-per-page-options="[5, 10, 15, 25, 50, 100, 250, 500]" 
-		on-page-changed="ctrl.listCtrl.pageChanged(page)"
-		on-items-per-page-changed="ctrl.listCtrl.itemsPerPageChanged()"
-		boundary-links="true"
-		layout
-		layout-align="end end"
-		flex
-		flex-sm="100"
+  	action-buttons="ctrl.actionButtons"
+  	>
+  </sf-list-manager>
+</md-toolbar>
+<md-content style="height:600px;" layout="row" flex>
+  	<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left" hide>
+	   <md-list>
+	     <md-item>
+		<h4>filter comes here</h4>
+	     </md-item>
+	   </md-list>
+	 </md-sidenav>
+<div class="sf-product-list" layout="row" layout-wrap>
+	<sf-product-item 
+		ng-repeat="item in ctrl.listCtrl.items" 
+		ng-model="item" 
+		flex="{{ 100 / ctrl.rowItems | number:0 }}" 
+		flex-sm="100" 
+		flex-md="100" 
+		item-layout="{{ ctrl.itemLayout }}"
+		show-image="true" 
+		show-name="true" 
+		show-description="true" 
+		show-price="true" 
+		show-quantity="true" 
+		selectable="true" 
+		add-to-cart="ctrl.addToCart(product)" 
+		click="ctrl.click(product)"
 		>
-	</pagination>
+	</sf-product-item>
+</div>
+
+<pagination
+	ng-model="ctrl.listCtrl.currentPage"
+	total-items="ctrl.listCtrl.totalItems"
+	items-per-page="ctrl.listCtrl.itemsPerPage" 
+	items-per-page-options="[5, 10, 15, 25, 50, 100, 250, 500]" 
+	on-page-changed="ctrl.listCtrl.pageChanged(page)"
+	on-items-per-page-changed="ctrl.listCtrl.itemsPerPageChanged()"
+	boundary-links="true"
+	layout
+	layout-align="end end"
+	flex
+	flex-sm="100"
+	>
+</pagination>
 </md-content>

@@ -91,6 +91,23 @@ gulp.task('injector:sass', function () {
     .pipe(gulp.dest( config.sourceDir + '/assets/styles/'));
 });
 
+gulp.task('injector:sass:templates:shop', function () {
+  return gulp.src('./src/uikit/templates/shop/assets/styles/shop.scss')
+    .pipe(inject(gulp.src([
+        config.sourceDir + '/templates/shop/views/**/*.scss'
+      ], {read: false}), {
+      transform: function(filePath) {
+        filePath = filePath.replace('src/uikit/templates/shop/', '../../');
+        return '@import \'' + filePath + '\';';
+      },
+      starttag: '// injector',
+      endtag: '// endinjector',
+      addRootSlash: false
+    }))
+    .pipe(gulp.dest(config.sourceDir + '/templates/shop/assets/styles/'));
+});
+
+
 //inject css
 gulp.task('injector:css', ['styles:demo'], function () {
   return gulp.src(config.sourceDir + '/views/partials/intro.html')
@@ -119,7 +136,7 @@ gulp.task('injector:js', ['scripts'], function () {
 });
 
 
-gulp.task('injector', ['wiredep', 'injector:sass', 'injector:css', 'injector:js']);
+gulp.task('injector', ['wiredep', 'injector:sass', 'injector:css', 'injector:js', 'injector:sass:templates:shop']);
 
 
 // styles
@@ -160,7 +177,7 @@ gulp.task('styles:templates:shop', function () {
 		})
 		.pipe(prefix('last 1 version'))
 		.pipe(gulpif(!env, csso()))
-		.pipe(gulp.dest(config.general.dest.shop + 'assets/styles'))
+		.pipe(gulp.dest(config.general.dest.shop + '/assets/styles'))
 		.pipe(gulpif(env, reload({stream:true})));
 });
 
@@ -391,7 +408,7 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.scss', ['styles', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.scss', ['styles:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/**/*.scss', ['styles:uikit', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/templates/shop/**/*.scss', ['styles:shop', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/templates/shop/**/*.scss', ['styles:templates:shop', browserSync.reload]);
 	gulp.watch('src/demo/scripts/**/*.js', ['scripts:demo', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/uikit-core.js'], ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/scripts/**/*.js', ['scripts:uikit', browserSync.reload]);

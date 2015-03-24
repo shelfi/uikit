@@ -21,6 +21,7 @@
 			$mdIconProvider
 				.iconSet('action', '/uikit/images/icons/svg-sprite-action.svg', 24)
 				.iconSet('navigation', '/uikit/images/icons/svg-sprite-navigation.svg', 24)
+				.iconSet('content', '/uikit/images/icons/svg-sprite-content.svg', 24)
 				.iconSet('communication', '/uikit/images/icons/svg-sprite-communication.svg', 24)
 				.iconSet('maps', '/uikit/images/icons/svg-sprite-maps.svg', 24)
 				.iconSet('av', '/uikit/images/icons/svg-sprite-av.svg', 24)
