@@ -1,10 +1,4 @@
-<div class="wrapper">
-	<md-toolbar md-scroll-shrink layout="row">
-	      <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
-	        <md-icon md-svg-icon="menu" ></md-icon>
-	      </md-button>
-	      <h1>Shop12</h1>
-	    </md-toolbar>
+
 	<md-toolbar md-scroll-shrink class="md-warn">
       <sf-list-manager 
       	ng-model="ctrl.listCtrl.items"
@@ -22,15 +16,14 @@
       	>
       </sf-list-manager>
   </md-toolbar>
-  <div class="content" flex layout="row">
-  <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
-           <md-list>
-             <md-item>
+	<md-content style="height:300px;" layout="row" flex>
+	  	<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
+		   <md-list>
+		     <md-item>
 			<h4>filter comes here</h4>
-             </md-item>
-           </md-list>
-         </md-sidenav>
-	<md-content style="height:600px;">
+		     </md-item>
+		   </md-list>
+		 </md-sidenav>
 	<div class="sf-product-list" layout="row" layout-wrap>
 		<sf-product-item 
 			ng-repeat="item in ctrl.listCtrl.items" 
@@ -66,5 +59,3 @@
 		>
 	</pagination>
 </md-content>
-</div><!-- /content -->
-</div><!-- /wrapper -->

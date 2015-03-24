@@ -149,7 +149,22 @@ gulp.task('styles:uikit', function () {
 		.pipe(gulpif(env, reload({stream:true})));
 });
 
-gulp.task('styles', ['styles:demo', 'styles:uikit']);
+
+gulp.task('styles:templates:shop', function () {
+
+	return gulp.src(config.general.src.styles.templates.shop)
+		.pipe(sass({style: 'expanded'}))
+		.on('error', function handleError(err) {
+		  console.error(err.toString());
+		  this.emit('end');
+		})
+		.pipe(prefix('last 1 version'))
+		.pipe(gulpif(!env, csso()))
+		.pipe(gulp.dest(config.general.dest.shop + 'assets/styles'))
+		.pipe(gulpif(env, reload({stream:true})));
+});
+
+gulp.task('styles', ['styles:demo', 'styles:uikit', 'styles:templates:shop']);
 
 
 // scripts
@@ -376,7 +391,7 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch(config.sourceDir + '/assets/styles/**/*.scss', ['styles', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/elements/**/*.scss', ['styles:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/components/**/*.scss', ['styles:uikit', browserSync.reload]);
-	gulp.watch(config.sourceDir + '/templates/**/styles/*.scss', ['styles:uikit', browserSync.reload]);
+	gulp.watch(config.sourceDir + '/templates/shop/**/*.scss', ['styles:shop', browserSync.reload]);
 	gulp.watch('src/demo/scripts/**/*.js', ['scripts:demo', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/uikit-core.js'], ['scripts:uikit', browserSync.reload]);
 	gulp.watch(config.sourceDir + '/assets/scripts/**/*.js', ['scripts:uikit', browserSync.reload]);
