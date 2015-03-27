@@ -125,7 +125,7 @@ gulp.task('injector:css', ['styles:demo'], function () {
 gulp.task('injector:js', ['scripts'], function () {
   return gulp.src(config.sourceDir + '/views/partials/outro.html')
     .pipe(inject(gulp.src([
-      config.general.dest.uikit + '/scripts/**/*.js',
+      config.general.dest.uikit + '/scripts/**/**/*.js',
       !config.general.dest.uikit + '/scripts/**/*.spec.js',
       !config.general.dest.uikit + '/scripts/**/*.mock.js'
     ]).pipe(angularFilesort()), {
@@ -401,7 +401,7 @@ gulp.task('ngtemplatecache', function () {
 
 
 // watch
-gulp.task('watch', ['browser-sync'], function () {
+gulp.task('watch', ['injector', 'browser-sync'], function () {
 	gulp.watch([config.sourceDir + '/**/**/*.{html,md}', '!' + config.sourceDir + '/**/**/*.tmpl.html'], ['assemble', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/**/**/*.tmpl.html', config.sourceDir + '/templates/*/partials/*.tmpl.html'], ['ngtemplatecache', 'scripts:uikit', browserSync.reload]);
 	gulp.watch('src/demo/styles/**/*.scss', ['styles:demo']);
@@ -430,8 +430,7 @@ gulp.task('default', ['clean'], function () {
 		'scripts',
 		'controllers',
 		'assemble',
-		'bowercopy',
-		'injector'
+		'bowercopy'
 	];
 
 	// run build

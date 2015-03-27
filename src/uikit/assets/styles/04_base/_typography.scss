@@ -4,29 +4,27 @@ a {
 }
 
 html{
-  line-height: 1.25;
+
   
   @media only screen and (min-width: 0) {
-    font-size: 12px;
+  
   }
   
   @media only screen and (min-width: $layout-breakpoint-md) {
-    font-size: 12.5px;
+  
   }
   
   @media only screen and (min-width: $layout-breakpoint-lg) {
-    font-size: 14px;
   }
   
   font-family: "Roboto", sans-serif;
   font-weight: normal;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 400;
 }
 
 
 // Text Styles
 em { font-style: italic; }
 strong { font-weight: 500; }
-small { font-size: 75%; }
+small { }
