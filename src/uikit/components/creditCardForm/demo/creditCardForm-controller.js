@@ -7,6 +7,10 @@
 		.controller('creditCardFormCtrl', function () {
 
 			this.card = {};
+
+			this.proceed = function () {
+				console.log('proceed');
+			};
 		});
 
 })();
