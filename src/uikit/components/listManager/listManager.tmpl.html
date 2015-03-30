@@ -18,7 +18,7 @@
 		<!-- replace sfListManagerActive behaviour with md-menu (milestone 0.10.0 - April 14th)-->
 		<!-- https://github.com/angular/material/issues/78 -->
 		<md-button class="md-primary" aria-label="click to filter" title="click to filter" ng-click="sfListFilterActive = !sfListFilterActive"><md-icon md-svg-icon="action:ic_search_24px" alt="Icon Alt"></md-icon></md-button>
-		<md-button class="md-primary" aria-label="click to add" title="click to add selected" ng-click="sfListManagerActive = !sfListManagerActive"><md-icon md-svg-icon="content:ic_add_24px" alt="Icon Alt"></md-icon></md-button>
+		<md-button class="md-primary" aria-label="click to add" title="click to add selected" ng-click="sfListManagerActive = !sfListManagerActive"><md-icon md-svg-icon="navigation:ic_more_vert_24px" alt="Icon Alt"></md-icon></md-button>
 		<div class="sf-list-manager__action-list md-shadow-bottom-z-1" ng-show="sfListManagerActive">
 		<md-button ng-repeat="(action, cb) in ctrl.actionButtons" class="md-primary sf-list-manager__action-list-item" ng-click="ctrl.onActionClick(cb)" aria-label="{{ action }}" class="sf-list-manager__action-btn">
 			<md-icon md-svg-icon="{{ ctrl.getIcon(action) }}"></md-icon>
