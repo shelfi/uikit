@@ -1,1 +1,9 @@
-.product-list__toolbar{min-height:30px;}
+.sf-product-list{max-height: 90vh;}
+.product-list__toolbar{min-height:30px; position:}
+.product-list__toolbar--sticky{position: fixed; top:0;}
+
+.l-productlist md-sidenav.md-locked-open{width: 240px; min-width: 240px; max-width: 240px;} 
+.sf-pagination{position: fixed; bottom:0; width: 100%;}
+md-toolbar.md-primary{min-height: 40px;
+	h1{font-size: 1.2em;}
+}

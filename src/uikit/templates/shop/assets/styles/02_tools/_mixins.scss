@@ -1,0 +1,18 @@
+//add breakpoints
+@mixin breakpoint($name) {
+  @if $name == "small" {
+    @media (max-width: $layout-breakpoint-sm) {
+      @content;
+    }
+  }
+  @else if $name == "medium" {
+    @media (max-width: $layout-breakpoint-md) {
+      @content;
+    }
+  }
+  @else if $name == "large" {
+    @media (min-width: $layout-breakpoint-lg) {
+      @content;
+    }
+  }
+}

@@ -3,7 +3,7 @@
 	'use strict';
 
 	angular.module('shop')
-		.controller('productListController', function ($controller, $timeout, $scope, $state, orderService, products) {
+		.controller('productListController', function ($controller, $timeout, $scope, $state, orderService, products, $mdSidenav) {
 
 			//scope.ctrl.itemLayout = scope.ctrl.itemLayout || 'grid';
 			//scope.ctrl.showItemLayout = !attrs.itemLayout;
@@ -97,6 +97,11 @@
 				}
 			});
 			*/
+			this.toggleSidenav = function() {
+			    $mdSidenav('product-filter').toggle();
+			};
+
+
 		});
 
 })();

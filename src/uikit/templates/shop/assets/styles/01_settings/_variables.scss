@@ -1,0 +1,21 @@
+//Breakpoints from Angular Material Library
+$baseline-grid:            8px !default;
+$layout-breakpoint-sm:     600px !default;
+$layout-breakpoint-md:     960px !default;
+$layout-breakpoint-lg:     1200px !default;
+$layout-gutter-width:      ($baseline-grid * 2) !default;
+
+// Small screen / tablet
+$screen-sm:                  $layout-breakpoint-sm;
+
+// Medium screen / desktop
+$screen-md:                  $layout-breakpoint-md;
+
+// Large screen / wide desktop
+$screen-lg:                  1200px;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:               ($screen-sm - 1);
+$screen-sm-max:               ($screen-md - 1);
+$screen-md-max:               ($screen-lg - 1);
+

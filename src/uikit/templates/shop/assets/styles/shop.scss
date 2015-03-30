@@ -1,4 +1,11 @@
 // injector
+@import '../../assets/styles/01_settings/_variables.scss';
+@import '../../assets/styles/02_tools/_mixins.scss';
+@import '../../assets/styles/03_generic/_reset.scss';
+@import '../../assets/styles/04_base/_table.scss';
+@import '../../assets/styles/04_base/_typography.scss';
+@import '../../assets/styles/05_objects/_layout.scss';
+@import '../../assets/styles/05_objects/_spaces.scss';
 @import '../../views/cart/cart.scss';
 @import '../../views/home/home.scss';
 @import '../../views/product-list/product-list.scss';

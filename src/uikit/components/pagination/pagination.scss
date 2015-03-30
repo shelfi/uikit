@@ -7,7 +7,7 @@ $sf-pagination__item-colorTxt--active: $paper;
 $sf-pagination__item-colorTxt--disabled: lighten($link-color, 30%);
 
 
-.sf-pagination{display: flex; background: $sf-pagination__list-bg; margin-top: 120px; position: relative;}
+.sf-pagination{display: flex; background: $sf-pagination__list-bg; position: relative;}
 .sf-pagination__list{margin:0 auto;}
 
 //common element properties that will be extended by all of the elements(we are using % so the styles will be only extended) 

@@ -94,7 +94,9 @@ gulp.task('injector:sass', function () {
 gulp.task('injector:sass:templates:shop', function () {
   return gulp.src('./src/uikit/templates/shop/assets/styles/shop.scss')
     .pipe(inject(gulp.src([
-        config.sourceDir + '/templates/shop/views/**/*.scss'
+        config.sourceDir + '/templates/shop/assets/styles/**/*.scss',
+        config.sourceDir + '/templates/shop/views/**/*.scss',
+        '!' + config.sourceDir + '/templates/shop/assets/styles/shop.scss',
       ], {read: false}), {
       transform: function(filePath) {
         filePath = filePath.replace('src/uikit/templates/shop/', '../../');
