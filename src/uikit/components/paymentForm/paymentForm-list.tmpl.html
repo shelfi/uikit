@@ -1,0 +1,18 @@
+<div ng-repeat="paymentOption in ctrl.paymentOptions">
+	<h2>{{paymentOption.name}}</h2>
+	<ul>
+		<li ng-repeat="installment in paymentOption.installment" payment-gateway-isbank>
+			<span ng-show="installment.rate !== 0">% {{ installment.rate }} Komisyon</span>
+			<span ng-show="installment.rate === 0">Komisyonsuz</span>
+			<span ng-show="installment.installment !== 1">{{ installment.installment }} Taksit ile</span>
+			<span ng-show="installment.installment === 1">Pesin</span>
+			<span>{{ ((ctrl.amount * 1) + (ctrl.amount * installment.rate / 100)) | currency }}</span>
+
+			<md-button class="md-raised" ng-click="ctrl.showModal(paymentOption, installment)">Normal</md-button>
+			<md-button class="md-raised" ng-click="ctrl.showModal(paymentOption, installment)">3D</md-button>
+			<md-button class="md-raised" ng-click="ctrl.showModal(paymentOption, installment)">Puan</md-button>
+
+			<span>Ode</span>
+		</li>
+	</ul>
+</div>
