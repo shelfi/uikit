@@ -1,6 +1,26 @@
 <h1>payment page</h1>
 <p>payment page description</p>
 
-<div ng-repeat="gw in ctrl.gateways">
-	{{gw.name}}
+<md-input-container>
+	<label>Amount</label>
+	<input ng-model="ctrl.amount" type="text">
+</md-input-container>
+
+<div ng-repeat="bank in ctrl.banks">
+	<h2>{{bank.name}}</h2>
+	<ul>
+		<li ng-repeat="installment in bank.installment" payment-gateway-isbank>
+			<span ng-show="installment.rate !== 0">% {{ installment.rate }} Komisyon</span>
+			<span ng-show="installment.rate === 0">Komisyonsuz</span>
+			<span ng-show="installment.installment !== 1">{{ installment.installment }} Taksit ile</span>
+			<span ng-show="installment.installment === 1">Pesin</span>
+			<span>{{ ((ctrl.amount * 1) + (ctrl.amount * installment.rate / 100)) | currency }}</span>
+
+			<md-button class="md-raised" ng-click="ctrl.showModal(bank, installment)">Normal</md-button>
+			<md-button class="md-raised" ng-click="ctrl.showModal(bank, installment)">3D</md-button>
+			<md-button class="md-raised" ng-click="ctrl.showModal(bank, installment)">Puan</md-button>
+
+			<span>Ode</span>
+		</li>
+	</ul>
 </div>
