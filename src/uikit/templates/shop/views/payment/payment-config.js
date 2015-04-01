@@ -11,9 +11,12 @@
 				controllerAs: 'ctrl'
 			});
 
-
 			paymentServiceProvider.addGateway({
 				name: 'Garanti'
+			});
+
+			paymentServiceProvider.addGateway({
+				name: 'Isbank'
 			});
 
 			paymentServiceProvider.addGateway({
