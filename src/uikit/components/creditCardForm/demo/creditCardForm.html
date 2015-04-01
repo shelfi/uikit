@@ -1,3 +1,6 @@
 <div ng-controller="creditCardFormCtrl as creditCardForm">
-	<sf-credit-card-form ng-model="creditCardForm.card" proceed="creditCardForm.proceed()"></sf-credit-card-form>
+	<sf-credit-card-form ng-model="creditCardForm.card" preview="true" proceed="creditCardForm.proceed(card)"></sf-credit-card-form>
+
+	<md-button ng-click="creditCardForm.change()">Change card</md-button>
+	<md-button ng-click="creditCardForm.change2Prev()">Change card to previous</md-button>
 </div>
