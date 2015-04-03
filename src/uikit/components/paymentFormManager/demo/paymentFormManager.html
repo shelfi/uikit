@@ -93,6 +93,24 @@
 							<md-option value="3d_oos_pay">3d_oos_pay</md-option>
 						</md-select>
 
+
+						<md-checkbox ng-model="paymentOption.installment" aria-label="Installments">Installments</md-checkbox>
+						<ul ng-class="{ 'passive': !paymentOption.installment }">
+							<li ng-repeat="installment in paymentOption.installments">
+								<div layout layout-sm="column">
+									<md-input-container flex>
+										<label>Installment</label>
+										<input type="number" ng-model="installment.installment" ng-disabled="!paymentOption.installment">
+									</md-input-container>
+									<md-input-container flex>
+										<label>Ratio</label>
+										<input type="number" ng-model="installment.rate" ng-disabled="!paymentOption.installment">
+									</md-input-container>
+									<md-button flex ng-click="paymentFormManager.removeInstallment(installment)" ng-disabled="!paymentOption.installment">Remove</md-button>
+								</div>
+							</li>
+						</ul>
+						<md-button flex ng-click="paymentFormManager.addInstallment()" ng-disabled="!paymentOption.installment">Add</md-button>
 					</div>
 				</form>
 			</div>

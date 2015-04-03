@@ -35,6 +35,23 @@
 				}
 			};
 
+
+
+
+
+			this.addInstallment = function () {
+				this.selected.installments.push({});
+			};
+
+			this.removeInstallment = function (installment) {
+				var i = this.selected.installments.indexOf(installment);
+				if (i !== -1) {
+					this.selected.installments.splice(i, 1);
+				}
+			};
+
+
+
 			this.selectPaymentOption = function (paymentOption) {
 				this.selected = paymentOption;
 			};
@@ -43,7 +60,8 @@
 				{
 					title: 'Isbank',
 					gateway: 'isbank',
-					installment: [
+					installment: true,
+					installments: [
 						{
 							installment: 1,
 							rate: 0
@@ -65,7 +83,8 @@
 				{
 					title: 'Garanti',
 					gateway: 'garanti',
-					installment: [
+					installment: true,
+					installments: [
 						{
 							installment: 1,
 							rate: 0
