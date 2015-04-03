@@ -1,0 +1,102 @@
+<div ng-controller="paymentFormManagerCtrl as paymentFormManager" layout="column" style="height:500px;">
+
+	<section layout="row" flex>
+		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+			<md-toolbar class="md-theme-indigo">
+				<h1 class="md-toolbar-tools">Payment Options</h1>
+
+				<a ng-href ng-click="paymentFormManager.addPaymentOption()">Add option</a>
+			</md-toolbar>
+			<md-content class="md-padding" >
+				<md-button ng-click="paymentFormManager.close()" class="md-primary" hide-gt-md>Close Sidenav Left</md-button>
+				<md-list hide-md show-gt-md>
+					<p ng-show="!paymentFormManager.paymentOptions.length">There is no payment options.</p>
+					<md-item ng-repeat="paymentOption in paymentFormManager.paymentOptions" ng-class="{ 'active': paymentFormManager.selected === paymentOption }">
+						<md-item-content>
+							<div class="md-tile-left">
+								<img ng-src="{{ paymentOption.face }}" class="face" alt="{{ paymentOption.title }}">
+							</div>
+							<div class="md-tile-content">
+								<h3><a ng-href ng-click="paymentFormManager.selectPaymentOption(paymentOption)">{{ paymentOption.title }}</a></h3>
+								<h4>{{ paymentOption.gateway }}</h4>
+								<a ng-href ng-click="paymentFormManager.removePaymentOption(paymentOption)">Remove</a>
+								<!--<p>{{ paymentOption.notes }}</p>-->
+							</div>
+						</md-item-content>
+					</md-item>
+				</md-list>
+			</md-content>
+		</md-sidenav>
+		<md-content flex class="md-padding">
+			<div layout="column" layout-fill layout-align="top center">
+				<p>The left sidenav will 'lock open' on a medium (>=960px wide) device.</p>
+
+				<form name="paymentFormManager.form">
+					<div ng-repeat="paymentOption in paymentFormManager.paymentOptions" style="border-top:5px solid;" ng-show="paymentFormManager.selected === paymentOption">
+						<h1>{{ paymentOption.title }}</h1>
+
+						<h2>General</h2>
+						<md-input-container>
+							<label>Code</label>
+							<input type="text" ng-model="paymentOption.code">
+						</md-input-container>
+
+						<md-input-container>
+							<label>Title</label>
+							<input type="text" ng-model="paymentOption.title">
+						</md-input-container>
+						
+						<md-input-container>
+							<label>Icon</label>
+							<input type="text" ng-model="paymentOption.icon">
+						</md-input-container>
+
+						<md-select placeholder="Pick a gateway" ng-model="paymentOption.gateway">
+							<md-option value="isbank">Isbank</md-option>
+							<md-option value="garanti">Garanti</md-option>
+						</md-select>
+
+						<h2>{{ paymentOption.gateway }} POS Settings</h2>
+						<md-input-container>
+							<label>Shop Code</label>
+							<input type="text" ng-model="paymentOption.pos.shopcode">
+						</md-input-container>
+
+						<md-input-container>
+							<label>User</label>
+							<input type="text" ng-model="paymentOption.pos.user">
+						</md-input-container>
+
+						<md-input-container>
+							<label>Pwd</label>
+							<input type="text" ng-model="paymentOption.pos.pwd">
+						</md-input-container>
+
+						<md-input-container>
+							<label>Url</label>
+							<input type="text" ng-model="paymentOption.pos.url">
+						</md-input-container>
+
+						<md-input-container>
+							<label>3D Shop Key</label>
+							<input type="text" ng-model="paymentOption.pos.secureKey">
+						</md-input-container>
+
+						<md-input-container>
+							<label>3D Url</label>
+							<input type="text" ng-model="paymentOption.pos.secureUrl">
+						</md-input-container>
+
+						<md-select placeholder="Pick a 3D method" ng-model="paymentOption.secureMethod">
+							<md-option value="3d">3d</md-option>
+							<md-option value="3d_oos">3d_oos</md-option>
+							<md-option value="3d_oos_pay">3d_oos_pay</md-option>
+						</md-select>
+
+					</div>
+				</form>
+			</div>
+			<div flex></div>
+		</md-content>
+	</section>
+</div>
