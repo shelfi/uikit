@@ -17,7 +17,7 @@
 				{ name: 'price', width: '10' },
 				//{ name: 'quantity', width: '10', template: '<md-input-container><label>Quantity</label><input ng-model="item.quantity"></md-input-container>' }
 				//{ name: 'quantity', width: '10', template: '<md-input-container><md-select ng-model="item.quantity" placeholder="Select quantity"><md-option ng-repeat="opt in [100, 250, 500, 1000, 2500]" ng-value="opt">{{ opt }}</md-option></md-select></md-input-container>'
-				{ name: 'quantity', width: '15', template: '<md-select ng-model="item.quantity" placeholder="Select quantity"><md-option ng-repeat="opt in [100, 200, 500, 1000, 5000]" ng-value="opt">{{ opt }}</md-option></md-select>' }
+				{ name: 'quantity', width: '15', template: '<md-select ng-model="item.quantity" placeholder="q"><md-option ng-repeat="opt in [100, 200, 500, 1000, 5000]" ng-value="opt">{{ opt }}</md-option></md-select>' }
 			];
 		})
 

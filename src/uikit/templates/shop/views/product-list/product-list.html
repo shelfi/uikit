@@ -1,30 +1,27 @@
-<md-toolbar class="md-primary" layout="row">
-	<md-button ng-click="ctrl.toggleSidenav()" aria-label="toggle sidenav" flex="10" show-sm hide>Flt</md-button>
-	<h1 class="l-man">Shopname</h1>
+<md-toolbar class="md-accent" layout="column" md-scroll-shrink>
+	<h1 class="l-man"><md-button ng-click="ctrl.toggleSidenav()" aria-label="toggle sidenav" flex="10" hide>Flt</md-button>Shopname</h1>
+	<sf-list-manager 
+		ng-model="ctrl.listCtrl.items"
+		show-item-layout="true"
+		item-layout="{{ ctrl.itemLayout }}"
+		on-item-layout-change="ctrl.onItemLayoutChange(layout)"
+		
+		sort="ctrl.sort"
+		filter="ctrl.listCtrl.search.$"
+		sort-options="ctrl.sortOptions"
+		on-sort-change="ctrl.listCtrl.sortChanged(sort)"
+		on-filter-change="ctrl.listCtrl.searchChanged()"
+
+		action-buttons="ctrl.actionButtons"
+		>
+	</sf-list-manager>
 </md-toolbar>
-<div layout="row" md-scroll-shrink class="prody">
+<md-content layout="row" style="max-height:100vh">
 <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" md-component-id="product-filter">
 	<h4>filter comes here</h4>
 </md-sidenav>
 <div class="l-content">
-		<md-toolbar class="md-accent product-list__toolbar" md-scroll-shrink>
-		  <sf-list-manager 
-		  	ng-model="ctrl.listCtrl.items"
-		  	show-item-layout="true"
-		  	item-layout="{{ ctrl.itemLayout }}"
-		  	on-item-layout-change="ctrl.onItemLayoutChange(layout)"
-		  	
-		  	sort="ctrl.sort"
-		  	filter="ctrl.listCtrl.search.$"
-		  	sort-options="ctrl.sortOptions"
-		  	on-sort-change="ctrl.listCtrl.sortChanged(sort)"
-		  	on-filter-change="ctrl.listCtrl.searchChanged()"
-
-		  	action-buttons="ctrl.actionButtons"
-		  	>
-		  </sf-list-manager>
-		</md-toolbar>
-		<md-content layout="column">
+		<div layout="column">
 			<div class="sf-product-list" layout="row" layout-wrap>
 			<sf-product-item 
 				ng-repeat="item in ctrl.listCtrl.items" 
@@ -44,20 +41,20 @@
 				>
 			</sf-product-item>
 			</div><!-- product-list -->
-		</md-content>
-		<pagination
-		ng-model="ctrl.listCtrl.currentPage"
-		total-items="ctrl.listCtrl.totalItems"
-		items-per-page="ctrl.listCtrl.itemsPerPage" 
-		items-per-page-options="[5, 10, 15, 25, 50, 100, 250, 500]" 
-		on-page-changed="ctrl.listCtrl.pageChanged(page)"
-		on-items-per-page-changed="ctrl.listCtrl.itemsPerPageChanged()"
-		boundary-links="true"
-		layout
-		layout-align="end end"
-		flex
-		flex-sm="100"
-		>
-	</pagination>
+				<pagination
+				ng-model="ctrl.listCtrl.currentPage"
+				total-items="ctrl.listCtrl.totalItems"
+				items-per-page="ctrl.listCtrl.itemsPerPage" 
+				items-per-page-options="[5, 10, 15, 25, 50, 100, 250, 500]" 
+				on-page-changed="ctrl.listCtrl.pageChanged(page)"
+				on-items-per-page-changed="ctrl.listCtrl.itemsPerPageChanged()"
+				boundary-links="true"
+				layout
+				layout-align="end end"
+				flex
+				flex-sm="100"
+				>
+			</pagination>
+		</div>
 	</div><!-- l-content -->
-</div>
+</md-content>

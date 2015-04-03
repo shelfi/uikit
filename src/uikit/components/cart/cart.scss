@@ -1,1 +1,7 @@
 .cart{font-size: 16px;}
+
+.sf-cart__detail-header{display: block; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid #efefef; padding-bottom: 10px;}
+.sf-cart__detail-item{
+	margin-bottom: 30px; display: block;
+	md-input-container{padding-bottom: 15px;}
+}

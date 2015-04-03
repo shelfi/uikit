@@ -1,9 +1,10 @@
-.sf-product-list{max-height: 90vh;}
+.l-wrapper{overflow: hidden;}
+.sf-product-list{}
 .product-list__toolbar{min-height:30px; position:}
 .product-list__toolbar--sticky{position: fixed; top:0;}
 
 .l-productlist md-sidenav.md-locked-open{width: 240px; min-width: 240px; max-width: 240px;} 
-.sf-pagination{position: fixed; bottom:0; width: 100%;}
+.sf-pagination{}
 md-toolbar.md-primary{min-height: 40px;
 	h1{font-size: 1.2em;}
 }
