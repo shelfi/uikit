@@ -1,5 +1,15 @@
 <div ng-controller="creditCardFormCtrl as creditCardForm">
+	<h1>{{ creditCardForm.amount | currency }}</h1>
 	<sf-credit-card-form ng-model="creditCardForm.card" preview="true" proceed="creditCardForm.proceed(card)"></sf-credit-card-form>
+
+	<md-select ng-if="creditCardForm.installments" placeholder="Select a installment" ng-model="creditCardForm.installment" ng-change="creditCardForm.installmentChanged()">
+		<md-option ng-repeat="installment in creditCardForm.installments" value="{{ installment.installment }}">
+		{{ installment.installment }}
+		%{{ installment.rate }} 
+		{{ installment.amount | currency }}</md-option>
+	</md-select>
+
+	<hr>
 
 	<md-button ng-click="creditCardForm.change()">Change card</md-button>
 	<md-button ng-click="creditCardForm.change2Prev()">Change card to previous</md-button>
