@@ -11,10 +11,33 @@
 			return {
 				restrict: 'A',
 				require: 'ngModel',
+				scope: {
+					cardNumberValidator: '='
+				},
 				link: function(scope, element, attrs, ctrl) {
 					ctrl.$validators.cardNumberValidator = function (value) {
 						if (value) {
-							return Payment.fns.validateCardNumber(value);
+							var cardNumber = value.replace(/\s/g, '');
+							var validator = scope.cardNumberValidator;
+							if (angular.isString(validator) || angular.isNumber(validator)) {
+								var valid = cardNumber.substring(0, validator.toString().length) === validator.toString();
+								if (valid) {
+									return true;
+								}
+							}
+							else if (angular.isArray(validator)) {
+								var i = 0;
+								for (i = 0; i < validator.length; i++) {
+									var valid = cardNumber.substring(0, validator[i].toString().length) === validator[i].toString();
+									if (valid) {
+										return true;
+									}
+								}
+							}
+							else {
+								return Payment.fns.validateCardNumber(value);	
+							}
+							return false;
 						}
 						return false;
 					};
