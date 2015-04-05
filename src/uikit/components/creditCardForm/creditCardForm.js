@@ -61,19 +61,10 @@
 				scope: {
 					card: '=ngModel',
 					preview: '@',
-					onCreditCardChange: '&',
-					proceed: '&'
+					onCreditCardChange: '&'
 				},
 				bindToController: true,
-				controller: function () {
-					this.proceed_ = function () {
-						if (!this.creditCardForm.$valid) {
-							alert('form validation failed');
-							return;
-						}
-						this.proceed({ card: this.card });
-					};
-				},
+				controller: function () {},
 				controllerAs: 'ctrl',
 				link: function (scope, element, attrs, ngModelCtrl) {
 					if (ngModelCtrl) {
@@ -100,6 +91,15 @@
 							}
 							return v;
 						});
+
+						//ngModelCtrl.$parsers.push(function (v) {
+						//	console.log('parsers', v);
+						//	return v;
+						//});
+
+						if (scope.ctrl.card && scope.ctrl.card.number) {
+							scope.ctrl.onCreditCardChange();
+						}
 					}
 					//console.log('cardddd');
 					var card = new Card({
@@ -109,6 +109,11 @@
 						formatting: true,
 						debug: true
 					});
+
+					//angular.element('input[name="number"]').on('keyup', function () {
+					//	console.log('name keyup');
+					//	scope.ctrl.onCreditCardChange();
+					//});
 
 					scope.$watch('ctrl.card', function (val) {
 						//console.log('watchMAIN', val);
@@ -125,6 +130,7 @@
 						angular.element('input[name="number"]').simulate('keyup');
 						angular.element('input[name="expiry"]').simulate('keyup');
 						angular.element('input[name="cvc"]').simulate('keyup');
+						scope.ctrl.onCreditCardChange();
 					});
 				}
 			};

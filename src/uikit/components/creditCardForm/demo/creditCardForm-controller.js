@@ -33,14 +33,14 @@
 			};
 
 			this.queryCampaign = function () {
-				this.querying = true;
+				this.loading = true;
 				$timeout(function () {
 					this.campaigns = [
 						{ name: 'vada', title: 'vada' },
 						{ name: 'bonus', title: 'bonus' },
 						{ name: 'postpone', title: '+ 3 taksit erteleme' }
 					];
-					this.querying = false;
+					this.loading = false;
 				}.bind(this), 1500);
 			};
 
@@ -54,7 +54,7 @@
 			this.updateInstallmentList();
 
 			this.common = {
-				name: 'Ahmet Niyazi',
+				name: 'Ahmet Niyazi 111',
 				number: '4929233596865177',
 				expiry: '05 / 2015',
 				cvc: '355'
@@ -63,18 +63,36 @@
 			this.card = angular.copy(this.common);
 
 			this.onCreditCardChange = function () {
-				console.log('change');
+				this.installment = null;
 				this.campaigns = null;
 				this.campaign = null;
+
+				this.availableForInstallment = false;
+				if (this.card.number) {
+					//https://gist.github.com/berkayunal/1595676
+					//https://github.com/hbayraksan/tr-bin-numbers/blob/master/master_BIN.csv
+					//http://www.yapikredipos.com.tr/odeme-cozumlerimiz/duyurular/bin-numaralari.aspx
+					var isbankBIN = ['418342', '418343', '418344', '418345', '450803', '454318', '454358', '454359', '454360', '510152', '540667', '540668', '543771', '552096', '553058', '492923'];
+					var cardNumber = this.card.number.replace(/\s/g, '').substring(0, 6);
+					if (isbankBIN.indexOf(cardNumber) !== -1) {
+						this.availableForInstallment = true;
+					}	
+				}
 			};
 
-			this.proceed = function (card) {
-				console.log('proceed', card, this.card);
+			this.proceed = function () {
+				/*
+				if (!this.creditCardForm.$valid) {
+					alert('form validation failed');
+					return;
+				}
+				*/
+				console.log('proceed', this.card, this.installment, this.campaign);
 			};
 
 			this.change = function () {
 				this.card = {
-					name: 'Ayse Hatice',
+					name: 'Ayse Hatice 222',
 					number: '4556249932451571',
 					expiry: '13 / 2015',
 					cvc: 'asd'
