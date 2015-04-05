@@ -1,12 +1,23 @@
 <div ng-controller="creditCardFormCtrl as creditCardForm">
-	<h1>{{ creditCardForm.amount | currency }}</h1>
+	<h1>Amount: {{ creditCardForm.amount | currency }}</h1>
 	<sf-credit-card-form ng-model="creditCardForm.card" preview="true" proceed="creditCardForm.proceed(card)"></sf-credit-card-form>
 
+	<hr>
+	<h2>Installments settings</h2>
 	<md-select ng-if="creditCardForm.installments" placeholder="Select a installment" ng-model="creditCardForm.installment" ng-change="creditCardForm.installmentChanged()">
 		<md-option ng-repeat="installment in creditCardForm.installments" value="{{ installment.installment }}">
 		{{ installment.installment }}
 		%{{ installment.rate }} 
-		{{ installment.amount | currency }}</md-option>
+		{{ installment.amount | currency }}
+		</md-option>
+	</md-select>
+
+	<hr>
+	<h2>Campaigns</h2>
+	<md-button ng-click="creditCardForm.queryCampaign()">Query</md-button>
+	<md-progress-circular md-mode="indeterminate" ng-show="creditCardForm.querying"></md-progress-circular>
+	<md-select ng-if="creditCardForm.campaigns" placeholder="Select a campaign" ng-model="creditCardForm.campaign">
+		<md-option ng-repeat="campaign in creditCardForm.campaigns" value="{{ campaign.name }}">{{ campaign.title }}</md-option>
 	</md-select>
 
 	<hr>

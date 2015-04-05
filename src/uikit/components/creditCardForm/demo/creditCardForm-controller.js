@@ -4,7 +4,7 @@
 
 	angular.module('uikit.components.creditCardForm')
 
-		.controller('creditCardFormCtrl', function () {
+		.controller('creditCardFormCtrl', function ($timeout) {
 
 			this.updateInstallmentList = function () {
 				if (!this.amount_) {
@@ -30,6 +30,18 @@
 					this.amount = (this.amount_ * 1) + (this.amount_ * selected.rate / 100);
 				}
 				this.updateInstallmentList();
+			};
+
+			this.queryCampaign = function () {
+				this.querying = true;
+				$timeout(function () {
+					this.campaigns = [
+						{ name: 'vada', title: 'vada' },
+						{ name: 'bonus', title: 'bonus' },
+						{ name: 'postpone', title: '+ 3 taksit erteleme' }
+					];
+					this.querying = false;
+				}.bind(this), 1500);
 			};
 
 			this.amount = 100.56;
