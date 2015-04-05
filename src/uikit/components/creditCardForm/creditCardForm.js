@@ -22,7 +22,7 @@
 							if (angular.isString(validator) || angular.isNumber(validator)) {
 								var valid = cardNumber.substring(0, validator.toString().length) === validator.toString();
 								if (valid) {
-									return true;
+									return Payment.fns.validateCardNumber(value);
 								}
 							}
 							else if (angular.isArray(validator)) {
@@ -30,12 +30,12 @@
 								for (i = 0; i < validator.length; i++) {
 									var valid = cardNumber.substring(0, validator[i].toString().length) === validator[i].toString();
 									if (valid) {
-										return true;
+										return Payment.fns.validateCardNumber(value);
 									}
 								}
 							}
 							else {
-								return Payment.fns.validateCardNumber(value);	
+								return Payment.fns.validateCardNumber(value);
 							}
 							return false;
 						}
