@@ -62,6 +62,12 @@
 
 			this.card = angular.copy(this.common);
 
+			this.onCreditCardChange = function () {
+				console.log('change');
+				this.campaigns = null;
+				this.campaign = null;
+			};
+
 			this.proceed = function (card) {
 				console.log('proceed', card, this.card);
 			};

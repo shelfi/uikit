@@ -61,6 +61,7 @@
 				scope: {
 					card: '=ngModel',
 					preview: '@',
+					onCreditCardChange: '&',
 					proceed: '&'
 				},
 				bindToController: true,

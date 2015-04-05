@@ -1,6 +1,6 @@
 <div ng-controller="creditCardFormCtrl as creditCardForm">
 	<h1>Amount: {{ creditCardForm.amount | currency }}</h1>
-	<sf-credit-card-form ng-model="creditCardForm.card" preview="true" proceed="creditCardForm.proceed(card)"></sf-credit-card-form>
+	<sf-credit-card-form ng-model="creditCardForm.card" preview="true" on-credit-card-change="creditCardForm.onCreditCardChange()" proceed="creditCardForm.proceed(card)"></sf-credit-card-form>
 
 	<hr>
 	<h2>Installments settings</h2>
