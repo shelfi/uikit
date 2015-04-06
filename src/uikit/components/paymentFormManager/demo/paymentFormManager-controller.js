@@ -40,6 +40,7 @@
 
 
 			this.addInstallment = function () {
+				this.selected.installments = this.selected.installments || [];
 				this.selected.installments.push({});
 			};
 
