@@ -1,0 +1,10 @@
+<div ng-controller="installmentTableCtrl as installmentTable">
+
+	<md-input-container>
+		<label>Amount</label>
+		<input ng-model="installmentTable.amount" type="number">
+	</md-input-container>
+
+	<sf-installment-table ng-model="installmentTable.amount" payment-options="installmentTable.paymentOptions" on-select-option="installmentTable.onSelectOption(paymentOption, installment)"></sf-installment-table>
+
+</div>

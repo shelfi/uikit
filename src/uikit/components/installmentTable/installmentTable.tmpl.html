@@ -1,0 +1,22 @@
+<div class="demo-container">
+
+	<div ng-repeat="paymentOption in ctrl.paymentOptions | filter:{ installment: true }">
+		<h2>{{ paymentOption.title }}</h2>
+		<ul>
+			<li ng-repeat="installment in paymentOption.installments">
+				<span ng-if="!onSelectOption">
+					{{ installment.installment }}
+					- {{ installment.rate }}
+					- {{ ctrl.getAmount(installment) | currency }}
+					- {{ ctrl.getAmount(installment) / installment.installment | currency }}
+				</span>
+				<a ng-if="onSelectOption" ng-href ng-click="ctrl.onSelectOption({ paymentOption: paymentOption, installment: installment })">
+					{{ installment.installment }}
+					- {{ installment.rate }}
+					- {{ ctrl.getAmount(installment) | currency }}
+					- {{ ctrl.getAmount(installment) / installment.installment | currency }}
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
