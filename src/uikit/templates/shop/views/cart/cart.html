@@ -1,3 +1,16 @@
-<sf-cart ng-model="ctrl.order.products" columns="ctrl.columns" show-header="true" show-delete-button="true" show-standby-button="true" show-totals="true"></sf-cart>
+<sf-cart ng-model="ctrl.order" show-header="true" show-group-action="true" actions="ctrl.actions" remove-item="ctrl.removeItem(items)"></sf-cart>
 <a ui-sref="products">Back to product list</a>
 <a ui-sref="delivery">Go to delivery</a>
+<!--
+<div class="sf-cart__selector">
+	<md-select ng-model="ctrl.savedcart" placeholder="default cart">
+		<md-option ng-value="opt.title" ng-repeat="opt in ctrl.savedcarts">{{ opt.title }}</md-option>
+	</md-select>
+</div>
+-->
+<!--
+<div class="sf-cart__detail-action">
+	<md-button class="md-primary">SEPETI KAYDET <md-icon md-svg-icon="action:ic_bookmark_24px" alt="Icon Alt"></md-icon></md-button>
+	<md-button class="md-primary">SEPETI TEKLIF OLARAK GONDER <md-icon md-svg-icon="action:ic_open_in_new_24px" alt="Icon Alt"></md-icon></md-button>
+</div>
+-->

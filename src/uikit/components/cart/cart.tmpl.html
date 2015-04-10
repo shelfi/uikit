@@ -1,29 +1,22 @@
 <div class="sf-cart" layout="column">
-  <div class="sf-cart__selector" hide>
-    <md-select ng-model="ctrl.savedcart" placeholder="default cart">
-      <md-option ng-value="opt.title" ng-repeat="opt in ctrl.savedcarts">{{ opt.title }}</md-option>
-    </md-select>
-  </div>
-  <div class="sf-cart__detail">
-    <md-list>
-      <md-item class="sf-cart__detail-header" ng-show="ctrl.showHeader === 'true'">
-        <md-item-content layout="row">
-          <div ng-repeat="column in ctrl.columns" flex="{{column.width}}" flex-sm="30">{{column.name}}</div>
-        </md-item-content>
-      </md-item>
-      <md-item ng-repeat="item in ctrl.items" class="sf-cart__detail-item">
-        <md-item-content layout="row">
-          <div ng-repeat="column in ctrl.columns" flex="{{column.width}}" flex-sm="30" sf-template="column.template" ng-model="item">{{item[column.name]}}</div>
-        </md-item-content>
-      </md-item>
-      <md-item-content class="sf-cart__detail-totals" layout="column" layout-align="center end" ng-show="ctrl.showTotals === 'true'">
-        <div flex>Vat: 4TL</div>
-        <div flex>Total: 20TL</div>
-      </md-item-content>
-    </md-list>
-    <div class="sf-cart__detail-action" hide>
-      <md-button class="md-primary">SEPETI KAYDET <md-icon md-svg-icon="action:ic_bookmark_24px" alt="Icon Alt"></md-icon></md-button>
-      <md-button class="md-primary">SEPETI TEKLIF OLARAK GONDER <md-icon md-svg-icon="action:ic_open_in_new_24px" alt="Icon Alt"></md-icon></md-button>
-    </div>
-  </div>
+	<div class="sf-cart__detail">
+		<md-list>
+			<md-item class="sf-cart__detail-header" ng-show="ctrl.showHeader === 'true'">
+				<md-item-content layout="row">
+					<div ng-repeat="column in ctrl.columns" flex="{{ column.width }}" flex-sm="30">{{ column.title }}</div>
+				</md-item-content>
+			</md-item>
+			<md-item ng-repeat="item in ctrl.order.products" class="sf-cart__detail-item">
+				<md-item-content layout="row">
+					<div ng-repeat="column in ctrl.columns" flex="{{ column.width }}" flex-sm="30" sf-template="column.template" ng-model="item">{{ item[column.name] }}</div>
+				</md-item-content>
+			</md-item>
+			<md-item-content class="sf-cart__detail-totals" layout="column" layout-align="center end" ng-show="ctrl.totals">
+				<div flex ng-repeat="total in ctrl.totals"><strong>{{ total.title }}:</strong> {{ total.fn(ctrl.order) | currency }}</div>
+			</md-item-content>
+		</md-list>
+
+		<md-button ng-if="ctrl.showGroupAction === 'true'" class="md-raised" ng-repeat="action in ctrl.actions" aria-label="{{ action.title }}" ng-click="ctrl.triggerActionCallback(action.cb)">{{ action.title }} <md-icon md-svg-icon="{{ action.icon }}"></md-icon></md-button>
+
+	</div>
 </div><!-- sf-cart__detail-action -->
