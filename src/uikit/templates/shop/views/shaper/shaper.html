@@ -1,0 +1,34 @@
+<script type="text/ng-template" id="row">
+	<md-input-container>
+		<label>{{ structure.label }}</label>
+		{{ structure.input }}
+	</md-input-container>
+</script>
+
+<script type="text/ng-template" id="lines">
+	<div>
+		<ul>
+			<li ng-repeat="item in data[structure.items]">
+				{{ structure.input }}
+			</li>
+		</ul>
+	</div>
+</script>
+		
+
+<!--
+
+
+
+<div>
+	<span style="color:red">{{ structure.name }}</span>
+</div>
+<md-button ng-click="structure.ngClick()">Click me!</md-button>
+<hr>
+{{ data }}
+-->
+
+
+<sf-shaper structure="ctrl.structure" ng-model="ctrl.data" form="ctrl.form"></sf-shaper>
+<hr>
+{{ ctrl.data }}
