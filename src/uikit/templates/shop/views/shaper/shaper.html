@@ -1,17 +1,36 @@
 <script type="text/ng-template" id="row">
+	<div layout="row">
+		<div ng-repeat="item in structure">
+			<sf-shaper structure="item" ng-model="data" form="form"></sf-shaper>
+		</div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="column">
+	<div layout="column">
+		<div ng-repeat="item in structure">
+			<sf-shaper structure="item" ng-model="data" form="form"></sf-shaper>
+		</div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="inputContainer">
 	<md-input-container>
 		<label>{{ structure.label }}</label>
-		{{ structure.input }}
+		<sf-input attrs="structure.input" ng-model="data" form="form"></sf-input>
 	</md-input-container>
 </script>
 
 <script type="text/ng-template" id="lines">
 	<div>
+		<h2>{{ structure.title }}</h2>
 		<ul>
-			<li ng-repeat="item in data[structure.items]">
-				{{ structure.input }}
+			<li ng-repeat="item in data[structure.items]" layout="row">
+				<sf-shaper structure="structure.repeat" ng-model="item" form="form"></sf-shaper>
+				<md-button aria-label="Remove" ng-click="data[structure.items].splice($index, 1)"><md-icon md-svg-icon="navigation:ic_close_24px"></md-icon></md-button>
 			</li>
 		</ul>
+		<md-button ng-click="data[structure.items].push({})">Add line</md-button>
 	</div>
 </script>
 		

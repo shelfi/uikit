@@ -6,34 +6,58 @@
 		.controller('shaperController', function () {
 			//controller
 			this.structure = {
-				row: [
+				inputContainer: {
+					label: 'NNName',
+					input: {
+						type: 'text',
+						ngModel: 'data.nnname'
+					}
+				},
+				column: [
 					{
-						label: 'Name',
-						input: {
-							type: 'text',
-							ngModel: 'data.name'
-						} 
+						inputContainer: {
+							label: 'Name',
+							input: {
+								type: 'text',
+								ngModel: 'data.name'
+							}
+						}
 					},
 					{
-						label: 'Surname',
-						input: {
-							type: 'text',
-							ngModel: 'data.surname'
+						inputContainer: {
+							label: 'Surname',
+							input: {
+								type: 'text',
+								ngModel: 'data.surname'
+							}
 						}
 					}
 				],
 				lines: {
+					title: 'Jobs',
 					items: 'jobs',
-					input: [
-						{
-							type: 'text',
-							ngModel: 'item.title'
-						},
-						{
-							type: 'text',
-							ngModel: 'item.desc'
-						}
-					]
+					repeat: {
+						row: [
+							{
+								inputContainer: {
+									label: 'Title',
+									input: {
+										type: 'text',
+										ngModel: 'data.title'
+									}
+								}
+							},
+							{
+								inputContainer: {
+									label: 'Desc',
+									input: {
+										type: 'text',
+										ngModel: 'data.desc'
+									}
+								}
+							}
+						],
+					}
 				}
 			};
 			this.data = {

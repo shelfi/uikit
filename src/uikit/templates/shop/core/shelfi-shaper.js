@@ -79,8 +79,8 @@
 					},
 					get: function (stKey, stVal) {
 						
-						console.log('***********************************');
-						console.log(stKey, stVal);
+						//console.log('***********************************');
+						//console.log(stKey, stVal);
 
 						if(!angular.isObject(stVal) || stKey === 'input') {
 							return '';
@@ -97,10 +97,13 @@
 								//http://www.javascriptkit.com/javatutors/redev2.shtml
 								//http://www.javascriptkit.com/javatutors/redev3.shtml
 								var re = new RegExp('\\{\\{\\s?structure\\.' + k + '\\s?\\}\\}', 'gi');
+								//var re = new RegExp('\\{\\{\\s?' + k + '\\s?\\}\\}', 'gi');
 								//var re = /\{\{\s?structure\.(.*)\s?\}\}/gi;
+								
+								//console.log(k, v, re);
 
 								if(k === 'input') {
-									console.log('v', v);
+									//console.log('v', v);
 									//TODO:item attach etmeden yapamaz miyiz?
 									//template = template.replace(re, '<div sf-input attrs="structure.input" ng-model="data" item="item" form="form"></div>');
 
@@ -116,7 +119,9 @@
 									}
 								}
 								else {
+									//console.log('re', template);
 									template = template.replace(re, '<sf-shaper structure="structure" ng-model="data" form="form"></sf-shaper>');
+									//template = template.replace(re, 'emre-' + k);
 								}
 							}
 						});
@@ -147,8 +152,9 @@
 						angular.forEach(scope.structure, function (val, key) {
 
 							//console.log(key, val);
+							if (key === '$$hashKey') return;
 
-							if(angular.isArray(val)) {
+							if(angular.isArray(val) && key !== 'row' && key !== 'column') {
 
 								angular.forEach(val, function (arrVal, index) {
 
@@ -170,6 +176,7 @@
 								});
 							}
 							else {
+								//console.log('asd', key, scope.structure);
 								var html = sfShaper.get(key, val);
 								var childScope = scope.$new(true);
 								//childScope.global = {};
