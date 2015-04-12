@@ -1,7 +1,7 @@
 <script type="text/ng-template" id="row">
 	<div layout="row">
 		<div ng-repeat="item in structure">
-			<sf-shaper structure="item"></sf-shaper>
+			<sf-shaper structure="item" ng-model="data" form="form"></sf-shaper>
 		</div>
 	</div>
 </script>
@@ -9,7 +9,7 @@
 <script type="text/ng-template" id="column">
 	<div layout="column">
 		<div ng-repeat="item in structure">
-			<sf-shaper structure="item"></sf-shaper>
+			<sf-shaper structure="item" ng-model="data" form="form"></sf-shaper>
 		</div>
 	</div>
 </script>
@@ -17,7 +17,7 @@
 <script type="text/ng-template" id="inputContainer">
 	<md-input-container>
 		<label>{{ label }}</label>
-		<sf-input attrs="input"></sf-input>
+		<sf-input attrs="input" ng-model="data" form="form"></sf-input>
 	</md-input-container>
 </script>
 
@@ -26,7 +26,7 @@
 		<h2>{{ title }}</h2>
 		<ul>
 			<li ng-repeat="item in data[items]" layout="row">
-				<sf-shaper structure="repeat" ng-model="item"></sf-shaper>
+				<sf-shaper structure="repeat" ng-model="item" form="form"></sf-shaper>
 				<md-button aria-label="Remove" ng-click="data[items].splice($index, 1)"><md-icon md-svg-icon="navigation:ic_close_24px"></md-icon></md-button>
 			</li>
 		</ul>
@@ -40,18 +40,9 @@
 	</p>
 </script>		
 
-<!--
-<div>
-	<span style="color:red">{{ structure.name }}</span>
-</div>
-<md-button ng-click="structure.ngClick()">Click me!</md-button>
-<hr>
-{{ data }}
--->
-
-
 <sf-shaper structure="ctrl.structure" ng-model="ctrl.data" form="ctrl.form" live="true"></sf-shaper>
 <hr>
-<md-button ng-click="ctrl.change()">Change structure</md-button>
+<md-button ng-click="ctrl.changeStructure()">Change structure</md-button>
+<md-button ng-click="ctrl.changeData()">Change data</md-button>
 <hr>
 {{ ctrl.data }}

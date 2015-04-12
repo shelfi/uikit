@@ -5,7 +5,7 @@
 	angular.module('shop')
 		.controller('shaperController', function ($scope) {
 			//controller
-			this.change = function () {
+			this.changeStructure = function () {
 				this.structure.inputContainer = {
 					label: 'NNName',
 					input: {
@@ -25,6 +25,17 @@
 						}
 					}
 				});
+			};
+			this.changeData = function () {
+				this.data = {
+					name: 'Emre44',
+					surname: 'Terzi44',
+					died: true,
+					jobs: [
+						{ title: 'trg44', desc: 'Worked with Ersen44' },
+						{ title: 'gurus44', desc: 'Worked with Mali44' }
+					]
+				};
 			};
 			this.structure = {
 				column: [
@@ -68,7 +79,8 @@
 									label: 'Title',
 									input: {
 										type: 'text',
-										ngModel: 'data.title'
+										ngModel: 'data.title',
+										ngDisabled: 'data.died === true'
 									}
 								}
 							},
@@ -77,11 +89,12 @@
 									label: 'Desc',
 									input: {
 										type: 'text',
-										ngModel: 'data.desc'
+										ngModel: 'data.desc',
+										ngDisabled: 'data.died === true'
 									}
 								}
 							}
-						],
+						]
 					}
 				},
 				paragraph: {
@@ -89,7 +102,7 @@
 				}
 			};
 			this.data = {
-				name: 'Emre4',
+				name: 'Emre',
 				surname: 'Terzi',
 				died: false,
 				jobs: [

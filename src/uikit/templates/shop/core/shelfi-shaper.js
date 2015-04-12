@@ -70,8 +70,8 @@
 				restrict: 'E',
 				scope: {
 					structure: '=',
-					data: '=?ngModel',
-					form: '=?',
+					data: '=ngModel',
+					form: '=',
 					live: '@'
 				},
 				link: function (scope, element, attrs) {
@@ -86,6 +86,9 @@
 						});
 						childScope.structure = val;
 						childScope.data = scope.data;
+						scope.$watch('data', function (v) {
+							childScope.data = v;
+						});
 						childScope.form = scope.form;
 						var el = angular.element(template);
 						element.append(el);
@@ -112,12 +115,14 @@
 							}
 						});
 					};
+					/*
 					if (!scope.data) {
 						scope.data = scope.$parent.data;
 					}
 					if (!scope.form) {
 						scope.form = scope.$parent.form;
 					}
+					*/
 					if (!scope.live) {
 						scope.live = 'false';
 					}
@@ -203,16 +208,18 @@
 				restrict: 'E',
 				scope: {
 					attrs: '=',
-					data: '=?ngModel',
-					form: '=?'
+					data: '=ngModel',
+					form: '='
 				},
 				link: function (scope, element) {
+					/*
 					if (!scope.data) {
 						scope.data = scope.$parent.data;
 					}
 					if (!scope.form) {
 						scope.form = scope.$parent.form;
 					}
+					*/
 					var input = sfInput.getElement(scope.attrs);
 					element.replaceWith(input.element);
 					$compile(input.element)(scope);
