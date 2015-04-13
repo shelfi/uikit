@@ -1,10 +1,11 @@
-(function () {
+(function(){
 
 	'use strict';
 
-	angular.module('shop')
-		.controller('shaperController', function ($scope) {
-			//controller
+	angular.module('uikit.components.shaper')
+
+		.controller('shaperCtrl', function () {
+
 			this.changeStructure = function () {
 				this.structure.row[this.structure.row.length - 1].paragraph.content = 'paragraph content goes here';
 				this.structure.row.push({
@@ -130,4 +131,5 @@
 				]
 			};
 		});
+
 })();

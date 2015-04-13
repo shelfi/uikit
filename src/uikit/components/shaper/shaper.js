@@ -1,9 +1,64 @@
-(function () {
+(function(){
 
 	'use strict';
 
-	angular.module('shop')
-		.provider('sfShaper', [function () {
+	angular.module('uikit.components.shaper', [])
+		.run(function ($templateCache) {
+
+			$templateCache.put('row', '' + 
+				'<div layout="column">' + 
+					'<div ng-repeat="item in structure">' + 
+						'<sf-shaper structure="item" ng-model="data" form="form"></sf-shaper>' + 
+					'</div>' + 
+				'</div>'
+			);
+
+			$templateCache.put('column', '' + 
+				'<div layout="row">' + 
+					'<div ng-repeat="item in structure">' + 
+						'<sf-shaper structure="item" ng-model="data" form="form"></sf-shaper>' + 
+					'</div>' + 
+				'</div>'
+			);
+
+			$templateCache.put('inputContainer', '' + 
+				'<md-input-container>' + 
+					'<label>{{ label }}</label>' + 
+					'<sf-input attrs="input" ng-model="data" form="form"></sf-input>' + 
+				'</md-input-container>'
+			);
+
+			$templateCache.put('lines', '' + 
+				'<div>' + 
+					'<h2>{{ title }}</h2>' + 
+					'<ul>' + 
+						'<li ng-repeat="item in data[items]">' + 
+							'<sf-shaper structure="repeat" ng-model="item" form="form"></sf-shaper>' + 
+						'</li>' + 
+					'</ul>' + 
+					'<md-button ng-click="add()">Add</md-button>' + 
+					'<md-button ng-click="removeAll()">Remove all</md-button>' + 
+				'</div>'
+			);
+
+			$templateCache.put('paragraph', '' + 
+				'<p>{{ content }}</p>'
+			);
+
+			$templateCache.put('test5', '' + 
+				'asd' + 
+				'asd' + 
+				'asd' + 
+				'asd' + 
+				'asd' + 
+				'asd' + 
+				'asd' + 
+				'asd' + 
+				'asd'
+			);
+		})
+
+		.provider('sfShaper', function () {
 			this.$get = ['$templateCache', function ($templateCache) {
 				return {
 					getTemplate: function (key) {
@@ -69,7 +124,7 @@
 					}
 				};
 			}];
-		}])
+		})
 		.directive('sfShaper', function ($compile, sfShaper) {
 			return {
 				restrict: 'E',
@@ -78,6 +133,7 @@
 					data: '=ngModel',
 					form: '=',
 					live: '@'
+					//onRenderCompleted: '&'
 				},
 				link: function (scope, element, attrs) {
 					var compileTemplate = function (key, val) {
@@ -133,15 +189,14 @@
 								compileTemplate(structureKey, structureVal);
 							}
 						});
+						//scope.onRenderCompleted();
 					};
-					/*
-					if (!scope.data) {
-						scope.data = scope.$parent.data;
-					}
-					if (!scope.form) {
-						scope.form = scope.$parent.form;
-					}
-					*/
+					//if (!scope.data) {
+					//	scope.data = scope.$parent.data;
+					//}
+					//if (!scope.form) {
+					//	scope.form = scope.$parent.form;
+					//}
 					if (!scope.live) {
 						scope.live = 'false';
 					}
@@ -157,8 +212,7 @@
 			};
 		})
 
-
-
+		
 		.provider('sfInput', function () {
 			var input = {
 				text: '<input type="text">',
@@ -221,8 +275,7 @@
 								//console.log(key, val);
 								var code = angular.element('<code />');
 								code.attr('ng-show', 'form.' + attrs.name + '.$error.' + key);
-								code.html('{{ "' + val + '" }}');
-								//code.html('{{ "' + val + '" | translate }}');
+								code.html('{{ "' + val + '" }}'); // | translate will be added
 								c.append(code);
 							});
 						}
@@ -243,18 +296,17 @@
 					form: '='
 				},
 				link: function (scope, element) {
-					/*
-					if (!scope.data) {
-						scope.data = scope.$parent.data;
-					}
-					if (!scope.form) {
-						scope.form = scope.$parent.form;
-					}
-					*/
+					//if (!scope.data) {
+					//	scope.data = scope.$parent.data;
+					//}
+					//if (!scope.form) {
+					//	scope.form = scope.$parent.form;
+					//}
 					var input = sfInput.getElement(scope.attrs);
 					element.replaceWith(input.element);
 					$compile(input.element)(scope);
 				}
 			};
 		});
+
 })();

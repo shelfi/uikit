@@ -1,9 +1,9 @@
 <div ng-controller="creditCardFormCtrl as creditCardForm">
 
-	<form id="form111"></form>
+	<form name="creditCardForm.form">
 
 		<h1>Amount: {{ creditCardForm.amount | currency }}</h1>
-		<sf-credit-card-form ng-model="creditCardForm.card" preview="true" on-credit-card-change="creditCardForm.onCreditCardChange()"></sf-credit-card-form>
+		<sf-credit-card-form ng-model="creditCardForm.card" form="creditCardForm.form" preview="true" on-credit-card-change="creditCardForm.onCreditCardChange()"></sf-credit-card-form>
 
 		<hr>
 		<h2>Installments settings</h2>
@@ -34,5 +34,5 @@
 		<md-button ng-click="creditCardForm.change2Prev()">Change card to previous</md-button>
 		<md-button ng-click="creditCardForm.proceed()">Proceed</md-button>
 		
-	
+	</form>
 </div>
