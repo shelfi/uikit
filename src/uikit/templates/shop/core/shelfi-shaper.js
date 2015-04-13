@@ -9,6 +9,11 @@
 					getTemplate: function (key) {
 						var tmpl = $templateCache.get(key);
 						if(!tmpl) {
+							//http://stackoverflow.com/questions/15458876/check-if-a-string-is-html-or-not
+							//if (key.indexOf('<') !== -1) {
+							if (/<[a-z][\s\S]*>/i.test(key)) {
+								return key;
+							}
 							throw 'Error: Template not found! Template name: ' + key;
 						}
 						return tmpl;
@@ -77,8 +82,11 @@
 				link: function (scope, element, attrs) {
 					var compileTemplate = function (key, val) {
 						if (!angular.isObject(val)) {
+							//console.log('returned', key, val);
 							return;
 						}
+						//console.log('------------------');
+						//console.log(key, val, scope);
 						var template = sfShaper.getTemplate(key);
 						var childScope = scope.$new(true);
 						angular.forEach(val, function (scopeVal, scopeKey) {
@@ -88,8 +96,19 @@
 						childScope.data = scope.data;
 						scope.$watch('data', function (v) {
 							childScope.data = v;
-						});
+						}, true);
 						childScope.form = scope.form;
+						if (key === 'lines') {
+							childScope.add = function () {
+								childScope.data[val.items].push({});
+							};
+							childScope.removeAll = function () {
+								childScope.data[val.items] = [];
+							};
+							childScope.remove = function (index) {
+								childScope.data[val.items].splice(index, 1);
+							};
+						}
 						var el = angular.element(template);
 						element.append(el);
 						$compile(el)(childScope);
@@ -185,6 +204,7 @@
 					},
 					getElement: function (attrs) {
 						var t = this.getTemplate(attrs.type);
+						var c = angular.element('<div />');
 						var e = angular.element(t);
 						angular.forEach(attrs, function (val, key) {
 							if (['type', 'multi'].indexOf(key) === -1) {
@@ -195,9 +215,20 @@
 								e.attr(key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(), val);
 							}
 						});
+						c.append(e);
+						if (attrs.validationTexts) {
+							angular.forEach(attrs.validationTexts, function (val, key) {
+								//console.log(key, val);
+								var code = angular.element('<code />');
+								code.attr('ng-show', 'form.' + attrs.name + '.$error.' + key);
+								code.html('{{ "' + val + '" }}');
+								//code.html('{{ "' + val + '" | translate }}');
+								c.append(code);
+							});
+						}
 						return {
 							multi: false,
-							element: e
+							element: c.children()
 						};
 					}
 				};

@@ -6,17 +6,8 @@
 		.controller('shaperController', function ($scope) {
 			//controller
 			this.changeStructure = function () {
-				this.structure.inputContainer = {
-					label: 'NNName',
-					input: {
-						type: 'text',
-						ngModel: 'data.nnname'
-					}
-				};
-				this.structure.paragraph = {
-					content: 'paragraph content goes here'
-				};
-				this.structure.column.push({
+				this.structure.row[this.structure.row.length - 1].paragraph.content = 'paragraph content goes here';
+				this.structure.row.push({
 					inputContainer: {
 						label: 'AAAA',
 						input: {
@@ -32,20 +23,26 @@
 					surname: 'Terzi44',
 					died: true,
 					jobs: [
+						{ title: 'akdeniz', desc: 'Worked with Dr44' },
 						{ title: 'trg44', desc: 'Worked with Ersen44' },
 						{ title: 'gurus44', desc: 'Worked with Mali44' }
 					]
 				};
 			};
 			this.structure = {
-				column: [
+				row: [
 					{
 						inputContainer: {
 							label: 'Name',
 							input: {
 								type: 'text',
+								name: 'name',
 								ngModel: 'data.name',
-								ngDisabled: 'data.died === true'
+								ngDisabled: 'data.died === true',
+								required: 'required',
+								validationTexts: {
+									required : 'Name is required. Please fill the input.'
+								}
 							}
 						}
 					},
@@ -67,39 +64,61 @@
 								ngModel: 'data.died'
 							}
 						}
-					}
-				],
-				lines: {
-					title: 'Jobs',
-					items: 'jobs',
-					repeat: {
-						row: [
-							{
-								inputContainer: {
-									label: 'Title',
-									input: {
-										type: 'text',
-										ngModel: 'data.title',
-										ngDisabled: 'data.died === true'
+					},
+					{
+						lines: {
+							title: 'Jobs',
+							items: 'jobs',
+							repeat: {
+								column: [
+									{
+										//flex: 35,
+										inputContainer: {
+											label: 'Title',
+											input: {
+												type: 'text',
+												//ngModel: 'data.jobs[$index].title',
+												ngModel: 'data.title',
+												ngDisabled: 'data.died === true'
+											}
+										}
+									},
+									{
+										inputContainer: {
+											label: 'Desc',
+											input: {
+												type: 'text',
+												//ngModel: 'data.jobs[$index].desc',
+												ngModel: 'data.desc',
+												ngDisabled: 'data.died === true'
+											}
+										}
+									},
+									{
+										'<md-button aria-label="Remove" ng-click="ngClick($parent)"><md-icon md-svg-icon="navigation:ic_close_24px"></md-icon></md-button>': {
+											ngClick: function (parentScope) {
+												//console.log('Remove button clicked!');
+												//console.log(parentScope);
+												//console.log(parentScope.$parent);
+												//console.log(parentScope.$parent.$parent);
+												//console.log(parentScope.$parent.$parent.$parent);
+												//console.log(parentScope.$parent.$parent.$parent.$parent);
+												//console.log(parentScope.$parent.$parent.$parent.$parent.$parent);
+												var list = parentScope.$parent.$parent.$parent.$parent;
+												list.$parent.remove(list.$index);
+											}
+										}
 									}
-								}
-							},
-							{
-								inputContainer: {
-									label: 'Desc',
-									input: {
-										type: 'text',
-										ngModel: 'data.desc',
-										ngDisabled: 'data.died === true'
-									}
-								}
+								]
 							}
-						]
+						}
+					},
+					{
+						paragraph: {
+							content: 'paragraph content goes here 111'
+						}
 					}
-				},
-				paragraph: {
-					content: 'paragraph content goes here 111'
-				}
+				]
 			};
 			this.data = {
 				name: 'Emre',
@@ -110,6 +129,5 @@
 					{ title: 'gurus', desc: 'Worked with Mali' }
 				]
 			};
-			this.form = {};
 		});
 })();
