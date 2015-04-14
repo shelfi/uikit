@@ -22,7 +22,10 @@
 			};
 
 			this.installmentChanged = function () {
-				var selected = _.find(this.installments, { 'installment': parseInt(this.installment) });
+				//var selected = _.find(this.installments, { 'installment': parseInt(this.installment) });
+				var selected = this.installments.filter(function (item) {
+					return item.installment === parseInt(this.installment);
+				}.bind(this))[0];
 
 				this.amount = this.amount_;
 
@@ -63,6 +66,7 @@
 			this.card = angular.copy(this.common);
 
 			this.onCreditCardChange = function () {
+				//console.log('onCreditCardChange', this.card.number);
 				this.installment = null;
 				this.campaigns = null;
 				this.campaign = null;

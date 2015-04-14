@@ -128,12 +128,13 @@
 		.directive('sfShaper', function ($compile, sfShaper) {
 			return {
 				restrict: 'E',
+				priority: 100,
 				scope: {
 					structure: '=',
 					data: '=ngModel',
 					form: '=',
 					live: '@'
-					//onRenderCompleted: '&'
+					//onRenderComplete: '&'
 				},
 				link: function (scope, element, attrs) {
 					var compileTemplate = function (key, val) {
@@ -189,7 +190,7 @@
 								compileTemplate(structureKey, structureVal);
 							}
 						});
-						//scope.onRenderCompleted();
+						//scope.onRenderComplete();
 					};
 					//if (!scope.data) {
 					//	scope.data = scope.$parent.data;
@@ -260,14 +261,23 @@
 						var t = this.getTemplate(attrs.type);
 						var c = angular.element('<div />');
 						var e = angular.element(t);
+						//console.log('-------------------');
+						//console.log(attrs);
 						angular.forEach(attrs, function (val, key) {
-							if (['type', 'multi'].indexOf(key) === -1) {
+							if (['type', 'multi'].indexOf(key) === -1 && (angular.isString(val) || angular.isFunction(val))) {
 								//camelCase to hyphen-case
 								//http://stackoverflow.com/questions/8955533/javascript-jquery-split-camelcase-string-and-add-hyphen-rather-than-space
 								//http://stackoverflow.com/questions/3673138/javascript-regex-camel-to-file-case
 								//str.replace(/\W+/g, '-').replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase()
-								e.attr(key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(), val);
+								e.attr(key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(), angular.isFunction(val) ? 'event_' + key + '()' : val);
 							}
+							/*
+							else if (attrs.name === 'cvc' && angular.isFunction(val)) {
+								//console.log('isFunction', key, val);
+								//e.bind(key, val);
+								e.attr(key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(), 'event_' + key + '()');
+							}
+							*/
 						});
 						c.append(e);
 						if (attrs.validationTexts) {
@@ -295,13 +305,19 @@
 					data: '=ngModel',
 					form: '='
 				},
-				link: function (scope, element) {
+				link: function (scope, element, attrs) {
 					//if (!scope.data) {
 					//	scope.data = scope.$parent.data;
 					//}
 					//if (!scope.form) {
 					//	scope.form = scope.$parent.form;
 					//}
+					angular.forEach(scope.attrs, function (val, key) {
+						if (angular.isFunction(val)) {
+							//console.log('isFunction', key, val);
+							scope['event_' + key] = val;
+						}
+					});
 					var input = sfInput.getElement(scope.attrs);
 					element.replaceWith(input.element);
 					$compile(input.element)(scope);
