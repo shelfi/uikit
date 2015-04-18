@@ -4,3 +4,4 @@ dist
 .sass-cache
 .tmp
 partials.js
+bower-uikit/
