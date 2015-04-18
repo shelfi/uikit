@@ -17,10 +17,11 @@
 				link: function(scope, element, attrs, ctrl) {
 					ctrl.$validators.cardNumberValidator = function (value) {
 						if (value) {
-							var cardNumber = value.replace(/\s/g, '');
-							var validator = scope.cardNumberValidator;
+							var cardNumber = value.replace(/\s/g, ''),
+								validator = scope.cardNumberValidator,
+								valid = false;
 							if (angular.isString(validator) || angular.isNumber(validator)) {
-								var valid = cardNumber.substring(0, validator.toString().length) === validator.toString();
+								valid = cardNumber.substring(0, validator.toString().length) === validator.toString();
 								if (valid) {
 									return Payment.fns.validateCardNumber(value);
 								}
@@ -28,7 +29,7 @@
 							else if (angular.isArray(validator)) {
 								var i = 0;
 								for (i = 0; i < validator.length; i++) {
-									var valid = cardNumber.substring(0, validator[i].toString().length) === validator[i].toString();
+									valid = cardNumber.substring(0, validator[i].toString().length) === validator[i].toString();
 									if (valid) {
 										return Payment.fns.validateCardNumber(value);
 									}
@@ -212,7 +213,7 @@
 						angular.element('input[name="expiry"]').simulate('keyup');
 						angular.element('input[name="cvc"]').simulate('keyup');
 						scope.ctrl.onCreditCardChange();
-					}
+					};
 
 					scope.$watch('ctrl.card', simulateEvents);
 

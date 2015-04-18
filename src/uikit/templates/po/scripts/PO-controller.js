@@ -135,7 +135,7 @@ function PrintonlineController($mdSidenav, $scope, $log, $mdDialog, $mdBottomShe
         $mdDialog.show({
         	templateUrl: 'payment.tmpl.html',
         	targetEvent: ev
-        })
+        });
     };
 
 
@@ -161,7 +161,7 @@ function PrintonlineController($mdSidenav, $scope, $log, $mdDialog, $mdBottomShe
       	$mdDialog.show({
       	     templateUrl: 'templates/PO/partials/PO-hover.tmpl.html',
       	     targetEvent: ev,
-      	   })
+      	   });
       };
 }
 })();

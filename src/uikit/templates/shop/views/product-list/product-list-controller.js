@@ -10,7 +10,7 @@
 			
 			this.listCtrl = $controller('listController', { $scope: $scope });
 			this.listCtrl.config.cliensidePagination = true;
-			this.listCtrl.doRequest = function (currentPage) {
+			this.listCtrl.doRequest = function (/*currentPage*/) {
 				$timeout(function () {
 					var r = products;
 					if (this.config.cliensidePagination) {

@@ -4,7 +4,7 @@
 
 	angular.module('uikit.components.productItem', [])
 
-		.directive('sfProductItem', function ($mdTheming) {
+		.directive('sfProductItem', function () {
 			return {
 				restrict: 'E',
 				require: "^?sfProductList",
@@ -37,7 +37,7 @@
 						step: 100,
 						min:100,
 						max: 5000
-					}
+					};
 
 					if (ctrl) {
 						scope.ctrl.showImage = scope.ctrl.showImage || ctrl.showImage;

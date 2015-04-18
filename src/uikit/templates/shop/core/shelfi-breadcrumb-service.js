@@ -5,8 +5,6 @@
 	angular.module('shop')
 		.service('breadcrumbService', ['$state', function ($state) {
 
-			var _self = this;
-
 			this.items = [];
 			
 			this.clear = function () {
@@ -40,8 +38,9 @@
 			};
 
 			this.add = function (item) {
-				if(!item || !angular.isObject(item) || !item.name)
+				if(!item || !angular.isObject(item) || !item.name) {
 					return;
+				}
 				this.items.push(item);
 			};
 

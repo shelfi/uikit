@@ -3,7 +3,7 @@
 	'use strict';
 
 	angular.module('shop')
-		.service('productService', ['globalService', 'orderDocument', function (globalService, orderDocument) {
+		.service('productService', ['globalService', function (globalService) {
 
 			this.getUnitPrice = function (product) {
 

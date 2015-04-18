@@ -149,7 +149,7 @@ function BaremController($mdSidenav, $scope, $log, $mdDialog){
         $mdDialog.show({
         	templateUrl: 'payment.tmpl.html',
         	targetEvent: ev
-        })
+        });
     };
 
 }

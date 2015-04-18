@@ -6,7 +6,7 @@
 	* Initialization for uikit-core
 	*/
 
-	angular.module('uikit.core', ['ngMaterial'])
+	angular.module('uikit.core', ['ngMaterial', 'shelfiFormBuilder'])
 		
 		.config(function ($mdThemingProvider, $mdIconProvider) {
 			//$mdThemingProvider.alwaysWatchTheme(true);

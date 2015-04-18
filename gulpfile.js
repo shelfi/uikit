@@ -386,7 +386,6 @@ gulp.task('browser-sync', function () {
 	});
 });
 
-
 //angular template cache
 gulp.task('ngtemplatecache', function () {
     return gulp.src([config.sourceDir + '/**/**/*.tmpl.html'])
@@ -400,10 +399,9 @@ gulp.task('ngtemplatecache', function () {
         .pipe(gulp.dest(config.tmpDir));
 });
 
-
-
 // watch
-gulp.task('watch', ['injector', 'browser-sync'], function () {
+//gulp.task('watch', ['injector', 'browser-sync'], function () {
+gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch([config.sourceDir + '/**/**/*.{html,md}', '!' + config.sourceDir + '/**/**/*.tmpl.html'], ['assemble', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/**/**/*.tmpl.html', config.sourceDir + '/templates/*/partials/*.tmpl.html'], ['ngtemplatecache', 'scripts:uikit', browserSync.reload]);
 	gulp.watch('src/demo/styles/**/*.scss', ['styles:demo']);
@@ -419,9 +417,8 @@ gulp.task('watch', ['injector', 'browser-sync'], function () {
 	gulp.watch(config.sourceDir + '/components/**/*-controller.js', ['controllers', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/templates/**/*.html'], ['templatesInjector', browserSync.reload]);
 	gulp.watch([config.sourceDir + '/templates/**/*.js', config.sourceDir + '/templates/**/scripts/*.js', config.sourceDir + '/elements/*.js', ], ['controllers', 'scripts:uikit', browserSync.reload]);
-	gulp.watch(config.general.src.images, ['images', browserSync.reload]);
+	gulp.watch(config.general.src.images, ['images', browserSync.reload]);	
 });
-
 
 // default build task
 gulp.task('default', ['clean'], function () {
@@ -432,7 +429,8 @@ gulp.task('default', ['clean'], function () {
 		'scripts',
 		'controllers',
 		'assemble',
-		'bowercopy'
+		'bowercopy',
+		'injector'
 	];
 
 	// run build

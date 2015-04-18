@@ -101,11 +101,11 @@
 					expiry: '13 / 2015',
 					cvc: 'asd'
 				};
-			}
+			};
 
 			this.change2Prev = function () {
 				this.card = angular.copy(this.common);
-			}
+			};
 		});
 
 })();

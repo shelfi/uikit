@@ -19,10 +19,10 @@
 				controller: function () {
 					//asdsad
 				},
-				controllerAs: 'ctrl',
-				link: function (scope, element, attrs, ngModelCtrl) {
-					//asd
-				}
+				controllerAs: 'ctrl'
+				//link: function (scope, element, attrs, ngModelCtrl) {
+				//	//asd
+				//}
 			};
 		});
 

@@ -70,7 +70,7 @@
 						//ss
 						this.closeDialog = function() {
 							$mdDialog.hide();
-						}
+						};
 
 						this.bank = bank;
 						this.installment = installment;
@@ -93,7 +93,7 @@
 				}, function() {
 					console.log('You cancelled the dialog.');
 				});
-			}
+			};
 		});
 
 })();
