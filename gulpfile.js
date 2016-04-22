@@ -124,7 +124,7 @@ gulp.task('injector:css', ['styles:demo'], function () {
 });
 
 //injector js
-gulp.task('injector:js', ['scripts'], function () {
+gulp.task('injector:js', ['controllers', 'scripts'], function () {
   return gulp.src(config.sourceDir + '/views/partials/outro.html')
     .pipe(inject(gulp.src([
       config.general.dest.uikit + '/scripts/**/**/*.js',

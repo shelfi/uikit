@@ -22,10 +22,10 @@
     "url": "https://github.com/offminded/uikit.git"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12.7"
   },
   "devDependencies": {
-    "browser-sync": "^1.8.0",
+    "browser-sync": "^2.12.1",
     "browserify": "^8.1.0",
     "change-case": "^2.1.5",
     "cheerio": "^0.18.0",
@@ -48,7 +48,7 @@
     "gulp-ng-autobootstrap": "git://github.com/offminded/gulp-ng-autobootstrap",
     "gulp-plumber": "^0.6.5",
     "gulp-rename": "~1.2.0",
-    "gulp-sass": "^1.1.0",
+    "gulp-sass": "^2.3.0",
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^1.0.1",
     "gulp-util": "^3.0.1",
@@ -67,7 +67,7 @@
     "raw-loader": "^0.5.1",
     "recursive-readdir": "^1.2.1",
     "run-sequence": "^1.0.1",
-    "sass-loader": "^0.3.1",
+    "sass-loader": "^3.2.0",
     "script-loader": "^0.6.1",
     "style-loader": "^0.8.3",
     "through2": "^0.6.3",
